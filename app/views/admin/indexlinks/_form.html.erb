@@ -1,0 +1,26 @@
+<div class="field">
+  <%= f.label :ordernum %><br />
+  <%= f.text_field :ordernum %><br /><br />
+</div>
+<div class="field">
+  <%= f.label :title %><br />
+  <%= f.text_field :title %><br /><br />
+</div>
+<div class="field">
+  <%= f.label :image %><br />
+  <%= f.file_field :image %><br />
+  
+  <% if(@indexlink.image.path) %>
+    <%=image_tag(@indexlink.image, :width=>"100px") %><br />
+  <%else%>
+    <p>未上傳圖片</p><br />
+  <% end %>
+
+</div>
+<div class="field">
+  <%= f.label :link %><br />
+  <%= f.text_field :link, :placeholder => "http://", :size => "100" %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
