@@ -9,6 +9,8 @@
 </div>
 
 <div style="float: right; width: 70%;">
+  <input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
+  <div id="articleContent" class="main-text"></div>
   <% if(@productclass.products.size > 0) %>
   <table>
   	<tr>
@@ -30,3 +32,45 @@
   <p><%= @productclass.name %>底下沒有商品</p>
   <% end %>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  showContent();
+
+  function showContent(){
+    if($("#productclass_content").val())
+    {
+      var obj = JSON.parse($("#productclass_content").val());
+      var article = "";
+      for(i=0;i<obj.article.length;i++)
+      {
+        var paragraph = obj.article[i];
+
+        if(JSON.stringify(paragraph.type)=='"paragraph"')
+        {
+          article = "<div class='paragraphContainer' data-type='paragraph'><p style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+
+          if(paragraph.link){
+            article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
+          }
+          else{
+            article += jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</p></div>";
+          }
+        }
+        else if(JSON.stringify(paragraph.type)=='"image"')
+        {
+          article = "<div class='paragraphContainer' data-type='image' data-photo_id=\"" + paragraph.id + "\"><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+        }
+        else if (JSON.stringify(paragraph.type)=='"video"') {
+          article = "<div  class='paragraphContainer' data-type='video' data-code=\"" + paragraph.code + "\"><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
+        }
+        $("#articleContent").append(article);
+      }
+    }
+  }
+
+  function jsonReplace(string){return string.replace(/"([^"]*)"/g, "$1");}
+  
+});
+
+</script>
