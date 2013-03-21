@@ -20,7 +20,7 @@ class Admin::NewsController < ApplicationController
 
   def edit
     @news = News.find(params[:id])
-    @news.frontshow = 0
+    @news.frontshow = false
     @news.save
 
     @photo = Newsphoto.new

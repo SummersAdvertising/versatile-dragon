@@ -1,26 +1,15 @@
 class Admin::ProductsController < ApplicationController
   before_filter :require_is_admin
   layout 'admin'
-  def index
-    @products = Product.where("producttype = ?", "item").order('ordernum ASC, updated_at DESC, created_at DESC').page(params[:page])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @products }
-    end
-  end
-
-  def index_box
-    @products = Product.where("producttype = ?", "box").order('ordernum ASC, updated_at DESC, created_at DESC').page(params[:page])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @products }
-    end
+  
+  before_filter :findClass
+  
+  def findClass
+    @productclass = Productclass.find(params[:productclass_id])
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = @productclass.products.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,54 +17,47 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  def new
-    @product = Product.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
-  end
-
-  def new_box
-    @product = Product.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
-  end
-
   def edit
-    @product = Product.find(params[:id])
+    @product = @productclass.products.find(params[:id])
+    @photo = Productphoto.new
   end
 
-  def edit_box
-    @product = Product.find(params[:id])
-  end
-
-  def create
-    @product = Product.new(params[:product])
-    @product.producttype = "item"
+  #create photo
+  def createPhoto
+    @product = Product.find(params[:product_id])
+    @photo = @product.productphotos.new(params[:productphoto])
 
     respond_to do |format|
-      if @product.save
-        format.html { redirect_to admin_products_path, notice: 'product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
+      if @photo.save
+        #format.html { redirect_to photos.path } #index.html.erb
+        format.json { render json: @photo, status: :created, location: @photo }
+        format.js
       else
         format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
 
-  def create_box
-    @product = Product.new(params[:product])
-    @product.producttype = "box"
+  def destroyPhoto
+    @photo = Productphoto.find(params[:id])
+    #File.delete("/public" + @photo.image) #carrierwave will handle this.
+    @photo.destroy
 
     respond_to do |format|
+          #format.html { redirect_to :controller => 'photos', :action => 'index' }
+          format.js
+          format.json { head :no_content }
+      end
+  end
+
+  def create
+    @product = @productclass.products.new(params[:product])
+    
+    respond_to do |format|
       if @product.save
-        format.html { redirect_to admin_boxs_path, notice: 'product was successfully created.' }
+        format.html { redirect_to edit_admin_productclass_product_path(@productclass, @product), notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
@@ -85,12 +67,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
-    flash[:notice] = 'successfully updated.'
+    @product = @productclass.products.find(params[:id])
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to admin_product_path(@product), notice: 'product was successfully updated.' }
+        format.html { redirect_to admin_productclass_product_path(@productclass, @product), notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -100,12 +81,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
-    @product.admindelete = true;
-    @product.save
+    @product = @productclass.products.find(params[:id])
+    @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_products_url }
+      format.html { redirect_to admin_productclass_path(@productclass) }
       format.json { head :no_content }
     end
   end

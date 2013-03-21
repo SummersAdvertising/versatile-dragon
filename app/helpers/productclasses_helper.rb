@@ -1,0 +1,2 @@
+module ProductclassesHelper
+end

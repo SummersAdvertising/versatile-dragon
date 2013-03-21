@@ -1,6 +1,8 @@
 VersatileDragon::Application.routes.draw do
-  resources :news, :only => [:index, :show]
-  
+  resources :productclasses, :only => [:index, :show] do
+    resources :products, :only => :show
+  end
+
   match "/admin/createAdmin" => "admin#createAdmin", :via => :post
   match "/admin/loginCheck" => "admin#loginCheck", :via => :post
   match "/admin/update" => "admin#update", :via => :put
@@ -10,6 +12,16 @@ VersatileDragon::Application.routes.draw do
     get '/' => 'indexlinks#index'
     
     resources :indexlinks
+
+    resources :productclasses do
+      match 'uploadPhoto' => 'productclasses#createPhoto', :via => [:post]
+      match 'deletePhoto/:id' => 'productclasses#destroyPhoto', :via => [:delete]
+      
+      resources :products, :except => [:index, :new] do
+        match 'uploadPhoto' => 'products#createPhoto', :via => [:post]
+        match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
+      end
+    end
 
     resources :news, :except => :new do
       match 'uploadPhoto' => 'news#createPhoto', :via => [:post]

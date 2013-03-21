@@ -1,33 +1,51 @@
 <div id="main" class="right">
-  <div class="main-title">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <div class="main-list">
+    <p><%= @productclass.name %><%= link_to '修改分類', edit_admin_productclass_path(@productclass) %></p>
+
+    <input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
+    <div id="articleContent" class="main-text"></div>
+    
+    <p><%= link_to "新增商品", admin_productclass_products_path(params[:id]), :method => :post %></p>
+
+    <% if(@productclass.products.size > 0) %>
+    <table>
       <tr>
-        <td valign="top" class="title" height="22" width="98"><%= @news.created_at.strftime("%Y/%m/%d") %></td>
-        <td valign="middle" class="text"><%= @news.name %></td>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
+
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= link_to 'Show', admin_productclass_product_path(@productclass, product) %></td>
+        <td><%= link_to 'Edit', edit_admin_productclass_product_path(@productclass, product) %></td>
+        <td><%= link_to 'Destroy', admin_productclass_product_path(@productclass, product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
     </table>
+
+    <br />
+
+    <% else %>
+    <p>此分類下沒有商品</p>
+    <% end %>
+
+    <%= link_to 'Back', admin_productclasses_path %>
   </div>
-
-  <input id="news_content" style="display:none;" type="text" value="<%=@news.content%>">
-  <div id="articleContent" class="main-text"></div>
-
-  <div class="button"><%= link_to image_tag("/images/edit.png")+'編輯', edit_admin_news_path(@news) %></div>
-  <div class="button"><%= link_to image_tag("/images/back.png")+'返回', admin_news_index_path %></div>
 </div>
-<!--main-->
+<!--main--> 
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#update").addClass("active");
+  $("#productclasses").addClass("active");
   showContent();
 
-   /* find http links in the paragraph and add <a> tag */
-  $("p:contains(http), p:contains(https)").each(function() { $(this).html($(this).html().replace(/((http|https):\/\/[^\ \n]*)/, "<a href=\"$1\" target='_blank'>$1</a>")) });
-  
-	function showContent(){
-    if($("#news_content").val())
+  function showContent(){
+    if($("#productclass_content").val())
     {
-      var obj = JSON.parse($("#news_content").val());
+      var obj = JSON.parse($("#productclass_content").val());
       var article = "";
       for(i=0;i<obj.article.length;i++)
       {

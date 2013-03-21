@@ -4,7 +4,7 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td valign="top" class="title" height="22" width="98"><%= DateTime.now.to_date %></td>
-        <td valign="middle" class="text"><input id="news_title" type="text" /></td>
+        <td valign="middle" class="text"><input id="productclass_title" type="text" /></td>
       </tr>
     </table>
   </div>
@@ -45,15 +45,15 @@
   </div>
 
   <div class="main-preview">
-    <%= form_for(@news, :url => admin_news_path(@news), :method => "put") do |f| %>
+    <%= form_for(@productclass, :url => admin_productclass_path(@productclass), :method => "put") do |f| %>
     <div style="display: none;">
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <input id="news_nameOrigin" type="text" value="test">
+    <input id="productclass_nameOrigin" type="text" value="test">
     <%= f.label :content %>
     <%= f.text_field :content %>
     <%= f.text_field :frontshow, :value => 0 %>
-    <input id="news_contentOrigin" type="text" value="test">
+    <input id="productclass_contentOrigin" type="text" value="test">
     </div>
 
     <!--show the content of article -->
@@ -71,7 +71,11 @@
   </div>
   <!--main-->
 
-
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#productclasses").addClass("active");
+});
+</script>
 <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -101,14 +105,13 @@ $(function(){
 });
 </script>
 
-
 <script type="text/javascript">
-  var form = "#edit_news_<%= params[:id]%>";
+  var form = "#edit_productclass_<%= params[:id]%>";
 
   //record the origin content
-  $("#news_contentOrigin").val($("#news_content").val());
-  $("#news_nameOrigin").val($("#news_name").val());
-  $("#news_title").val($("#news_name").val());
+  $("#productclass_contentOrigin").val($("#productclass_content").val());
+  $("#productclass_nameOrigin").val($("#productclass_name").val());
+  $("#productclass_title").val($("#productclass_name").val());
 
   //show content
   showContent();
@@ -137,7 +140,6 @@ $(function(){
 
   function addParagraph(){
     if($("#newParagraphContent").val()){
-    
     	var style = 'style="';
     	
     	if ($('#newParagraphFontSize').val().length > 0) {
@@ -150,11 +152,11 @@ $(function(){
     
     	style += '"';
     
-      var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="paragraph">' +       									
-      									'<div class="edit">' +
-      										'<a name="edit">編輯</a><a name="delete">刪除</a>' +
-      									'</div>' +
-      								'</div>');
+      var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="paragraph">' +
+      					'<div class="edit">' +
+      					'<a name="edit">編輯</a><a name="delete">刪除</a>' +
+      					'</div>' +
+      					'</div>');
       
       var content = $("#newParagraphContent").val().replace(/\n/g, "<br />");
       								
@@ -179,8 +181,8 @@ $(function(){
   }
 
   function addImage(){
-    if($("#newsphoto_image").val()){
-      $("#new_newsphoto").submit();
+    if($("#classphoto_image").val()){
+      $("#new_classphoto").submit();
     }
     else{
       alert("請選擇要上傳的檔案");
@@ -189,7 +191,7 @@ $(function(){
   }
 
   //validate image upload
-  $("#new_newsphoto").submit(function(){
+  $("#new_classphoto").submit(function(){
     $("#error").html("");
       return formvalidate();
   });
@@ -199,7 +201,7 @@ $(function(){
     var isPass = false;
     var alert;
 
-    var fileinput = document.getElementById('newsphoto_image');
+    var fileinput = document.getElementById('classphoto_image');
     if(fileinput.files[0]){
       var typeAllowed = ["gif", "png", "jpg", "jpeg"];
 
@@ -229,7 +231,7 @@ $(function(){
   }
 
   function newImage(photoID,photoPath){
-    $("#articleContent").append('<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><div class="edit"><a href="/admin/news/<%= @news.id %>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true">刪除</a></div><img src="'+photoPath+'" alt="'+photoID+'" /></div>');
+    $("#articleContent").append('<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><div class="edit"><a href="/admin/productclasses/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true">刪除</a></div><img src="'+photoPath+'" alt="'+photoID+'" /></div>');
     $('#new_photo').each (function(){
       this.reset();
     });
@@ -237,41 +239,10 @@ $(function(){
     saveArticle();    
   }
 
-  $("#newVideo").click(function(event) {    
-    if( $("#newVideoContent").val() ){    
-      var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="video"></div>');
-      var code = getYoutubeCode( $("#newVideoContent").val());
-      var paragraph = $('<iframe width="480" height="290" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
-      container.append(paragraph);
-
-      $("#articleContent").append(container);
-      $("#newVideoContent").val('');
-      $("#videoPreview").html('');
-
-      saveArticle();
-    }
-    else{
-      alert("請輸入內容");
-    }
-    event.preventDefault();
-  });
-
-  // Video preview
-  $('#newVideoContent').change(function() {
-    var code = getYoutubeCode( $(this).val() );
-    $('#videoPreview').append('<iframe width="320" height="220" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
-  });
-
-  function getYoutubeCode( link ) {
-    if ( link != undefined ) {
-      return /[a-zA-Z0-9\?\.\:\/]+v=([a-zA-Z0-9_\-]+)&?.*/.exec(link)[1];
-    }
-    return '';
-  }
-
   /* paragraphs sortable */
   $( ".sortable" ).sortable({
     placeholder: "ui-state-highlight",
+    disable: true,
     stop: function( event, ui ) {saveArticle();}
   });
 
@@ -340,7 +311,6 @@ $(function(){
         } else {
         	p.content=$(this).html();	        
         }
-        console.log(p);
         obj.article.push(p);
       }
       else if ($(this).is("img")){
@@ -359,7 +329,7 @@ $(function(){
     });
 
     article = JSON.stringify(obj);
-    $("#news_content").val(article);
+    $("#productclass_content").val(article);
   }
 
   function saveArticle(){
@@ -375,11 +345,11 @@ $(function(){
   }
 
   function showContent(){
-    if($("#news_content").val())
+    if($("#productclass_content").val())
     {
       try
       {
-        var obj = jQuery.parseJSON($("#news_content").val());
+        var obj = JSON.parse($("#productclass_content").val());
         var article = "";
         for(i=0;i<obj.article.length;i++)
         {
@@ -397,7 +367,7 @@ $(function(){
           }
           else if(JSON.stringify(paragraph.type)=='"image"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><div class='edit'><a href='/admin/news/<%=@news.id %>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></div><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><div class='edit'><a href='/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></div><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
           }
 
           $("#articleContent").append(article);
@@ -405,7 +375,7 @@ $(function(){
       }
       catch( err )
       {
-        $("#news_content").val("");
+        $("#productclass_content").val("");
         saveArticle();
         $("#formerror").html("<p>文章內容錯誤, 請重新輸入</p>");
       }
@@ -419,13 +389,13 @@ $(function(){
   function br2nl(string) { return string.replace(/<br[ \/]*>/g, "\n");}
 
   $("#btnSubmit").click(function(){
-    $("#news_name").val($("#news_title").val());
+    $("#productclass_name").val($("#productclass_title").val());
     $(form).submit();
   });
 
   $("#btnCancel").click(function(){
-    $("#news_content").val($("#news_contentOrigin").val());
-    $("#news_name").val($("#news_nameOrigin").val());
+    $("#productclass_content").val($("#productclass_contentOrigin").val());
+    $("#productclass_name").val($("#productclass_nameOrigin").val());
     $(form).submit();
   });
 
@@ -434,7 +404,7 @@ $(function(){
   $(form).submit(function(){
     var submit = true;
     $("#formerror").html("");
-    $("#news_frontshow").val("1");
+    $("#productclass_frontshow").val("true");
 
     $(".validate").each(function(){
       if(!$(this).val()){
