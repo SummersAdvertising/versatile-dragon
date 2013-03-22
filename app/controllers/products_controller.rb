@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   
   def show
+  	@productclasses = Productclass.all
     @product = Product.find(params[:id])
 
     respond_to do |format|

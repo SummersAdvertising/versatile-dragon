@@ -1,20 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div style="float: left;">
+  <ul>
+    <% @productclasses.each do |productclass| %>
+    <li>
+      <%= link_to productclass.name, productclass_path(productclass) %>
+    </li>
+    <% end %>
+  </ul>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @product.name %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @product.content %>
-</p>
-
-<p>
-  <b>Productclass:</b>
-  <%= @product.productclass_id %>
-</p>
+<div style="float: right; width: 70%;">
+  <p><b>Name:</b><%= @product.name %></p>
+  <input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
+  <div id="articleContent" class="main-text"></div>
+  <%= link_to 'Back', productclass_path(@product.productclass_id)%>
+</div>
 
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#productclasses").addClass("active");
+  showContent();
+
+  function showContent(){
+    if($("#product_content").val())
+    {
+      var obj = JSON.parse($("#product_content").val());
+      var article = "";
+      for(i=0;i<obj.article.length;i++)
+      {
+        var paragraph = obj.article[i];
+
+        if(JSON.stringify(paragraph.type)=='"paragraph"')
+        {
+          article = "<div class='paragraphContainer' data-type='paragraph'><p style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+
+          if(paragraph.link){
+            article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
+          }
+          else{
+            article += jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</p></div>";
+          }
+        }
+        else if(JSON.stringify(paragraph.type)=='"image"')
+        {
+          article = "<div class='paragraphContainer' data-type='image' data-photo_id=\"" + paragraph.id + "\"><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+        }
+        else if (JSON.stringify(paragraph.type)=='"video"') {
+          article = "<div  class='paragraphContainer' data-type='video' data-code=\"" + paragraph.code + "\"><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
+        }
+        $("#articleContent").append(article);
+      }
+    }
+  }
+
+  function jsonReplace(string){return string.replace(/"([^"]*)"/g, "$1");}
+  
+});
+
+</script>

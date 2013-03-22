@@ -8,12 +8,9 @@
     <p><%= link_to "新增商品", admin_productclass_products_path(params[:id]), :method => :post %></p>
 
     <% if(@productclass.products.size > 0) %>
-    <table>
+    <table width="80%">
       <tr>
-        <th>Name</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th colspan="4">Name</th>        
       </tr>
 
       <% @products.each do |product| %>

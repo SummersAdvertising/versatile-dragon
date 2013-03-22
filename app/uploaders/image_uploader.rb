@@ -23,6 +23,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.name}/#{model.news_id}"
     elsif(model.class.name=='Classphoto')
     "uploads/#{model.class.name}/#{model.productclass_id}"
+    elsif(model.class.name=='Productphoto')
+    "uploads/#{model.class.name}/#{model.product_id}"
     else
     "uploads/#{model.class.name}/#{model.id}"
     end
