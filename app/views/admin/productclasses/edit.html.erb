@@ -154,7 +154,7 @@ $(function(){
     
       var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="paragraph">' +
       					'<div class="edit">' +
-      					'<a name="edit">編輯</a><a name="delete">刪除</a>' +
+      					'<a name="edit">編輯內容</a><a name="delete">刪除</a>' +
       					'</div>' +
       					'</div>');
       
@@ -256,17 +256,21 @@ $(function(){
       $(".buttonArea").hide();
       var paragraph = $(this).parent().next();
 
-      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
+      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br />連結網址：<label></label><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
 
       //avoid content in textbox can't not be editted due to the using of jquery sortable
       event.stopImmediatePropagation();
 
-      $("#editedContent").html(br2nl($(paragraph).html()));
+      var aLink = $(paragraph).html().match(/^\<a([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/a\>/)[2];
+      var aContent = br2nl($(paragraph).html().match(/^\<a([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/a\>/)[3]);
+
+      $("#editedContent").html(aContent);
+      $("#editDiv label").html(aLink);
       $(paragraph).hide();
 
       $("#editFinish").click(function(){
         if($("#editedContent").val()){
-          $(this).parent().prev().html(nl2br($("#editedContent").val())).show();
+          $(this).parent().prev().html('<a target="_blank" href="'+aLink+'">'+nl2br($("#editedContent").val())+'</a>').show();
           $("#editDiv").remove();
           saveArticle();
           editingFlag = false;
