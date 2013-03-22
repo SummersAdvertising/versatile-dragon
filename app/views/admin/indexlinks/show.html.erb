@@ -1,0 +1,28 @@
+<div id="main" class="right">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <b>Ordernum:</b><%= @indexlink.ordernum %>
+  </p>
+  <p>
+  	<b>Title:</b><%= @indexlink.title %>
+  </p>
+
+  <p>
+  	<b>Image:</b><br />
+    <%=image_tag(@indexlink.image) %>
+  </p>
+
+  <p>
+  	<b>Link:</b><a href="<%= @indexlink.link %>" target= "_blank"><%= @indexlink.link %></a>
+  </p>
+
+  <%= link_to 'Edit', edit_admin_indexlink_path(@indexlink) %> | 
+  <%= link_to 'Back', admin_indexlinks_path %>
+</div>
+<!--main--> 
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#links").addClass("active");
+});
+</script>

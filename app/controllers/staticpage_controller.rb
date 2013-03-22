@@ -1,5 +1,5 @@
 class StaticpageController < ApplicationController
-	layout "index", only: [:index]
 	def index
+		@indexlinks = Indexlink.order('ordernum').all
 	end
 end

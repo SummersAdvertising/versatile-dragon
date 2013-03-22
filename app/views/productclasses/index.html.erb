@@ -1,0 +1,8 @@
+<% if(@productclasses.size)>0 %>
+<script type="text/javascript">
+    window.location.href="/productclasses/<%= @productclasses.first.id %>";
+</script>
+
+<% else %>
+<h1>尚未建立產品分類</h1>
+<% end %>

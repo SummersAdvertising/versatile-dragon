@@ -1,0 +1,15 @@
+<div id="main" class="right">
+  <h1>New indexlink</h1>
+  <%= form_for(@indexlink, :url => admin_indexlinks_path(@indexlink), :method => "post") do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f} %>
+  <% end %>
+
+  <%= link_to 'Back', admin_indexlinks_path %>
+</div>
+<!--main--> 
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#links").addClass("active");
+});
+</script>
