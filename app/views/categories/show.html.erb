@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @category.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @category.content %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @category.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category, :locale => I18n.locale) %> |
+<%= link_to 'Back', categories_path %>

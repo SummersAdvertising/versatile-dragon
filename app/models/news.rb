@@ -1,6 +1,8 @@
 class News < ActiveRecord::Base
   has_many :newsphotos, :dependent => :destroy
   attr_accessible :content, :frontshow, :name
+  
+  translates :content, :name
 
   #delete the blank folder built by carrierwave
   before_destroy :remember_id
