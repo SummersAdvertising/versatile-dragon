@@ -1,17 +1,21 @@
 <div id="main" class="right">
   <div class="main-list">
+  
+  
+  
     <p><%= @productclass.name %><%= link_to '修改分類', edit_admin_productclass_path(@productclass, :locale => I18n.locale) %></p>
 
     <input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
     <div id="articleContent" class="main-text"></div>
     
-    <p><%= link_to "新增商品", admin_productclass_products_path(params[:id]), :method => :post %></p>
+    <p><%= link_to "新增商品", admin_productclass_products_path(params[:id], :locale => I18n.locale), :method => :post %></p>
 
     <% if(@productclass.products.size > 0) %>
     <table width="80%">
       <tr>
         <th colspan="4">Name</th>        
       </tr>
+
 
       <% @products.each do |product| %>
       <tr>

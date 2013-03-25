@@ -14,6 +14,7 @@ class Admin::ProductclassesController < ApplicationController
   def show
     @productclass = Productclass.find(params[:id])
     @products = @productclass.products.order('created_at DESC').all
+        
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @productclass }
