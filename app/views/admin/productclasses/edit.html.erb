@@ -30,7 +30,7 @@
        <input type="text" id="newParagraphLink" placeholder="此段落連結至何處（若無請勿輸入）" />
     </div>
     <div id="main-text-img">
-      <%= form_for (@photo), :url => 'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
+      <%= form_for (@photo), :url => I18n.locale.to_s + '/uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
       <%= p.file_field :image, :class => "autogrow" %>
       <div id="error"></div>
       <% end %>
@@ -43,7 +43,6 @@
     <h2>文章預覽</h2>
     <p> <img src="/images/tag.png"/>提示：將滑鼠移至段落內容，可進行拖曳排序以及修改刪除。</p>
   </div>
-
   <div class="main-preview">
     <%= form_for(@productclass, :url => admin_productclass_path(@productclass, :locale => I18n.locale), :method => "put") do |f| %>
     <div style="display: none;">
