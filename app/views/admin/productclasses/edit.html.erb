@@ -30,7 +30,7 @@
        <input type="text" id="newParagraphLink" placeholder="此段落連結至何處（若無請勿輸入）" />
     </div>
     <div id="main-text-img">
-      <%= form_for (@photo), :url => I18n.locale.to_s + '/uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
+      <%= form_for (@photo), :url => 'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
       <%= p.file_field :image, :class => "autogrow" %>
       <div id="error"></div>
       <% end %>
