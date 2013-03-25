@@ -16,8 +16,8 @@
   	<b>Link:</b><a href="<%= @indexlink.link %>" target= "_blank"><%= @indexlink.link %></a>
   </p>
 
-  <%= link_to 'Edit', edit_admin_indexlink_path(@indexlink) %> | 
-  <%= link_to 'Back', admin_indexlinks_path %>
+  <%= link_to 'Edit', edit_admin_indexlink_path(@indexlink, :locale => I18n.locale) %> | 
+  <%= link_to 'Back', admin_indexlinks_path(:locale => I18n.locale) %>
 </div>
 <!--main--> 
 

@@ -1,6 +1,6 @@
 <div id="main" class="right">
   <div class="main-list">
-    <p><%= @productclass.name %><%= link_to '修改分類', edit_admin_productclass_path(@productclass) %></p>
+    <p><%= @productclass.name %><%= link_to '修改分類', edit_admin_productclass_path(@productclass, :locale => I18n.locale) %></p>
 
     <input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
     <div id="articleContent" class="main-text"></div>
@@ -16,9 +16,9 @@
       <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= link_to 'Show', admin_productclass_product_path(@productclass, product) %></td>
-        <td><%= link_to 'Edit', edit_admin_productclass_product_path(@productclass, product) %></td>
-        <td><%= link_to 'Destroy', admin_productclass_product_path(@productclass, product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
+        <td><%= link_to 'Edit', edit_admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
+        <td><%= link_to 'Destroy', admin_productclass_product_path(@productclass, product, :locale => I18n.locale), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
     </table>
@@ -29,7 +29,7 @@
     <p>此分類下沒有商品</p>
     <% end %>
 
-    <%= link_to 'Back', admin_productclasses_path %>
+    <%= link_to 'Back', admin_productclasses_path(:locale => I18n.locale) %>
   </div>
 </div>
 <!--main--> 

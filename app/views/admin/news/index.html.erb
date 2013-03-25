@@ -13,13 +13,13 @@
       <% @news.each do |news| %>
       <tr>
         <td align="center"><%= news.created_at.strftime("%Y/%m/%d") %></td>
-        <td align="left"><%= link_to news.name, admin_news_path(news) %>
+        <td align="left"><%= link_to news.name, admin_news_path(news, :locale => I18n.locale) %>
           <% if(!news.frontshow) %>
           <span>(尚未發佈到前台)</span>
           <% end %>
         </td>
-        <td align="center"><%= link_to image_tag("/images/edit.png"), edit_admin_news_path(news) %></td>
-        <td align="center"><%= link_to image_tag("/images/delete.png"), admin_news_path(news), method: :delete, data: { confirm: '確定刪除消息?' } %></td>
+        <td align="center"><%= link_to image_tag("/images/edit.png"), edit_admin_news_path(news, :locale => I18n.locale) %></td>
+        <td align="center"><%= link_to image_tag("/images/delete.png"), admin_news_path(news, :locale => I18n.locale), method: :delete, data: { confirm: '確定刪除消息?' } %></td>
       </tr>
       <% end %>
     </table>

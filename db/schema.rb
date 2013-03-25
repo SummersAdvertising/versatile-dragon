@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322023502) do
+ActiveRecord::Schema.define(:version => 20130322090451) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -20,24 +20,6 @@ ActiveRecord::Schema.define(:version => 20130322023502) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "classphotos", :force => true do |t|
-    t.string   "name"
-    t.string   "image"
-    t.integer  "productclass_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  create_table "indexlinks", :force => true do |t|
-    t.string   "title"
-    t.string   "image"
-    t.string   "link"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "ordernum"
-  end
-
 
   create_table "categories", :force => true do |t|
     t.string   "status"
@@ -58,6 +40,33 @@ ActiveRecord::Schema.define(:version => 20130322023502) do
   add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
   add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
 
+  create_table "classphotos", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.integer  "productclass_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "indexlink_translations", :force => true do |t|
+    t.integer  "indexlink_id"
+    t.string   "locale"
+    t.string   "image"
+    t.string   "title"
+    t.string   "link"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "indexlink_translations", ["indexlink_id"], :name => "index_indexlink_translations_on_indexlink_id"
+  add_index "indexlink_translations", ["locale"], :name => "index_indexlink_translations_on_locale"
+
+  create_table "indexlinks", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "ordernum"
+  end
+
   create_table "news", :force => true do |t|
     t.string   "name"
     t.text     "content",    :limit => 255
@@ -77,9 +86,9 @@ ActiveRecord::Schema.define(:version => 20130322023502) do
   create_table "productclasses", :force => true do |t|
     t.string   "name"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "frontshow"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "frontshow",  :default => false
   end
 
   create_table "productphotos", :force => true do |t|

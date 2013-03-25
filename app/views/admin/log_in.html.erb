@@ -1,6 +1,6 @@
 <div id="main" class="main-sign">
     <h2><img src="/images/man.png" width="16" height="16" /> 使用者登入</h2>
-    <%= form_for(@admin, :url => admin_loginCheck_path(@admin)) do |f| %>
+    <%= form_for(@admin, :url => admin_loginCheck_path(@admin, :locale => I18n.locale)) do |f| %>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td colspan="2" align="left">帳號<br>

@@ -10,7 +10,7 @@
   <%= f.label :image %><br />
   <%= f.file_field :image %><br />
   
-  <% if(@indexlink.image.path) %>
+  <% if(@indexlink.translation.image.path) %>
     <%=image_tag(@indexlink.image, :width=>"100px") %><br />
   <%else%>
     <p>未上傳圖片</p><br />

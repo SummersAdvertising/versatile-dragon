@@ -1,5 +1,5 @@
 <div id="main" class="right">
-  <div class="button"><%= link_to image_tag("/images/add.png")+'新增輪播', new_admin_indexlink_path %></div>
+  <div class="button"><%= link_to image_tag("/images/add.png")+'新增輪播', new_admin_indexlink_path(:locale => I18n.locale) %></div>
   <div class="main-list">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr class="main-list-title">
@@ -12,9 +12,9 @@
       <% @indexlinks.each do |indexlink| %>
       <tr>
         <td align="center"><%= indexlink.ordernum %></td>
-        <td align="left"><%=link_to(indexlink.title, admin_indexlink_path(indexlink)) %></td>
-        <td align="center"><%= link_to image_tag("/images/edit.png"), admin_indexlink_path(indexlink) %></td>
-        <td align="center"><%= link_to image_tag("/images/delete.png"), admin_indexlink_path(indexlink), method: :delete, data: { confirm: '確定刪除?' } %></td>
+        <td align="left"><%=link_to(indexlink.title, admin_indexlink_path(indexlink, :locale => I18n.locale)) %></td>
+        <td align="center"><%= link_to image_tag("/images/edit.png"), admin_indexlink_path(indexlink, :locale => I18n.locale) %></td>
+        <td align="center"><%= link_to image_tag("/images/delete.png"), admin_indexlink_path(indexlink, :locale => I18n.locale), method: :delete, data: { confirm: '確定刪除?' } %></td>
       </tr>
       <% end %>
     </table>

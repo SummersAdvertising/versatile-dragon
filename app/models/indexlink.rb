@@ -1,8 +1,20 @@
 class Indexlink < ActiveRecord::Base
   attr_accessible :image, :link, :title, :ordernum
   
+  translates :title, :link, :image
+  
+  accepts_nested_attributes_for :translations
+  
   paginates_per 15
 
-  mount_uploader :image, ImageUploader
+  Translation.mount_uploader :image, ImageUploader
+  
+  def image
+  	self.translation.image
+  end
+  
+  def image=(value)  	
+  	self.translation.image = value
+  end
   
 end

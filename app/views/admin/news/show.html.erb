@@ -11,8 +11,8 @@
   <input id="news_content" style="display:none;" type="text" value="<%=@news.content%>">
   <div id="articleContent" class="main-text"></div>
 
-  <div class="button"><%= link_to image_tag("/images/edit.png")+'編輯', edit_admin_news_path(@news) %></div>
-  <div class="button"><%= link_to image_tag("/images/back.png")+'返回', admin_news_index_path %></div>
+  <div class="button"><%= link_to image_tag("/images/edit.png")+'編輯', edit_admin_news_path(@news, :locale => I18n.locale) %></div>
+  <div class="button"><%= link_to image_tag("/images/back.png")+'返回', admin_news_index_path(:locale => I18n.locale) %></div>
 </div>
 <!--main-->
 

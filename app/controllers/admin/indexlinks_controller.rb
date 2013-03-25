@@ -35,10 +35,10 @@ class Admin::IndexlinksController < ApplicationController
 
   def create
     @indexlink = Indexlink.new(params[:indexlink])
-
+    
     respond_to do |format|
       if @indexlink.save
-        format.html { redirect_to admin_indexlink_path(@indexlink), notice: 'Indexlink was successfully created.' }
+        format.html { redirect_to admin_indexlink_path(@indexlink, :locale => I18n.locale), notice: 'Indexlink was successfully created.' }
         format.json { render json: @indexlink, status: :created, location: @indexlink }
       else
         format.html { render action: "new" }
@@ -52,7 +52,7 @@ class Admin::IndexlinksController < ApplicationController
 
     respond_to do |format|
       if @indexlink.update_attributes(params[:indexlink])
-        format.html { redirect_to admin_indexlink_path(@indexlink), notice: 'Indexlink was successfully updated.' }
+        format.html { redirect_to admin_indexlink_path(@indexlink, :locale => I18n.locale), notice: 'Indexlink was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

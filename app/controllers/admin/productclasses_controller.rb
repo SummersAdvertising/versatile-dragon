@@ -71,7 +71,7 @@ class Admin::ProductclassesController < ApplicationController
 
     respond_to do |format|
       if @productclass.save
-        format.html { redirect_to edit_admin_productclass_path(@productclass), notice: 'Productclass was successfully created.' }
+        format.html { redirect_to edit_admin_productclass_path(@productclass, :locale => I18n.locale), notice: 'Productclass was successfully created.' }
         format.json { render json: @productclass, status: :created, location: @productclass }
       else
         format.html { render action: "new" }
@@ -85,7 +85,7 @@ class Admin::ProductclassesController < ApplicationController
 
     respond_to do |format|
       if @productclass.update_attributes(params[:productclass])
-        format.html { redirect_to admin_productclass_path(@productclass), notice: 'Productclass was successfully updated.' }
+        format.html { redirect_to admin_productclass_path(@productclass, :locale => I18n.locale), notice: 'Productclass was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
