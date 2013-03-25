@@ -43,9 +43,8 @@
     <h2>文章預覽</h2>
     <p> <img src="/images/tag.png"/>提示：將滑鼠移至段落內容，可進行拖曳排序以及修改刪除。</p>
   </div>
-
   <div class="main-preview">
-    <%= form_for(@productclass, :url => admin_productclass_path(@productclass), :method => "put") do |f| %>
+    <%= form_for(@productclass, :url => admin_productclass_path(@productclass, :locale => I18n.locale), :method => "put") do |f| %>
     <div style="display: none;">
     <%= f.label :name %>
     <%= f.text_field :name %>

@@ -2,7 +2,7 @@
   <ul>
   	<% @productclasses.each do |productclass| %>
   	<li>
-  		<%= link_to productclass.name, productclass_path(productclass) %>
+  		<%= link_to productclass.name, productclass_path(productclass, :locale => I18n.locale) %>
   	</li>
   	<% end %>
   </ul>
@@ -20,7 +20,7 @@
   	<% @products.each do |product| %>
   	<tr>
   		<td>
-  			<%= link_to product.name, productclass_product_path(@productclass, product) %>
+  			<%= link_to product.name, productclass_product_path(@productclass, product, :locale => I18n.locale) %>
   		</td>
   	</tr>
   	<% end %>

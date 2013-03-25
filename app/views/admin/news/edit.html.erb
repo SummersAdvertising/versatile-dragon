@@ -45,7 +45,7 @@
   </div>
 
   <div class="main-preview">
-    <%= form_for(@news, :url => admin_news_path(@news), :method => "put") do |f| %>
+    <%= form_for(@news, :url => admin_news_path(@news, :locale => I18n.locale), :method => "put") do |f| %>
     <div style="display: none;">
     <%= f.label :name %>
     <%= f.text_field :name %>

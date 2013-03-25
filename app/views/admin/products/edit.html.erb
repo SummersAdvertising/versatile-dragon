@@ -30,7 +30,7 @@
        <input type="text" id="newParagraphLink" placeholder="此段落連結至何處（若無請勿輸入）" />
     </div>
     <div id="main-text-img">
-      <%= form_for (@photo), :url => 'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
+      <%= form_for (@photo), :url =>'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
       <%= p.file_field :image, :class => "autogrow" %>
       <div id="error"></div>
       <% end %>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="main-preview">
-  	<%= form_for(@product, :url => admin_productclass_product_path(params[:productclass_id], @product), :method => "put") do |f| %>
+  	<%= form_for(@product, :url => admin_productclass_product_path(params[:productclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
   	<div style="display: none;">
     <%= f.label :name %>
     <%= f.text_field :name %>
