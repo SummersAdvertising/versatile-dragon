@@ -1,6 +1,6 @@
 <div id="main" class="right">
   <div class="button">
-    <%= link_to image_tag("/images/add.png")+'新增分類', admin_productclasses_path, :method => :post %>
+    <%= link_to image_tag("/images/add.png")+'新增分類', admin_productclasses_path, :locale => I18n.locale, :method => :post %>
   </div>
   <div class="main-list">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -20,9 +20,9 @@
       <% @productclasses.each do |productclass| %>
       <tr>
         <td><%= productclass.name %></td>
-        <td><%= link_to 'Show', admin_productclass_path(productclass) %></td>
-        <td><%= link_to 'Edit', edit_admin_productclass_path(productclass) %></td>
-        <td><%= link_to 'Destroy', admin_productclass_path(productclass), method: :delete, data: { confirm: '分類底下的商品也會一併刪除，確定刪除分類？' } %></td>
+        <td><%= link_to 'Show', admin_productclass_path(productclass, :locale => I18n.locale) %></td>
+        <td><%= link_to 'Edit', edit_admin_productclass_path(productclass, :locale => I18n.locale) %></td>
+        <td><%= link_to 'Destroy', admin_productclass_path(productclass, :locale => I18n.locale), method: :delete, data: { confirm: '分類底下的商品也會一併刪除，確定刪除分類？' } %></td>
       </tr>
       <% end %>
     </table>

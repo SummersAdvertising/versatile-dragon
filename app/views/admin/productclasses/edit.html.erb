@@ -256,21 +256,26 @@ $(function(){
       $(".buttonArea").hide();
       var paragraph = $(this).parent().next();
 
-      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br />連結網址：<label></label><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
+      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br /><label></label><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
 
       //avoid content in textbox can't not be editted due to the using of jquery sortable
       event.stopImmediatePropagation();
 
-      var aLink = $(paragraph).html().match(/^\<a([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/a\>/)[2];
-      var aContent = br2nl($(paragraph).html().match(/^\<a([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/a\>/)[3]);
+      var contentLink = $(paragraph).html().match(/^\<a([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/a\>/);
+      
+      if(contentLink){
+        contentLink.aLink = contentLink[2];
+        contentLink.aContent = br2nl(contentLink[3]);
+      }
 
-      $("#editedContent").html(aContent);
-      $("#editDiv label").html(aLink);
+      $("#editedContent").html(contentLink? contentLink.aContent : br2nl($(paragraph).html()) );
+      $("#editDiv label").html("連結網址：" + (contentLink? contentLink.aLink : "")).css("display", contentLink? "inline-block" : "none");
       $(paragraph).hide();
 
       $("#editFinish").click(function(){
         if($("#editedContent").val()){
-          $(this).parent().prev().html('<a target="_blank" href="'+aLink+'">'+nl2br($("#editedContent").val())+'</a>').show();
+          var content = (contentLink? '<a target="_blank" href="'+contentLink.aLink+'">': "" )+ nl2br($("#editedContent").val())+ (contentLink? '</a>': "");
+          $(this).parent().prev().html(content).show();
           $("#editDiv").remove();
           saveArticle();
           editingFlag = false;

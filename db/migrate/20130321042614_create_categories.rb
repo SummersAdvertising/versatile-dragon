@@ -5,7 +5,7 @@ class CreateCategories < ActiveRecord::Migration
 			t.timestamps
 		end
 		
-		Category.create_translation_table! :title => :string, :content => :text
+		Category.create_translation_table! :title => :string, :content => :text, :image => :string
 		
 	end
 	def down
