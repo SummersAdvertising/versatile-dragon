@@ -8,6 +8,31 @@
       </tr>
     </table>
   </div>
+  <div class="main-title">
+    <%= form_for(@product, :url => admin_productclass_product_path(params[:productclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %> 
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="middle" class="text"><input type="checkbox" id="productFrontshow" />在前台顯示</td>
+      </tr>
+    </table>
+    
+    <div style="display: none;">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.text_field :status %>
+
+    <input id="product_nameOrigin" type="text" value="">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+    <input id="product_contentOrigin" type="text" value="">
+    </div>
+    <% end %>
+   
+  </div>
+
+    
 
   <ul id="tab">
     <li data-name="paragraph"><a href="#main-text-p"><img src="/images/edit.png">插入段落</a></li>
@@ -45,20 +70,9 @@
   </div>
 
   <div class="main-preview">
-  	<%= form_for(@product, :url => admin_productclass_product_path(params[:productclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
-  	<div style="display: none;">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <input id="product_nameOrigin" type="text" value="">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-    <input id="product_contentOrigin" type="text" value="">
-    </div>
-
+    
     <!--show the content of article -->
     <div id="articleContent" class="sortable"></div>
-
-  	<% end %>
 
     <div id='formerror'></div>
 
@@ -106,6 +120,14 @@ $(function(){
 
 <script type="text/javascript">
   var form = "#edit_product_<%= params[:id]%>";
+
+  $("#productFrontshow").change(function(){
+    $("#product_status").val($(this).is(':checked')? "enable":"disable");
+  });
+
+  if($("#product_status").val()=="enable"){
+    $("#productFrontshow").attr('checked', true);
+  }
 
   //record the origin content
   $("#product_contentOrigin").val($("#product_content").val());
@@ -255,17 +277,27 @@ $(function(){
       $(".buttonArea").hide();
       var paragraph = $(this).parent().next();
 
-      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
+      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br /><label /><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
 
       //avoid content in textbox can't not be editted due to the using of jquery sortable
       event.stopImmediatePropagation();
 
-      $("#editedContent").html(br2nl($(paragraph).html()));
+      var contentLink = $(paragraph).html().match(/^\<a([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/a\>/);
+      
+      if(contentLink){
+        contentLink.aLink = contentLink[2];
+        contentLink.aContent = br2nl(contentLink[3]);
+      }
+
+      $("#editedContent").html(contentLink? contentLink.aContent : br2nl($(paragraph).html()) );
+      $("#editDiv label").html("連結網址：" + (contentLink? contentLink.aLink : "")).css("display", contentLink? "inline-block" : "none");
+
       $(paragraph).hide();
 
       $("#editFinish").click(function(){
         if($("#editedContent").val()){
-          $(this).parent().prev().html(nl2br($("#editedContent").val())).show();
+          var content = (contentLink? '<a target="_blank" href="'+contentLink.aLink+'">': "" )+ nl2br($("#editedContent").val())+ (contentLink? '</a>': "");
+          $(this).parent().prev().html(content).show();
           $("#editDiv").remove();
           saveArticle();
           editingFlag = false;

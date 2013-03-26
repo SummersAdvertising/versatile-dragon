@@ -265,7 +265,7 @@ $(function(){
       $(".buttonArea").hide();
       var paragraph = $(this).parent().next();
 
-      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br /><label></label><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
+      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br /><label /><br /><input type='button' id='editFinish' value='完成修改'/> <input type='button' id='editCancel' value='取消'/></div>");
 
       //avoid content in textbox can't not be editted due to the using of jquery sortable
       event.stopImmediatePropagation();

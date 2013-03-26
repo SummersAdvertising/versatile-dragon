@@ -3,6 +3,13 @@
   	<p id="notice"><%= notice %></p>
 
   	<p><b>Name:</b><%= @product.name %></p>
+    <p>在前台顯示：
+      <% if(@product.status == "enable") %>
+      是
+      <% else %>
+      否
+      <% end %>
+    </p>
 
   	<input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
     <div id="articleContent" class="main-text"></div>

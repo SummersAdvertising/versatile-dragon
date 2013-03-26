@@ -16,12 +16,20 @@
     <% if(@productclass.products.size > 0) %>
     <table width="80%">
       <tr>
+        <th>顯示在前台</th>
         <th colspan="4">Name</th>        
       </tr>
 
 
       <% @products.each do |product| %>
       <tr>
+        <td>
+          <% if(product.status == "enable") %>
+          是
+          <% else %>
+          否
+          <% end %>
+        </td>
         <td><%= product.name %></td>
         <td><%= link_to 'Show', admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
         <td><%= link_to 'Edit', edit_admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
