@@ -5,20 +5,23 @@
     <%= form_for(@admin, :url => admin_createAdmin_path(@admin, :locale => I18n.locale)) do |f| %>
     <div class="field">
       <%= f.label :username, "使用者ID" %><br />
-      <%= f.text_field :username, :autocomplete => "off" %>
+      <%= f.text_field :username, :autocomplete => "off", :class => "validate" %>
     </div>
     <div class="field">
       <%= f.label :password, "密碼" %><br />
-      <%= f.password_field :password, :autocomplete => "off" %>
+      <%= f.password_field :password, :autocomplete => "off", :class => "validate" %>
     </div>
     <div class="field">
       <%= f.label :name, "使用者名稱" %><br />
-      <%= f.text_field :name, :autocomplete => "off" %>
+      <%= f.text_field :name, :autocomplete => "off", :class => "validate" %>
     </div>
     
+    <div id="error">
     <% if flash[:error] %>
       <p class="error">同樣的帳號已經註冊過了</p>
     <% end %>
+    </div>
+    
     <div class="actions">
       <%= f.submit "新增管理者" %>
     <br />
@@ -56,5 +59,17 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $("#users").addClass("active");
+  $("#new_admin").submit(function(){
+    var submit = true;
+    var errormsg = "";
+    $(".validate").each(function(){
+      if(!$(this).val()){
+        errormsg += $(this).siblings().html()+"不能為空<br/>";
+      }
+    });
+    $("#error").html(errormsg);
+
+    return submit;
+  });
 });
 </script>
