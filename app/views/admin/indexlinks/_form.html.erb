@@ -7,6 +7,12 @@
   <%= f.text_field :title %><br /><br />
 </div>
 <div class="field">
+  <%= f.label :fontcolor %><br />
+  <%= f.radio_button(:fontcolor, 'black', :checked => true) %>黑字
+  <%= f.radio_button(:fontcolor, 'white') %>白字 <br /><br />
+</div>
+
+<div class="field">
   <%= f.label :image %><br />
   <%= f.file_field :image %><br />
   

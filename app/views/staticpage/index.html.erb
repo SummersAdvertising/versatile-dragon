@@ -14,7 +14,7 @@
 <ul>
 	<% @indexlinks.each do |indexlink| %>
 	<li>
-		<%=image_tag(indexlink.image, :width=>"100px") %>&nbsp;<a href="<%= indexlink.link %>" target= "_blank"><%= indexlink.title %></a>
+		<%=image_tag(indexlink.image, :width=>"100px") %>&nbsp;<%= indexlink.fontcolor %>&nbsp;<a href="<%= indexlink.link %>" target= "_blank"><%= indexlink.title %></a>
 	</li>
 	<% end %>
 </ul>
