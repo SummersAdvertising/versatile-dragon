@@ -36,7 +36,7 @@ $(document).ready(function() {
 
         if(JSON.stringify(paragraph.type)=='"paragraph"')
         {
-          article = "<div class='paragraphContainer' data-type='paragraph'><p style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+          article = "<div class='paragraphContainer' data-type='paragraph'><p  class='"+paragraph.cssclass+"' style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
 
           if(paragraph.link){
             article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";

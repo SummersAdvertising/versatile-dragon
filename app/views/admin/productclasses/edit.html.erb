@@ -38,7 +38,7 @@
 
   <div class="main-text">
     <div id="main-text-p">
-       <select id="newParagraphFontSize" >
+       <!-- <select id="newParagraphFontSize" >
        	   <option value="" selected="selected">-- 大小 --</option>
 	       <option value="14">14</option>
 	       <option value="28">28</option>
@@ -47,7 +47,13 @@
        	   <option value="" selected="selected">-- 顏色 --</option>
 	       <option value="#000">black</option>
 	       <option value="#00F">blue</option>
+       </select> -->
+       <select id="newParagraphClass" >         
+         <option value="titlebig">大標</option>
+         <option value="titlesmall">小標</option>
+         <option value="content" selected="selected">內文</option>
        </select>
+
        <textarea id="newParagraphContent" class="autogrow" placeholder="請將段落輸入在此處"></textarea>
        <input type="text" id="newParagraphLink" placeholder="此段落連結至何處（若無請勿輸入）" />
     </div>
@@ -151,11 +157,11 @@ $(function(){
     if($("#newParagraphContent").val()){
     	var style = 'style="';
     	
-    	if ($('#newParagraphFontSize').val().length > 0) {
+    	if ($('#newParagraphFontSize').val() && $('#newParagraphFontSize').val().length > 0) {
 	    	style += "font-size: " + $('#newParagraphFontSize').val() + "px; ";
     	}
     	
-    	if ( $('#newParagraphColor').val().length > 0 ) {
+    	if ($('#newParagraphColor').val() && $('#newParagraphColor').val().length > 0 ) {
 	    	style += "color: " + $('#newParagraphColor').val() + "; ";	    	
     	}
     
@@ -169,7 +175,7 @@ $(function(){
       
       var content = $("#newParagraphContent").val().replace(/\n/g, "<br />");
       								
-      var paragraph = $('<p class="paragraph" ' + style + ' >' + content + "</p>");
+      var paragraph = $('<p class="paragraph '+$("#newParagraphClass").val()+'" ' + style + ' >' + content + "</p>");
       
       if ( $('#newParagraphLink').val().length > 0 ) {
       		var contentLink =  $('<a target="_blank" href="' + $('#newParagraphLink').val() + '"></a>').html(paragraph.html());
@@ -322,6 +328,7 @@ $(function(){
         p.type = "paragraph";
         p.color = $(this).css('color');
         p.fontSize = $(this).css('font-size');
+        p.cssclass = $(this).attr('class');
         
         if ( $(this).children('a').length > 0 ) {	        
 	        p.link = $(this).children('a').attr('href');	        
@@ -375,7 +382,7 @@ $(function(){
 
           if(JSON.stringify(paragraph.type)=='"paragraph"')
           {
-            article = "<div class='paragraphContainer ui-state-default dragItem' data-type='paragraph'><div class='edit'><a name='edit'>編輯</a><a name='delete'>刪除</a></div><p style = ' font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+            article = "<div class='paragraphContainer ui-state-default dragItem' data-type='paragraph'><div class='edit'><a name='edit'>編輯</a><a name='delete'>刪除</a></div><p class='"+paragraph.cssclass+"' style = ' font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
             if(paragraph.link){
               article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
             }
