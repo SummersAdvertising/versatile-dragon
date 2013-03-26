@@ -1,9 +1,12 @@
 <div id="main" class="right">
   <div class="main-list">
-  
-  
-  
     <p><%= @productclass.name %><%= link_to '修改分類', edit_admin_productclass_path(@productclass, :locale => I18n.locale) %></p>
+
+    <% if @productclass.frontshow %>
+    <p><%=image_tag(@productclass.frontshow) %></p>
+    <% else %>
+    <p>尚未上傳封面</p>
+    <% end %>
 
     <input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
     <div id="articleContent" class="main-text"></div>

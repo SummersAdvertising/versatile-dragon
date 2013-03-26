@@ -4,6 +4,9 @@ class Productclass < ActiveRecord::Base
   attr_accessible :content, :name, :frontshow
   
   translates :content, :name, :frontshow
+
+  accepts_nested_attributes_for :translations
+
   Translation.mount_uploader :frontshow, ProductClassCoverUploader
   
   def frontshow

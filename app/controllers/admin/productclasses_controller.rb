@@ -84,6 +84,7 @@ class Admin::ProductclassesController < ApplicationController
   def update
     @productclass = Productclass.find(params[:id])
 
+
     respond_to do |format|
       if @productclass.update_attributes(params[:productclass])
         format.html { redirect_to admin_productclass_path(@productclass, :locale => I18n.locale), notice: 'Productclass was successfully updated.' }

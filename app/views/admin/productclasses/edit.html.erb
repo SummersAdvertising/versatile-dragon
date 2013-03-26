@@ -8,6 +8,28 @@
       </tr>
     </table>
   </div>
+  <br />
+  <div class="main-title">
+    <%= form_for(@productclass, :url => admin_productclass_path(@productclass, :locale => I18n.locale), :method => "put") do |f| %>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top" class="title" height="22" width="98">產品分類封面</td>
+        <td valign="middle" class="text"><%= f.file_field :frontshow %></td>
+      </tr>
+    </table>    
+    
+    <div style="display: none;">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <input id="productclass_nameOrigin" type="text" value="test">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+    <input id="productclass_contentOrigin" type="text" value="test">
+    </div>
+    <% end %>
+
+  </div>
 
   <ul id="tab">
     <li data-name="paragraph"><a href="#main-text-p"><img src="/images/edit.png">插入段落</a></li>
@@ -44,21 +66,9 @@
     <p> <img src="/images/tag.png"/>提示：將滑鼠移至段落內容，可進行拖曳排序以及修改刪除。</p>
   </div>
   <div class="main-preview">
-    <%= form_for(@productclass, :url => admin_productclass_path(@productclass, :locale => I18n.locale), :method => "put") do |f| %>
-    <div style="display: none;">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <input id="productclass_nameOrigin" type="text" value="test">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-    <%= f.text_field :frontshow, :value => 0 %>
-    <input id="productclass_contentOrigin" type="text" value="test">
-    </div>
 
     <!--show the content of article -->
     <div id="articleContent" class="sortable"></div>
-    
-    <% end %>
 
     <div id='formerror'></div>
 
@@ -412,7 +422,6 @@ $(function(){
   $(form).submit(function(){
     var submit = true;
     $("#formerror").html("");
-    $("#productclass_frontshow").val("true");
 
     $(".validate").each(function(){
       if(!$(this).val()){
