@@ -1,10 +1,20 @@
 class AdminController < ApplicationController
-  def sign_up
+  def showAdmins
+    @admins = Admin.all
   	@admin = Admin.new
   end
 
   def edit
     @admin = Admin.find(session[:adminID])
+  end
+
+  def destroy
+    @admin = Admin.find(params[:id])
+    @admin.destroy
+
+    respond_to do |format|
+      format.html { redirect_to admin_showAdmins_path }
+    end
   end
 
   def update
@@ -36,13 +46,10 @@ class AdminController < ApplicationController
   	@admin.password = Digest::SHA1.hexdigest(@admin.password)
 
     respond_to do |format|
-      if @admin.save
-      	session[:admin] = @admin.name
-        session[:adminID] = @admin.id
-        format.html { redirect_to admin_path }
-      else
-        format.html { redirect_to admin_sign_up_path }
+      if !@admin.save
+        flash[:error] = "username is existed."
       end
+      format.html { redirect_to admin_showAdmins_path }
     end
 
   end

@@ -7,4 +7,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Admin.create(username: "admin", password: "40bd001563085fc35165329ea1ff5c5ecbdbbeef", name: "後台管理者");
+@user = Admin.new
+
+# Attributes for the user
+@attrib = {
+  :username => "admin", 
+  :password: "40bd001563085fc35165329ea1ff5c5ecbdbbeef",
+  :name: "後台管理者", 
+  :master: "true"
+}
+
+# Use 'send' to call the attributes= method on the object
+@user.send :attributes=, @attrib, false
+
+# Save the object
+@user.save

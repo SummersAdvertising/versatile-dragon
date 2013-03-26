@@ -5,15 +5,15 @@ VersatileDragon::Application.routes.draw do
 
  scope '(:locale)' do
  	  resources :categories
-	
-	  resources :news, :only => [:index, :show]
+ 	  resources :news, :only => [:index, :show]
 	  
 	  match "/admin/createAdmin" => "admin#createAdmin", :via => :post
 	  match "/admin/loginCheck" => "admin#loginCheck", :via => :post
 	  match "/admin/update" => "admin#update", :via => :put
+	  match "/admin/deleteAdmin/:id" => "admin#destroy", :via => :delete
 	
 	  namespace :admin do
-	    get "sign_up", "log_in", "log_out", "edit"
+	    get "showAdmins", "log_in", "log_out", "edit"
 	    get '/' => 'indexlinks#index'
 	    
 	    resources :indexlinks
