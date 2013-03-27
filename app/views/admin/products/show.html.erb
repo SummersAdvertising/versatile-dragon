@@ -49,6 +49,10 @@ $(document).ready(function() {
         {
           article = "<div class='paragraphContainer' data-type='image' data-photo_id=\"" + paragraph.id + "\"><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
         }
+        else if(JSON.stringify(paragraph.type)=='"linkedimg"')
+        {
+          article = "<div  class='paragraphContainer' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+        }
         else if (JSON.stringify(paragraph.type)=='"video"') {
           article = "<div  class='paragraphContainer' data-type='video' data-code=\"" + paragraph.code + "\"><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
         }

@@ -4,7 +4,3 @@ if(<%=  @photo.errors.any? %>){
 else{
 	newImage("<%= @photo.id %>","<%= @photo.image %>");
 }
-
-$('#new_classphoto').each (function(){
-	this.reset();
-});
