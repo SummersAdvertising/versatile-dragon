@@ -1,27 +1,44 @@
-<h1>Listing products</h1>
+<div id="main" class="right">
+  <div class="button">
+    <%= link_to image_tag("/images/add.png")+'新增商品', admin_productclass_products_path(params[:productclass_id], :locale => I18n.locale), :method => :post %>
+  </div>
+  <div class="main-list">
+    <% if(@productclass.products.size > 0) %>
+    <table width="80%">
+      <tr>
+        <th>顯示在前台</th>
+        <th colspan="4">Name</th>        
+      </tr>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th>Productclass</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.content %></td>
-    <td><%= product.productclass_id %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product, :locale => I18n.locale) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+      <% @products.each do |product| %>
+      <tr>
+        <td>
+          <% if(product.status == "enable") %>
+          是
+          <% else %>
+          否
+          <% end %>
+        </td>
+        <td><%= product.name %></td>
+        <td><%= link_to 'Show', admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
+        <td><%= link_to 'Edit', edit_admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
+        <td><%= link_to 'Destroy', admin_productclass_product_path(@productclass, product, :locale => I18n.locale), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </table>
 
-<br />
+    <br />
 
-<%= link_to 'New Product', new_product_path(:locale => I18n.locale) %>
+    <% else %>
+    <p>此分類下沒有商品</p>
+    <% end %>
+  </div>
+</div>
+<!--main--> 
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#productclasses").addClass("active");
+});
+</script>

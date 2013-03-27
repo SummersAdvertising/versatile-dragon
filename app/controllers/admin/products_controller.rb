@@ -8,6 +8,10 @@ class Admin::ProductsController < ApplicationController
     @productclass = Productclass.find(params[:productclass_id])
   end
 
+  def index
+    @products = @productclass.products.order('created_at DESC').all
+  end
+
   def show
     @product = @productclass.products.find(params[:id])
 
