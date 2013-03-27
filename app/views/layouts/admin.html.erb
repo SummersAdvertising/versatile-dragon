@@ -1,45 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if lt IE 9]>
+<script src="/js/html5.js"></script>
+<%= stylesheet_link_tag "custom", :media => "all" %>
+<![endif]-->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="Robots" content="index,follow"/>
+<meta http-equiv="content-language" content="zh-TW" />
 <title>龍全後台管理系統</title>
+
 <%= stylesheet_link_tag "admin", :media => "all" %>
+<%= stylesheet_link_tag "mobile", :media => "screen and (max-width: 543px)" %>
+<%= stylesheet_link_tag "tablet", :media => "screen and (min-width: 544px) and (max-width: 896px)" %>
+<%= stylesheet_link_tag "desktop", :media => "screen and (min-width: 897px)" %>
+<%= stylesheet_link_tag "custom", :media => "all" %>
+
 <%= javascript_include_tag "application" %>
+
+<link rel="stylesheet" href="/css/alertify.css" />
+<link rel="stylesheet" href="/css/alertify.default.css"/>
+
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/jquery-textarea-autogrow.js"></script>
+<script type="text/javascript" src="/js/auto-full-height.min.js"></script>
+<script type="text/javascript" src="/js/alertify.min.js"></script>
+
 <%= csrf_meta_tags %>
+
+
+<script>
+$(document).ready(function() {  
+  $('#aside-ctrl').click(function(event) { 
+   /* aside-box 顯示後,綁上點擊document中的物件隱藏 aside-box 的事件 */
+    $('#aside-box').fadeIn(function(){
+      $(document).click(function() {
+        $('#aside-box').fadeOut();
+        $(document).unbind();
+      });
+    });
+
+    event.preventDefault();
+  });  
+  
+  var isNavOpen = false;
+  $('#nav-ctrl').click(function() {
+    $('#nav-ctrl').unbind();
+    showNav();
+  });
+
+  function showNav(){
+    var leftPosition;
+
+    switch(isNavOpen){
+      case true:
+        leftPosition = 0;
+        break;
+      case false:
+        leftPosition = 150;
+        break;
+    }
+    
+    $('article').animate({ left: leftPosition }, 1000, 'easeOutQuad', function() {
+      $('#nav-ctrl').click(function() {
+        $('#nav-ctrl').unbind();
+        showNav();
+      });
+    });
+
+    isNavOpen = isNavOpen? false : true;
+  }
+});
+</script>
 </head>
 
 <body>
-<div id="top-out">
-  <div id="top">
-    <h1 class="left"><a href="/admin">龍全 - 後台管理系統</a></h1>
-    <div class="right">
-      <%if session[:admin]%>
-      你好，<%= session[:admin]%>！<a href="/admin/edit">修改個人資料</a><a href="/admin/log_out">登出</a>
-      <% end %>
-
-      <a href="/">返回首頁</a>
-
+<header _height="none">
+  <section id="top"> <a id="nav-ctrl"><img src="/images/nav.png"></a>
+    <div id="lang">
+    <a href="#"><img src="/images/tw.png"> 繁中</a>
+    <a href="#"><img src="/images/cn.png"> 簡中</a>
+    <a href="#"><img src="/images/us.png"> 英文</a>
     </div>
-  </div>
+    <h1><a href="<%= admin_path( :locale => I18n.locale ) %>">龍全後台管理系統</a></h1>
+    
+    <aside> <a id="aside-ctrl"><img src="/images/set.png"></a>
+      <div id="aside-box">
+        <%if session[:admin]%>
+        <a href="<%= admin_edit_path( :locale => I18n.locale ) %>">修改個人資料</a>
+        <a href="<%= admin_log_out_path( :locale => I18n.locale ) %>">登出</a>
+        <% end %>
+
+        <a href="<%= root_path( :locale => I18n.locale ) %>">返回首頁</a>
+      </div>
+    </aside>
+  </section>
   <!--top--> 
-</div>
-<!--top-out-->
-<div id="container">
-  <%if session[:admin]%>
-  <div id="side" class="left">
+</header>
+<section id="main" _height="auto">
+  <nav>
     <ul>
-      <li><a href="<%= admin_indexlinks_path( :locale => I18n.locale ) %>" id="links">首頁輪播</a></li>
-      <li><a href="<%= admin_productclasses_path( :locale => I18n.locale) %>" id="productclasses">產品分類</a></li>
-      <li><a href="/admin/showAdmins" id="users">管理使用者</a></li>
+      <li><a href="<%= admin_indexlinks_path( :locale => I18n.locale ) %>" id="nav-1">首頁輪播</a></li>
+      <li><a href="<%= admin_productclasses_path( :locale => I18n.locale) %>" id="nav-2">優質系列</a></li>
+      <li><a href="<%= admin_showAdmins_path( :locale => I18n.locale) %>" id="nav-3">管理人員</a></li>
     </ul>
-  </div>
-  <% end %>
+  </nav>
+  <article>
 
-<%= yield %>
+    <%= yield %>
 
-</div>
-<!--container-->
-<div id="footer"></div>
-<!--footer-->
+  </article>
+</section>
+<!--main-->
+<footer _height="none"> Copyright © <a href="http://www.summers.com.tw/" target="_blank">Summers</a> </footer>
+
 </body>
 </html>

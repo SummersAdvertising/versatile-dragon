@@ -1,75 +1,120 @@
-<div id="main" class="right">
-  <div class="main-list">
-    <h1>建立管理者</h1>
-
-    <%= form_for(@admin, :url => admin_createAdmin_path(@admin, :locale => I18n.locale)) do |f| %>
-    <div class="field">
-      <%= f.label :username, "使用者ID" %><br />
-      <%= f.text_field :username, :autocomplete => "off", :class => "validate" %>
-    </div>
-    <div class="field">
-      <%= f.label :password, "密碼" %><br />
-      <%= f.password_field :password, :autocomplete => "off", :class => "validate" %>
-    </div>
-    <div class="field">
-      <%= f.label :name, "使用者名稱" %><br />
-      <%= f.text_field :name, :autocomplete => "off", :class => "validate" %>
-    </div>
-    
-    <div id="error">
-    <% if flash[:error] %>
-      <p class="error">同樣的帳號已經註冊過了</p>
-    <% end %>
-    </div>
-    
-    <div class="actions">
-      <%= f.submit "新增管理者" %>
-    <br />
-    </div>
-    <% end %>
-
-    <br />
-
-    <div class="main-title">
+<%= form_for(@admin, :url => admin_createAdmin_path(@admin, :locale => I18n.locale), :class => "text text-edit") do |f| %>
+  <section class="text text-edit">    
+  <div class="quarter">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr class="main-list-title">
-        <th>建立日期</th>
-        <th>使用者帳號</th>
-        <th>使用者名稱</th>
-        <th>刪除</th>
-      </tr>
-      <% @admins.each do |admin| %>
-      <% if(!admin.master) %>
       <tr>
-        <td><%= admin.created_at.to_date %></td>
-        <td><%= admin.username %></td>
-        <td><%= admin.name %></td>
-        <td><%= link_to 'Destroy', ("/admin/deleteAdmin/"+admin.id.to_s), :method => :delete, data: { confirm: '確定刪除該使用者？' } %></td>
+        <th valign="top">名稱</th>
+        <td><%= f.text_field :name, :autocomplete => "off", :class => "validate", :placeholder => "請輸入使用者名稱", :data => {:validattr => "使用者名稱"} %></td>
       </tr>
-      <% end %>
-      <% end %>
     </table>
-    </div>
-    <!--main-title--> 
-
   </div>
-</div>
-<!--main--> 
+
+  <div class="remainder">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">帳號</th>
+        <td><%= f.text_field :username, :autocomplete => "off", :class => "validate", :placeholder => "請輸入登入帳號", :data => {:validattr => "使用者帳號"} %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="half">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">密碼</th>
+        <td><%= f.password_field :password, :autocomplete => "off", :class => "validate", :data => {:validattr => "使用者密碼"} %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="half">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">確認密碼</th>
+        <td><input id="pswCheck" type="password" name="textfield" /></td>
+      </tr>
+    </table>
+  </div>
+</section>
+  <% end %>
+  <!-- end of form -->
+
+
+<section class="button"> <a href="#"><img src="/images/add.png">新增帳號</a> </section>
+<!--button-->
+<section class="list">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th align="center" class="date">使用者名稱</th>
+      <th align="left">使用者帳號</th>
+      <th align="center" class="delete">刪除</th>
+    </tr>
+
+    <% @admins.each do |admin| %>
+    <% if(!admin.master) %>
+    <tr>
+      <td align="center"><%= admin.name %></td>
+      <td align="left"><%= admin.username %></td>
+      <td align="center" class="delete"><%= link_to image_tag("/images/delete.png"), "#"%></td>
+      <%= link_to image_tag("/images/delete.png"), ("/admin/deleteAdmin/"+admin.id.to_s) , :method => :delete, :style => "display: none;", :id => "deleteAdmin" %>
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+</section>
+<!--list-->
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#users").addClass("active");
+
+  $("#nav-3").parent().addClass("active");
+
+  var adminCreateError = "<%= flash[:error] %>";
+  if(adminCreateError){
+    Alertify.log.error("該帳號已經存在");
+  }
+
+  var adminCreateSuccess = "<%= flash[:success] %>";
+  if(adminCreateSuccess){
+    Alertify.log.success("已成功新增使用者");
+  }
+
+  $(".button a").click(function(event){
+    $("#new_admin").submit();
+    event.preventDefault();
+  });
+
   $("#new_admin").submit(function(){
     var submit = true;
-    var errormsg = "";
     $(".validate").each(function(){
       if(!$(this).val()){
-        errormsg += $(this).siblings().html()+"不能為空<br/>";
+        Alertify.log.error($(this).data("validattr")+"不能為空");
+        submit = false;
       }
     });
-    $("#error").html(errormsg);
+
+    var check = ($("#admin_password").val()==$("#pswCheck").val());
+    if(check == false){
+      Alertify.log.error("密碼不一致，請重新輸入密碼");
+      $("#admin_password").val("");
+      $("#pswCheck").val("");
+      submit = false;
+    }
 
     return submit;
   });
+
+  $(".delete a").click(function() {
+    var deleteConfirm = false;
+    Alertify.dialog.confirm("確定要刪除嗎？", function (event) {
+      // user clicked "ok
+      $('#deleteAdmin').trigger('click');
+      
+    }, function () {
+      // user clicked "cancel"
+    });
+    return false;
+  });
+  
 });
 </script>

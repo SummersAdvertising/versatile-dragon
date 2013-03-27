@@ -1,30 +1,53 @@
-<div id="main" class="right">
-  <div class="button"><%= link_to image_tag("/images/add.png")+'新增輪播', new_admin_indexlink_path(:locale => I18n.locale) %></div>
-  <div class="main-list">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr class="main-list-title">
-        <th width="9%" align="center" scope="col">編號</th>
-        <th width="63%" align="left" scope="col">標題</th>
-        <th width="9%" align="center" scope="col">編輯</th>
-        <th width="9%" align="center" scope="col">刪除</th>
-      </tr>
+<section class="button">
+  <%= link_to image_tag("/images/add.png")+'新增輪播', new_admin_indexlink_path(:locale => I18n.locale) %>
+</section>
+<!--button-->
+<section class="list">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th width="9%" align="center" class="number">編號</th>
+      <th align="center" class="date">日期</th>
+      <th align="left" class="name">標題</th>
+      <th align="center" class="edit">編輯</th>
+      <th align="center" class="delete">刪除</th>
+    </tr>
 
-      <% @indexlinks.each do |indexlink| %>
-      <tr>
-        <td align="center"><%= indexlink.ordernum %></td>
-        <td align="left"><%=link_to(indexlink.title, admin_indexlink_path(indexlink, :locale => I18n.locale)) %></td>
-        <td align="center"><%= link_to image_tag("/images/edit.png"), admin_indexlink_path(indexlink, :locale => I18n.locale) %></td>
-        <td align="center"><%= link_to image_tag("/images/delete.png"), admin_indexlink_path(indexlink, :locale => I18n.locale), method: :delete, data: { confirm: '確定刪除?' } %></td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+    <% @indexlinks.each do |indexlink| %>
+    <tr>
+      <td align="center" class="number"><%= indexlink.ordernum %></td>
+      <td align="center" class="date"><%= indexlink.created_at.to_date %></td>
+      <td align="left" class="name">
+        <%=link_to(indexlink.title, admin_indexlink_path(indexlink, :locale => I18n.locale)) %>
+      </td>
+      <td align="center" class="edit">
+        <%= link_to image_tag("/images/edit.png"), edit_admin_indexlink_path(indexlink, :locale => I18n.locale) %>
+      </td>
+      <td align="center" class="delete"><a href="#" data-deleteid="<%= indexlink.id %>"><img src="/images/delete.png"></a></td>
+    </tr>
+    <%= link_to image_tag("/images/delete.png"), admin_indexlink_path(indexlink, :locale => I18n.locale), method: :delete, :id => ("delete"+ indexlink.id.to_s ), :style => "display:none;"%>
+    <% end %>
+
+    
+  </table>
+
   <%= paginate @indexlinks, :theme => 'admin' %>
-</div>
-<!--main--> 
+</section>
+<!--list-->
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#links").addClass("active");
+  $("#nav-1").parent().addClass("active");
+
+  $(".delete a").click(function() {
+    var deleteid = $(this).data("deleteid");
+
+    Alertify.dialog.confirm("刪除分類會連帶刪除分類底下的商品，確定要刪除嗎？", function () {
+      // user clicked "ok"
+      $("#delete"+deleteid).trigger("click");
+    }, function () {
+      // user clicked "cancel"
+    });
+  });
+  
 });
 </script>

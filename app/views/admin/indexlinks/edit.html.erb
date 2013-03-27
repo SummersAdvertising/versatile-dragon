@@ -1,17 +1,9 @@
-<div id="main" class="right">
-  <h1>Editing indexlink</h1>
-  <%= form_for(@indexlink, :url => admin_indexlink_path(@indexlink, :locale => I18n.locale), :method => "put") do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f} %>
-  <% end %>
-
-  <%= link_to 'Show', admin_indexlink_path(@indexlink, :locale => I18n.locale) %> |
-  <%= link_to 'Back', admin_indexlinks_path(:locale => I18n.locale) %>
-
-</div>
-<!--main--> 
+<%= form_for(@indexlink, :url => admin_indexlink_path(@indexlink, :locale => I18n.locale), :method => "put") do |f| %>
+<%= render :partial => 'form', :locals => { :f => f} %>
+<% end %>
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#links").addClass("active");
+  $("#nav-1").parent().addClass("active");
 });
 </script>

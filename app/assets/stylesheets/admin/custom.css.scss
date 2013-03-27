@@ -1,0 +1,37 @@
+/*---全域背景---*/
+html{background:#F6EFDF}
+
+/*---上方列---*/
+header{background:#071F37;border-color:#fff}
+
+/*---標題---*/
+h1 a{text-shadow:0 1px 0 #000B26}
+
+/*---內容邊框---*/
+article{border:1px solid #D7D0AC}
+
+/*---頁腳---*/
+footer{color:#675E32;text-shadow:0 1px 0 #fff}
+footer a{color:#675E32;text-shadow:0 1px 0 #fff}
+
+/*-----------------------------------------------------------------------內容---*/
+
+@media screen and (max-width: 543px){
+#nav-ctrl,aside{background:#C4B113;border:1px solid #E2CC12}
+#nav-ctrl:hover,aside:hover{background:#E2CC12}
+#nav-ctrl:active,aside:active{background:#E2CC12}
+}
+
+@media screen and (min-width: 544px) and (max-width: 896px){
+nav .active a{border-color:#D7D0AC}
+#aside-box a{border:1px solid #E2CC12;background:#C4B113;color:#071F37}
+#aside-box a:hover{background:#E2CC12}
+nav li a{color:#675E32;text-shadow:0 1px 0 #fff}
+}
+
+@media screen and (min-width: 897px){
+nav .active a{border-color:#D7D0AC}
+#aside-box a{border:1px solid #E2CC12;background:#C4B113;color:#071F37}
+#aside-box a:hover{background:#E2CC12}
+nav li a{color:#675E32;text-shadow:0 1px 0 #fff}
+}

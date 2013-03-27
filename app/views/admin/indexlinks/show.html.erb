@@ -1,33 +1,69 @@
-<div id="main" class="right">
-  <p id="notice"><%= notice %></p>
-  <p>
-    <b>Ordernum:</b><%= @indexlink.ordernum %>
-  </p>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th>輪播標題</th>
+      <td><%= @indexlink.title %></td>
+    </tr>
+  </table>
+</section>
+<!--title-->
 
-  <p>
-  	<b>Title:</b><%= @indexlink.title %>
-  </p>
+<section class="text text-show">
+  <div class="one">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">編號</th>
+        <td><%= @indexlink.ordernum %></td>
+      </tr>
+    </table>
+  </div>
 
-  <p>
-    <b>fontclolor:</b><%= @indexlink.fontcolor %>
-  </p>
+  <div class="one">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">連結</th>
+        <td><a href="<%= @indexlink.link %>" target= "_blank"><%= @indexlink.link %></a></td>
+      </tr>
+    </table>
+  </div>
 
-  <p>
-  	<b>Image:</b><br />
-    <%=image_tag(@indexlink.image) %>
-  </p>
+  <div class="one">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">內文</th>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
 
-  <p>
-  	<b>Link:</b><a href="<%= @indexlink.link %>" target= "_blank"><%= @indexlink.link %></a>
-  </p>
+  <div class="one">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">顏色</th>
+        <td><%= @indexlink.fontcolor %></td>
+      </tr>
+    </table>
+  </div>
 
-  <%= link_to 'Edit', edit_admin_indexlink_path(@indexlink, :locale => I18n.locale) %> | 
-  <%= link_to 'Back', admin_indexlinks_path(:locale => I18n.locale) %>
-</div>
-<!--main--> 
+  <div class="one">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">預覽</th>
+        <td><%=image_tag(@indexlink.image) %></td>
+      </tr>
+    </table>
+  </div>
+</section>
+<!--text-->
+<section class="button">
+  <%= link_to (image_tag("/images/edit.png")+'編輯'), edit_admin_indexlink_path(@indexlink, :locale => I18n.locale) %>
+  <%= link_to (image_tag("/images/back.png")+'返回'), admin_indexlinks_path(:locale => I18n.locale) %>
+</section>
+<!--button-->
+
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#links").addClass("active");
+  $("#nav-1").parent().addClass("active");
 });
 </script>

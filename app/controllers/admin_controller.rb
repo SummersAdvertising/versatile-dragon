@@ -13,7 +13,7 @@ class AdminController < ApplicationController
     @admin.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_showAdmins_path }
+      format.html { redirect_to admin_showAdmins_path(:locale => I18n.locale) }
     end
   end
 
@@ -47,7 +47,9 @@ class AdminController < ApplicationController
 
     respond_to do |format|
       if !@admin.save
-        flash[:error] = "username is existed."
+        flash[:error] = "user is existed."
+      else
+        flash[:success] = "successfully created."
       end
       format.html { redirect_to admin_showAdmins_path }
     end

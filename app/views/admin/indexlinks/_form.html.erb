@@ -1,32 +1,80 @@
-<div class="field">
-  <%= f.label :ordernum %><br />
-  <%= f.text_field :ordernum %><br /><br />
-</div>
-<div class="field">
-  <%= f.label :title %><br />
-  <%= f.text_field :title %><br /><br />
-</div>
-<div class="field">
-  <%= f.label :fontcolor %><br />
-  <%= f.radio_button(:fontcolor, 'black', :checked => true) %>黑字
-  <%= f.radio_button(:fontcolor, 'white') %>白字 <br /><br />
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th>輪播標題</th>
+      <td><%= f.text_field :title, :placeholder => "請輸入文章標題" %></td>
+    </tr>
+  </table>
+</section>
+<!--title-->
+
+<section class="text text-edit">
+  <div class="quarter">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">編號</th>
+        <td><%= f.text_field :ordernum, :placeholder => "請輸入編號" %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="remainder">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th valign="top">連結</th>
+        <td><%= f.text_field :link, :placeholder => "請輸入網址" %></td>
+    </tr>
+  </table>
 </div>
 
-<div class="field">
-  <%= f.label :image %><br />
-  <%= f.file_field :image %><br />
-  
-  <% if(@indexlink.translation.image.path) %>
-    <%=image_tag(@indexlink.image, :width=>"100px") %><br />
-  <%else%>
-    <p>未上傳圖片</p><br />
-  <% end %>
+<div class="one">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th valign="top">內文</th>
+      <td><textarea name="textarea" cols="" rows="" class="autogrow" placeholder="請輸入內文"></textarea></td>
+    </tr>
+  </table>
+</div>
 
+<div class="one">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th valign="top">顏色</th>
+      <td>
+        <%= f.radio_button(:fontcolor, 'black', :checked => true) %>黑色 <%= f.radio_button(:fontcolor, 'white') %>白色
+      </td>
+    </tr>
+  </table>
 </div>
-<div class="field">
-  <%= f.label :link %><br />
-  <%= f.text_field :link, :placeholder => "http://", :size => "100" %>
+
+<div class="one">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th valign="top">上傳</th>
+      <td>
+        <%= f.file_field :image %><br />
+        <% if(@indexlink.translation.image.path) %>
+        <%=image_tag(@indexlink.image, :width=>"100px") %><br />
+        
+        <%else%>
+        <p>未上傳圖片</p><br />
+        <% end %>
+      </td>
+    </tr>
+  </table>
 </div>
-<div class="actions">
-  <%= f.submit %>
-</div>
+</section>
+<!--text-->
+
+<section class="button">
+  <a href="#" id="formSubmit"><img src="/images/save.png">儲存</a>
+  <%= link_to (image_tag("/images/cancel.png")+"取消"), admin_indexlinks_path(:locale => I18n.locale) %>
+</section>
+<!--button-->
+
+<script type="text/javascript">
+$("#formSubmit").click(function(event){
+  event.preventDefault();
+  $("form").submit();
+});
+</script>
