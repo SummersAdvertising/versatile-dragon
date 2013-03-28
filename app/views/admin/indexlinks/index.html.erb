@@ -41,7 +41,7 @@ $(document).ready(function(){
   $(".delete a").click(function() {
     var deleteid = $(this).data("deleteid");
 
-    Alertify.dialog.confirm("刪除分類會連帶刪除分類底下的商品，確定要刪除嗎？", function () {
+    Alertify.dialog.confirm("確定要刪除嗎？", function () {
       // user clicked "ok"
       $("#delete"+deleteid).trigger("click");
     }, function () {

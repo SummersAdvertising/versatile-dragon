@@ -1,44 +1,68 @@
-<div id="main" class="right">
-  <div class="button">
-    <%= link_to image_tag("/images/add.png")+'新增商品', admin_productclass_products_path(params[:productclass_id], :locale => I18n.locale), :method => :post %>
-  </div>
-  <div class="main-list">
+<section class="hgroup">
+  <h2>產品列表</h2>
+  <p>／ <%= @productclass.name %></p>
+</section>
+<!--hgroup-->
+
+<section class="button">
+  <%= link_to image_tag("/images/add.png")+'新增商品', admin_productclass_products_path(@productclass, :locale => I18n.locale), :method => :post %>
+  <%= link_to (image_tag("/images/back.png")+'返回'), admin_productclasses_path(:locale => I18n.locale) %>
+</section>
+<!--button-->
+
+<section class="list">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <% if(@productclass.products.size > 0) %>
-    <table width="80%">
-      <tr>
-        <th>顯示在前台</th>
-        <th colspan="4">Name</th>        
-      </tr>
-
-
-      <% @products.each do |product| %>
-      <tr>
-        <td>
-          <% if(product.status == "enable") %>
-          是
-          <% else %>
-          否
-          <% end %>
-        </td>
-        <td><%= product.name %></td>
-        <td><%= link_to 'Show', admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
-        <td><%= link_to 'Edit', edit_admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %></td>
-        <td><%= link_to 'Destroy', admin_productclass_product_path(@productclass, product, :locale => I18n.locale), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    </table>
-
-    <br />
-
+    <tr>
+      <th align="center" class="date">日期</th>
+      <th align="center" class="edit">前台顯示</th>
+      <th align="left" class="name">標題</th>
+      <th align="center" class="edit">編輯</th>
+      <th align="center" class="delete">刪除</th>
+    </tr>
     <% else %>
-    <p>此分類下沒有商品</p>
+    <th align="center">此分類下沒有商品</th>
     <% end %>
-  </div>
-</div>
-<!--main--> 
+
+    <% @products.each do |product| %>
+    <tr>
+      <td align="center"><%= product.created_at.to_date %></td>
+      <td align="center">
+        <% if(product.status == "enable") %>
+        是
+        <% else %>
+        否
+        <% end %>
+      </td>
+      <td align="left">
+        <%= link_to product.name, admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %>
+      </td>
+      <td align="center" class="edit">
+        <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %>
+      </td>
+      <td align="center" class="delete"><a href="#" data-deleteid="<%= product.id %>"><img src="/images/delete.png"></a></td>
+      <%= link_to 'Destroy', admin_productclass_product_path(@productclass, product, :locale => I18n.locale), method: :delete, :id => ("delete"+ product.id.to_s ), :style => "display:none;" %>
+    </tr>
+    <% end %>
+
+  </table>
+</section>
+<!--list-->    
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#productclasses").addClass("active");
+  $("#nav-2").parent().addClass("active");
+
+  $(".delete a").click(function() {
+    var deleteid = $(this).data("deleteid");
+
+    Alertify.dialog.confirm("確定要刪除嗎？", function () {
+      // user clicked "ok"
+      $("#delete"+deleteid).trigger("click");
+    }, function () {
+      // user clicked "cancel"
+    });
+  });
+  
 });
 </script>

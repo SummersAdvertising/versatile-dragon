@@ -1,28 +1,47 @@
-<div id="main" class="right">
-  <div class="main-list">
-  	<p id="notice"><%= notice %></p>
+<section class="hgroup">
+  <h2>預覽頁面</h2>
+  <p>／ <%= @productclass.name %></p>
+</section>
+<!--hgroup-->
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th><%= @product.created_at.to_date %></th>
+      <td><%= @product.name %></td>
+    </tr>
+  </table>
+</section>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th>顯示在前台</th>
+      <td>
+        <% if(@product.status == "enable") %>
+        是
+        <% else %>
+        否
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</section>
+<!--title-->
 
-  	<p><b>Name:</b><%= @product.name %></p>
-    <p>在前台顯示：
-      <% if(@product.status == "enable") %>
-      是
-      <% else %>
-      否
-      <% end %>
-    </p>
+<input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
+<section id="articleContent" class="text text-show">
+</section>
+<!--text-->
 
-  	<input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
-    <div id="articleContent" class="main-text"></div>
-
-
-  	<%= link_to 'Edit', edit_admin_productclass_product_path(@product.productclass_id, @product, :locale => I18n.locale) %> | <%= link_to 'Back', admin_productclass_products_path(@product.productclass_id, :locale => I18n.locale) %>
-  </div>
-</div>
-<!--main--> 
+<section class="button">
+  <%= link_to (image_tag("/images/edit.png")+'編輯'), edit_admin_productclass_product_path(@product.productclass_id, @product, :locale => I18n.locale) %>
+  <%= link_to (image_tag("/images/back.png")+'返回'), admin_productclass_products_path(@product.productclass_id, :locale => I18n.locale) %>
+</section>
+<!--button-->
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#productclasses").addClass("active");
+  $("#nav-2").parent().addClass("active");
+
   showContent();
 
   function showContent(){
@@ -36,25 +55,25 @@ $(document).ready(function() {
 
         if(JSON.stringify(paragraph.type)=='"paragraph"')
         {
-          article = "<div class='paragraphContainer' data-type='paragraph'><p  class='"+paragraph.cssclass+"' style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+          article = "<p class='"+paragraph.cssclass+"' style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
 
           if(paragraph.link){
-            article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
+            article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p>";
           }
           else{
-            article += jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</p></div>";
+            article += jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</p>";
           }
         }
         else if(JSON.stringify(paragraph.type)=='"image"')
         {
-          article = "<div class='paragraphContainer' data-type='image' data-photo_id=\"" + paragraph.id + "\"><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+          article = "<img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " />";
         }
         else if(JSON.stringify(paragraph.type)=='"linkedimg"')
         {
-          article = "<div  class='paragraphContainer' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+          article = "<a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a>";
         }
         else if (JSON.stringify(paragraph.type)=='"video"') {
-          article = "<div  class='paragraphContainer' data-type='video' data-code=\"" + paragraph.code + "\"><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
+          article = "<iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe>";
         }
         $("#articleContent").append(article);
       }

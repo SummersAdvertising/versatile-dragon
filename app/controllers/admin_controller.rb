@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_filter :require_is_admin, :except => [:log_in, :log_out, :loginCheck]
+  
   def showAdmins
     @admins = Admin.all
   	@admin = Admin.new

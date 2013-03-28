@@ -89,7 +89,7 @@ class Admin::ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_productclass_path(@productclass, :locale => I18n.locale) }
+      format.html { redirect_to admin_productclass_products_path(@productclass, :locale => I18n.locale)}
       format.json { head :no_content }
     end
   end
