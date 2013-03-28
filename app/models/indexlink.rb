@@ -1,5 +1,5 @@
 class Indexlink < ActiveRecord::Base
-  attr_accessible :image, :link, :title, :ordernum, :fontcolor
+  attr_accessible :image, :link, :title, :ordernum, :fontcolor, :content
   
   translates :title, :link, :image
   
