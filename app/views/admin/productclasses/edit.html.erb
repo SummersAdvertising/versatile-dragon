@@ -190,6 +190,7 @@ $(document).ready(function(){
       		var contentLink =  $('<a target="_blank" href="' + $('#newParagraphLink').val() + '"></a>').html(paragraph.html());
       		paragraph.html('');
       		paragraph.append(contentLink);
+          $('#newParagraphLink').val('');
       }
       
       container.append(paragraph);
@@ -249,7 +250,6 @@ $(document).ready(function(){
 
   //validate image upload
   $("#new_classphoto").submit(function(){
-    $("#error").html("");
       return formvalidate();
   });
 
@@ -326,7 +326,6 @@ $(document).ready(function(){
       $(this).parent().parent().hide();
       
       var paragraph = $(this).parent().parent().parent().children("p");
-      console.log(paragraph);
 
       $(this).parent().parent().parent().append('<textarea id="editedContent" name="textarea" cols="" rows="" class="autogrow">'+
         '</textarea><label id="editedLink" />'+
@@ -479,7 +478,6 @@ $(document).ready(function(){
           }
           else if(JSON.stringify(paragraph.type)=='"linkedimg"')
           {
-            console.log("linkedimg");
             article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></li></ul><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
           }
           else if (JSON.stringify(paragraph.type)=='"video"') {

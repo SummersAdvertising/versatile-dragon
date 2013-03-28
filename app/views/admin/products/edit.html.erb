@@ -1,123 +1,140 @@
-<!--side-->
-<div id="main" class="right">
-  <div class="main-title">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td valign="top" class="title" height="22" width="98"><%= DateTime.now.to_date %></td>
-        <td valign="middle" class="text"><input id="product_title" type="text" /></td>
-      </tr>
-    </table>
-  </div>
-  <div class="main-title">
-    <%= form_for(@product, :url => admin_productclass_product_path(params[:productclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %> 
+<section class="hgroup">
+  <h2>新增＆編輯頁面</h2>
+  <p>／ <%= @productclass.name %></p>
+</section>
+<!--hgroup-->
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td valign="middle" class="text"><input type="checkbox" id="productFrontshow" />在前台顯示</td>
-      </tr>
-    </table>
-    
-    <div style="display: none;">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<%= form_for(@product, :url => admin_productclass_product_path(params[:productclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %> 
 
-    <%= f.text_field :status %>
+<section class="title">  
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th><%= DateTime.now.to_date %></th>
+      <td><%= f.text_field :name %></td>
+      <td style="display: none;">
+        <%= f.text_field :content %>
+      </td>
+    </tr>
+  </table>
+</section>
+<section class="title">  
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th>在前台顯示</th>
+      <td><input type="checkbox" id="productFrontshow" /></td>
+      <td style="display: none;">
+        <%= f.text_field :status %>
+      </td>
+    </tr>
+  </table>
+</section>
+<% end %>
 
-    <input id="product_nameOrigin" type="text" value="">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-    <input id="product_contentOrigin" type="text" value="">
-    </div>
-    <% end %>
-   
-  </div>
-
-    
-
+<!--title-->
+<section class="tab">
   <ul id="tab">
-    <li data-name="paragraph"><a href="#main-text-p"><img src="/images/edit.png">插入段落</a></li>
-    <li data-name="image"><a href="#main-text-img"><img src="/images/img.png"/>插入圖片</a></li>
+    <li data-name="paragraph"><a href="#post-p"><img src="/images/edit.png">插入段落</a></li>
+    <li data-name="image"><a href="#post-img"><img src="/images/img.png"/>插入圖片</a></li>
+    <li data-name="video"><a href="#post-video"><img src="/images/video.png"/>插入影片</a></li>
   </ul>
+</section>
+<!--tab-->
+<section class="post">
+  <div id="post-p">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="2">
+          <!-- 
+          <select id="newParagraphFontSize" >
+            <option value="" selected="selected">-- 大小 --</option>
+            <option value="14">14</option>
+            <option value="28">28</option>
+          </select>
+          <select id="newParagraphColor" >
+            <option value="" selected="selected">-- 顏色 --</option>
+            <option value="#000">black</option>
+            <option value="#00F">blue</option>
+          </select>
+          -->
+          <select id="newParagraphClass" >
+            <option value="title">標題</option>
+            <option value="content" selected="selected">內文</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="請輸入文字"></textarea></td>
+      </tr>
 
-  <div class="main-text">
-    <div id="main-text-p">
-       <!-- <select id="newParagraphFontSize" >
-           <option value="" selected="selected">-- 大小 --</option>
-         <option value="14">14</option>
-         <option value="28">28</option>
-       </select>
-       <select id="newParagraphColor" >
-           <option value="" selected="selected">-- 顏色 --</option>
-         <option value="#000">black</option>
-         <option value="#00F">blue</option>
-       </select> -->
-       <select id="newParagraphClass" >         
-         <option value="title">標題</option>
-         <option value="content" selected="selected">內文</option>
-       </select>
-       <textarea id="newParagraphContent" class="autogrow" placeholder="請將段落輸入在此處"></textarea>
-       <input type="text" id="newParagraphLink" placeholder="此段落連結至何處（若無請勿輸入）" />
-    </div>
-    <div id="main-text-img">
-      <%= form_for (@photo), :url =>'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
-      <%= p.file_field :image, :class => "autogrow" %>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
 
-      <div id="error"></div>
-
-      <input type="text" id="newImageLink" placeholder="此段落連結至何處（若無請勿輸入）" />
-      <% end %>
-    </div>
+      <tr class="addlink">
+        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"> 插入連結</td>
+        <td><input id="newParagraphLink" name="" type="text" placeholder="請輸入連結網址" /></td>
+      </tr>
+    </table>
   </div>
-  <div class="button" id="btnAddElement"><a href="#"><img src="/images/add.png">新增</a></div>
 
-
-  <div id="tips">
-    <h2>文章預覽</h2>
-    <p> <img src="/images/tag.png"/>提示：將滑鼠移至段落內容，可進行拖曳排序以及修改刪除。</p>
+  <div id="post-img">
+    <%= form_for (@photo), :url =>'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="2"><%= p.file_field :image, :class => "autogrow" %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr class="addlink">
+        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"> 插入連結</td>
+        <td><input  id="newImageLink" name="" type="text" placeholder="請輸入連結網址" /></td>
+      </tr>
+    </table>
+    <% end %>
   </div>
 
-  <div class="main-preview">
-    
-    <!--show the content of article -->
-    <div id="articleContent" class="sortable"></div>
-
-    <div id='formerror'></div>
-
-    <div class="buttonArea">
-      <div class="button" id="btnSubmit"><a href="#"><img src="/images/save.png">儲存</a></div>
-      <div class="button" id="btnCancel"><a href="#"><img src="/images/cancel.png">取消</a></div>
-    </div>
-    <!--main-text--> 
+  <div id="post-video">
+    <input id="newVideoContent" name="" type="text" placeholder="請貼入 YouTube 網址" />
+    <div id="videoPreview"></div>
   </div>
-  <!--main-->
+
+</section>
+<!--post-->
+
+<section class="button" id="btnAddElement"> <a href="#"><img src="/images/add.png">新增段落</a> </section>
+<!--button-->
+
+<section class="hgroup">
+  <h2>文章預覽</h2>
+  <p>（可拖曳文章段落排序）</p>
+</section>
+<!--hgroup-->
+
+<section id="articleContent" class="preview sortable">
+  <!--show the content of article -->
+</section>
+<!--preview-->
+
+<section class="button" id="btnSubmit"><a href="#"><img src="/images/check.png">完成</a> </section>
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#productclasses").addClass("active");
+  $("#nav-2").parent().addClass("active");
 });
 </script>
-<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
-<script type="text/javascript">
-$(function(){
-  $("#update").addClass("active");
 
-  // 預設顯示第一個 Tab
+<script>
+$(function(){ 
   var _showTab = 0;
-  var $defaultLi = $('#tab li').eq(_showTab).addClass('active');
+  var $defaultLi = $('.tab li').eq(_showTab).addClass('active');
   $($defaultLi.find('a').attr('href')).siblings().hide();
- 
-  // 當 li 頁籤被點擊時...
-  // 若要改成滑鼠移到 li 頁籤就切換時, 把 click 改成 mouseover
-  $('#tab li').click(function() {
-    // 找出 li 中的超連結 href(#id)
+  $('.tab li').click(function() {   
     var $this = $(this),
-      _clickTab = $this.find('a').attr('href');
-    // 把目前點擊到的 li 頁籤加上 .active
-    // 並把兄弟元素中有 .active 的都移除 class
-    $this.addClass('active').siblings('.active').removeClass('active');
-    // 淡入相對應的內容並隱藏兄弟元素,把.show()改成.hide()
-    $(_clickTab).stop(false, true).fadeIn().siblings().hide();
- 
+      _clickTab = $this.find('a').attr('href');   
+    $this.addClass('active').siblings('.active').removeClass('active');   
+    $(_clickTab).stop(false, true).fadeIn().siblings().hide(); 
     return false;
     }).find('a').focus(function(){
       this.blur();
@@ -136,11 +153,6 @@ $(function(){
     $("#productFrontshow").attr('checked', true);
   }
 
-  //record the origin content
-  $("#product_contentOrigin").val($("#product_content").val());
-  $("#product_nameOrigin").val($("#product_name").val());
-  $("#product_title").val($("#product_name").val());
-
   //show content
   showContent();
 
@@ -156,6 +168,9 @@ $(function(){
           case "image":
             addImage();
             break;
+          case "video":
+            addVideo();
+            break;
         }
         break;
       }
@@ -169,31 +184,31 @@ $(function(){
   function addParagraph(){
     if($("#newParagraphContent").val()){
     	var style = 'style="';
-    	
-    	if ($('#newParagraphFontSize').val() && $('#newParagraphFontSize').val().length > 0) {
-	    	style += "font-size: " + $('#newParagraphFontSize').val() + "px; ";
-    	}
-    	
-    	if ($('#newParagraphColor').val() && $('#newParagraphColor').val().length > 0 ) {
-	    	style += "color: " + $('#newParagraphColor').val() + "; ";	    	
-    	}
+      
+      if ($('#newParagraphFontSize').val() && $('#newParagraphFontSize').val().length > 0) {
+        style += "font-size: " + $('#newParagraphFontSize').val() + "px; ";
+      }
+      
+      if ($('#newParagraphColor').val() && $('#newParagraphColor').val().length > 0 ) {
+        style += "color: " + $('#newParagraphColor').val() + "; ";        
+      }
     
-    	style += '"';
+      style += '"';
     
       var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="paragraph">' +
-      					'<div class="edit">' +
-      					'<a name="edit">編輯</a><a name="delete">刪除</a>' +
-      					'</div>' +
-      					'</div>');
+                '<ul class="tool-b">' +
+                '<li><a name="edit">編輯</a></li><li><a name="delete">刪除</li>' +
+                '</ul>' +
+                '</div>');
       
       var content = $("#newParagraphContent").val().replace(/\n/g, "<br />");
-      								
+                      
       var paragraph = $('<p class="paragraph '+$("#newParagraphClass").val()+'" ' + style + ' >' + content + "</p>");
-      
-      if ( $('#newParagraphLink').val().length > 0 ) {
-      		var contentLink =  $('<a target="_blank" href="' + $('#newParagraphLink').val() + '"></a>').html(paragraph.html());
-      		paragraph.html('');
-      		paragraph.append(contentLink);
+
+      if ($('#newParagraphLink').val().length > 0) {
+          var contentLink =  $('<a target="_blank" href="' + $('#newParagraphLink').val() + '"></a>').html(paragraph.html());
+          paragraph.html('');
+          paragraph.append(contentLink);
       }
       
       container.append(paragraph);
@@ -204,8 +219,41 @@ $(function(){
       saveArticle();
     }
     else{
-      alert("請輸入內容");
+      Alertify.log.error("請輸入段落內容");
     }
+  }
+
+  function addVideo(){
+    if( $("#newVideoContent").val() ){
+      var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="video"></div>');
+      var code = getYoutubeCode( $("#newVideoContent").val());
+      var paragraph = $('<ul class="tool-b"><li><a name="delete">刪除</a></li></ul><iframe width="480" height="290" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
+      container.append(paragraph);
+
+      $("#articleContent").append(container);
+      $(container).bind("click",function(){paragraphClick(this);});
+      $("#newVideoContent").val('');
+      $("#videoPreview").html('');
+
+      saveArticle();
+    }
+    else{
+      Alertify.log.error("請貼上影片網址");
+    }
+    event.preventDefault();
+  }
+
+  // Video preview
+  $('#newVideoContent').change(function() {
+    var code = getYoutubeCode( $(this).val() );
+    $('#videoPreview').append('<iframe width="320" height="220" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
+  });
+
+  function getYoutubeCode( link ) {
+    if ( link != undefined ) {
+      return /[a-zA-Z0-9\?\.\:\/]+v=([a-zA-Z0-9_\-]+)&?.*/.exec(link)[1];
+    }
+    return '';
   }
 
   function addImage(){
@@ -213,14 +261,13 @@ $(function(){
       $("#new_productphoto").submit();
     }
     else{
-      alert("請選擇要上傳的檔案");
+      Alertify.log.error("請選擇要上傳的檔案");
     }
     
   }
 
   //validate image upload
   $("#new_productphoto").submit(function(){
-    $("#error").html("");
       return formvalidate();
   });
 
@@ -243,14 +290,15 @@ $(function(){
         }
       })();
 
-      alert = isPass? null : "<p>只能上傳 .gif, .png, .jpg 圖片檔</p>";
+      if(!isPass){
+        Alertify.log.error("只能上傳 .gif, .png, .jpg 圖片檔");
+      }
 
       if(fileinput.files[0].size > 5 * 1024 *1024){
         isPass = false;
-        alert += "<p>檔案大小必須小於5MB</p>";
+        Alertify.log.error("檔案大小必須小於5MB");
       }
       if(!isPass){
-        $("#error").append(alert);
         $(fileinput).val(""); 
         return false;
       }
@@ -259,7 +307,7 @@ $(function(){
   }
 
   function newImage(photoID,photoPath){
-    var articleContent = '<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><div class="edit"><a href="/admin/productclasses/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true">刪除</a></div>';
+    var articleContent = '<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><ul class="tool-b"><li><a href="/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true">刪除</a></li></ul>';
 
     if($("#newImageLink").val()){
       articleContent += '<a href="'+$("#newImageLink").val()+'" target="_blank"><img src="'+photoPath+'" alt="'+photoID+'" /></a></div>';
@@ -270,7 +318,7 @@ $(function(){
 
     $("#articleContent").append(articleContent);
     
-    $('#new_classphoto').each (function(){
+    $('#new_productphoto').each (function(){
       this.reset();
     });
 
@@ -285,16 +333,22 @@ $(function(){
   });
 
   var editingFlag = false;
-  bindEdit();
-  function bindEdit(){
+  bindEdit();function bindEdit(){
     /* edit or delete the paragraphs */
-  $("div.edit a[name=edit]").click(function(event){
+  $("ul.tool-b a[name=edit]").click(function(event){
     if(!editingFlag){
       editingFlag = true;
-      $(".buttonArea").hide();
-      var paragraph = $(this).parent().next();
+      $(".button").hide();
+      $(this).parent().parent().hide();
+      
+      var paragraph = $(this).parent().parent().parent().children("p");
 
-      $(this).parent().parent().append("<div id='editDiv'><textarea id='editedContent' rows='4' cols='50'></textarea><br /><label /><br /><input type='button' id='editFinish' value='完成修改'/><input type='button' id='editCancel' value='取消'/></div>");
+      $(this).parent().parent().parent().append('<textarea id="editedContent" name="textarea" cols="" rows="" class="autogrow">'+
+        '</textarea><label id="editedLink" />'+
+        '<ul class="tool-a">'+
+          '<li><a id="editFinish" htref="#">儲存</a></li>'+
+          '<li><a id="editCancel" htref="#">取消</a></li>'+
+        '</ul>');
 
       //avoid content in textbox can't not be editted due to the using of jquery sortable
       event.stopImmediatePropagation();
@@ -307,18 +361,23 @@ $(function(){
       }
 
       $("#editedContent").html(contentLink? contentLink.aContent : br2nl($(paragraph).html()) );
-      $("#editDiv label").html("連結網址：" + (contentLink? contentLink.aLink : "")).css("display", contentLink? "inline-block" : "none");
-
+      $("#editedLink").html("連結網址：" + (contentLink? contentLink.aLink : "")).css("display", contentLink? "inline-block" : "none");
       $(paragraph).hide();
 
       $("#editFinish").click(function(){
         if($("#editedContent").val()){
           var content = (contentLink? '<a target="_blank" href="'+contentLink.aLink+'">': "" )+ nl2br($("#editedContent").val())+ (contentLink? '</a>': "");
-          $(this).parent().prev().html(content).show();
-          $("#editDiv").remove();
+          $(paragraph).html(content).show();
+
+          $("ul.tool-b").css("display", "");
+
+          $("#editedContent").remove();
+          $("#editedLink").remove();
+          $("ul.tool-a").remove();
+
           saveArticle();
           editingFlag = false;
-          $(".buttonArea").show();
+          $(".button").show();
         }
         else{
           $("#editedContent").val(br2nl($(paragraph).html()));
@@ -326,16 +385,21 @@ $(function(){
       });
 
       $("#editCancel").click(function(){
-        $(this).parent().prev().show();
-        $("#editDiv").remove();
+        $(this).parent().parent().parent().children("p").show();
+        $("ul.tool-b").css("display", "");
+
+        $("#editedContent").remove();
+        $("#editedLink").remove();
+        $("ul.tool-a").remove();
+
         editingFlag = false;
-        $(".buttonArea").show();
+        $(".button").show();
       });
     }
   });
 
-  $("div.edit a[name=delete]").click(function(){
-    $(this).parent().parent().remove();
+  $("ul.tool-b a[name=delete]").click(function(){
+    $(this).parent().parent().parent().remove();
     saveArticle();
   });
   }
@@ -398,6 +462,7 @@ $(function(){
         o.dataType = 'json';
       },
       complete: function(XMLHttpRequest, textStatus) {
+        Alertify.log.success("已成功儲存您的變更");
       }
     });
   }
@@ -415,7 +480,7 @@ $(function(){
 
           if(JSON.stringify(paragraph.type)=='"paragraph"')
           {
-            article = "<div class='paragraphContainer ui-state-default dragItem' data-type='paragraph'><div class='edit'><a name='edit'>編輯</a><a name='delete'>刪除</a></div><p class='"+paragraph.cssclass+"' style = ' font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+            article = "<div class='paragraphContainer ui-state-default dragItem' data-type='paragraph'><ul class='tool-b'><li><a name='edit'>編輯</a></li><li><a name='delete'>刪除</a></li></ul><p class='"+paragraph.cssclass+"' style = ' font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
             if(paragraph.link){
               article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
             }
@@ -425,11 +490,14 @@ $(function(){
           }
           else if(JSON.stringify(paragraph.type)=='"image"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><div class='edit'><a href='/admin/productclasses/<%= params[:productclass_id]%>/products/:product_id/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></div><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
           }
           else if(JSON.stringify(paragraph.type)=='"linkedimg"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><div class='edit'><a href='/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></div><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></li></ul><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+          }
+          else if (JSON.stringify(paragraph.type)=='"video"') {
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='video' data-code=\"" + paragraph.code + "\"><ul class='tool-b'><li><a name='delete'>刪除</a></li></ul><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
           }
 
           $("#articleContent").append(article);
@@ -451,13 +519,6 @@ $(function(){
   function br2nl(string) { return string.replace(/<br[ \/]*>/g, "\n");}
 
   $("#btnSubmit").click(function(){
-    $("#product_name").val($("#product_title").val());
-    $(form).submit();
-  });
-
-  $("#btnCancel").click(function(){
-    $("#product_content").val($("#product_contentOrigin").val());
-    $("#product_name").val($("#product_nameOrigin").val());
     $(form).submit();
   });
 
@@ -475,7 +536,6 @@ $(function(){
     });
 
     if(!submit){
-      $("#formerror").append("<p>請輸入文章標題</p>");
     }
 
     return submit;

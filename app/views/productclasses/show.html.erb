@@ -3,7 +3,7 @@
   	<% @productclasses.each do |productclass| %>
   	
     <li>
-      <% if productclass.frontshow %>
+      <% if(!productclass.frontshow.blank?) %>
       <span><%=image_tag(productclass.frontshow, :height=>"80px") %></span>
       <% else %>
       <span>尚未上傳封面</span>
