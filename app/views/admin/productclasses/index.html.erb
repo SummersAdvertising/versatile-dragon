@@ -1,26 +1,26 @@
 <section class="hgroup">
-  <h2>分類列表</h2>
+  <h2><%= t("productclass.titleIndex") %></h2>
 </section>
 <!--hgroup-->
 
 <section class="button">
-  <%= link_to image_tag("/images/add.png")+'建立分類', admin_productclasses_path(:locale => I18n.locale), :method => :post %>
+  <%= link_to (image_tag("/images/add.png") + t("productclass.new")), admin_productclasses_path(:locale => I18n.locale), :method => :post %>
 </section>
 <!--button-->
 
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th align="center" class="date">日期</th>
-      <th align="left" class="name">標題</th>
-      <th align="center" class="enter">產品</th>
-      <th align="center" class="edit">編輯</th>
-      <th align="center" class="delete">刪除</th>
+      <th align="center" class="date"><%= t("productclass.date") %></th>
+      <th align="left" class="name"><%= t("productclass.title") %></th>
+      <th align="center" class="enter"><%= t("productclass.listProduct") %></th>
+      <th align="center" class="edit"><%= t("actionshare.edit") %></th>
+      <th align="center" class="delete"><%= t("actionshare.delete") %></th>
     </tr>
 
     <% if(@productclasses.blank?) %>
     <tr>
-      <td colspan="4">尚未建立產品分類</td>
+      <td colspan="4"><%= t("productclass.noClass") %></td>
     </tr>
     <% end %>
 
@@ -49,7 +49,7 @@ $(document).ready(function(){
   $(".delete a").click(function() {
     var deleteid = $(this).data("deleteid");
 
-    Alertify.dialog.confirm("該分類底下的產品也會一併刪除，您確定嗎？", function () {
+    Alertify.dialog.confirm("<%= t('productclass.deleteConfirm') %>", function () {
       // user clicked "ok"
       $("#delete"+deleteid).trigger("click");
     }, function () {

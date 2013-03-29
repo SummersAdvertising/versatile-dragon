@@ -1,28 +1,13 @@
 <section class="hgroup">
-  <h2>預覽頁面</h2>
+  <h2><%= t("productclass.titleShow") %></h2>
 </section>
 <!--hgroup-->
-
+<% if(@productclass) %>
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th><%= @productclass.created_at.to_date %></th>
       <td><%= @productclass.name %></td>
-    </tr>
-  </table>
-</section>
-<!--title-->
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <th>封面</th>
-      <td>
-        <% if(!@productclass.frontshow.blank?) %>
-        <%=image_tag(@productclass.frontshow, :height => "100px") %>
-        <% else %>
-        尚未上傳封面
-        <% end %>
-      </td>
     </tr>
   </table>
 </section>
@@ -33,10 +18,22 @@
   <div id="articleContent"></div>
 </section>
 <!--text-->
+<% else %>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>該語言不包含此分類</td>
+    </tr>
+  </table>
+</section>
+<!--title-->
+<% end %>
 
 <section class="button">
-  <%= link_to (image_tag("/images/edit.png")+'編輯'), edit_admin_productclass_path(@productclass, :locale => I18n.locale) %> 
-  <%= link_to (image_tag("/images/back.png")+'返回'), admin_productclasses_path(:locale => I18n.locale) %>
+  <% if(@productclass) %>
+  <%= link_to (image_tag("/images/edit.png")+t("actionshare.edit")), edit_admin_productclass_path(@productclass, :locale => I18n.locale) %>
+  <% end %>
+  <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclasses_path(:locale => I18n.locale) %>
 </section>
 <!--button-->
 

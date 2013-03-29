@@ -1,5 +1,128 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  actionshare:
+    edit: "en_編輯"
+    delete: "en_刪除"
+    deleteConfirm: "en_確定要刪除嗎？"
+    save: "en_儲存"
+    cancel: "en_取消"
+    back: "en_返回"
+
+  indexlink:
+    name: "en_首頁輪播"    
+    date: "en_日期"
+    title:
+      name: "en_輪播標題"
+      valid: "en_請輸入文章標題"
+    ordernum:
+      name: "en_編號"
+      valid: "en_請輸入編號"
+    link:
+      name: "en_連結"
+      valid: "en_請輸入網址"
+    content:
+      name: "en_內文"
+      valid: "en_請輸入內文"
+    color:
+      name: "en_顏色"
+      black: "en_黑色"
+      white: "en_白色"
+    preview: "en_預覽"
+    upload:
+      name: "en_上傳"
+      valid: "en_未上傳圖片"
+
+    new: "en_新增輪播"
+
+  productclass:
+    name: "en_優質系列"
+    date: "en_日期"
+    title: "en_標題"
+    titleIndex: "en_分類列表"
+    titleShow: "en_預覽頁面"
+    titleNew: "en_新增＆編輯頁面"
+    noClass: "en_尚未建立分類"
+    noProduct: "en_此分類下沒有商品"
+
+    listProduct: "en_產品"
+    new: "en_建立分類"
+    deleteConfirm: "en_該分類底下的產品也會一併刪除，您確定嗎？"
+
+  product:
+    titleIndex: "en_產品列表"
+    titleShow: "en_預覽頁面"
+    titleNew: "en_新增＆編輯頁面"
+    date: "en_日期"
+    status:
+      name: "en_前台顯示"
+      enable: "en_是"
+      disable: "en_否"
+    title: "en_標題"
+
+    new: "en_新增商品"
+
+  admin:
+    name: "en_管理人員"
+    username:
+      name: "en_名稱"
+      title: "en_使用者名稱"
+    userid:
+      name: "en_帳號"
+      title: "en_使用者帳號"
+    password:
+      name: "en_密碼"
+    passwordconfirm: 
+      name: "en_確認密碼"
+      valid: "en_密碼不一致，請重新輸入密碼"
+
+    valid: " en_不能為空"
+    holder: "en_請輸入"
+    new: "en_新增帳號"
+    newError: "en_該帳號已經存在"
+    newSuccess: "en_已成功新增使用者"
+    edit: "en_修改個人資料"
+    login: "en_登入"
+    logout: "en_登出"
+
+  editor:
+    paragraph:
+      name: "en_插入段落"
+      valid: "en_請輸入段落內容"
+      holder: "en_請輸入文字"
+      class:
+        title: "en_標題"
+        content: "en_內文"
+
+    image:
+      name: "en_插入圖片"
+      valid: "en_請選擇要上傳的檔案"
+      errortype: "en_只能上傳 .gif, .png, .jpg 圖片檔"
+      errorsize: "en_檔案大小必須小於5MB"
+
+    video:
+      name: "en_插入影片"
+      valid: "en_請貼上影片網址"
+      holder: "en_請貼入 YouTube 網址"
+
+    link:
+      name: "en_插入連結"
+      href: "連結網址"
+      holder: "en_請輸入連結網址"
+
+    add: "en_新增段落"
+    save: "en_完成"
+    saveSuccess: "en_已成功儲存您的變更"
+
+    preview:
+      title: "en_文章預覽"
+      tip: "en_可拖曳文章段落排序"
+
+  environ:
+    name: "en_龍全後台管理系統"
+    language:
+      cn: "简中"
+      tw: "繁中"
+      us: "EN"
+
+    toIndex: "en_返回首頁"

@@ -1,5 +1,5 @@
 <section class="hgroup">
-  <h2>新增＆編輯頁面</h2>
+  <h2><%= t("productclass.titleNew") %></h2>
 </section>
 <!--hgroup-->
 
@@ -15,31 +15,14 @@
     </tr>
   </table>
 </section>
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <th>封面</th>
-      <td>
-        <% if(!@productclass.frontshow.blank?) %>
-        <%= @productclass.frontshow %>
-        <%=image_tag(@productclass.frontshow, :height => "100px") %>
-        <% else %>
-        尚未上傳封面
-        <% end %>
-        <br/>
-        <%= f.file_field :frontshow %>
-      </td>
-    </tr>
-  </table>
-</section>
 <% end %>
 
 <!--title-->
 <section class="tab">
   <ul id="tab">
-    <li data-name="paragraph"><a href="#post-p"><img src="/images/edit.png">插入段落</a></li>
-    <li data-name="image"><a href="#post-img"><img src="/images/img.png"/>插入圖片</a></li>
-    <li data-name="video"><a href="#post-video"><img src="/images/video.png"/>插入影片</a></li>
+    <li data-name="paragraph"><a href="#post-p"><img src="/images/edit.png"><%= t("editor.paragraph.name") %></a></li>
+    <li data-name="image"><a href="#post-img"><img src="/images/img.png"/><%= t("editor.image.name") %></a></li>
+    <li data-name="video"><a href="#post-video"><img src="/images/video.png"/><%= t("editor.video.name") %></a></li>
   </ul>
 </section>
 <!--tab-->
@@ -61,13 +44,13 @@
           </select>
           -->
           <select id="newParagraphClass" >
-            <option value="title">標題</option>
-            <option value="content" selected="selected">內文</option>
+            <option value="title"><%= t("editor.paragraph.class.title") %></option>
+            <option value="content" selected="selected"><%= t("editor.paragraph.class.content") %></option>
           </select>
         </td>
       </tr>
       <tr>
-        <td colspan="2"><textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="請輸入文字"></textarea></td>
+        <td colspan="2"><textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="<%= t("editor.paragraph.holder") %>"></textarea></td>
       </tr>
 
       <tr>
@@ -75,8 +58,8 @@
       </tr>
 
       <tr class="addlink">
-        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"> 插入連結</td>
-        <td><input id="newParagraphLink" name="" type="text" placeholder="請輸入連結網址" /></td>
+        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"><%= t("editor.link.name") %></td>
+        <td><input id="newParagraphLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
       </tr>
     </table>
   </div>
@@ -92,27 +75,27 @@
         <td colspan="2">&nbsp;</td>
       </tr>
       <tr class="addlink">
-        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"> 插入連結</td>
-        <td><input  id="newImageLink" name="" type="text" placeholder="請輸入連結網址" /></td>
+        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"><%= t("editor.link.name") %></td>
+        <td><input  id="newImageLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
       </tr>
     </table>
     <% end %>
   </div>
 
   <div id="post-video">
-    <input id="newVideoContent" name="" type="text" placeholder="請貼入 YouTube 網址" />
+    <input id="newVideoContent" name="" type="text" placeholder="<%= t("editor.video.holder") %>" />
     <div id="videoPreview"></div>
   </div>
 
 </section>
 <!--post-->
 
-<section class="button" id="btnAddElement"> <a href="#"><img src="/images/add.png">新增段落</a> </section>
+<section class="button" id="btnAddElement"> <a href="#"><img src="/images/add.png"><%= t("editor.add") %></a> </section>
 <!--button-->
 
 <section class="hgroup">
-  <h2>文章預覽</h2>
-  <p>（可拖曳文章段落排序）</p>
+  <h2><%= t("editor.preview.title") %></h2>
+  <p><%= t("editor.preview.tip") %></p>
 </section>
 <!--hgroup-->
 
@@ -121,7 +104,7 @@
 </section>
 <!--preview-->
 
-<section class="button" id="btnSubmit"><a href="#"><img src="/images/check.png">完成</a> </section>
+<section class="button" id="btnSubmit"><a href="#"><img src="/images/check.png"><%= t("editor.save") %></a> </section>
 
 
 <script type="text/javascript">
@@ -178,7 +161,7 @@ $(document).ready(function(){
     
       var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="paragraph">' +
       					'<ul class="tool-b">' +
-      					'<li><a name="edit">編輯</a></li><li><a name="delete">刪除</li>' +
+      					'<li><a name="edit"><%= t("actionshare.edit") %></a></li><li><a name="delete"><%= t("actionshare.delete") %></li>' +
       					'</ul>' +
       					'</div>');
       
@@ -201,7 +184,7 @@ $(document).ready(function(){
       saveArticle();
     }
     else{
-      Alertify.log.error("請輸入段落內容");
+      Alertify.log.error("<%= t('editor.paragraph.valid') %>");
     }
   }
 
@@ -210,7 +193,7 @@ $(document).ready(function(){
       $("#new_classphoto").submit();
     }
     else{
-      Alertify.log.error("請選擇要上傳的檔案");
+      Alertify.log.error("<%= t('editor.image.valid') %>");
     }
     
   }
@@ -219,7 +202,7 @@ $(document).ready(function(){
     if( $("#newVideoContent").val() ){
       var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="video"></div>');
       var code = getYoutubeCode( $("#newVideoContent").val());
-      var paragraph = $('<ul class="tool-b"><li><a name="delete">刪除</a></li></ul><iframe width="480" height="290" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
+      var paragraph = $('<ul class="tool-b"><li><a name="delete"><%= t("actionshare.delete") %></a></li></ul><iframe width="480" height="290" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
       container.append(paragraph);
 
       $("#articleContent").append(container);
@@ -230,7 +213,7 @@ $(document).ready(function(){
       saveArticle();
     }
     else{
-      Alertify.log.error("請貼上影片網址");
+      Alertify.log.error("<%= t('editor.video.valid') %>");
     }
     event.preventDefault();
   }
@@ -274,12 +257,12 @@ $(document).ready(function(){
       })();
 
       if(!isPass){
-        Alertify.log.error("只能上傳 .gif, .png, .jpg 圖片檔");
+        Alertify.log.error("<%= t('editor.image.errortype') %>");
       }
 
       if(fileinput.files[0].size > 5 * 1024 *1024){
         isPass = false;
-        Alertify.log.error("檔案大小必須小於5MB");
+        Alertify.log.error("<%= t('editor.image.errorsize') %>");
       }
       if(!isPass){
         $(fileinput).val(""); 
@@ -290,7 +273,7 @@ $(document).ready(function(){
   }
 
   function newImage(photoID,photoPath){
-    var articleContent = '<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><ul class="tool-b"><li><a href="/admin/productclasses/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true">刪除</a></li></ul>';
+    var articleContent = '<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><ul class="tool-b"><li><a href="/admin/productclasses/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true"><%= t("actionshare.delete") %></a></li></ul>';
 
     if($("#newImageLink").val()){
       articleContent += '<a href="'+$("#newImageLink").val()+'" target="_blank"><img src="'+photoPath+'" alt="'+photoID+'" /></a></div>';
@@ -330,8 +313,8 @@ $(document).ready(function(){
       $(this).parent().parent().parent().append('<textarea id="editedContent" name="textarea" cols="" rows="" class="autogrow">'+
         '</textarea><label id="editedLink" />'+
         '<ul class="tool-a">'+
-          '<li><a id="editFinish" htref="#">儲存</a></li>'+
-          '<li><a id="editCancel" htref="#">取消</a></li>'+
+          '<li><a id="editFinish" htref="#"><%= t("actionshare.save") %></a></li>'+
+          '<li><a id="editCancel" htref="#"><%= t("actionshare.cancel") %></a></li>'+
         '</ul>');
 
       //avoid content in textbox can't not be editted due to the using of jquery sortable
@@ -345,7 +328,7 @@ $(document).ready(function(){
       }
 
       $("#editedContent").html(contentLink? contentLink.aContent : br2nl($(paragraph).html()) );
-      $("#editedLink").html("連結網址：" + (contentLink? contentLink.aLink : "")).css("display", contentLink? "inline-block" : "none");
+      $("#editedLink").html("<%= t('editor.link.href') %>：" + (contentLink? contentLink.aLink : "")).css("display", contentLink? "inline-block" : "none");
       $(paragraph).hide();
 
       $("#editFinish").click(function(){
@@ -446,7 +429,7 @@ $(document).ready(function(){
         o.dataType = 'json';
       },
       complete: function(XMLHttpRequest, textStatus) {
-        Alertify.log.success("已成功儲存您的變更");
+        Alertify.log.success("<%= t('editor.saveSuccess') %>");
       }
     });
   }
@@ -464,7 +447,7 @@ $(document).ready(function(){
 
           if(JSON.stringify(paragraph.type)=='"paragraph"')
           {
-            article = "<div class='paragraphContainer ui-state-default dragItem' data-type='paragraph'><ul class='tool-b'><li><a name='edit'>編輯</a></li><li><a name='delete'>刪除</a></li></ul><p class='"+paragraph.cssclass+"' style = ' font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+            article = "<div class='paragraphContainer ui-state-default dragItem' data-type='paragraph'><ul class='tool-b'><li><a name='edit'><%= t('actionshare.edit') %></a></li><li><a name='delete'><%= t('actionshare.delete') %></a></li></ul><p class='"+paragraph.cssclass+"' style = ' font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
             if(paragraph.link){
               article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
             }
@@ -474,7 +457,7 @@ $(document).ready(function(){
           }
           else if(JSON.stringify(paragraph.type)=='"image"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
           }
           else if(JSON.stringify(paragraph.type)=='"linkedimg"')
           {

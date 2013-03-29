@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 <meta name="Robots" content="index,follow"/>
 <meta http-equiv="content-language" content="zh-TW" />
-<title>龍全後台管理系統</title>
+<title><%= t("environ.name") %></title>
 
 <%= stylesheet_link_tag "admin", :media => "all" %>
 <%= stylesheet_link_tag "mobile", :media => "screen and (max-width: 543px)" %>
@@ -73,6 +73,22 @@ $(document).ready(function() {
 
     isNavOpen = isNavOpen? false : true;
   }
+  
+  //更換語系
+  changeLang();
+
+  function changeLang(){
+    $("#lang").children("a").each(function(){
+      if($(this).data("lang") == "<%= params[:locale] %>"){
+        $("#lang").prepend($(this));
+      }
+    });
+  }
+
+  $("#lang a").click(function(){
+    var location = window.location.toString().match(/^http\:\/\/(.+)\/admin(.+)/)[2];
+    window.location = "/"+$(this).data("lang")+"/admin"+location;
+  });
 });
 </script>
 </head>
@@ -81,20 +97,20 @@ $(document).ready(function() {
 <header _height="none">
   <section id="top"> <a id="nav-ctrl"><img src="/images/nav.png"></a>
     <div id="lang">
-    <a href="#"><img src="/images/tw.png"> 繁中</a>
-    <a href="#"><img src="/images/cn.png"> 簡中</a>
-    <a href="#"><img src="/images/us.png"> 英文</a>
+      <a href="#" data-lang="zh_TW"><img src="/images/tw.png"> <%= t("environ.language.tw") %></a>
+      <a href="#" data-lang="zh_CN"><img src="/images/cn.png"> <%= t("environ.language.cn") %></a>
+      <a href="#" data-lang="en"><img src="/images/us.png"> <%= t("environ.language.us") %></a>
     </div>
-    <h1><a href="<%= admin_path( :locale => I18n.locale ) %>">龍全後台管理系統</a></h1>
+    <h1><a href="<%= admin_path( :locale => I18n.locale ) %>"><%= t("environ.name") %></a></h1>
     
     <aside> <a id="aside-ctrl"><img src="/images/set.png"></a>
       <div id="aside-box">
         <%if session[:admin]%>
-        <a href="<%= admin_edit_path( :locale => I18n.locale ) %>">修改個人資料</a>
-        <a href="<%= admin_log_out_path( :locale => I18n.locale ) %>">登出</a>
+        <a href="<%= admin_edit_path( :locale => I18n.locale ) %>"><%= t("admin.edit") %></a>
+        <a href="<%= admin_log_out_path( :locale => I18n.locale ) %>"><%= t("admin.logout") %></a>
         <% end %>
 
-        <a href="<%= root_path( :locale => I18n.locale ) %>">返回首頁</a>
+        <a href="<%= root_path( :locale => I18n.locale ) %>"><%= t("environ.toIndex") %></a>
       </div>
     </aside>
   </section>
@@ -103,9 +119,9 @@ $(document).ready(function() {
 <section id="main" _height="auto">
   <nav>
     <ul>
-      <li><a href="<%= admin_indexlinks_path( :locale => I18n.locale ) %>" id="nav-1">首頁輪播</a></li>
-      <li><a href="<%= admin_productclasses_path( :locale => I18n.locale) %>" id="nav-2">優質系列</a></li>
-      <li><a href="<%= admin_showAdmins_path( :locale => I18n.locale) %>" id="nav-3">管理人員</a></li>
+      <li><a href="<%= admin_indexlinks_path( :locale => I18n.locale ) %>" id="nav-1"><%= t("indexlink.name") %></a></li>
+      <li><a href="<%= admin_productclasses_path( :locale => I18n.locale) %>" id="nav-2"><%= t("productclass.name") %></a></li>
+      <li><a href="<%= admin_showAdmins_path( :locale => I18n.locale) %>" id="nav-3"><%= t("admin.name") %></a></li>
     </ul>
   </nav>
   <article>

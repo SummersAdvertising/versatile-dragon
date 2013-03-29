@@ -1,12 +1,12 @@
 <section class="hgroup">
-  <h2>產品列表</h2>
+  <h2><%= t("product.titleIndex") %></h2>
   <p>／ <%= @productclass.name %></p>
 </section>
 <!--hgroup-->
 
 <section class="button">
-  <%= link_to image_tag("/images/add.png")+'新增商品', admin_productclass_products_path(@productclass, :locale => I18n.locale), :method => :post %>
-  <%= link_to (image_tag("/images/back.png")+'返回'), admin_productclasses_path(:locale => I18n.locale) %>
+  <%= link_to (image_tag("/images/add.png")+t("product.new") ), admin_productclass_products_path(@productclass, :locale => I18n.locale), :method => :post %>
+  <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclasses_path(:locale => I18n.locale) %>
 </section>
 <!--button-->
 
@@ -14,14 +14,14 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <% if(@productclass.products.size > 0) %>
     <tr>
-      <th align="center" class="date">日期</th>
-      <th align="center" class="edit">前台顯示</th>
-      <th align="left" class="name">標題</th>
-      <th align="center" class="edit">編輯</th>
-      <th align="center" class="delete">刪除</th>
+      <th align="center" class="date"><%= t("product.date") %></th>
+      <th align="center" class="edit"><%= t("product.status.name") %></th>
+      <th align="left" class="name"><%= t("product.title") %></th>
+      <th align="center" class="edit"><%= t("actionshare.edit") %></th>
+      <th align="center" class="delete"><%= t("actionshare.delete") %></th>
     </tr>
     <% else %>
-    <th align="center">此分類下沒有商品</th>
+    <th align="center"><%= t("productclass.noProduct") %></th>
     <% end %>
 
     <% @products.each do |product| %>
@@ -29,9 +29,9 @@
       <td align="center"><%= product.created_at.to_date %></td>
       <td align="center">
         <% if(product.status == "enable") %>
-        是
+        <%= t("product.status.enable") %>
         <% else %>
-        否
+        <%= t("product.status.disable") %>
         <% end %>
       </td>
       <td align="left">
@@ -56,7 +56,7 @@ $(document).ready(function(){
   $(".delete a").click(function() {
     var deleteid = $(this).data("deleteid");
 
-    Alertify.dialog.confirm("確定要刪除嗎？", function () {
+    Alertify.dialog.confirm("<%= t('actionshare.deleteConfirm') %>", function () {
       // user clicked "ok"
       $("#delete"+deleteid).trigger("click");
     }, function () {

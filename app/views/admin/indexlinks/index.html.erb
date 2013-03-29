@@ -1,15 +1,15 @@
 <section class="button">
-  <%= link_to image_tag("/images/add.png")+'新增輪播', new_admin_indexlink_path(:locale => I18n.locale) %>
+  <%= link_to (image_tag("/images/add.png") + t("indexlink.new") ), new_admin_indexlink_path(:locale => I18n.locale) %>
 </section>
 <!--button-->
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th width="9%" align="center" class="number">編號</th>
-      <th align="center" class="date">日期</th>
-      <th align="left" class="name">標題</th>
-      <th align="center" class="edit">編輯</th>
-      <th align="center" class="delete">刪除</th>
+      <th width="9%" align="center" class="number"><%= t("indexlink.ordernum.name") %></th>
+      <th align="center" class="date"><%= t("indexlink.date") %></th>
+      <th align="left" class="name"><%= t("indexlink.title.name") %></th>
+      <th align="center" class="edit"><%= t("actionshare.edit") %></th>
+      <th align="center" class="delete"><%= t("actionshare.delete") %></th>
     </tr>
 
     <% @indexlinks.each do |indexlink| %>
@@ -41,7 +41,7 @@ $(document).ready(function(){
   $(".delete a").click(function() {
     var deleteid = $(this).data("deleteid");
 
-    Alertify.dialog.confirm("確定要刪除嗎？", function () {
+    Alertify.dialog.confirm("<%= t('actionshare.deleteConfirm') %>", function () {
       // user clicked "ok"
       $("#delete"+deleteid).trigger("click");
     }, function () {

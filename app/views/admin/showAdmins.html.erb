@@ -1,10 +1,10 @@
-<%= form_for(@admin, :url => admin_createAdmin_path(@admin, :locale => I18n.locale), :class => "text text-edit") do |f| %>
+<%= form_for(@admin, :url => ("/"+params[:locale]+"/admin/createAdmin"), :class => "text text-edit") do |f| %>
   <section class="text text-edit">    
   <div class="quarter">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">名稱</th>
-        <td><%= f.text_field :name, :autocomplete => "off", :class => "validate", :placeholder => "請輸入使用者名稱", :data => {:validattr => "使用者名稱"} %></td>
+        <th valign="top"><%= t("admin.username.name") %></th>
+        <td><%= f.text_field :name, :autocomplete => "off", :class => "validate", :placeholder => (t("admin.holder")+t("admin.username.title")), :data => {:validattr => t("admin.username.name")} %></td>
       </tr>
     </table>
   </div>
@@ -12,8 +12,8 @@
   <div class="remainder">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">帳號</th>
-        <td><%= f.text_field :username, :autocomplete => "off", :class => "validate", :placeholder => "請輸入登入帳號", :data => {:validattr => "使用者帳號"} %></td>
+        <th valign="top"><%= t("admin.userid.name") %></th>
+        <td><%= f.text_field :username, :autocomplete => "off", :class => "validate", :placeholder => (t("admin.holder")+t("admin.userid.title")), :data => {:validattr => t("admin.userid.name")} %></td>
       </tr>
     </table>
   </div>
@@ -21,8 +21,8 @@
   <div class="half">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">密碼</th>
-        <td><%= f.password_field :password, :autocomplete => "off", :class => "validate", :data => {:validattr => "使用者密碼"} %></td>
+        <th valign="top"><%= t("admin.password.name") %></th>
+        <td><%= f.password_field :password, :autocomplete => "off", :class => "validate", :data => {:validattr => t("admin.password.name")} %></td>
       </tr>
     </table>
   </div>
@@ -30,7 +30,7 @@
   <div class="half">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">確認密碼</th>
+        <th valign="top"><%= t("admin.passwordconfirm.name") %></th>
         <td><input id="pswCheck" type="password" name="textfield" /></td>
       </tr>
     </table>
@@ -40,14 +40,14 @@
   <!-- end of form -->
 
 
-<section class="button"> <a href="#"><img src="/images/add.png">新增帳號</a> </section>
+<section class="button"> <a href="#"><img src="/images/add.png"><%= t("admin.new") %></a> </section>
 <!--button-->
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th align="center" class="date">使用者名稱</th>
-      <th align="left">使用者帳號</th>
-      <th align="center" class="delete">刪除</th>
+      <th align="center" class="date"><%= t("admin.username.title") %></th>
+      <th align="left"><%= t("admin.userid.title") %></th>
+      <th align="center" class="delete"><%= t("actionshare.delete") %></th>
     </tr>
 
     <% @admins.each do |admin| %>
@@ -55,8 +55,10 @@
     <tr>
       <td align="center"><%= admin.name %></td>
       <td align="left"><%= admin.username %></td>
-      <td align="center" class="delete"><%= link_to image_tag("/images/delete.png"), "#"%></td>
-      <%= link_to image_tag("/images/delete.png"), ("/admin/deleteAdmin/"+admin.id.to_s) , :method => :delete, :style => "display: none;", :id => "deleteAdmin" %>
+      <td align="center" class="delete">
+        <a href="#" data-deleteid="<%= admin.id.to_s %>"><img src="/images/delete.png"></a>
+      </td>
+      <%= link_to image_tag("/images/delete.png"), ("/"+params[:locale]+"/admin/deleteAdmin/"+admin.id.to_s) , :method => :delete, :id => ("delete"+ admin.id.to_s ), :style => "display:none;" %>
     </tr>
     <% end %>
     <% end %>
@@ -71,12 +73,12 @@ $(document).ready(function() {
 
   var adminCreateError = "<%= flash[:error] %>";
   if(adminCreateError){
-    Alertify.log.error("該帳號已經存在");
+    Alertify.log.error("<%= t('admin.newError')%>");
   }
 
   var adminCreateSuccess = "<%= flash[:success] %>";
   if(adminCreateSuccess){
-    Alertify.log.success("已成功新增使用者");
+    Alertify.log.success("<%= t('admin.newSuccess')%>");
   }
 
   $(".button a").click(function(event){
@@ -88,14 +90,14 @@ $(document).ready(function() {
     var submit = true;
     $(".validate").each(function(){
       if(!$(this).val()){
-        Alertify.log.error($(this).data("validattr")+"不能為空");
+        Alertify.log.error($(this).data("validattr")+"<%= t('admin.valid')%>");
         submit = false;
       }
     });
 
     var check = ($("#admin_password").val()==$("#pswCheck").val());
     if(check == false){
-      Alertify.log.error("密碼不一致，請重新輸入密碼");
+      Alertify.log.error("<%= t('admin.passwordconfirm.valid')%>");
       $("#admin_password").val("");
       $("#pswCheck").val("");
       submit = false;
@@ -105,15 +107,15 @@ $(document).ready(function() {
   });
 
   $(".delete a").click(function() {
-    var deleteConfirm = false;
-    Alertify.dialog.confirm("確定要刪除嗎？", function (event) {
+    var deleteid = $(this).data("deleteid");
+    Alertify.dialog.confirm("<%= t('actionshare.deleteConfirm')%>", function () {
       // user clicked "ok
-      $('#deleteAdmin').trigger('click');
+
+      $("#delete"+deleteid).trigger("click");
       
     }, function () {
       // user clicked "cancel"
     });
-    return false;
   });
   
 });

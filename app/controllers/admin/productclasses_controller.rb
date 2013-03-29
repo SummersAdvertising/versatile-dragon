@@ -3,8 +3,7 @@ class Admin::ProductclassesController < ApplicationController
   layout 'admin'
 
   def index
-    @productclasses = Productclass.all
-
+    @productclasses = Productclass.with_translations(I18n.locale).all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @productclasses }
@@ -12,8 +11,8 @@ class Admin::ProductclassesController < ApplicationController
   end
 
   def show
-    @productclass = Productclass.find(params[:id])
-    @products = @productclass.products.order('created_at DESC').all
+    
+    @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:id])
         
     respond_to do |format|
       format.html # show.html.erb

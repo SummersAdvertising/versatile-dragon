@@ -3,11 +3,6 @@
   	<% @productclasses.each do |productclass| %>
   	
     <li>
-      <% if(!productclass.frontshow.blank?) %>
-      <span><%=image_tag(productclass.frontshow, :height=>"80px") %></span>
-      <% else %>
-      <span>尚未上傳封面</span>
-      <% end %>
   		<%= link_to productclass.name, productclass_path(productclass, :locale => I18n.locale) %>
   	</li>
   	<% end %>

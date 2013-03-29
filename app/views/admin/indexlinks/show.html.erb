@@ -1,7 +1,7 @@
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th>輪播標題</th>
+      <th><%= t("indexlink.title.name") %></th>
       <td><%= @indexlink.title %></td>
     </tr>
   </table>
@@ -12,7 +12,7 @@
   <div class="one">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">編號</th>
+        <th valign="top"><%= t("indexlink.ordernum.name") %></th>
         <td><%= @indexlink.ordernum %></td>
       </tr>
     </table>
@@ -21,7 +21,7 @@
   <div class="one">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">連結</th>
+        <th valign="top"><%= t("indexlink.link.name") %></th>
         <td><a href="<%= @indexlink.link %>" target= "_blank"><%= @indexlink.link %></a></td>
       </tr>
     </table>
@@ -30,7 +30,7 @@
   <div class="one">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">內文</th>
+        <th valign="top"><%= t("indexlink.content.name") %></th>
         <td><%= simple_format(@indexlink.content) %></td>
       </tr>
     </table>
@@ -39,7 +39,7 @@
   <div class="one">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">顏色</th>
+        <th valign="top"><%= t("indexlink.color.name") %></th>
         <td><%= @indexlink.fontcolor %></td>
       </tr>
     </table>
@@ -48,7 +48,7 @@
   <div class="one">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">預覽</th>
+        <th valign="top"><%= t("indexlink.preview") %></th>
         <td><%=image_tag(@indexlink.image) %></td>
       </tr>
     </table>
@@ -56,8 +56,8 @@
 </section>
 <!--text-->
 <section class="button">
-  <%= link_to (image_tag("/images/edit.png")+'編輯'), edit_admin_indexlink_path(@indexlink, :locale => I18n.locale) %>
-  <%= link_to (image_tag("/images/back.png")+'返回'), admin_indexlinks_path(:locale => I18n.locale) %>
+  <%= link_to (image_tag("/images/edit.png")+ t("actionshare.edit") ), edit_admin_indexlink_path(@indexlink, :locale => I18n.locale) %>
+  <%= link_to (image_tag("/images/back.png")+ t("actionshare.back") ), admin_indexlinks_path(:locale => I18n.locale) %>
 </section>
 <!--button-->
 

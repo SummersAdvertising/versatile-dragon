@@ -1,8 +1,8 @@
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th>輪播標題</th>
-      <td><%= f.text_field :title, :placeholder => "請輸入文章標題" %></td>
+      <th><%= t("indexlink.title.name") %></th>
+      <td><%= f.text_field :title, :placeholder => t("indexlink.title.valid") %></td>
     </tr>
   </table>
 </section>
@@ -12,8 +12,8 @@
   <div class="quarter">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">編號</th>
-        <td><%= f.text_field :ordernum, :placeholder => "請輸入編號" %></td>
+        <th valign="top"><%= t("indexlink.ordernum.name") %></th>
+        <td><%= f.text_field :ordernum, :placeholder => t("indexlink.ordernum.valid") %></td>
       </tr>
     </table>
   </div>
@@ -21,8 +21,8 @@
   <div class="remainder">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th valign="top">連結</th>
-        <td><%= f.text_field :link, :placeholder => "請輸入網址" %></td>
+        <th valign="top"><%= t("indexlink.link.name") %></th>
+        <td><%= f.text_field :link, :placeholder => t("indexlink.link.valid") %></td>
     </tr>
   </table>
 </div>
@@ -30,8 +30,8 @@
 <div class="one">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th valign="top">內文</th>
-      <td><%= f.text_area :content, :placeholder => "請輸入內文", :class =>"autogrow" %></td>
+      <th valign="top"><%= t("indexlink.content.name") %></th>
+      <td><%= f.text_area :content, :placeholder => t("indexlink.content.valid"), :class =>"autogrow" %></td>
     </tr>
   </table>
 </div>
@@ -39,9 +39,9 @@
 <div class="one">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th valign="top">顏色</th>
+      <th valign="top"><%= t("indexlink.color.name") %></th>
       <td>
-        <%= f.radio_button(:fontcolor, 'black', :checked => true) %>黑色 <%= f.radio_button(:fontcolor, 'white') %>白色
+        <%= f.radio_button(:fontcolor, 'black', :checked => true) %><%= t("indexlink.color.black") %> <%= f.radio_button(:fontcolor, 'white') %><%= t("indexlink.color.white") %>
       </td>
     </tr>
   </table>
@@ -50,14 +50,14 @@
 <div class="one">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th valign="top">上傳</th>
+      <th valign="top"><%= t("indexlink.upload.name") %></th>
       <td>
         <%= f.file_field :image %><br />
         <% if(@indexlink.translation.image.path) %>
         <%=image_tag(@indexlink.image, :width=>"100px") %><br />
         
         <%else%>
-        <p>未上傳圖片</p><br />
+        <p>t("indexlink.upload.valid")</p><br />
         <% end %>
       </td>
     </tr>
@@ -67,8 +67,8 @@
 <!--text-->
 
 <section class="button">
-  <a href="#" id="formSubmit"><img src="/images/save.png">儲存</a>
-  <%= link_to (image_tag("/images/cancel.png")+"取消"), admin_indexlinks_path(:locale => I18n.locale) %>
+  <a href="#" id="formSubmit"><img src="/images/save.png"><%= t("actionshare.save") %></a>
+  <%= link_to (image_tag("/images/cancel.png")+ t("actionshare.cancel") ), admin_indexlinks_path(:locale => I18n.locale) %>
 </section>
 <!--button-->
 
