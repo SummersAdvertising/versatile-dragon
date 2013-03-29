@@ -30,7 +30,7 @@ class Admin::ProductclassesController < ApplicationController
   end
 
   def edit
-    @productclass = Productclass.find(params[:id])
+    @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:id])
 
     @photo = Classphoto.new
   end
@@ -82,7 +82,6 @@ class Admin::ProductclassesController < ApplicationController
 
   def update
     @productclass = Productclass.find(params[:id])
-
 
     respond_to do |format|
       if @productclass.update_attributes(params[:productclass])

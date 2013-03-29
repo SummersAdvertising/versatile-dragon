@@ -1,6 +1,7 @@
 class Admin::NewsController < ApplicationController
   before_filter :require_is_admin
   layout 'admin'
+  
   def index
     @news = News.order('created_at DESC').page(params[:page])
     respond_to do |format|

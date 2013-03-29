@@ -9,11 +9,14 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    @products = @productclass.products.order('created_at DESC').all
+    @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:productclass_id])    
+    if(@productclass)
+      @products = @productclass.products.all
+    end
   end
 
   def show
-    @product = @productclass.products.find(params[:id])
+    @product = @productclass.products.with_translations(I18n.locale).find_by_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,7 +25,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @product = @productclass.products.find(params[:id])
+    @product = @productclass.products.with_translations(I18n.locale).find_by_id(params[:id])
     @photo = Productphoto.new
   end
 

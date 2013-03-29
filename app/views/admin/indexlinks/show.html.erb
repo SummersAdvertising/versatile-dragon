@@ -1,3 +1,4 @@
+<% if(@indexlink) %>
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -55,8 +56,21 @@
   </div>
 </section>
 <!--text-->
+<% else %>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>該語言不包含此輪播</td>
+    </tr>
+  </table>
+</section>
+<!--title-->
+<% end %>
+
 <section class="button">
+  <% if(@indexlink) %>
   <%= link_to (image_tag("/images/edit.png")+ t("actionshare.edit") ), edit_admin_indexlink_path(@indexlink, :locale => I18n.locale) %>
+  <% end %>
   <%= link_to (image_tag("/images/back.png")+ t("actionshare.back") ), admin_indexlinks_path(:locale => I18n.locale) %>
 </section>
 <!--button-->

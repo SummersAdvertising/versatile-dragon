@@ -1,5 +1,16 @@
+<% if(@indexlink) %>
 <%= form_for(@indexlink, :url => admin_indexlink_path(@indexlink, :locale => I18n.locale), :method => "put") do |f| %>
 <%= render :partial => 'form', :locals => { :f => f} %>
+<% end %>
+<% else %>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>該語言不包含此輪播</td>
+    </tr>
+  </table>
+</section>
+<!--title-->
 <% end %>
 
 <script type="text/javascript">

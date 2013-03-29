@@ -12,7 +12,7 @@ class Admin::IndexlinksController < ApplicationController
   end
 
   def show
-    @indexlink = Indexlink.find(params[:id])
+    @indexlink = Indexlink.with_translations(I18n.locale).find_by_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,7 +30,7 @@ class Admin::IndexlinksController < ApplicationController
   end
 
   def edit
-    @indexlink = Indexlink.find(params[:id])
+    @indexlink = Indexlink.with_translations(I18n.locale).find_by_id(params[:id])
   end
 
   def create

@@ -3,6 +3,8 @@
   <p>／ <%= @productclass.name %></p>
 </section>
 <!--hgroup-->
+
+<% if(@product) %>
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -32,9 +34,22 @@
 </section>
 <!--text-->
 
+<% else %>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>該語言不包含此分類</td>
+    </tr>
+  </table>
+</section>
+<!--title-->
+<% end %>
+
 <section class="button">
+  <% if(@product) %>
   <%= link_to (image_tag("/images/edit.png")+t("actionshare.edit") ), edit_admin_productclass_product_path(@product.productclass_id, @product, :locale => I18n.locale) %>
-  <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclass_products_path(@product.productclass_id, :locale => I18n.locale) %>
+  <% end %>
+  <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclass_products_path(@productclass, :locale => I18n.locale) %>
 </section>
 <!--button-->
 
