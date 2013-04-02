@@ -3,7 +3,7 @@ VersatileDragon::Application.routes.draw do
     resources :products, :only => :show
   end
 
- scope '(:locale)' do
+ scope ':locale', :locale => /en|zh_TW|zh_CN/ do
  	  resources :categories
  	  resources :news, :only => [:index, :show]
 	  

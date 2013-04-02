@@ -13,8 +13,11 @@ en:
     name: "en_首頁輪播"    
     date: "en_日期"
     title:
-      name: "en_輪播標題"
-      valid: "en_請輸入文章標題"
+      name: "en_輪播上標"
+      valid: "en_請輸入上標題"
+    titlesub:
+      name: "en_輪播下標"
+      valid: "en_請輸入下標題"
     ordernum:
       name: "en_編號"
       valid: "en_請輸入編號"
@@ -64,6 +67,7 @@ en:
 
   admin:
     name: "en_管理人員"
+    titleEdit: "en_個人資料"
     username:
       name: "en_名稱"
       title: "en_使用者名稱"
@@ -72,6 +76,10 @@ en:
       title: "en_使用者帳號"
     password:
       name: "en_密碼"
+      newname: "en_新密碼"
+      newconfirm: "en_確認新密碼"
+      change: "en_修改密碼"
+      changeNote: "en_如不修改密碼可不填此欄"
     passwordconfirm: 
       name: "en_確認密碼"
       valid: "en_密碼不一致，請重新輸入密碼"
@@ -81,8 +89,10 @@ en:
     new: "en_新增帳號"
     newError: "en_該帳號已經存在"
     newSuccess: "en_已成功新增使用者"
+    updateSuccess: "en_管理者資料已更新"
     edit: "en_修改個人資料"
     login: "en_登入"
+    loginError: "en_請輸入正確的帳號及密碼"
     logout: "en_登出"
 
   editor:

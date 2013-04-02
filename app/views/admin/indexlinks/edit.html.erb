@@ -1,3 +1,4 @@
+<article>
 <% if(@indexlink) %>
 <%= form_for(@indexlink, :url => admin_indexlink_path(@indexlink, :locale => I18n.locale), :method => "put") do |f| %>
 <%= render :partial => 'form', :locals => { :f => f} %>
@@ -12,6 +13,7 @@
 </section>
 <!--title-->
 <% end %>
+</article>
 
 <script type="text/javascript">
 $(document).ready(function(){

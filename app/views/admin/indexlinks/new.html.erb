@@ -1,6 +1,8 @@
+<article>
 <%= form_for(@indexlink, :url => admin_indexlinks_path(@indexlink, :locale => I18n.locale), :method => "post") do |f| %>
 <%= render :partial => 'form', :locals => { :f => f} %>
 <% end %>
+</article>
 
 <script type="text/javascript">
 $(document).ready(function(){

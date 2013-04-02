@@ -1,3 +1,4 @@
+<article>
 <section class="button">
   <%= link_to (image_tag("/images/add.png") + t("indexlink.new") ), new_admin_indexlink_path(:locale => I18n.locale) %>
 </section>
@@ -33,6 +34,7 @@
   <%= paginate @indexlinks, :theme => 'admin' %>
 </section>
 <!--list-->
+</article>
 
 <script type="text/javascript">
 $(document).ready(function(){

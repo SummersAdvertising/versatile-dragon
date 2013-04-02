@@ -121,6 +121,8 @@ $(document).ready(function() {
 </header>
 
 <section id="main" _height="auto">
+
+  <%if session[:admin]%>
   <nav>
     <ul>
       <li><a href="<%= admin_indexlinks_path( :locale => I18n.locale ) %>" id="nav-1"><%= t("indexlink.name") %></a></li>
@@ -128,11 +130,10 @@ $(document).ready(function() {
       <li><a href="<%= admin_showAdmins_path( :locale => I18n.locale) %>" id="nav-3"><%= t("admin.name") %></a></li>
     </ul>
   </nav>
-  <article>
+  <% end %>
 
-    <%= yield %>
-
-  </article>
+  <%= yield %>
+  
 </section>
 <!--main-->
 <footer _height="none"> Copyright © <a href="http://www.summers.com.tw/" target="_blank">Summers</a> </footer>

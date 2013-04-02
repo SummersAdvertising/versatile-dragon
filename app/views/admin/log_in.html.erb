@@ -1,34 +1,61 @@
-<div id="main" class="main-sign">
-    <h2><img src="/images/man.png" width="16" height="16" /> 使用者登入</h2>
-    <%= form_for(@admin, :url => admin_loginCheck_path(@admin, :locale => I18n.locale)) do |f| %>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td colspan="2" align="left">帳號<br>
-          <%= f.text_field :username, :autocomplete => "off" %></td>
-      </tr>
-      <tr>
-        <td colspan="2" align="left">密碼<br>
-          <%= f.password_field :password, :autocomplete => "off" %></td>
-      </tr>
-    </table>
-    <% end %>
+<section id="vert">
+  <article>
+    <section class="hgroup">
+      <h2><img src="/images/set.png" width="16" height="16"><%= t("admin.login") %></h2>
+    </section>
+    <!--hgroup-->
 
-    <% if session[:notice] %>
-    <p class='notice'>請輸入正確的帳號及密碼</p>
-    <% end %>
+    <section class="text text-edit">
+      <div class="one">
+        <%= form_for(@admin, :url => ("/"+params[:locale]+"/admin/loginCheck") ) do |f| %>
+        <div class="one">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <th valign="top"><%= t("admin.userid.name") %></th>
+              <td><%= f.text_field :username, :autocomplete => "off" %></td>
+            </tr>
+          </table>
+        </div>
 
-    <div class="button" id="btnLogin"><a href="#"><img src="/images/login.png">登入</a></div>
-  </div>
-  <!--main--> 
+        <div class="one">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <th valign="top"><%= t("admin.password.name") %></th>
+              <td><%= f.password_field :password, :autocomplete => "off" %></td>
+            </tr>
+          </table>
+        </div>
+        <% end %>
 
-<script type="text/javascript">
-$("#btnLogin").click(function(){
-  $("form").submit();
-});
+      </div>
+    </section>
+    <!--text-->
 
-$("#admin_password").keydown(function(event){
-  if (event.keyCode == 13){
-    $("form").submit();
-  }
-});
+    <section class="button">
+      <a href="#" id="btnLogin"><img src="/images/log.png"><%= t("admin.login") %></a> 
+    </section>
+    <!--button--> 
+  </article>
+</section><!--vert-->
+
+<script>
+  $(function() {
+    $("body").addClass("login");
+
+    var loginMsg = "<%= flash[:loginCheck] %>";
+    if(loginMsg){
+      Alertify.log.error('<%= t("admin.loginError") %>');
+    }
+
+    $("#btnLogin").click(function(){
+      $("form").submit();
+    });
+
+    $("#admin_password").keydown(function(event){
+      if (event.keyCode == 13){
+        $("form").submit();
+      }
+    });
+    
+  });
 </script>

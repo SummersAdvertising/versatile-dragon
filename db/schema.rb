@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328091654) do
+ActiveRecord::Schema.define(:version => 20130402102435) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130328091654) do
     t.integer  "ordernum"
     t.string   "fontcolor"
     t.text     "content"
+    t.string   "titlesub"
   end
 
   create_table "news", :force => true do |t|

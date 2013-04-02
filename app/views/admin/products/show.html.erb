@@ -1,3 +1,4 @@
+<article>
 <section class="hgroup">
   <h2><%= t("product.titleShow") %></h2>
   <p>／ <%= @productclass.name %></p>
@@ -55,6 +56,8 @@
   <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclass_products_path(@productclass, :locale => I18n.locale) %>
 </section>
 <!--button-->
+</article>
+
 
 <script type="text/javascript">
 $(document).ready(function() {
