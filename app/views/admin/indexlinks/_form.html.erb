@@ -41,7 +41,8 @@
     <tr>
       <th valign="top"><%= t("indexlink.color.name") %></th>
       <td>
-        <%= f.radio_button(:fontcolor, 'black', :checked => true) %><%= t("indexlink.color.black") %> <%= f.radio_button(:fontcolor, 'white') %><%= t("indexlink.color.white") %>
+        <%= f.radio_button(:fontcolor, 'black', :checked => true, :class=>"radio") %><%= t("indexlink.color.black") %>
+        <%= f.radio_button(:fontcolor, 'white', :class=>"radio" )%><%= t("indexlink.color.white") %>
       </td>
     </tr>
   </table>

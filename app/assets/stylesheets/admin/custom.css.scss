@@ -17,21 +17,21 @@ footer a{color:#675E32;text-shadow:0 1px 0 #fff}
 /*-----------------------------------------------------------------------內容---*/
 
 @media screen and (max-width: 543px){
-#nav-ctrl,aside{background:#C4B113;border:1px solid #E2CC12}
-#nav-ctrl:hover,aside:hover{background:#E2CC12}
-#nav-ctrl:active,aside:active{background:#E2CC12}
+#nav-ctrl,aside{background:#133A63;border:1px solid #03172A}
+#nav-ctrl:hover,aside:hover{background:#1A426B}
+#nav-ctrl:active,aside:active{background:#1A426B}
 }
 
 @media screen and (min-width: 544px) and (max-width: 896px){
 nav .active a{border-color:#D7D0AC}
-#aside-box a{border:1px solid #E2CC12;background:#C4B113;color:#071F37}
-#aside-box a:hover{background:#E2CC12}
+#aside-box a{border:1px solid #03172A;background:#133A63;color:#ccc}
+#aside-box a:hover{background:#1A426B;color:#fff}
 nav li a{color:#675E32;text-shadow:0 1px 0 #fff}
 }
 
 @media screen and (min-width: 897px){
 nav .active a{border-color:#D7D0AC}
-#aside-box a{border:1px solid #E2CC12;background:#C4B113;color:#071F37}
-#aside-box a:hover{background:#E2CC12}
+#aside-box a{border:1px solid #03172A;background:#133A63;color:#ccc}
+#aside-box a:hover{background:#1A426B;color:#fff}
 nav li a{color:#675E32;text-shadow:0 1px 0 #fff}
 }

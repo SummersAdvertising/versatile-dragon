@@ -7,7 +7,7 @@
 #nav-ctrl:hover,aside:hover{background:#3B5998}
 #nav-ctrl:active,aside:active{background:#2B4680}
 
-h1{width:70%;text-align:center}
+#top .left h1{width:70%;text-align:center}
 
 #aside-box{position:absolute;display:none;width:150px;right:10px;top:40px;z-index:3;background:image-url('aside.png') 113px 0 no-repeat;padding:15px 0 0 0}
 #aside-box a{font-size:13px;border-top:1px solid #3E4555;border-bottom:1px solid #232A3A;color:#C3CBD8;padding:12px 0 0 0;height:40px;background:#32394B;}
@@ -34,8 +34,8 @@ nav a:hover{background-color:#292F3D}
 
 /*-----------------------------------------------------------------------列表---*/
 
-.list .number{display:none}
-.list .edit{display:none}
+.list .x1{width:15%}
+.list .x0{display:none}
 
 /*-----------------------------------------------------------------------欄位---*/
 

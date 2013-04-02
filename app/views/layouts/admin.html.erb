@@ -3,7 +3,7 @@
 <head>
 <!--[if lt IE 9]>
 <script src="/js/html5.js"></script>
-<%= stylesheet_link_tag "custom", :media => "all" %>
+<%= stylesheet_link_tag "desktop", :media => "all" %>
 <![endif]-->
 
 <meta charset="utf-8">
@@ -96,13 +96,16 @@ $(document).ready(function() {
 <body>
 <header _height="none">
   <section id="top"> <a id="nav-ctrl"><img src="/images/nav.png"></a>
-    <div id="lang">
-      <a href="#" data-lang="zh_TW"><img src="/images/tw.png"> <%= t("environ.language.tw") %></a>
-      <a href="#" data-lang="zh_CN"><img src="/images/cn.png"> <%= t("environ.language.cn") %></a>
-      <a href="#" data-lang="en"><img src="/images/us.png"> <%= t("environ.language.us") %></a>
+    <div class="left">
+      <h1><a href="<%= admin_path( :locale => I18n.locale ) %>"><%= t("environ.name") %></a></h1>
+      <div id="lang">
+        <a href="#" data-lang="zh_TW"><img src="/images/tw.png"> <%= t("environ.language.tw") %></a>
+        <a href="#" data-lang="zh_CN"><img src="/images/cn.png"> <%= t("environ.language.cn") %></a>
+        <a href="#" data-lang="en"><img src="/images/us.png"> <%= t("environ.language.us") %></a>
+      </div>
+      <!--lang--> 
     </div>
-    <h1><a href="<%= admin_path( :locale => I18n.locale ) %>"><%= t("environ.name") %></a></h1>
-    
+    <!--left-->
     <aside> <a id="aside-ctrl"><img src="/images/set.png"></a>
       <div id="aside-box">
         <%if session[:admin]%>
@@ -114,8 +117,9 @@ $(document).ready(function() {
       </div>
     </aside>
   </section>
-  <!--top--> 
+  <!--top-->
 </header>
+
 <section id="main" _height="auto">
   <nav>
     <ul>

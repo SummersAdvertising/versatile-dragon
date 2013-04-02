@@ -3,9 +3,10 @@
 #nav-ctrl,#aside-ctrl{display:none}
 #top{min-width:897px;max-width:1024px;margin:0 auto}
 
-h1{float:left;width:40%}
+#top .left{float:left;width:70%}
+h1{margin:0 15px 0 0}
 
-aside{float:right;text-align:right;width:60%;padding:8px 0 0 0}
+aside{float:right;text-align:right;width:30%;padding:8px 0 0 0}
 
 #aside-box a{border:1px solid #2B4680;border-radius:5px;background:#4B67A1;text-align:center;padding:5px 10px;height:30px;margin-left:10px;font-size:1em}
 #aside-box a:hover{background:#2B4680}
@@ -28,12 +29,8 @@ nav .active:hover a{background-color:#fff}
 
 /*-----------------------------------------------------------------------列表---*/
 
-.list .number{width:6%}
-.list .date{width:18%}
-
-.list .edit{width:6%}
-.list .delete{width:6%}
-.list .enter{width:6%}
+.list .x2{width:12%}
+.list .x1{width:6%}
 
 /*-----------------------------------------------------------------------欄位---*/
 

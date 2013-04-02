@@ -15,11 +15,11 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <% if(@productclass.products.size > 0) %>
     <tr>
-      <th align="center" class="date"><%= t("product.date") %></th>
-      <th align="center" class="edit"><%= t("product.status.name") %></th>
-      <th align="left" class="name"><%= t("product.title") %></th>
-      <th align="center" class="edit"><%= t("actionshare.edit") %></th>
-      <th align="center" class="delete"><%= t("actionshare.delete") %></th>
+      <th align="left" class="x0 x2"><%= t("product.date") %></th>
+      <th align="left"><%= t("product.title") %></th>
+      <th align="left" class="x0 x1"><%= t("product.status.name") %></th>
+      <th align="left" class="x0 x1"><%= t("actionshare.edit") %></th>
+      <th align="left" class="delete x1"><%= t("actionshare.delete") %></th>
     </tr>
     <% else %>
     <th align="center"><%= t("productclass.noProduct") %></th>
@@ -27,21 +27,21 @@
 
     <% @products.each do |product| %>
     <tr>
-      <td align="center"><%= product.created_at.to_date %></td>
-      <td align="center">
-        <% if(product.status == "enable") %>
-        <%= t("product.status.enable") %>
-        <% else %>
-        <%= t("product.status.disable") %>
-        <% end %>
-      </td>
-      <td align="left">
+      <td class="x0"><%= product.created_at.to_date %></td>
+      <td>
         <%= link_to product.name, admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %>
       </td>
-      <td align="center" class="edit">
+      <td class="x0">
+        <% if(product.status == "enable") %>
+        <img src="/images/check.png" width="16" height="16">
+        <% else %>
+        <img src="/images/cancel.png" width="16" height="16">
+        <% end %>
+      </td>
+      <td class="x0">
         <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %>
       </td>
-      <td align="center" class="delete"><a href="#" data-deleteid="<%= product.id %>"><img src="/images/delete.png"></a></td>
+      <td class="delete"><a href="#" data-deleteid="<%= product.id %>"><img src="/images/delete.png"></a></td>
       <%= link_to 'Destroy', admin_productclass_product_path(@productclass, product, :locale => I18n.locale), method: :delete, :id => ("delete"+ product.id.to_s ), :style => "display:none;" %>
     </tr>
     <% end %>

@@ -13,24 +13,27 @@
     </tr>
   </table>
 </section>
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <th><%= t("product.status.name") %></th>
-      <td>
-        <% if(@product.status == "enable") %>
-        <%= t("product.status.enable") %>
-        <% else %>
-        <%= t("product.status.disable") %>
-        <% end %>
-      </td>
-    </tr>
-  </table>
-</section>
+
 <!--title-->
 
 <input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
 <section id="articleContent" class="text text-show">
+  <div class="one">
+  </div>
+  <div class="one">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>顯示前台？</th>
+        <td>
+          <% if(@product.status == "enable") %>
+          <%= t("product.status.enable") %>
+          <% else %>
+          <%= t("product.status.disable") %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
 </section>
 <!--text-->
 
@@ -90,7 +93,7 @@ $(document).ready(function() {
         else if (JSON.stringify(paragraph.type)=='"video"') {
           article = "<iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe>";
         }
-        $("#articleContent").append(article);
+        $("#articleContent .one").eq(0).append(article);
       }
     }
   }

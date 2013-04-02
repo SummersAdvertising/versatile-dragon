@@ -5,24 +5,24 @@
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th width="9%" align="center" class="number"><%= t("indexlink.ordernum.name") %></th>
-      <th align="center" class="date"><%= t("indexlink.date") %></th>
-      <th align="left" class="name"><%= t("indexlink.title.name") %></th>
-      <th align="center" class="edit"><%= t("actionshare.edit") %></th>
-      <th align="center" class="delete"><%= t("actionshare.delete") %></th>
+      <th width="9%" align="left" class="x1"><%= t("indexlink.ordernum.name") %></th>
+      <th align="left" class="x0 x2"><%= t("indexlink.date") %></th>
+      <th align="left"><%= t("indexlink.title.name") %></th>
+      <th align="left" class="x0 x1"><%= t("actionshare.edit") %></th>
+      <th align="left" class="x1"><%= t("actionshare.delete") %></th>
     </tr>
 
     <% @indexlinks.each do |indexlink| %>
     <tr>
-      <td align="center" class="number"><%= indexlink.ordernum %></td>
-      <td align="center" class="date"><%= indexlink.created_at.to_date %></td>
-      <td align="left" class="name">
+      <td align="left"><%= indexlink.ordernum %></td>
+      <td align="left" class="x0"><%= indexlink.created_at.to_date %></td>
+      <td align="left">
         <%=link_to(indexlink.title, admin_indexlink_path(indexlink, :locale => I18n.locale)) %>
       </td>
-      <td align="center" class="edit">
+      <td align="left" class="x0">
         <%= link_to image_tag("/images/edit.png"), edit_admin_indexlink_path(indexlink, :locale => I18n.locale) %>
       </td>
-      <td align="center" class="delete"><a href="#" data-deleteid="<%= indexlink.id %>"><img src="/images/delete.png"></a></td>
+      <td align="left" class="delete"><a href="#" data-deleteid="<%= indexlink.id %>"><img src="/images/delete.png"></a></td>
     </tr>
     <%= link_to image_tag("/images/delete.png"), admin_indexlink_path(indexlink, :locale => I18n.locale), method: :delete, :id => ("delete"+ indexlink.id.to_s ), :style => "display:none;"%>
     <% end %>

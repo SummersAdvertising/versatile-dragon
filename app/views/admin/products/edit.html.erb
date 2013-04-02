@@ -14,21 +14,12 @@
       <td><%= f.text_field :name %></td>
       <td style="display: none;">
         <%= f.text_field :content %>
-      </td>
-    </tr>
-  </table>
-</section>
-<section class="title">  
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <th><%= t("product.status.name") %></th>
-      <td><input type="checkbox" id="productFrontshow" /></td>
-      <td style="display: none;">
         <%= f.text_field :status %>
       </td>
     </tr>
   </table>
 </section>
+
 <% end %>
 
 <!--title-->
@@ -118,6 +109,20 @@
   <!--show the content of article -->
 </section>
 <!--preview-->
+
+<section class="text text-show">
+  <div class="one">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>前台顯示？</th>
+        <td>
+          <input type="checkbox" id="productFrontshow" style="width:30px" />
+          ( 不打勾則不會顯示於網站上 )
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
 
 <section class="button" id="btnSubmit"><a href="#"><img src="/images/check.png"><%= t("editor.save") %></a> </section>
 

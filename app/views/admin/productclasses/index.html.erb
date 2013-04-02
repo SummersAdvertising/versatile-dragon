@@ -11,11 +11,11 @@
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th align="center" class="date"><%= t("productclass.date") %></th>
-      <th align="left" class="name"><%= t("productclass.title") %></th>
-      <th align="center" class="enter"><%= t("productclass.listProduct") %></th>
-      <th align="center" class="edit"><%= t("actionshare.edit") %></th>
-      <th align="center" class="delete"><%= t("actionshare.delete") %></th>
+      <th align="left" class="x0 x2"><%= t("productclass.date") %></th>
+      <th align="left"><%= t("productclass.title") %></th>
+      <th align="left" class="x1"><%= t("productclass.listProduct") %></th>
+      <th align="left" class="x0 x1"><%= t("actionshare.edit") %></th>
+      <th align="left" class="x1"><%= t("actionshare.delete") %></th>
     </tr>
 
     <% if(@productclasses.blank?) %>
@@ -26,14 +26,14 @@
 
     <% @productclasses.each do |productclass| %>
     <tr>
-      <td align="center"><%= productclass.created_at.to_date %></td>
+      <td align="left"><%= productclass.created_at.to_date %></td>
       <td align="left">
         <%= link_to productclass.name, admin_productclass_path(productclass, :locale => I18n.locale) %></td>
-      <td align="center">
+      <td align="left">
         <%= link_to image_tag("/images/enter.png"), admin_productclass_products_path(productclass, :locale => I18n.locale) %></td>
-      <td align="center" class="edit">
+      <td align="left" class="x0">
         <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_path(productclass, :locale => I18n.locale) %></td>
-      <td align="center" class="delete"><a href="#" data-deleteid="<%= productclass.id %>" ><img src="/images/delete.png"></a></td>
+      <td align="left" class="delete"><a href="#" data-deleteid="<%= productclass.id %>" ><img src="/images/delete.png"></a></td>
 
       <%= link_to 'Destroy', admin_productclass_path(productclass, :locale => I18n.locale), method: :delete, :id => ("delete"+ productclass.id.to_s ), :style => "display:none;" %>
     </tr>
