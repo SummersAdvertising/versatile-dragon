@@ -9,6 +9,20 @@ en:
     cancel: "en_取消"
     back: "en_返回"
 
+  navbar:
+    product:
+      name: "en_優質系列"
+      descript: "en_龍全除了提升與協力廠商多年來合作整合產生之綜效外，亦積極發展更貼近終端消費者的生活電子產品，以提升自身與產品的附加價值。"
+    about:
+      name: "en_關於龍全"
+      descript: "en_龍全控股為跨領域之電子設計代工公司，集團的研發及銷售中心設於台灣，兩大製造據點設立於蘇州與東莞，主要以OEM、ODM，少量多樣之客制化製造為我們的服務項目。"
+    partner:
+      name: "en_合作夥伴"
+      descript: "en_客戶需求是龍全一切工作的核心。我們知道與各類型的合作夥伴合作是多麼的重要 。您的產品與我們的產品互補，協助維護我們的環境，並使我們彼此更成功。"
+    contact:
+      name: "en_聯絡我們"
+      descript: "en_如果您想進一步了解產品或合作模式，或對產品系列有任何問題與建議，誠摯歡迎您隨時與我們聯絡。"
+
   indexlink:
     name: "en_首頁輪播"    
     date: "en_日期"
@@ -24,6 +38,7 @@ en:
       valid: "en_請輸入編號"
     link:
       name: "en_連結"
+      namefront: "en_了解更多"
       valid: "en_請輸入網址"
     content:
       name: "en_內文"
@@ -131,9 +146,32 @@ en:
 
   environ:
     name: "en_龍全後台管理系統"
+    titlefront: "en_龍全控股集團"
     language:
       cn: "简中"
       tw: "繁中"
       us: "EN"
 
     toIndex: "en_返回首頁"
+
+  company:
+    address: "en_公司地址"
+    tel: "en_公司電話"
+    fax: "en_公司傳真"
+    contact: "en_聯絡人"
+    mail: "en_客服信箱"
+
+    info1:
+      name: "en_常熟龍全電子有限公司"
+      address: "en_江蘇省常熟市沙家濱鎮常昆工業園D區青年路"
+      contact: "en_邵小姐"
+
+    info2:
+      name: "en_東莞歌譽電子有限公司"
+      address: "en_東莞市橫瀝鎮石湧村西城科技園二區"
+      contact: "en_邵先生"
+
+    info3:
+      name: "en_台灣區辦事處"
+      address: "en_新北市板橋區雨農路58號六樓"
+      contact: "en_楊先生"

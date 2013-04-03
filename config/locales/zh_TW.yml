@@ -9,6 +9,20 @@ zh_TW:
     cancel: "取消"
     back: "返回"
 
+  navbar:
+    product:
+      name: "優質系列"
+      descript: "龍全除了提升與協力廠商多年來合作整合產生之綜效外，亦積極發展更貼近終端消費者的生活電子產品，以提升自身與產品的附加價值。"
+    about:
+      name: "關於龍全"
+      descript: "龍全控股為跨領域之電子設計代工公司，集團的研發及銷售中心設於台灣，兩大製造據點設立於蘇州與東莞，主要以OEM、ODM，少量多樣之客制化製造為我們的服務項目。"
+    partner:
+      name: "合作夥伴"
+      descript: "客戶需求是龍全一切工作的核心。我們知道與各類型的合作夥伴合作是多麼的重要 。您的產品與我們的產品互補，協助維護我們的環境，並使我們彼此更成功。"
+    contact:
+      name: "聯絡我們"
+      descript: "如果您想進一步了解產品或合作模式，或對產品系列有任何問題與建議，誠摯歡迎您隨時與我們聯絡。"
+
   indexlink:
     name: "首頁輪播"    
     date: "日期"
@@ -24,6 +38,7 @@ zh_TW:
       valid: "請輸入編號"
     link:
       name: "連結"
+      namefront: "了解更多"
       valid: "請輸入網址"
     content:
       name: "內文"
@@ -131,9 +146,32 @@ zh_TW:
 
   environ:
     name: "龍全後台管理系統"
+    titlefront: "龍全控股集團"
     language:
       cn: "简中"
       tw: "繁中"
       us: "EN"
 
     toIndex: "返回首頁"
+
+  company:
+    address: "公司地址"
+    tel: "公司電話"
+    fax: "公司傳真"
+    contact: "聯絡人"
+    mail: "客服信箱"
+
+    info1:
+      name: "常熟龍全電子有限公司"
+      address: "江蘇省常熟市沙家濱鎮常昆工業園D區青年路"
+      contact: "邵小姐"
+
+    info2:
+      name: "東莞歌譽電子有限公司"
+      address: "東莞市橫瀝鎮石湧村西城科技園二區"
+      contact: "邵先生"
+
+    info3:
+      name: "台灣區辦事處"
+      address: "新北市板橋區雨農路58號六樓"
+      contact: "楊先生"

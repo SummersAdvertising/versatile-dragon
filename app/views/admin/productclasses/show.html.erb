@@ -68,14 +68,14 @@ $(document).ready(function() {
         }
         else if(JSON.stringify(paragraph.type)=='"image"')
         {
-          article = "<img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " />";
+          article = "<p><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></p>";
         }
         else if(JSON.stringify(paragraph.type)=='"linkedimg"')
         {
-          article = "<a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a>";
+          article = "<p><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></p>";
         }
         else if (JSON.stringify(paragraph.type)=='"video"') {
-          article = "<iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe>";
+          article = "<p><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></p>";
         }
         $("#articleContent").append(article);
       }

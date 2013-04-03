@@ -1,6 +1,6 @@
 <% if(@productclasses.size)>0 %>
 <script type="text/javascript">
-    window.location.href="/productclasses/<%= @productclasses.first.id %>";
+    window.location.href="<%= productclass_path(@productclasses.first.id, :locale => params[:locale]) %>";
 </script>
 
 <% else %>
