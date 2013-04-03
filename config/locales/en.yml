@@ -14,6 +14,7 @@ en:
     date: "en_日期"
     title:
       name: "en_輪播上標"
+      nameIndex: "en_輪播標題"
       valid: "en_請輸入上標題"
     titlesub:
       name: "en_輪播下標"

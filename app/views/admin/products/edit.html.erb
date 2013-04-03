@@ -12,7 +12,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th><%= DateTime.now.to_date %></th>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :name, :autocomplete => "off" %></td>
       <td style="display: none;">
         <%= f.text_field :content %>
         <%= f.text_field :status %>

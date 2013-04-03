@@ -1,5 +1,5 @@
 <article>
-<%= form_for(@indexlink, :url => admin_indexlinks_path(@indexlink, :locale => I18n.locale), :method => "post") do |f| %>
+<%= form_for(@indexlink, :url => ("/"+params[:locale]+"/admin/indexlinks"), :method => "post") do |f| %>
 <%= render :partial => 'form', :locals => { :f => f} %>
 <% end %>
 </article>

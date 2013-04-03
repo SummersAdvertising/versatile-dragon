@@ -13,6 +13,7 @@ zh_TW:
     name: "首頁輪播"    
     date: "日期"
     title:
+      nameIndex: "輪播標題"
       name: "輪播上標"
       valid: "請輸入上標題"
     titlesub:

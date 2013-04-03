@@ -8,7 +8,7 @@
     <tr>
       <th width="9%" align="left" class="x1"><%= t("indexlink.ordernum.name") %></th>
       <th align="left" class="x0 x2"><%= t("indexlink.date") %></th>
-      <th align="left"><%= t("indexlink.title.name") %></th>
+      <th align="left"><%= t("indexlink.title.nameIndex") %></th>
       <th align="left" class="x0 x1"><%= t("actionshare.edit") %></th>
       <th align="left" class="x1"><%= t("actionshare.delete") %></th>
     </tr>
@@ -18,7 +18,7 @@
       <td align="left"><%= indexlink.ordernum %></td>
       <td align="left" class="x0"><%= indexlink.created_at.to_date %></td>
       <td align="left">
-        <%=link_to(indexlink.title, admin_indexlink_path(indexlink, :locale => I18n.locale)) %>
+        <%=link_to( (indexlink.title.to_s+" "+indexlink.titlesub.to_s), admin_indexlink_path(indexlink, :locale => I18n.locale)) %>
       </td>
       <td align="left" class="x0">
         <%= link_to image_tag("/images/edit.png"), edit_admin_indexlink_path(indexlink, :locale => I18n.locale) %>

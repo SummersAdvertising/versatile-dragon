@@ -1,23 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>VersatileDragon</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<!doctype html>
+<html><head>
+<!--[if lt IE 9]>
+<script src="/js/html5.js"></script>
+<![endif]-->
+<meta charset="utf-8">
+<title>龍全控股集團│VERSATILE DRAGON</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
+
+<script type="text/javascript">
+$(function(){
+  $('#slider').bxSlider({
+    pager: true
+  });
+});
+</script>
 </head>
-<style type="text/css">
-#mainmenu li{
-	display: inline;
-}
-</style>
+
 <body>
-<ul id="mainmenu">
-	<li><a href="/">index</a></li>
-	<li><a href="/productclasses">products</a></li>
-</ul>
+<header>
+  <section>
+    <h1><a href="/zh_TW">龍全控股集團</a></h1>
+    <nav>
+      <ul>
+        <li><a href="#">優質系列</a></li>
+        <li><a href="#">關於龍全</a></li>
+        <li><a href="#">合作夥伴</a></li>
+        <li><a href="#">聯絡我們</a></li>
+        <li id="lang"><a href="#">简中</a>／<a href="#">EN</a></li>
+      </ul>
+    </nav>
+  </section>
+</header>
 
 <%= yield %>
 
+<aside>
+  <section>
+    <div class="info" style="width:36%">
+      <p><strong>常熟龍全電子有限公司</strong><br>
+       公司地址：江蘇省常熟市沙家濱鎮常昆工業園D區青年路<br>
+        公司電話：0512-52577180/181<br>
+        公司傳真：0512-52578380<br>
+        聯絡人：邵小姐<br>
+        E-mail： <a href="mailto:selena.shao@me.com" target="_blank">selena.shao@me.com</a><br>
+        客服信箱： <a href="mailto:longguan228@163.com" target="_blank">longguan228@163.com</a> </p>
+    </div>
+    <div class="info">
+       <p><strong>東莞歌譽電子有限公司</strong><br>
+      公司地址：東莞市橫瀝鎮石湧村西城科技園二區<br>
+        公司電話：0769-83717123/4/5<br>
+        公司傳真：0769-83717118<br>
+        聯絡人：邵先生<br>
+        E-mail： <a href="mailto:bruce0506@163.com" target="_blank">bruce0506@163.com</a>
+      </p>
+    </div>
+    <div class="info">
+      <p><strong>台灣區辦事處：</strong><br>
+       公司地址：新北市板橋區雨農路58號六樓<br>
+        公司電話：02-22534059<br>
+        公司傳真：02-22512350<br>
+        聯絡人：楊先生<br>
+        E-mail： <a href="mailto:paulyung68@me.com" target="_blank">paulyung68@me.com</a>
+       
+     </p>
+    </div>
+  </section>
+</aside>
+<footer>
+  <section> © 2013 Versatile Dragon. All rights reserved.</section>
+</footer>
 </body>
 </html>

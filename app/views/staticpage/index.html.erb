@@ -1,23 +1,63 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>龍全</title>
-  <%= csrf_meta_tags %>
-</head>
+<div id="banner">
+  <section>
+  	<% if(@indexlinks.blank?) %>
+  	<p>尚未建立輪播</p>
+  	<% else %>
+  	<ul id="slider">
+  		<% @indexlinks.each do |indexlink| %>
+  		<li class="<%= indexlink.fontcolor.to_s %>"><%=image_tag(indexlink.image, :width=>"990px", :height => "405px") %><a href="<%= indexlink.link.to_s %>" class="more">了解更多</a>
+  			<div class="text">
+  				<hgroup>
+  					<h2><%= indexlink.title.to_s %></h2>
+  					<h3><%= indexlink.titlesub.to_s %></h3>
+  				</hgroup>
+  				<p><%= simple_format(indexlink.content) %></p>
+  			</div>
+  			<!--text--> 
+  		</li>
+  		<% end %>
+  	</ul>
+  	<% end %>
 
-<body>
-<h4>INDEX</h4>
-<% if(@indexlinks.blank?) %>
-<p>尚未建立輪播</p>
-<% else %>
-<ul>
-	<% @indexlinks.each do |indexlink| %>
-	<li>
-		<%=image_tag(indexlink.image, :width=>"100px") %>&nbsp;<%= indexlink.fontcolor %>&nbsp;<a href="<%= indexlink.link %>" target= "_blank"><%= indexlink.title %></a>
-	</li>
-	<% end %>
-</ul>
-<% end %>
-</body>
-</html>
+  </section>
+</div>
+<article>
+  <section>
+    <div id="intro"> </div>
+    <div id="quick">
+      <div class="link" id="link-1">
+        <h4>優質系列</h4>
+        <p>龍全除了提升與協力廠商多年來合作整合產生之綜效外，亦積極發展更貼近終端消費者的生活電子產品，以提升自身與產品的附加價值。</p>
+        <a href="#"></a> </div>
+      <div class="link" id="link-2">
+        <h4>關於龍全</h4>
+        <p>龍全控股為跨領域之電子設計代工公司，集團的研發及銷售中心設於台灣，兩大製造據點設立於蘇州與東莞，主要以OEM、ODM，少量多樣之客制化製造為我們的服務項目。</p>
+        <a href="#"></a> </div>
+      <div class="link" id="link-3">
+        <h4>合作夥伴</h4>
+        <p>客戶需求是龍全一切工作的核心。我們知道與各類型的合作夥伴合作是多麼的重要 。您的產品與我們的產品互補，協助維護我們的環境，並使我們彼此更成功。</p>
+        <a href="#"></a> </div>
+      <div class="link" id="link-4">
+        <h4>聯絡我們</h4>
+        <p>如果您想進一步了解產品或合作模式，或對產品系列有任何問題與建議，誠摯歡迎您隨時與我們聯絡。</p>
+        <a href="#"></a> </div>
+    </div>
+  </section>
+</article>
+
+<script type="text/javascript">
+	$(function(){
+		$('.link a').mouseover(function(){
+			$(this).siblings('h4').stop().css({
+				'background-position-x': '30px',
+  				'background-position-y': '-30px',
+				'opacity':'0'
+				}).animate({
+  				'background-position-x': '30px',
+  				'background-position-y': '0px',
+				'opacity':'1'
+			}, 1000)
+		});
+		
+	})
+</script>

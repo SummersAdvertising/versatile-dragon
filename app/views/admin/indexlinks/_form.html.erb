@@ -2,7 +2,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th><%= t("indexlink.title.name") %></th>
-      <td><%= f.text_field :title, :placeholder => t("indexlink.title.valid") %></td>
+      <td><%= f.text_field :title, :placeholder => t("indexlink.title.valid"), :autocomplete => "off" %></td>
     </tr>
   </table>
 </section>
@@ -12,7 +12,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th><%= t("indexlink.titlesub.name") %></th>
-      <td><%= f.text_field :titlesub, :placeholder => t("indexlink.titlesub.valid") %></td>
+      <td><%= f.text_field :titlesub, :placeholder => t("indexlink.titlesub.valid"), :autocomplete => "off" %></td>
     </tr>
   </table>
 </section>
@@ -23,7 +23,7 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <th valign="top"><%= t("indexlink.ordernum.name") %></th>
-        <td><%= f.text_field :ordernum, :placeholder => t("indexlink.ordernum.valid") %></td>
+        <td><%= f.text_field :ordernum, :placeholder => t("indexlink.ordernum.valid"), :autocomplete => "off" %></td>
       </tr>
     </table>
   </div>
@@ -32,7 +32,7 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <th valign="top"><%= t("indexlink.link.name") %></th>
-        <td><%= f.text_field :link, :placeholder => t("indexlink.link.valid") %></td>
+        <td><%= f.text_field :link, :placeholder => t("indexlink.link.valid"), :autocomplete => "off" %></td>
     </tr>
   </table>
 </div>
@@ -41,7 +41,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th valign="top"><%= t("indexlink.content.name") %></th>
-      <td><%= f.text_area :content, :placeholder => t("indexlink.content.valid"), :class =>"autogrow" %></td>
+      <td><%= f.text_area :content, :placeholder => t("indexlink.content.valid"), :class =>"autogrow", :autocomplete => "off" %></td>
     </tr>
   </table>
 </div>
@@ -68,7 +68,7 @@
         <%=image_tag(@indexlink.image, :width=>"100px") %><br />
         
         <%else%>
-        <p>t("indexlink.upload.valid")</p><br />
+        <p><%= t("indexlink.upload.valid") %></p><br />
         <% end %>
       </td>
     </tr>
