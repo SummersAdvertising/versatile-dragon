@@ -117,7 +117,8 @@ en:
       valid: "en_請輸入段落內容"
       holder: "en_請輸入文字"
       class:
-        title: "en_標題"
+        titleBlack: "en_小標(粗黑)"
+        titleRed: "en_大標(紅)"
         content: "en_內文"
 
     image:

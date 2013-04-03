@@ -25,7 +25,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @product = @productclass.products.with_translations(I18n.locale).find_by_id(params[:id])
+    @product = @productclass.products.find_by_id(params[:id])
     @photo = Productphoto.new
   end
 

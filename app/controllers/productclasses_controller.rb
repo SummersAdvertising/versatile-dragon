@@ -1,6 +1,6 @@
 class ProductclassesController < ApplicationController
   def index
-    @productclasses = Productclass.all
+    @productclasses = Productclass.with_translations(I18n.locale).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -9,9 +9,8 @@ class ProductclassesController < ApplicationController
   end
 
   def show
-    @productclasses = Productclass.all
+    @productclasses = Productclass.with_translations(I18n.locale).all
     @productclass = Productclass.find(params[:id])
-    @products = @productclass.products.order('created_at DESC').all
 
     respond_to do |format|
       format.html # show.html.erb

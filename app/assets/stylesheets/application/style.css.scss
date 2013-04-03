@@ -1,0 +1,30 @@
+﻿html{}
+body{width:100%;font:300 14px "微軟正黑體";line-height:1.7em}
+section{width:1024px;margin:0 auto;}
+a{font:300 14px "微軟正黑體";text-decoration:none;
+-webkit-transition:all ease .3s;-moz-transition:all ease .3s}
+
+header{background:image-url("index-top-bg.jpg") 0 0 repeat-x;box-shadow:0 3px 3px #aaa;position:relative;z-index:2}
+header section{background:image-url("index-top.jpg") 0 0 no-repeat;height:70px;padding:0 20px;overflow:hidden}
+
+h1{float:left;width:40%;padding:12px 0 0 0}
+h1 a{display:block;width:180px;height:49px;background:image-url("h1.png");text-indent:-7777px}
+nav{float:right;width:60%;padding:27px 0 0 0}
+nav ul{overflow:hidden}
+nav li{float:left;color:#fff;margin:0 25px}
+nav a{color:#fff;font:900 16px "微軟正黑體"}
+nav a:hover{color:#FFEF1B}
+#lang a{font:900 12px "微軟正黑體"}
+
+article{background:image-url("article-bg.jpg") center 0 no-repeat #FAF4E6;padding:0 0 65px 0}
+
+aside{background:image-url("index-footer-bg.jpg") 0 top repeat-x;}
+aside section{height:211px;overflow:hidden;background:image-url("index-footer-bg2.jpg") center 0 no-repeat;padding:25px 0 0 0}
+aside .info{width:32%;float:left;color:#fff}
+aside strong{font-weight:900}
+aside a{color:#ffe300}
+aside a:hover{text-decoration:underline}
+
+footer{background:image-url("index-footer-bg.jpg") 0 bottom repeat-x}
+footer section{height:88px;border-top:1px solid #5084A4;color:#fff;padding:10px}
+

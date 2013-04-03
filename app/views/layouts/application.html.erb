@@ -7,6 +7,13 @@
 <meta charset="utf-8">
 <title>龍全控股集團│VERSATILE DRAGON</title>
 <%= stylesheet_link_tag    "application", :media => "all" %>
+
+<% if(params[:controller] == "staticpage") %>
+<%= stylesheet_link_tag "index", :media => "all" %>
+<% elsif(params[:controller] == "productclasses" || params[:controller] == "products") %>
+<%= stylesheet_link_tag "series", :media => "all" %>
+<% end %>
+
 <%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
 
@@ -34,8 +41,11 @@ $(function(){
 
   $("#lang a").click(function(){
   	//符合regex時傳回array ["目前網址", "root path(不含語系)", "語系", "子網頁"]
-  	var location = window.location.toString().match(/^http\:\/\/(.+)\/(en|zh_TW|zh_CN)(.*)/)[3];
-  	window.location = "/"+$(this).data("lang")+location;
+  	var location = window.location.toString().match(/^http\:\/\/(.+)\/(en|zh_TW|zh_CN)([\/productclasses]?)(.*)/)[4];
+    if(location.indexOf("productclasses") !== -1){
+      location = "productclasses";
+    }
+  	window.location = "/"+$(this).data("lang")+"/"+location;
   });
 
 });

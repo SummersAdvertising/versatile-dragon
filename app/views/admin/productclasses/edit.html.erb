@@ -46,7 +46,8 @@
           </select>
           -->
           <select id="newParagraphClass" >
-            <option value="font-black"><%= t("editor.paragraph.class.title") %></option>
+            <option value="font-red"><%= t("editor.paragraph.class.titleRed") %></option>
+            <option value="font-black"><%= t("editor.paragraph.class.titleBlack") %></option>
             <option value="content" selected="selected"><%= t("editor.paragraph.class.content") %></option>
           </select>
         </td>
@@ -471,14 +472,14 @@ $(document).ready(function(){
           }
           else if(JSON.stringify(paragraph.type)=='"image"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
           }
           else if(JSON.stringify(paragraph.type)=='"linkedimg"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'>刪除</a></li></ul><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
           }
           else if (JSON.stringify(paragraph.type)=='"video"') {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='video' data-code=\"" + paragraph.code + "\"><ul class='tool-b'><li><a name='delete'>刪除</a></li></ul><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='video' data-code=\"" + paragraph.code + "\"><ul class='tool-b'><li><a name='delete'><%= t('actionshare.delete') %></a></li></ul><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
           }
 
           $("#articleContent").append(article);
@@ -486,7 +487,7 @@ $(document).ready(function(){
       }
       catch( err )
       {
-        $("#productclass_content").val("");
+        $("#product_content").val("");
         saveArticle();
       }
       

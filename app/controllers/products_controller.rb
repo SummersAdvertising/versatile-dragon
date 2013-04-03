@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   
   def show
-  	@productclasses = Productclass.all
+  	@productclasses = Productclass.with_translations(I18n.locale).all
+    @productclass = Productclass.find(params[:productclass_id])
     @product = Product.find(params[:id])
 
     respond_to do |format|

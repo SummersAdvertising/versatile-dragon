@@ -1,19 +1,41 @@
-<div style="float: left;">
-  <ul>
-    <% @productclasses.each do |productclass| %>
-    <li>
-      <%= link_to productclass.name, productclass_path(productclass, :locale => I18n.locale) %>
-    </li>
-    <% end %>
-  </ul>
-</div>
+<article>
+  <section>
+    <div id="banner"></div>
+    <div id="main">
+      <div id="side">
+        <% @productclasses.each do |productclass| %>
+        <div class="category">
+          <h5><%= link_to productclass.name, productclass_path(productclass, :locale => I18n.locale) %></h5>
+          <ul>
+            <% if(productclass.id.to_s == params[:productclass_id] && productclass.products.size > 0) %>
+            <% productclass.products.each do |product| %>
+            <% if(product.status == "enable") %>
+            <% if(product.id.to_s == params[:id]) %>
+            <li class="active">
+            <% else %>
+            <li>
+            <% end %>
+            <%= link_to product.name, productclass_product_path(@productclass, product, :locale => I18n.locale) %></li>
+            <% end %>
+            
+            <% end %>
+            
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      </div>
 
-<div style="float: right; width: 70%;">
-  <p><b>Name:</b><%= @product.name %></p>
-  <input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
-  <div id="articleContent" class="main-text"></div>
-  <%= link_to 'Back', productclass_path(@product.productclass_id, :locale => I18n.locale)%>
-</div>
+      <div id="content">
+        <div class="bread">
+          <%= link_to @productclass.name, productclass_path(@productclass, :locale => I18n.locale) %> >
+          <a href="#"><%= @product.name %></a></div> 
+        <input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
+        <div id="articleContent" class="main-text"></div>
+      </div>
+    </div>
+  </section>
+</article>
 
 
 <script type="text/javascript">

@@ -119,9 +119,8 @@ border-radius:5px;width:302px}
 .text-edit th{padding:7px 0 0 0}
 .text .radio{width:30px;border:none;padding:0;position:relative;top:3px}
 
-#articleContent{
-	padding:10px 10px 10px 20px
-}
+.text img{max-width:100%;height:auto}
+.text p{padding:10px}
 
 /*-----------------------------------------------------------------------頁腳---*/
 
@@ -139,7 +138,8 @@ footer a{font:300 13px "Times New Roman", Times, serif;text-shadow:0 1px 0 #fff}
 .addlink{text-shadow:0 1px 0 #fff}
 .addlink img{position:relative;top:4px}
 
-.font-black{font-weight:900;font-size:15px}
+.font-black{font-weight:900;font-size:15px;color:#000!important}
+.font-red{color:#ce0021;font-size:32px}
 
 /*-----------------------------------------------------------------------登入---*/
 

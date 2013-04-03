@@ -117,7 +117,8 @@ zh_TW:
       valid: "請輸入段落內容"
       holder: "請輸入文字"
       class:
-        title: "標題"
+        titleBlack: "小標(粗黑)"
+        titleRed: "大標(紅)"
         content: "內文"
 
     image:

@@ -46,17 +46,17 @@
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th align="center" class="x2"><%= t("admin.username.title") %></th>
+      <th align="left" class="x2"><%= t("admin.username.title") %></th>
       <th align="left"><%= t("admin.userid.title") %></th>
-      <th align="center" class="x1"><%= t("actionshare.delete") %></th>
+      <th align="left" class="x1"><%= t("actionshare.delete") %></th>
     </tr>
 
     <% @admins.each do |admin| %>
     <% if(!admin.master) %>
     <tr>
-      <td align="center"><%= admin.name %></td>
+      <td align="left"><%= admin.name %></td>
       <td align="left"><%= admin.username %></td>
-      <td align="center" class="delete">
+      <td align="left" class="delete">
         <a href="#" data-deleteid="<%= admin.id.to_s %>"><img src="/images/delete.png"></a>
       </td>
       <%= link_to image_tag("/images/delete.png"), ("/"+params[:locale]+"/admin/deleteAdmin/"+admin.id.to_s) , :method => :delete, :id => ("delete"+ admin.id.to_s ), :style => "display:none;" %>
