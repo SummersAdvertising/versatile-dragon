@@ -1,3 +1,13 @@
+def compile_asset?(path)
+  if File.basename(path) =~ /^[^_].*\.\w+$/
+    puts "Compiling: #{path}"
+    true
+  else
+    puts "Ignoring: #{path}"
+    false
+  end
+end
+
 VersatileDragon::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -32,6 +42,7 @@ VersatileDragon::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 
+  config.assets.precompile = [ method(:compile_asset?).to_proc ]
   config.assets.precompile += %w( files )
 
   # Expands the lines which load the assets
