@@ -23,19 +23,19 @@
       <div class="link" id="link-1">
         <h4><%= t("navbar.product.name") %></h4>
         <p><%= t("navbar.product.descript") %></p>
-        <a href="#"></a> </div>
+        <a href="<%= productclasses_path(:locale => params[:locale]) %>"></a> </div>
       <div class="link" id="link-2">
         <h4><%= t("navbar.about.name") %></h4>
         <p><%= t("navbar.about.descript") %></p>
-        <a href="#"></a> </div>
+        <a href="/<%= I18n.locale %>/about"></a> </div>
       <div class="link" id="link-3">
         <h4><%= t("navbar.partner.name") %></h4>
         <p><%= t("navbar.partner.descript") %></p>
-        <a href="#"></a> </div>
+        <a href="/<%= I18n.locale %>/partner"></a> </div>
       <div class="link" id="link-4">
         <h4><%= t("navbar.contact.name") %></h4>
         <p><%= t("navbar.contact.descript") %></p>
-        <a href="#"></a> </div>
+        <a href="/<%= I18n.locale %>/contact"></a> </div>
     </div>
   </section>
 </article>
