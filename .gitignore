@@ -18,4 +18,3 @@ pickle-email-*.html
 
 /public/uploads/*
 /config/deploy/*
-/config/database.yml
