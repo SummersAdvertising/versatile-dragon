@@ -143,6 +143,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
   $("#nav-2").parent().addClass("active");
+  $("#lang a").unbind().click(function(event){
+    
+    event.preventDefault();
+    Alertify.log.error("文章編輯中, 無法切換語系");
+
+  });
 });
 </script>
 
