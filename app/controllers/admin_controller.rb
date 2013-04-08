@@ -73,6 +73,7 @@ class AdminController < ApplicationController
     respond_to do |format|
       if(@dbData && pswordCheck(@admin.password, @dbData.password))
         session[:admin] = @dbData.name
+        session[:adminID] = @dbData.id
         format.html { redirect_to admin_path(:locale => I18n.locale) }
       else
         flash[:loginCheck] = "wrong password"

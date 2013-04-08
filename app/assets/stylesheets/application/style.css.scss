@@ -17,6 +17,11 @@ nav a:hover{color:#FFEF1B}
 #lang a{font:900 12px "微軟正黑體"}
 
 article{background:image-url("article-bg.jpg") center 0 no-repeat #FAF4E6;padding:0 0 65px 0}
+#banner{height:205px;padding:135px 0 0 33px}
+.bread{color:#fe7300;font-size:16px}
+.bread a{color:#fe7300;font-size:16px}
+.bread a:hover{text-decoration:underline}
+#content h3{color:#ce0021;font:300 32px "微軟正黑體";text-shadow:0 1px 0 #fff;padding:0 0 10px 0}
 
 aside{background:image-url("index-footer-bg.jpg") 0 top repeat-x;}
 aside section{height:211px;overflow:hidden;background:image-url("index-footer-bg2.jpg") center 0 no-repeat;padding:25px 0 0 0}
@@ -27,4 +32,3 @@ aside a:hover{text-decoration:underline}
 
 footer{background:image-url("index-footer-bg.jpg") 0 bottom repeat-x}
 footer section{height:88px;border-top:1px solid #5084A4;color:#fff;padding:10px}
-

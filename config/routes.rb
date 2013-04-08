@@ -1,5 +1,9 @@
 VersatileDragon::Application.routes.draw do
 	scope ':locale', :locale => /en|zh_TW|zh_CN/ do
+		get "/about" => "staticpage#about"
+		get "/partner" => "staticpage#partner"
+		get "/contact" => "staticpage#contact"
+
 		resources :productclasses, :only => [:index, :show] do
 			resources :products, :only => :show
 		end
@@ -11,7 +15,7 @@ VersatileDragon::Application.routes.draw do
 
 		namespace :admin do
 			get "showAdmins", "log_in", "log_out", "edit"
-			get '/' => 'indexlinks#index'
+			get "/" => "indexlinks#index"
 
 			resources :indexlinks
 			resources :productclasses do

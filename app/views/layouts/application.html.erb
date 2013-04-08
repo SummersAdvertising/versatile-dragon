@@ -9,12 +9,23 @@
 <%= stylesheet_link_tag    "application", :media => "all" %>
 
 <% if(params[:controller] == "staticpage") %>
+<% case params[:action] %>
+<% when "index" %>
 <%= stylesheet_link_tag "index", :media => "all" %>
+<% when "about" %>
+<%= stylesheet_link_tag "about", :media => "all" %>
+<% when "contact" %>
+<%= stylesheet_link_tag "contact", :media => "all" %>
+<% when "partner" %>
+<%= stylesheet_link_tag "partner", :media => "all" %>
+<% end %>
+
 <% elsif(params[:controller] == "productclasses" || params[:controller] == "products") %>
 <%= stylesheet_link_tag "series", :media => "all" %>
 <% end %>
 
 <%= javascript_include_tag "application" %>
+<script type="text/javascript" src="/js/auto-full-height.min.js"></script>
 <%= csrf_meta_tags %>
 
 <script type="text/javascript">
@@ -55,13 +66,13 @@ $(function(){
 <body>
 <header>
   <section>
-    <h1><a href="/zh_TW"><%= t("environ.titlefront") %></a></h1>
+    <h1><a href="/<%= I18n.locale %>"><%= t("environ.titlefront") %></a></h1>
     <nav>
       <ul>
         <li><a href="<%= productclasses_path(:locale => params[:locale]) %>"><%= t("navbar.product.name") %></a></li>
-        <li><a href="#"><%= t("navbar.about.name") %></a></li>
-        <li><a href="#"><%= t("navbar.partner.name") %></a></li>
-        <li><a href="#"><%= t("navbar.contact.name") %></a></li>
+        <li><a href="/<%= I18n.locale %>/about"><%= t("navbar.about.name") %></a></li>
+        <li><a href="/<%= I18n.locale %>/partner"><%= t("navbar.partner.name") %></a></li>
+        <li><a href="/<%= I18n.locale %>/contact"><%= t("navbar.contact.name") %></a></li>
         <li id="lang">
         	<a href="#" data-lang="zh_TW">繁中</a>
         	<a href="#" data-lang="zh_CN">简中</a>
