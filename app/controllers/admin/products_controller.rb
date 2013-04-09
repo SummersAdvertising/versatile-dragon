@@ -11,7 +11,7 @@ class Admin::ProductsController < ApplicationController
   def index
     @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:productclass_id])    
     if(@productclass)
-      @products = @productclass.products.all
+      @products = @productclass.products.order("addDate DESC, created_at DESC").all
     end
   end
 

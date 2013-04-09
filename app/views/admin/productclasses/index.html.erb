@@ -27,7 +27,7 @@
 
     <% @productclasses.each do |productclass| %>
     <tr>
-      <td align="left" class="x0"><%= productclass.created_at.to_date %></td>
+      <td align="left" class="x0"><%= productclass.addDate.to_s.to_date %></td>
       <td align="left">
         <%= link_to productclass.name, admin_productclass_path(productclass, :locale => I18n.locale) %></td>
       <td align="left">

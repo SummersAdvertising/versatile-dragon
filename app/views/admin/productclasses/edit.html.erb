@@ -6,17 +6,26 @@
 <!--hgroup-->
 
 <%= form_for(@productclass, :url => admin_productclass_path(@productclass, :locale => I18n.locale), :method => "put") do |f| %>
-<section class="title">  
+<section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <th><%= DateTime.now.to_date %></th>
-      <td><%= f.text_field :name, :autocomplete => "off" %></td>
-      <td style="display: none;">
-        <%= f.text_field :content %>
-      </td>
+      <th><%= t("productclass.addDate") %></th>
+      <td><%= f.text_field :addDate, :autocomplete => "off", :placeholder => t("productclass.addDateholder") %></td>
     </tr>
   </table>
 </section>
+<!--title-->
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th><%= t("productclass.productclassName") %></th>
+      <td><%= f.text_field :name, :autocomplete => "off", :placeholder => t("productclass.productclassNameholder") %>
+      <td style="display: none;">
+        <%= f.text_field :content %></td>
+    </tr>
+  </table>
+</section>
+<!--title-->
 <% end %>
 
 <!--title-->
@@ -136,6 +145,11 @@ $(document).ready(function(){
 </script>
 
 <script type="text/javascript">
+  $( "#productclass_addDate" ).datepicker();
+  $( "#productclass_addDate" ).change(function(){
+    $(this).datepicker("option", "dateFormat", "yy-mm-dd");
+  });
+
   var form = "#edit_productclass_<%= params[:id]%>";
 
   //show content

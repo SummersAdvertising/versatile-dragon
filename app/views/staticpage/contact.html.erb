@@ -1,13 +1,53 @@
 <article _height="auto">
   <section>
     <div id="banner">
-      <div class="bread"><a href="/<%= I18n.locale %>">首頁</a> > 聯絡我們</div>
+      <div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > <%= t("bread.contact") %></div>
     </div>
     <div id="content">
-      <h3>歡迎各行業合作，將商機最大化</h3>
-      <p>感謝您拜訪龍全，如果您想進一步瞭解龍全的產品或服務資訊，或對龍全有任何問題與建議，誠摯歡迎您透過聯絡資訊與我們溝通。或可使用線上訪客留言方式，我們將用最快的速度，完成對您的服務
-      </p>
-      
+      <h3><%= t("contact.title") %></h3>
+      <p><%= t("contact.content") %></p>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="56%"><img src="/images/contact-01.jpg" width="517" height="279"></td>
+          <td width="44%"><strong><%= t("company.info3.name") %></strong><br>
+       <%= t("company.address") %>：<%= t("company.info3.address") %><br>
+        <%= t("company.tel") %>：02-22534059<br>
+        <%= t("company.fax") %>：02-22512350<br>
+        <%= t("company.contact") %>：<%= t("company.info3.contact") %><br>
+        E-mail： <a href="mailto:paulyung68@me.com" target="_blank">paulyung68@me.com</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><img src="/images/contact-02.jpg" width="517" height="279"></td>
+          <td><strong><%= t("company.info1.name") %></strong><br>
+       <%= t("company.address") %>：<%= t("company.info1.address") %><br>
+        <%= t("company.tel") %>：0512-52577180/181<br>
+        <%= t("company.fax") %>：0512-52578380<br>
+        <%= t("company.contact") %>：<%= t("company.info1.contact") %><br>
+        E-mail： <a href="mailto:selena.shao@me.com" target="_blank">selena.shao@me.com</a><br>
+        <%= t("company.mail") %>： <a href="mailto:longguan228@163.com" target="_blank">longguan228@163.com</a> 
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><img src="/images/contact-03.jpg" width="517" height="279"></td>
+          <td><strong><%= t("company.info2.name") %></strong><br>
+      <%= t("company.address") %>：<%= t("company.info2.address") %><br>
+        <%= t("company.tel") %>：0769-83717123/4/5<br>
+        <%= t("company.fax") %>：0769-83717118<br>
+        <%= t("company.contact") %>：<%= t("company.info2.contact") %><br>
+        E-mail： <a href="mailto:bruce0506@163.com" target="_blank">bruce0506@163.com</a>
+          </td>
+        </tr>
+      </table>
     </div>
   </section>
 </article>

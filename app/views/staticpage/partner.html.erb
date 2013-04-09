@@ -1,12 +1,11 @@
 <article>
   <section>
     <div id="banner">
-      <div class="bread"><a href="/<%= I18n.locale %>">首頁</a> > 合作夥伴</div>
+      <div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > <%= t("bread.partner") %></div>
     </div>
     <div id="content">
-      <h3>行業的界定永遠不會阻礙我們的合作<br>
-        機會無所不在</h3>
-      <p>不只是市面上首屈一指的發熱產品專家，極地暖更以創新想法設計出適合各種產品、各種應用的發熱解決方案，同時兼具創意與實用價值，與您一同開展發熱市場無限商機。</p>
+      <h3><%= t("partner.title").gsub("\n", '<br/>').html_safe %></h3>
+      <p><%= t("partner.content") %></p>
       <div id="logo">
         <table width="100%%" border="0" cellspacing="0" cellpadding="0">
           <tr>

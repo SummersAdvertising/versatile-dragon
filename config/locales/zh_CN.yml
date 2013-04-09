@@ -1,0 +1,201 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+zh_CN:
+  actionshare:
+    edit: "编辑"
+    delete: "删除"
+    deleteConfirm: "确定要删除吗？"
+    save: "储存"
+    cancel: "取消"
+    back: "返回"
+
+  bread:
+    index: "首页"
+    about: "关於龙全"
+    partner: "合作夥伴"
+    contact: "联络我们"
+
+  about:
+    content: "龙全控股成立於2004年，多年来钻研於电子设计领域，掌握核心发热技术，突破业界瓶颈，开发出於零下40℃仍能正常发热的革命性产品；以OEM/ODM/OBM服务型态，龙全控股致力於累积创新想法及专业技术，为客户设计出适合不同产品丶各种应用的发热解决方案，携手开创发热新商机，服务广大客群，将一分温暖带给所有使用者。<br><br>未来龙全控股将持续提升技术与机构整合能力，改变世界对发热产品的想像力，与您一同领导潮流丶创造市场，诚挚欢迎您随时与我们联络。<br><br><h3>经营理念</h3>关怀丶了解，进而满足人与社会的需求，是龙全控股的核心经营精神；以此精神龙全努力钻研技<br>术，创新发展，进而达成永续经营的目标。 <br><br><h3>社会关怀</h3>我们相信企业是社会的一部分，时时关怀丶回馈社会亦是我们的使命之一。<br><br><h3>道德责任</h3>所有劳工权益均符合当地法规，并力求符合SA8000标准：<br>• 提供安全健康的工作环境<br>• 薪资不低於法律或行业最低标准<br>• 不使用强迫劳动<br>• 不雇用童工<br>• 不歧视种族丶宗教丶肤色丶国籍丶性别<br>• 不使用惩戒性措施<br><br><h3>公司基本资料：</h3>成立时间：2004年<br>资本额：美金500万元<br>员工人数：400人<br>制造与研发据点：东莞丶苏州丶台湾<br><br><h3>优质制程管理</h3><img src='/images/about-02.png' width='991' height='441'>"
+
+  partner:
+    title: "行业的界定永远不会阻碍我们的合作\n机会无所不在"
+    content: "不只是市面上首屈一指的发热产品专家，极地暖更以创新想法设计出适合各种产品丶各种应用的发热解决方案，同时兼具创意与实用价值，与您一同开展发热市场无限商机。"
+
+  contact:
+    title: "欢迎各行业合作，将商机最大化"
+    content: "感谢您拜访龙全，如果您想进一步了解龙全的产品或服务资讯，或对龙全有任何问题与建议，诚挚欢迎您透过联络资讯与我们沟通。或可使用线上访客留言方式，我们将用最快的速度，完成对您的服务"
+
+  navbar:
+    product:
+      name: "优质系列"
+      descript: "龙全除了提升与协力厂商多年来合作整合产生之综效外，亦积极发展更贴近终端消费者的生活电子产品，以提升自身与产品的附加价值。"
+    about:
+      name: "关於龙全"
+      descript: "龙全控股为跨领域之电子设计代工公司，集团的研发及销售中心设於台湾，两大制造据点设立於苏州与东莞，主要以OEM丶ODM，少量多样之客制化制造为我们的服务项目。"
+    partner:
+      name: "合作夥伴"
+      descript: "客户需求是龙全一切工作的核心。我们知道与各类型的合作夥伴合作是多麽的重要。您的产品与我们的产品互补，协助维护我们的环境，并使我们彼此更成功。"
+    contact:
+      name: "联络我们"
+      descript: "如果您想进一步了解产品或合作模式，或对产品系列有任何问题与建议，诚挚欢迎您随时与我们联络。"
+
+  indexlink:
+    name: "首页轮播"    
+    date: "日期"
+    title:
+      nameIndex: "轮播标题"
+      name: "轮播上标"
+      valid: "请输入上标题"
+    titlesub:
+      name: "轮播下标"
+      valid: "请输入下标题"
+    ordernum:
+      name: "编号"
+      valid: "请输入编号"
+    link:
+      name: "连结"
+      namefront: "了解更多"
+      valid: "请输入网址"
+    content:
+      name: "内文"
+      valid: "请输入内文"
+    color:
+      name: "颜色"
+      black: "黑色"
+      white: "白色"
+    preview: "预览"
+    upload:
+      name: "上传"
+      valid: "未上传图片"
+
+    new: "新增轮播"
+
+  productclass:
+    name: "优质系列"
+    date: "日期"
+    title: "标题"
+    titleIndex: "分类列表"
+    titleShow: "预览页面"
+    titleNew: "新增＆编辑页面"
+    noClass: "尚未建立分类"
+    noProduct: "此分类下没有商品"
+    addDate: "日期排序"
+    addDateholder: "请选择日期"
+    productclassName: "分类名称"
+    productclassNameholder: "请输入分类名称"
+
+    listProduct: "产品"
+    new: "建立分类"
+    deleteConfirm: "该分类底下的产品也会一并删除，您确定吗？"
+
+  product:
+    titleIndex: "产品列表"
+    titleShow: "预览页面"
+    titleNew: "新增＆编辑页面"
+    date: "日期"
+    status:
+      name: "前台显示"
+      enable: "是"
+      disable: "否"
+    title: "标题"
+    productName: "商品名称"
+    productNameholder: "请输入商品名称"
+
+    new: "新增商品"
+
+  admin:
+    name: "管理人员"
+    titleEdit: "个人资料"
+    username:
+      name: "名称"
+      title: "使用者名称"
+    userid:
+      name: "帐号"
+      title: "使用者帐号"
+    password:
+      name: "密码"
+      newname: "新密码"
+      newconfirm: "确认新密码"
+      change: "修改密码"
+      changeNote: "如不修改密码可不填此栏"
+    passwordconfirm: 
+      name: "确认密码"
+      valid: "密码不一致，请重新输入密码"
+
+    valid: "不能为空"
+    holder: "请输入"
+    new: "新增帐号"
+    newError: "该帐号已经存在"
+    newSuccess: "已成功新增使用者"
+    updateSuccess: "管理者资料已更新"
+    edit: "修改个人资料"
+    login: "登入"
+    loginError: "请输入正确的帐号及密码"
+    logout: "登出"
+
+  editor:
+    paragraph:
+      name: "插入段落"
+      valid: "请输入段落内容"
+      holder: "请输入文字"
+      class:
+        titleBlack: "小标(粗黑)"
+        titleRed: "大标(红)"
+        content: "内文"
+
+    image:
+      name: "插入图片"
+      valid: "请选择要上传的档案"
+      errortype: "只能上传 .gif, .png, .jpg 图片档"
+      errorsize: "档案大小必须小於5MB"
+
+    video:
+      name: "插入影片"
+      valid: "请贴上影片网址"
+      holder: "请贴入 YouTube 网址"
+
+    link:
+      name: "插入连结"
+      href: "连结网址"
+      holder: "请输入连结网址"
+
+    add: "新增段落"
+    save: "完成"
+    saveSuccess: "已成功储存您的变更"
+
+    preview:
+      title: "文章预览"
+      tip: "可拖曳文章段落排序"
+
+  environ:
+    name: "龙全後台管理系统"
+    titlefront: "龙全控股集团"
+    language:
+      cn: "简中"
+      tw: "繁中"
+      us: "EN"
+
+    toIndex: "返回首页"
+
+  company:
+    address: "公司地址"
+    tel: "公司电话"
+    fax: "公司传真"
+    contact: "联络人"
+    mail: "客服信箱"
+
+    info1:
+      name: "常熟龙全电子有限公司"
+      address: "江苏省常熟市沙家滨镇常昆工业园D区青年路"
+      contact: "邵小姐"
+
+    info2:
+      name: "东莞歌誉电子有限公司"
+      address: "东莞市横沥镇石涌村西城科技园二区"
+      contact: "邵先生"
+
+    info3:
+      name: "台湾区办事处"
+      address: "新北市板桥区雨农路58号六楼"
+      contact: "杨先生"
