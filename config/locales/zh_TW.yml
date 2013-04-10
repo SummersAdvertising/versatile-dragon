@@ -66,6 +66,7 @@ zh_TW:
       name: "上傳"
       valid: "未上傳圖片"
 
+    submitValid: "標題及內容不能為空"
     new: "新增輪播"
 
   productclass:

@@ -2,7 +2,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th><%= t("indexlink.title.name") %></th>
-      <td><%= f.text_field :title, :placeholder => t("indexlink.title.valid"), :autocomplete => "off" %></td>
+      <td><%= f.text_field :title, :placeholder => t("indexlink.title.valid"), :autocomplete => "off", :class => "valid" %></td>
     </tr>
   </table>
 </section>
@@ -41,7 +41,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th valign="top"><%= t("indexlink.content.name") %></th>
-      <td><%= f.text_area :content, :placeholder => t("indexlink.content.valid"), :class =>"autogrow", :autocomplete => "off" %></td>
+      <td><%= f.text_area :content, :placeholder => t("indexlink.content.valid"), :class =>"autogrow", :autocomplete => "off", :class => "valid" %></td>
     </tr>
   </table>
 </div>
@@ -86,6 +86,21 @@
 <script type="text/javascript">
 $("#formSubmit").click(function(event){
   event.preventDefault();
-  $("form").submit();
+
+  var submit = true;
+
+  $(".valid").each(function(){
+    if(!$(this).val()){
+      submit = false;
+    }
+  });
+
+  if(submit){
+    $("form").submit();
+  }
+  else{
+    Alertify.log.error('<%= t("indexlink.submitValid") %>');
+  }
+
 });
 </script>

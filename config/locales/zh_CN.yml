@@ -66,6 +66,7 @@ zh_CN:
       name: "上传"
       valid: "未上传图片"
 
+    submitValid: "标题及内容不能为空"
     new: "新增轮播"
 
   productclass:
