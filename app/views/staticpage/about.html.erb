@@ -3,10 +3,8 @@
     <div id="banner">
       <div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > <%= t("bread.about") %></div>
     </div>
-    <div id="content">
-      <img src="/images/about-03.png" width="202" height="295" id="boss"> <img src="/images/about-01.png" width="932" height="335">
-      <p><%= t("about.content").gsub("\n", '<br/>').html_safe %></p>
-    </div>
+    <%= render :partial => 'staticpage/content/'+I18n.locale.to_s %>
+    
   </section>
 </article>
 <script type="text/javascript">
