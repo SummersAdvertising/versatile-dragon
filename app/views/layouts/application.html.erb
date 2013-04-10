@@ -34,10 +34,6 @@
 
 <script type="text/javascript">
 $(function(){
-  $('#slider').bxSlider({
-    pager: true
-  });
-
   //更換語系
   changeLang();
 
@@ -78,9 +74,9 @@ $(function(){
         <li><a href="/<%= I18n.locale %>/partner"><%= t("navbar.partner.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/contact"><%= t("navbar.contact.name") %></a></li>
         <li id="lang">
-        	<a href="#" data-lang="zh_TW">繁中</a>
-        	<a href="#" data-lang="zh_CN">简中</a>
-        	<a href="#" data-lang="en">EN</a>
+        	<a href="#" data-lang="zh_TW"><%= t("environ.language.tw") %></a>
+        	<a href="#" data-lang="zh_CN"><%= t("environ.language.cn") %></a>
+        	<a href="#" data-lang="en"><%= t("environ.language.us") %></a>
         </li>
       </ul>
     </nav>
@@ -97,8 +93,8 @@ $(function(){
         <%= t("company.tel") %>：0512-52577180/181<br>
         <%= t("company.fax") %>：0512-52578380<br>
         <%= t("company.contact") %>：<%= t("company.info1.contact") %><br>
-        E-mail： <a href="mailto:selena.shao@me.com" target="_blank">selena.shao@me.com</a><br>
-        <%= t("company.mail") %>： <a href="mailto:longguan228@163.com" target="_blank">longguan228@163.com</a> </p>
+        E-mail： <a href="mailto:selena@versatile-dragon.com" target="_blank">selena@versatile-dragon.com</a><br>
+        <%= t("company.mail") %>： <a href="mailto:selena@versatile-dragon.com" target="_blank">selena@versatile-dragon.com</a> </p>
     </div>
     <div class="info">
        <p><strong><%= t("company.info2.name") %></strong><br>
@@ -106,7 +102,7 @@ $(function(){
         <%= t("company.tel") %>：0769-83717123/4/5<br>
         <%= t("company.fax") %>：0769-83717118<br>
         <%= t("company.contact") %>：<%= t("company.info2.contact") %><br>
-        E-mail： <a href="mailto:bruce0506@163.com" target="_blank">bruce0506@163.com</a>
+        E-mail： <a href="mailto:bruce@versatile-dragon.com" target="_blank">bruce@versatile-dragon.com </a>
       </p>
     </div>
     <div class="info">

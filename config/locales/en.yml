@@ -170,8 +170,8 @@ en:
     name: "Backstage System"
     titlefront: "VERSATILE DRAGON"
     language:
-      cn: "简中"
-      tw: "繁中"
+      cn: "CN"
+      tw: "ZH"
       us: "EN"
 
     toIndex: "Index"
