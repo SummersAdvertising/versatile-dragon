@@ -2,198 +2,197 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
   actionshare:
-    edit: "en_編輯"
-    delete: "en_刪除"
-    deleteConfirm: "en_確定要刪除嗎？"
-    save: "en_儲存"
-    cancel: "en_取消"
-    back: "en_返回"
+    edit: "Edit"
+    delete: "Delete"
+    deleteConfirm: "Are you sure DELETE this？"
+    save: "Save"
+    cancel: "Cancel"
+    back: "Back"
 
   bread:
-    index: "en_首頁"
-    about: "en_關於龍全"
-    partner: "en_合作夥伴"
-    contact: "en_聯絡我們"
+    index: "Index"
+    about: "About"
+    partner: "Partner"
+    contact: "Contact"
 
   partner:
-    title: "en_行業的界定永遠不會阻礙我們的合作\n機會無所不在"
-    content: "en_不只是市面上首屈一指的發熱產品專家，極地暖更以創新想法設計出適合各種產品、各種應用的發熱解決方案，同時兼具創意與實用價值，與您一同開展發熱市場無限商機。"
+    title: "en_The definition of the industry will never hinder our cooperation\nOpportunity is everywhere"
+    content: "Not just the market's premier heating product experts, Polar warm more innovative ideas designed for a variety of products, a variety of applications fever solutions, both creative and practical value, and work with you to carry out business opportunities in the heating market."
 
   contact:
-    title: "en_歡迎各行業合作，將商機最大化"
-    content: "en_感謝您拜訪龍全，如果您想進一步瞭解龍全的產品或服務資訊，或對龍全有任何問題與建議，誠摯歡迎您透過聯絡資訊與我們溝通。或可使用線上訪客留言方式，我們將用最快的速度，完成對您的服務"
+    title: "Welcome to cooperation in various industries, to maximize the opportunities"
+    content: "Thank you for visiting Long Quan, if you want to learn more about the the dragon full product or service information, or have any problems with the dragon full sincerely welcome you to communicate with us through the contact information. Or use online Guestbook way, we will be the fastest to complete your service"
 
   navbar:
     product:
-      name: "en_優質系列"
-      descript: "en_龍全除了提升與協力廠商多年來合作整合產生之綜效外，亦積極發展更貼近終端消費者的生活電子產品，以提升自身與產品的附加價值。"
+      name: "Product"
+      descript: "Dragon full enhance cooperation over the years to integrate with third-party arising synergy actively develop life closer to the end consumer electronic products, in order to enhance their own value-added products."
     about:
-      name: "en_關於龍全"
-      descript: "en_龍全控股為跨領域之電子設計代工公司，集團的研發及銷售中心設於台灣，兩大製造據點設立於蘇州與東莞，主要以OEM、ODM，少量多樣之客制化製造為我們的服務項目。"
+      name: "About"
+      descript: "Dragon Holdings interdisciplinary electronic design foundry, OEM, ODM, a small variety of custom manufacturing for our service, our R & D and sales centers in Taiwan, the two manufacturing bases set up in Suzhou and Dongguanthe project."
     partner:
-      name: "en_合作夥伴"
-      descript: "en_客戶需求是龍全一切工作的核心。我們知道與各類型的合作夥伴合作是多麼的重要 。您的產品與我們的產品互補，協助維護我們的環境，並使我們彼此更成功。"
+      name: "Partner"
+      descript: "Customer demand is the core dragon for all the work. We know how important it is to work with various types of partners. Your product with our products complement each other, helping to keep our environment clean and make each other more successful."
     contact:
-      name: "en_聯絡我們"
-      descript: "en_如果您想進一步了解產品或合作模式，或對產品系列有任何問題與建議，誠摯歡迎您隨時與我們聯絡。"
+      name: "Contact"
+      descript: "If you want to learn more about the products or co-op, or series of products have any questions and suggestions, sincerely welcome you to contact us any time."
 
   indexlink:
-    name: "en_首頁輪播"    
-    date: "en_日期"
+    name: "Banner"    
+    date: "Date"
     title:
-      name: "en_輪播上標"
-      nameIndex: "en_輪播標題"
-      valid: "en_請輸入上標題"
+      name: "Title1"
+      nameIndex: "Title"
+      valid: "enter the top title"
     titlesub:
-      name: "en_輪播下標"
-      valid: "en_請輸入下標題"
+      name: "Title2"
+      valid: "enter the down title"
     ordernum:
-      name: "en_編號"
-      valid: "en_請輸入編號"
+      name: "Number"
+      valid: " "
     link:
-      name: "en_連結"
-      namefront: "en_了解更多"
-      valid: "en_請輸入網址"
+      name: "Link"
+      namefront: "More"
+      valid: "enter a URL"
     content:
-      name: "en_內文"
-      valid: "en_請輸入內文"
+      name: "Content"
+      valid: "enter a content"
     color:
-      name: "en_顏色"
-      black: "en_黑色"
-      white: "en_白色"
-    preview: "en_預覽"
+      name: "Color"
+      black: "Black"
+      white: "White"
+    preview: "Preview"
     upload:
-      name: "en_上傳"
-      valid: "en_未上傳圖片"
+      name: "Upload"
+      valid: "No images uploaded"
 
-    new: "en_新增輪播"
+    new: "Add"
 
   productclass:
-    name: "en_優質系列"
-    date: "en_日期"
-    title: "en_標題"
-    titleIndex: "en_分類列表"
-    titleShow: "en_預覽頁面"
-    titleNew: "en_新增＆編輯頁面"
-    noClass: "en_尚未建立分類"
-    noProduct: "en_此分類下沒有商品"
-    addDate: "en_日期排序"
-    addDateholder: "en_請選擇日期"
-    productclassName: "en_分類名稱"
-    productclassNameholder: "en_請輸入分類名稱"
+    name: "Series"
+    date: "Date"
+    title: "Series"
+    titleIndex: "Series List"
+    titleShow: "Preview Page"
+    titleNew: "Add＆Edit Page"
+    noClass: "No series established"
+    noProduct: "No products under this series"
+    addDate: "Date"
+    addDateholder: "Select a date"
+    productclassName: "Series"
+    productclassNameholder: "enter series name"
 
-    listProduct: "en_產品"
-    new: "en_建立分類"
-    deleteConfirm: "en_該分類底下的產品也會一併刪除，您確定嗎？"
+    listProduct: "Product"
+    new: "create a series"
+    deleteConfirm: "All products under the series will be removed, are you sure？"
 
   product:
-    titleIndex: "en_產品列表"
-    titleShow: "en_預覽頁面"
-    titleNew: "en_新增＆編輯頁面"
-    date: "en_日期"
+    titleIndex: "Product List"
+    titleShow: "Preview Page"
+    titleNew: "Add＆Edit Page"
+    date: "Date"
     status:
-      name: "en_顯示"
-      enable: "en_是"
-      disable: "en_否"
-    frontshow: "en_顯示前台？"
-    title: "en_標題"
-    productName: "en_商品名稱"
-    productNameholder: "en_請輸入商品名稱"
+      name: "Publish"
+      enable: "Yes"
+      disable: "Not yet"
+    title: "Title"
+    productName: "Product"
+    productNameholder: " "
 
-    new: "en_新增商品"
+    new: "Add"
 
   admin:
-    name: "en_管理人員"
-    titleEdit: "en_個人資料"
+    name: "User"
+    titleEdit: "Info"
     username:
-      name: "en_名稱"
-      title: "en_使用者名稱"
+      name: "Name"
+      title: "User Name"
     userid:
-      name: "en_帳號"
-      title: "en_使用者帳號"
+      name: "Account"
+      title: "User Account"
     password:
-      name: "en_密碼"
-      newname: "en_新密碼"
-      newconfirm: "en_確認新密碼"
-      change: "en_修改密碼"
-      changeNote: "en_如不修改密碼可不填此欄"
+      name: "Password"
+      newname: "New"
+      newconfirm: "Confirm"
+      change: "Edit"
+      changeNote: " "
     passwordconfirm: 
-      name: "en_確認密碼"
-      valid: "en_密碼不一致，請重新輸入密碼"
+      name: "Confirm"
+      valid: "Retype the password"
 
-    valid: " en_不能為空"
-    holder: "en_請輸入"
-    new: "en_新增帳號"
-    newError: "en_該帳號已經存在"
-    newSuccess: "en_已成功新增使用者"
-    updateSuccess: "en_管理者資料已更新"
-    edit: "en_修改個人資料"
-    login: "en_登入"
-    loginError: "en_請輸入正確的帳號及密碼"
-    logout: "en_登出"
+    valid: " Can not be empty"
+    holder: " "
+    new: "Add"
+    newError: "This account have been used"
+    newSuccess: "Create user Successfully"
+    updateSuccess: "Information has been updated"
+    edit: "Edit"
+    login: "Login"
+    loginError: "Please enter the correct username and password"
+    logout: "Logout"
 
   editor:
     paragraph:
-      name: "en_插入段落"
-      valid: "en_請輸入段落內容"
-      holder: "en_請輸入文字"
+      name: "Paragraph"
+      valid: "Enter a paragraph"
+      holder: " "
       class:
-        titleBlack: "en_小標(粗黑)"
-        titleRed: "en_大標(紅)"
-        content: "en_內文"
+        titleBlack: "Title(Black)"
+        titleRed: "Title(Red)"
+        content: "Text(Default)"
 
     image:
-      name: "en_插入圖片"
-      valid: "en_請選擇要上傳的檔案"
-      errortype: "en_只能上傳 .gif, .png, .jpg 圖片檔"
-      errorsize: "en_檔案大小必須小於5MB"
+      name: "Image"
+      valid: "Select a file"
+      errortype: "Image type .gif, .png, .jpg only "
+      errorsize: "File size must be less than 5MB"
 
     video:
-      name: "en_插入影片"
-      valid: "en_請貼上影片網址"
-      holder: "en_請貼入 YouTube 網址"
+      name: "Video"
+      valid: "enter Youtube URL"
+      holder: "enter Youtube URL"
 
     link:
-      name: "en_插入連結"
-      href: "連結網址"
-      holder: "en_請輸入連結網址"
+      name: "Link"
+      href: "URL"
+      holder: "enter a URL"
 
-    add: "en_新增段落"
-    save: "en_完成"
-    saveSuccess: "en_已成功儲存您的變更"
+    add: "Add"
+    save: "Done"
+    saveSuccess: "Edit Successfully"
 
     preview:
-      title: "en_文章預覽"
-      tip: "en_可拖曳文章段落排序"
+      title: "Article preview"
+      tip: "Drag paragraph for sequence"
 
   environ:
-    name: "en_龍全後台管理系統"
-    titlefront: "en_龍全控股集團"
+    name: "Backstage System"
+    titlefront: "VERSATILE DRAGON"
     language:
       cn: "简中"
       tw: "繁中"
       us: "EN"
 
-    toIndex: "en_返回首頁"
+    toIndex: "Index"
 
   company:
-    address: "en_公司地址"
-    tel: "en_公司電話"
-    fax: "en_公司傳真"
-    contact: "en_聯絡人"
-    mail: "en_客服信箱"
+    address: "Address"
+    tel: "Tel"
+    fax: "Fax"
+    contact: "Contact"
+    mail: "Mail"
 
     info1:
-      name: "en_常熟龍全電子有限公司"
-      address: "en_江蘇省常熟市沙家濱鎮常昆工業園D區青年路"
-      contact: "en_邵小姐"
+      name: "Changshu Longquan Electronics Co., Ltd"
+      address: "The youth road of chang qun industrial park, shajiabang town chang shu city of jiang su provine"
+      contact: "Selena Shao"
 
     info2:
-      name: "en_東莞歌譽電子有限公司"
-      address: "en_東莞市橫瀝鎮石湧村西城科技園二區"
-      contact: "en_邵先生"
+      name: "Dongguan Geyu Electronics Co., Ltd"
+      address: "Xi Cheng Industry Area Two, Shi Yong Village, Heng Li Town, Dong Guan China."
+      contact: "Mingde Shao"
 
     info3:
-      name: "en_台灣區辦事處"
-      address: "en_新北市板橋區雨農路58號六樓"
-      contact: "en_楊先生"
+      name: "Taiwan (R.O.C.)"
+      address: "6F., No.58, Yunong Rd., Banqiao Dist., New Taipei City 220"
+      contact: "Mr. Yang"
