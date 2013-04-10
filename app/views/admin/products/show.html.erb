@@ -21,10 +21,15 @@
 <section id="articleContent" class="text text-show">
   <div class="one">
   </div>
-  <div class="one">
+  
+</section>
+<!--text-->
+
+<section id="articleContent" class="text text-show">
+<div class="one">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th>顯示前台？</th>
+        <th><%= t("product.frontshow") %></th>
         <td>
           <% if(@product.status == "enable") %>
           <%= t("product.status.enable") %>
@@ -42,7 +47,7 @@
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td>該語言不包含此分類</td>
+      <td>該語言不包含此商品</td>
     </tr>
   </table>
 </section>

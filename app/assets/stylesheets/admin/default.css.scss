@@ -91,7 +91,7 @@ border-radius:5px;width:302px}
 .preview div:hover .tool-b{display:inline}
 .preview div:first-child{border-radius:5px 5px 0 0}
 .preview div:last-child{border-radius:0 0 5px 5px}
-.preview .highlight{height:50px;background:#fff;border:1px dashed #ccc}
+.preview .ui-state-highlight{height:50px;background:#fff;border:1px dashed #ccc}
 .preview textarea{width:100%;border-radius:5px;border:1px solid #ccc;padding:5px;min-height:100px;font:300 13px 新細明體;color:#555;} 
 .tool-b{overflow:hidden;position:absolute;top:5px;right:5px;display:none}
 .tool-b li{float:left;margin:0 0 0 5px}

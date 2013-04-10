@@ -92,9 +92,10 @@ zh_CN:
     titleNew: "新增＆编辑页面"
     date: "日期"
     status:
-      name: "前台显示"
+      name: "显示"
       enable: "是"
       disable: "否"
+    frontshow: "显示前台？"
     title: "标题"
     productName: "商品名称"
     productNameholder: "请输入商品名称"

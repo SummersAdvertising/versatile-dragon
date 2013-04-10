@@ -92,9 +92,10 @@ zh_TW:
     titleNew: "新增＆編輯頁面"
     date: "日期"
     status:
-      name: "前台顯示"
+      name: "顯示"
       enable: "是"
       disable: "否"
+    frontshow: "顯示前台？"
     title: "標題"
     productName: "商品名稱"
     productNameholder: "請輸入商品名稱"

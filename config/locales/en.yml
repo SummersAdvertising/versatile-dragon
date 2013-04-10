@@ -92,9 +92,10 @@ en:
     titleNew: "en_新增＆編輯頁面"
     date: "en_日期"
     status:
-      name: "en_前台顯示"
+      name: "en_顯示"
       enable: "en_是"
       disable: "en_否"
+    frontshow: "en_顯示前台？"
     title: "en_標題"
     productName: "en_商品名稱"
     productNameholder: "en_請輸入商品名稱"

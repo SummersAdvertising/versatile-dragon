@@ -128,7 +128,7 @@
         <th>前台顯示？</th>
         <td>
           <input type="checkbox" id="productFrontshow" style="width:30px" />
-          ( 不打勾則不會顯示於網站上 )
+          ( 若無勾選則不發佈 )
         </td>
       </tr>
     </table>
@@ -351,7 +351,7 @@ $(function(){
   }
 
   function newImage(photoID,photoPath){
-    var articleContent = '<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><ul class="tool-b"><li><a href="/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true"><%= t("actionshare.delete") %></a></li></ul>';
+    var articleContent = '<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><ul class="tool-b"><li><a href="/en/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true"><%= t("actionshare.delete") %></a></li></ul>';
 
     if($("#newImageLink").val()){
       articleContent += '<a href="'+$("#newImageLink").val()+'" target="_blank"><img src="'+photoPath+'" alt="'+photoID+'" /></a></div>';
@@ -534,11 +534,11 @@ $(function(){
           }
           else if(JSON.stringify(paragraph.type)=='"image"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/en/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
           }
           else if(JSON.stringify(paragraph.type)=='"linkedimg"')
           {
-            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><ul class='tool-b'><li><a href='/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><ul class='tool-b'><li><a href='/en/admin/productclasses/<%= params[:productclass_id]%>/products/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
           }
           else if (JSON.stringify(paragraph.type)=='"video"') {
             article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='video' data-code=\"" + paragraph.code + "\"><ul class='tool-b'><li><a name='delete'><%= t('actionshare.delete') %></a></li></ul><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
