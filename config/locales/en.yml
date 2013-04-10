@@ -11,6 +11,7 @@ en:
 
   bread:
     index: "Index"
+    product: "Product"
     about: "About"
     partner: "Partner"
     contact: "Contact"
