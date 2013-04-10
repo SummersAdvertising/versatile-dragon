@@ -1,6 +1,6 @@
 <article>
   <section>
-    <div id="banner">
+    <div id="banner_series">
       <div class="bread"><a href="/<%= I18n.locale %>">首頁</a> > <a href="#">優質系列</a></div>
     </div>
     <div id="main">
@@ -56,10 +56,10 @@ $(document).ready(function() {
 
         if(JSON.stringify(paragraph.type)=='"paragraph"')
         {
-          article = "<div class='paragraphContainer' data-type='paragraph'><p style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+          article = "<p class='"+paragraph.cssclass+"'>";
 
           if(paragraph.link){
-            article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
+            article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p>";
           }
           else{
             article += jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</p></div>";
@@ -67,14 +67,14 @@ $(document).ready(function() {
         }
         else if(JSON.stringify(paragraph.type)=='"image"')
         {
-          article = "<div class='paragraphContainer' data-type='image' data-photo_id=\"" + paragraph.id + "\"><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+          article = "<p><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></p>";
         }
         else if(JSON.stringify(paragraph.type)=='"linkedimg"')
         {
-          article = "<div  class='paragraphContainer' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+          article = "<p><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></p>";
         }
         else if (JSON.stringify(paragraph.type)=='"video"') {
-          article = "<div  class='paragraphContainer' data-type='video' data-code=\"" + paragraph.code + "\"><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
+          article = "<p><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></p>";
         }
         $("#articleContent").append(article);
       }

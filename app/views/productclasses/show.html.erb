@@ -1,6 +1,6 @@
 <article>
   <section>
-    <div id="banner"></div>
+    <div id="banner_series"></div>
     <div id="main">
       <div id="side">
         <% @productclasses.each do |productclass| %>
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
         if(JSON.stringify(paragraph.type)=='"paragraph"')
         {
-          article = "<p style='font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+          article = "<p class='"+paragraph.cssclass+"'>";
 
           if(paragraph.link){
             article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p>";

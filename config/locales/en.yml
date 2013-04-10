@@ -20,7 +20,7 @@ en:
     content: "Not just the market's premier heating product experts, Polar warm more innovative ideas designed for a variety of products, a variety of applications fever solutions, both creative and practical value, and work with you to carry out business opportunities in the heating market."
 
   contact:
-    title: "Welcome to cooperation in various industries, to maximize the opportunities"
+    title: "Welcome to cooperation in various industries,<br> to maximize the opportunities"
     content: "Thank you for visiting Long Quan, if you want to learn more about the the dragon full product or service information, or have any problems with the dragon full sincerely welcome you to communicate with us through the contact information. Or use online Guestbook way, we will be the fastest to complete your service"
 
   navbar:
@@ -185,15 +185,15 @@ en:
 
     info1:
       name: "Changshu Longquan Electronics Co., Ltd"
-      address: "The youth road of chang qun industrial park, shajiabang town chang shu city of jiang su provine"
+      address: "The youth road of chang qun industrial park, shajiabang town chang shu city of jiang su provine."
       contact: "Selena Shao"
 
     info2:
       name: "Dongguan Geyu Electronics Co., Ltd"
-      address: "Xi Cheng Industry Area Two, Shi Yong Village, Heng Li Town, Dong Guan China."
+      address: "Xi Cheng Industry Area Two, Shi Yong <br> Village, Heng Li Town, Dong Guan China."
       contact: "Mingde Shao"
 
     info3:
       name: "Taiwan (R.O.C.)"
-      address: "6F., No.58, Yunong Rd., Banqiao Dist., New Taipei City 220"
+      address: "6F., No.58, Yunong Rd., Banqiao Dist., New Taipei City 220."
       contact: "Mr. Yang"
