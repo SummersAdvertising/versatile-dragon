@@ -1,7 +1,7 @@
 ﻿html{}
-body{width:100%;font:300 14px "微軟正黑體";line-height:1.7em}
+body{width:100%;font:300 14px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;line-height:1.7em}
 section{width:1024px;margin:0 auto;}
-a{font:300 14px "微軟正黑體";text-decoration:none;
+a{font:300 14px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;text-decoration:none;
 -webkit-transition:all ease .3s;-moz-transition:all ease .3s}
 
 header{background:image-url("index-top-bg.jpg") 0 0 repeat-x;box-shadow:0 3px 3px #aaa;position:relative;z-index:2}
@@ -12,9 +12,9 @@ h1 a{display:block;width:180px;height:49px;background:image-url("h1.png");text-i
 nav{float:right;width:60%;padding:27px 0 0 0}
 nav ul{overflow:hidden}
 nav li{float:left;color:#fff;margin:0 25px}
-nav a{color:#fff;font:900 16px "微軟正黑體"}
+nav a{color:#fff;font:900 16px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif}
 nav a:hover{color:#FFEF1B}
-#lang a{font:900 12px "微軟正黑體"}
+#lang a{font:900 12px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif}
 
 #banner{background:image-url("index-banner.jpg") center 0 no-repeat;position:relative;z-index:1;box-shadow:0 3px 3px #aaa}
 #banner section{height:475px;padding:0 0 0 17px}
@@ -31,7 +31,7 @@ nav a:hover{color:#FFEF1B}
 #slider .more{display:block;width:144px;height:37px;background:image-url("index-banner-more.png");text-indent:-77777px;position:absolute;bottom:20px;right:355px;font-size:0%}
 #slider .more:hover{background:image-url("index-banner-more-h.png")}
 
-#slider h2,#slider h3{font:300 33px "微軟正黑體"}
+#slider h2,#slider h3{font:300 33px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif}
 #slider hgroup{padding:0 0 5px 0}
 #slider .text{width:430px;position:absolute;top:155px;right:70px}
 #slider .black .text{color:#000}
@@ -46,7 +46,7 @@ article{padding:0 0 25px 0}
 
 #quick{overflow:hidden}
 #quick .link{float:left;width:25%;padding:0 15px}
-#quick h4{font:900 18px "微軟正黑體";height:145px;padding:105px 0 0 0}
+#quick h4{font:900 18px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;height:145px;padding:105px 0 0 0}
 #quick p{height:140px}
 #quick h4{background:30px 0px no-repeat}
 #link-1 h4{background-image:image-url("index-01.png")}
