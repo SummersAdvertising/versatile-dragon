@@ -1,4 +1,5 @@
 VersatileDragon::Application.routes.draw do
+	get "/" => redirect("/zh_TW")
 	scope ':locale', :locale => /en|zh_TW|zh_CN/ do
 		get "/about" => "staticpage#about"
 		get "/partner" => "staticpage#partner"
