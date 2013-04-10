@@ -116,3 +116,4 @@
 .is-alertify-log-hidden {
   right: -300px; }
 
+.alertify-logs article{box-shadow:none;border:none;height:auto;width:auto;padding:16px;margin:8px 0 0 0}
