@@ -6,7 +6,8 @@ class AddTranslationToProduct < ActiveRecord::Migration
 		Productclass.create_translation_table! :content => :text, :name => :string, :frontshow => :string
 		
 	end
-	def down		
+	
+	def down
 		add_column :products, :name, :string
 		add_column :products, :content, :text
 		add_column :productclasses, :name, :string

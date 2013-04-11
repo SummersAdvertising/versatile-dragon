@@ -1,0 +1,351 @@
+@charset "UTF-8";
+/* line 3, ../../app/assets/stylesheets/index.css.scss */
+body {
+  width: 100%;
+  font: 300 14px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  line-height: 1.7em;
+}
+
+/* line 4, ../../app/assets/stylesheets/index.css.scss */
+section {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+/* line 5, ../../app/assets/stylesheets/index.css.scss */
+a {
+  font: 300 14px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  text-decoration: none;
+  -webkit-transition: all ease .3s;
+  -moz-transition: all ease .3s;
+}
+
+/* line 8, ../../app/assets/stylesheets/index.css.scss */
+header {
+  min-width: 1024px;
+  background: url(/assets/index-top-bg.jpg) 0 0 repeat-x;
+  box-shadow: 0 3px 3px #aaa;
+  position: relative;
+  z-index: 2;
+}
+
+/* line 9, ../../app/assets/stylesheets/index.css.scss */
+header section {
+  background: url(/assets/index-top.jpg) 0 0 no-repeat;
+  height: 70px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+/* line 11, ../../app/assets/stylesheets/index.css.scss */
+h1 {
+  float: left;
+  width: 40%;
+  padding: 12px 0 0 0;
+}
+
+/* line 12, ../../app/assets/stylesheets/index.css.scss */
+h1 a {
+  display: block;
+  width: 180px;
+  height: 49px;
+  background: url(/assets/h1.png);
+  text-indent: -7777px;
+}
+
+/* line 13, ../../app/assets/stylesheets/index.css.scss */
+nav {
+  float: right;
+  width: 60%;
+  padding: 27px 0 0 0;
+}
+
+/* line 14, ../../app/assets/stylesheets/index.css.scss */
+nav ul {
+  overflow: hidden;
+}
+
+/* line 15, ../../app/assets/stylesheets/index.css.scss */
+nav li {
+  float: left;
+  color: #fff;
+  margin: 0 25px;
+}
+
+/* line 16, ../../app/assets/stylesheets/index.css.scss */
+nav a {
+  color: #fff;
+  font: 900 16px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+/* line 17, ../../app/assets/stylesheets/index.css.scss */
+nav a:hover {
+  color: #FFEF1B;
+}
+
+/* line 18, ../../app/assets/stylesheets/index.css.scss */
+#lang a {
+  font: 900 12px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+/* line 20, ../../app/assets/stylesheets/index.css.scss */
+#banner {
+  min-width: 1024px;
+  background: url(/assets/index-banner.jpg) center 0 no-repeat;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 3px 3px #aaa;
+}
+
+/* line 21, ../../app/assets/stylesheets/index.css.scss */
+#banner section {
+  height: 475px;
+  padding: 0 0 0 17px;
+}
+
+/* line 23, ../../app/assets/stylesheets/index.css.scss */
+#slider li {
+  width: 990px;
+  height: 405px;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* line 24, ../../app/assets/stylesheets/index.css.scss */
+.bx-prev, .bx-next {
+  display: block;
+  top: 100px;
+  width: 68px;
+  height: 198px;
+  position: absolute;
+  text-indent: -7777px;
+  font-size: 0%;
+}
+
+/* line 25, ../../app/assets/stylesheets/index.css.scss */
+.bx-prev {
+  background: url(/assets/prev.png);
+  left: -17px;
+}
+
+/* line 26, ../../app/assets/stylesheets/index.css.scss */
+.bx-prev:hover {
+  background: url(/assets/prev-h.png);
+}
+
+/* line 27, ../../app/assets/stylesheets/index.css.scss */
+.bx-prev:active {
+  left: -20px;
+}
+
+/* line 28, ../../app/assets/stylesheets/index.css.scss */
+.bx-next {
+  background: url(/assets/next.png);
+  right: -17px;
+}
+
+/* line 29, ../../app/assets/stylesheets/index.css.scss */
+.bx-next:hover {
+  background: url(/assets/next-h.png);
+}
+
+/* line 30, ../../app/assets/stylesheets/index.css.scss */
+.bx-next:active {
+  right: -20px;
+}
+
+/* line 32, ../../app/assets/stylesheets/index.css.scss */
+#slider .more {
+  display: block;
+  width: 144px;
+  height: 37px;
+  background: url(/assets/index-banner-more.png);
+  text-indent: -77777px;
+  position: absolute;
+  bottom: 20px;
+  right: 355px;
+  font-size: 0%;
+}
+
+/* line 33, ../../app/assets/stylesheets/index.css.scss */
+#slider .more:hover {
+  background: url(/assets/index-banner-more-h.png);
+}
+
+/* line 35, ../../app/assets/stylesheets/index.css.scss */
+#slider h2, #slider h3 {
+  font: 300 33px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+/* line 36, ../../app/assets/stylesheets/index.css.scss */
+#slider hgroup {
+  padding: 0 0 5px 0;
+}
+
+/* line 37, ../../app/assets/stylesheets/index.css.scss */
+#slider .text {
+  width: 430px;
+  position: absolute;
+  top: 155px;
+  right: 70px;
+}
+
+/* line 38, ../../app/assets/stylesheets/index.css.scss */
+#slider .black .text {
+  color: #000;
+}
+
+/* line 39, ../../app/assets/stylesheets/index.css.scss */
+#slider .white .text {
+  color: #fff;
+}
+
+/* line 41, ../../app/assets/stylesheets/index.css.scss */
+.bx-pager {
+  overflow: hidden;
+  position: absolute;
+  bottom: 23px;
+  right: 190px;
+}
+
+/* line 42, ../../app/assets/stylesheets/index.css.scss */
+.bx-pager a {
+  display: block;
+  width: 28px;
+  height: 28px;
+  background: url(/assets/index-banner-page.png);
+  text-indent: -7777px;
+  float: left;
+  margin: 0 5px 0 0;
+}
+
+/* line 43, ../../app/assets/stylesheets/index.css.scss */
+.bx-pager .pager-active {
+  background: url(/assets/index-banner-active.png);
+}
+
+/* line 45, ../../app/assets/stylesheets/index.css.scss */
+article {
+  min-width: 1024px;
+  padding: 0 0 25px 0;
+}
+
+/* line 47, ../../app/assets/stylesheets/index.css.scss */
+#quick {
+  overflow: hidden;
+}
+
+/* line 48, ../../app/assets/stylesheets/index.css.scss */
+#quick .link {
+  float: left;
+  width: 25%;
+  padding: 0 15px;
+}
+
+/* line 49, ../../app/assets/stylesheets/index.css.scss */
+#quick h4 {
+  font: 900 18px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  height: 145px;
+  padding: 105px 0 0 0;
+}
+
+/* line 50, ../../app/assets/stylesheets/index.css.scss */
+#quick h5 {
+  font: 900 18px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  position: relative;
+  top: -15px;
+}
+
+/* line 51, ../../app/assets/stylesheets/index.css.scss */
+#quick p {
+  height: 140px;
+}
+
+/* line 52, ../../app/assets/stylesheets/index.css.scss */
+#quick h4 {
+  background: 30px 0px no-repeat;
+}
+
+/* line 53, ../../app/assets/stylesheets/index.css.scss */
+#link-1 h4 {
+  background-image: url(/assets/index-01.png);
+}
+
+/* line 54, ../../app/assets/stylesheets/index.css.scss */
+#link-2 h4 {
+  background-image: url(/assets/index-02.png);
+}
+
+/* line 55, ../../app/assets/stylesheets/index.css.scss */
+#link-3 h4 {
+  background-image: url(/assets/index-03.png);
+}
+
+/* line 56, ../../app/assets/stylesheets/index.css.scss */
+#link-4 h4 {
+  background-image: url(/assets/index-04.png);
+}
+
+/* line 57, ../../app/assets/stylesheets/index.css.scss */
+#quick a {
+  display: block;
+  width: 109px;
+  height: 30px;
+  background: url(/assets/index-more.png);
+  margin: 0 auto;
+}
+
+/* line 58, ../../app/assets/stylesheets/index.css.scss */
+#quick a:hover {
+  background: url(/assets/index-more-h.png);
+}
+
+/* line 60, ../../app/assets/stylesheets/index.css.scss */
+aside {
+  min-width: 1024px;
+  background: url(/assets/index-footer-bg.jpg) 0 top repeat-x;
+}
+
+/* line 61, ../../app/assets/stylesheets/index.css.scss */
+aside section {
+  height: 211px;
+  overflow: hidden;
+  background: url(/assets/index-footer-bg2.jpg) center 0 no-repeat;
+  padding: 25px 0 0 0;
+}
+
+/* line 62, ../../app/assets/stylesheets/index.css.scss */
+aside .info {
+  width: 32%;
+  float: left;
+  color: #fff;
+}
+
+/* line 63, ../../app/assets/stylesheets/index.css.scss */
+aside strong {
+  font-weight: 900;
+}
+
+/* line 64, ../../app/assets/stylesheets/index.css.scss */
+aside a {
+  color: #ffe300;
+}
+
+/* line 65, ../../app/assets/stylesheets/index.css.scss */
+aside a:hover {
+  text-decoration: underline;
+}
+
+/* line 67, ../../app/assets/stylesheets/index.css.scss */
+footer {
+  min-width: 1024px;
+  background: url(/assets/index-footer-bg.jpg) 0 bottom repeat-x;
+}
+
+/* line 68, ../../app/assets/stylesheets/index.css.scss */
+footer section {
+  height: 88px;
+  border-top: 1px solid #5084A4;
+  color: #fff;
+  padding: 10px;
+}

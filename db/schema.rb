@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(:version => 20130409111122) do
     t.string   "locale"
     t.string   "title"
     t.text     "content"
-    t.string   "image"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image"
   end
 
   add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
