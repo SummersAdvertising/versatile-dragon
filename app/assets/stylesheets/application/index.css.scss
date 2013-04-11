@@ -4,7 +4,7 @@ section{width:1024px;margin:0 auto;}
 a{font:300 14px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;text-decoration:none;
 -webkit-transition:all ease .3s;-moz-transition:all ease .3s}
 
-header{background:image-url("index-top-bg.jpg") 0 0 repeat-x;box-shadow:0 3px 3px #aaa;position:relative;z-index:2}
+header{min-width:1024px; background:image-url("index-top-bg.jpg") 0 0 repeat-x;box-shadow:0 3px 3px #aaa;position:relative;z-index:2}
 header section{background:image-url("index-top.jpg") 0 0 no-repeat;height:70px;padding:0 20px;overflow:hidden}
 
 h1{float:left;width:40%;padding:12px 0 0 0}
@@ -16,7 +16,7 @@ nav a{color:#fff;font:900 16px "微軟正黑體","微软雅黑", "Lucida Grande"
 nav a:hover{color:#FFEF1B}
 #lang a{font:900 12px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif}
 
-#banner{background:image-url("index-banner.jpg") center 0 no-repeat;position:relative;z-index:1;box-shadow:0 3px 3px #aaa}
+#banner{min-width:1024px; background:image-url("index-banner.jpg") center 0 no-repeat;position:relative;z-index:1;box-shadow:0 3px 3px #aaa}
 #banner section{height:475px;padding:0 0 0 17px}
 
 #slider li{width:990px;height:405px;position:relative;margin:0 auto}
@@ -41,7 +41,7 @@ nav a:hover{color:#FFEF1B}
 .bx-pager a{display:block;width:28px;height:28px;background:image-url("index-banner-page.png");text-indent:-7777px;float:left;margin:0 5px 0 0}
 .bx-pager .pager-active{background:image-url("index-banner-active.png")}
 
-article{padding:0 0 25px 0}
+article{min-width:1024px; padding:0 0 25px 0}
 
 #quick{overflow:hidden}
 #quick .link{float:left;width:25%;padding:0 15px}
@@ -56,13 +56,13 @@ article{padding:0 0 25px 0}
 #quick a{display:block;width:109px;height:30px;background:image-url("index-more.png");margin:0 auto}
 #quick a:hover{background:image-url("index-more-h.png")}
 
-aside{background:image-url("index-footer-bg.jpg") 0 top repeat-x;}
+aside{min-width:1024px; background:image-url("index-footer-bg.jpg") 0 top repeat-x;}
 aside section{height:211px;overflow:hidden;background:image-url("index-footer-bg2.jpg") center 0 no-repeat;padding:25px 0 0 0}
 aside .info{width:32%;float:left;color:#fff}
 aside strong{font-weight:900}
 aside a{color:#ffe300}
 aside a:hover{text-decoration:underline}
 
-footer{background:image-url("index-footer-bg.jpg") 0 bottom repeat-x}
+footer{min-width:1024px; background:image-url("index-footer-bg.jpg") 0 bottom repeat-x}
 footer section{height:88px;border-top:1px solid #5084A4;color:#fff;padding:10px}
 
