@@ -43,7 +43,7 @@ VersatileDragon::Application.configure do
   config.assets.compress = false
 
   config.assets.precompile = [ method(:compile_asset?).to_proc ]
-  config.assets.precompile += %w( files )
+  config.assets.precompile += %w( files, "application/index.css" )
 
   # Expands the lines which load the assets
   config.assets.debug = true
