@@ -1,0 +1,668 @@
+@charset "UTF-8";
+/*-----------------------------------------------------------------------全域---*/
+/* line 4, ../../../app/assets/stylesheets/admin/default.css.scss */
+html {
+  background: #E7EBF4;
+}
+
+/* line 5, ../../../app/assets/stylesheets/admin/default.css.scss */
+body {
+  font: 300 13px 新細明體, 微软雅黑, Times New Roman;
+  width: 100%;
+  -webkit-text-size-adjust: none;
+  color: #555;
+}
+
+/* line 6, ../../../app/assets/stylesheets/admin/default.css.scss */
+a {
+  font: 300 13px 新細明體, 微软雅黑, Times New Roman;
+  text-decoration: none;
+  color: #555;
+}
+
+/*-----------------------------------------------------------------------頁首---*/
+/* line 10, ../../../app/assets/stylesheets/admin/default.css.scss */
+header {
+  background: #3B5998;
+  border-bottom: 1px solid #133783;
+  height: 50px;
+}
+
+/* line 11, ../../../app/assets/stylesheets/admin/default.css.scss */
+#top {
+  padding: 10px;
+  overflow: hidden;
+  height: 49px;
+}
+
+/* line 12, ../../../app/assets/stylesheets/admin/default.css.scss */
+#top a {
+  color: #fff;
+}
+
+/* line 14, ../../../app/assets/stylesheets/admin/default.css.scss */
+h1 {
+  float: left;
+}
+
+/* line 15, ../../../app/assets/stylesheets/admin/default.css.scss */
+h1 a {
+  padding: 5px 0 0 0;
+  display: block;
+  font: 900 1.2em 新細明體, 微软雅黑, Times New Roman;
+  text-shadow: 0 1px 0 #133783;
+}
+
+/*-----------------------------------------------------------------------內容---*/
+/* line 19, ../../../app/assets/stylesheets/admin/default.css.scss */
+#main {
+  overflow: hidden;
+}
+
+/* line 20, ../../../app/assets/stylesheets/admin/default.css.scss */
+article {
+  background: #fff;
+  position: relative;
+  z-index: 2;
+  border: 1px solid #C4CDE0;
+  height: 100%;
+}
+
+/*-----------------------------------------------------------------------側欄---*/
+/* line 24, ../../../app/assets/stylesheets/admin/default.css.scss */
+nav ul {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* line 25, ../../../app/assets/stylesheets/admin/default.css.scss */
+nav li a {
+  background-repeat: no-repeat;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 26, ../../../app/assets/stylesheets/admin/default.css.scss */
+#nav-1 {
+  background-image: url(/assets/nav-09.png);
+}
+
+/* line 27, ../../../app/assets/stylesheets/admin/default.css.scss */
+#nav-2 {
+  background-image: url(/assets/nav-01.png);
+}
+
+/* line 28, ../../../app/assets/stylesheets/admin/default.css.scss */
+#nav-3 {
+  background-image: url(/assets/nav-11.png);
+}
+
+/*-----------------------------------------------------------------------大標---*/
+/* line 32, ../../../app/assets/stylesheets/admin/default.css.scss */
+.hgroup {
+  overflow: hidden;
+}
+
+/* line 33, ../../../app/assets/stylesheets/admin/default.css.scss */
+.hgroup h2 {
+  margin: 0 10px 0 0;
+  font: italic 300 18px 新細明體, 微软雅黑, Times New Roman;
+  float: left;
+}
+
+/* line 34, ../../../app/assets/stylesheets/admin/default.css.scss */
+.hgroup p {
+  float: left;
+  color: #a9a9a9;
+  margin: 5px 0 0 0;
+}
+
+/*-----------------------------------------------------------------------標題---*/
+/* line 38, ../../../app/assets/stylesheets/admin/default.css.scss */
+.title {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* line 39, ../../../app/assets/stylesheets/admin/default.css.scss */
+.title th {
+  background: url(/assets/list.jpg) 0 0 repeat-x #dedede;
+  color: #999;
+  text-shadow: 0 1px 0 #fff;
+  font: 300 13px "verdana";
+  width: 100px;
+  border-right: 1px solid #ccc;
+}
+
+/* line 40, ../../../app/assets/stylesheets/admin/default.css.scss */
+.title td {
+  padding: 8px 10px 5px 10px;
+  border-left: 1px solid #fff;
+  color: #555;
+}
+
+/* line 41, ../../../app/assets/stylesheets/admin/default.css.scss */
+.title td input {
+  border: 0;
+  width: 100%;
+  font: 300 13px 新細明體, 微软雅黑, Times New Roman;
+  color: #555;
+}
+
+/*-----------------------------------------------------------------------分類---*/
+/* line 45, ../../../app/assets/stylesheets/admin/default.css.scss */
+.category ul {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 302px;
+  margin: 0 auto;
+}
+
+/* line 47, ../../../app/assets/stylesheets/admin/default.css.scss */
+.category li {
+  background: url(/assets/list.jpg) 0 0 repeat-x;
+  width: 100px;
+  text-align: center;
+  float: left;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #fff;
+}
+
+/* line 48, ../../../app/assets/stylesheets/admin/default.css.scss */
+.category li:first-child {
+  border-left: none;
+}
+
+/* line 49, ../../../app/assets/stylesheets/admin/default.css.scss */
+.category li:last-child {
+  border-right: none;
+}
+
+/* line 50, ../../../app/assets/stylesheets/admin/default.css.scss */
+.category a {
+  color: #999;
+  text-shadow: 0 1px 0 #fff;
+  display: block;
+  padding: 10px 0 0 0;
+  height: 33px;
+}
+
+/* line 51, ../../../app/assets/stylesheets/admin/default.css.scss */
+.category .active {
+  background: url(/assets/active.jpg) 0 0 repeat-x;
+}
+
+/* line 52, ../../../app/assets/stylesheets/admin/default.css.scss */
+.category .active a, .category a:hover {
+  color: #555;
+}
+
+/*-----------------------------------------------------------------------列表---*/
+/* line 56, ../../../app/assets/stylesheets/admin/default.css.scss */
+.list {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* line 57, ../../../app/assets/stylesheets/admin/default.css.scss */
+.list th {
+  background: url(/assets/list.jpg) 0 0 repeat-x #dedede;
+  color: #999;
+  text-shadow: 0 1px 0 #fff;
+  font: 300 13px verdana;
+  height: 40px;
+  padding: 0 0 0 10px;
+}
+
+/* line 58, ../../../app/assets/stylesheets/admin/default.css.scss */
+.list td {
+  height: 40px;
+  border-top: 1px solid #D1D1DB;
+  color: #999;
+  padding: 5px 0;
+  font: 300 13px "verdana";
+  padding: 0 0 0 10px;
+}
+
+/* line 59, ../../../app/assets/stylesheets/admin/default.css.scss */
+.list tr:nth-child(2n) {
+  background: #F9F9F9;
+}
+
+/* line 60, ../../../app/assets/stylesheets/admin/default.css.scss */
+.list a:hover {
+  text-decoration: underline;
+}
+
+/*-----------------------------------------------------------------------按鈕---*/
+/* line 64, ../../../app/assets/stylesheets/admin/default.css.scss */
+.button {
+  overflow: hidden;
+}
+
+/* line 65, ../../../app/assets/stylesheets/admin/default.css.scss */
+.button a {
+  display: block;
+  width: 100px;
+  height: 35px;
+  padding: 5px 0 0 0;
+  background: url(/assets/list.jpg) 0 0 repeat-x;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  float: right;
+  margin: 0 0 0 10px;
+  color: #333;
+  text-shadow: 0 1px 0 #fff;
+  font-weight: 900;
+  text-align: center;
+}
+
+/* line 66, ../../../app/assets/stylesheets/admin/default.css.scss */
+.button a:active {
+  background: url(/assets/active.jpg) 0 0 repeat-x;
+}
+
+/* line 67, ../../../app/assets/stylesheets/admin/default.css.scss */
+.button img {
+  position: relative;
+  top: 4px;
+  margin: 0 8px 0 0;
+}
+
+/*-----------------------------------------------------------------------頁籤---*/
+/* line 71, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab ul {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 302px;
+}
+
+/* line 73, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab li {
+  background: url(/assets/list.jpg) 0 0 repeat-x;
+  width: 100px;
+  text-align: center;
+  float: left;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #fff;
+}
+
+/* line 74, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab li:first-child {
+  border-left: none;
+}
+
+/* line 75, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab li:last-child {
+  border-right: none;
+}
+
+/* line 76, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab a {
+  color: #999;
+  text-shadow: 0 1px 0 #fff;
+  display: block;
+  padding: 5px 0 0 0;
+  height: 33px;
+}
+
+/* line 77, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab .active {
+  background: url(/assets/active.jpg) 0 0 repeat-x;
+}
+
+/* line 78, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab .active a, .category a:hover {
+  color: #555;
+}
+
+/* line 79, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tab img {
+  position: relative;
+  top: 4px;
+  margin: 0 5px 0 0;
+}
+
+/*-----------------------------------------------------------------------發文---*/
+/* line 83, ../../../app/assets/stylesheets/admin/default.css.scss */
+.post {
+  border: 1px solid #ccc;
+  background: #F9F9F9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* line 84, ../../../app/assets/stylesheets/admin/default.css.scss */
+.post textarea, .post input {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font: 300 13px 新細明體, 微软雅黑, Times New Roman;
+  color: #555;
+}
+
+/* line 85, ../../../app/assets/stylesheets/admin/default.css.scss */
+.post textarea {
+  min-height: 100px;
+}
+
+/*-----------------------------------------------------------------------預覽---*/
+/* line 89, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 0 0 1px 0;
+  position: relative;
+  background: #fff;
+  cursor: pointer;
+  background: #F9F9F9;
+}
+
+/* line 90, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview div:active {
+  border: 1px dashed #cccccc !important;
+  background: #fff;
+}
+
+/* line 91, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview div:hover {
+  border: 1px solid #aaa;
+}
+
+/* line 92, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview div:hover .tool-b {
+  display: inline;
+}
+
+/* line 93, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview div:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+/* line 94, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview div:last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+/* line 95, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview .ui-state-highlight {
+  height: 50px;
+  background: #fff;
+  border: 1px dashed #ccc;
+}
+
+/* line 96, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview textarea {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  min-height: 100px;
+  font: 300 13px 新細明體, 微软雅黑, Times New Roman;
+  color: #555;
+}
+
+/* line 97, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tool-b {
+  overflow: hidden;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: none;
+}
+
+/* line 98, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tool-b li {
+  float: left;
+  margin: 0 0 0 5px;
+}
+
+/* line 99, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tool-a {
+  overflow: hidden;
+}
+
+/* line 100, ../../../app/assets/stylesheets/admin/default.css.scss */
+.tool-a li {
+  float: left;
+  margin: 0 5px 0 0;
+}
+
+/* line 101, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview li a {
+  display: block;
+  border: 1px solid #ccc;
+  background: #fff;
+  font: 300 11px "verdana";
+  padding: 5px 0;
+  width: 50px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* line 102, ../../../app/assets/stylesheets/admin/default.css.scss */
+.preview li a:hover {
+  background: #eee;
+}
+
+/*-----------------------------------------------------------------------頁碼---*/
+/* line 106, ../../../app/assets/stylesheets/admin/default.css.scss */
+.page {
+  text-align: center;
+}
+
+/* line 107, ../../../app/assets/stylesheets/admin/default.css.scss */
+.page a {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 2.5px;
+  border-radius: 5px;
+  padding: 1px 0 0 0;
+  font: 300 12px "verdana";
+  text-shadow: 0 1px 0 #fff;
+}
+
+/* line 108, ../../../app/assets/stylesheets/admin/default.css.scss */
+.page a:hover {
+  border: 1px solid #ccc;
+}
+
+/* line 109, ../../../app/assets/stylesheets/admin/default.css.scss */
+.page .active {
+  background: url(/assets/list.jpg) 0 0 repeat-x;
+  border: 1px solid #ccc;
+}
+
+/*-----------------------------------------------------------------------欄位---*/
+/* line 113, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text {
+  border: 1px solid #ccc;
+  background: #F9F9F9;
+  padding: 10px 10px 10px 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* line 114, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text div {
+  float: left;
+  padding: 5px;
+  line-height: 1.5em;
+}
+
+/* line 115, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text .one {
+  width: 100%;
+}
+
+/* line 116, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text th {
+  font-weight: 900;
+  width: 80px;
+}
+
+/* line 117, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text td {
+  text-align: left;
+}
+
+/* line 118, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text input, .text textarea {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #cccccc !important;
+  padding: 5px;
+  font: 300 13px 新細明體, 微软雅黑, Times New Roman;
+  background: #fff;
+  color: #555;
+}
+
+/* line 119, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text textarea {
+  min-height: 100px;
+}
+
+/* line 120, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text-edit th {
+  padding: 7px 0 0 0;
+}
+
+/* line 121, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text .radio {
+  width: 30px;
+  border: none;
+  padding: 0;
+  position: relative;
+  top: 3px;
+}
+
+/* line 123, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 124, ../../../app/assets/stylesheets/admin/default.css.scss */
+.text p {
+  padding: 10px;
+}
+
+/*-----------------------------------------------------------------------頁腳---*/
+/* line 128, ../../../app/assets/stylesheets/admin/default.css.scss */
+footer {
+  font: 300 13px "Times New Roman", Times, serif;
+  text-shadow: 0 1px 0 #fff;
+}
+
+/* line 129, ../../../app/assets/stylesheets/admin/default.css.scss */
+footer a {
+  font: 300 13px "Times New Roman", Times, serif;
+  text-shadow: 0 1px 0 #fff;
+}
+
+/*-----------------------------------------------------------------------語言---*/
+/* line 133, ../../../app/assets/stylesheets/admin/default.css.scss */
+#lang {
+  overflow: hidden;
+  width: 55px;
+  height: 13px;
+  -webkit-transition: all ease .3s;
+  -moz-transition: all ease .3s;
+  float: left;
+  margin: 8px 0 0 0;
+}
+
+/* line 134, ../../../app/assets/stylesheets/admin/default.css.scss */
+#lang img {
+  position: relative;
+  top: 1px;
+}
+
+/* line 135, ../../../app/assets/stylesheets/admin/default.css.scss */
+#lang:hover {
+  width: 165px;
+  position: relative;
+}
+
+/* line 136, ../../../app/assets/stylesheets/admin/default.css.scss */
+#lang a {
+  padding: 0;
+  display: inline-box;
+  width: 50px;
+  height: 13px;
+  font: 300 11px 新細明體, 微软雅黑, Times New Roman;
+  text-shadow: none;
+  padding: 0 5px 0 0;
+  color: #aaa;
+}
+
+/* line 137, ../../../app/assets/stylesheets/admin/default.css.scss */
+#lang a:hover {
+  color: #fff;
+}
+
+/* line 139, ../../../app/assets/stylesheets/admin/default.css.scss */
+.addlink {
+  text-shadow: 0 1px 0 #fff;
+}
+
+/* line 140, ../../../app/assets/stylesheets/admin/default.css.scss */
+.addlink img {
+  position: relative;
+  top: 4px;
+}
+
+/* line 142, ../../../app/assets/stylesheets/admin/default.css.scss */
+.font-black {
+  font-weight: 900;
+  font-size: 15px;
+  color: black !important;
+}
+
+/* line 143, ../../../app/assets/stylesheets/admin/default.css.scss */
+.font-red {
+  color: #ce0021;
+  font-size: 32px;
+}
+
+/*-----------------------------------------------------------------------登入---*/
+/* line 147, ../../../app/assets/stylesheets/admin/default.css.scss */
+.login #main {
+  background: url(/assets/bg.jpg);
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 148, ../../../app/assets/stylesheets/admin/default.css.scss */
+.login #vert {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 149, ../../../app/assets/stylesheets/admin/default.css.scss */
+.login article {
+  width: 300px;
+  float: none;
+  margin: 0 auto;
+}
+
+/* line 150, ../../../app/assets/stylesheets/admin/default.css.scss */
+.login .text {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* line 151, ../../../app/assets/stylesheets/admin/default.css.scss */
+.login .text div {
+  padding: 5px 0;
+}
