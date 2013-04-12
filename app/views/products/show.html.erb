@@ -10,7 +10,7 @@
           <h5><%= link_to productclass.name, productclass_path(productclass, :locale => I18n.locale) %></h5>
           <ul>
             <% if(productclass.id.to_s == params[:productclass_id] && productclass.products.size > 0) %>
-            <% productclass.products.each do |product| %>
+            <% @products.each do |product| %>
             <% if(product.status == "enable") %>
             <% if(product.id.to_s == params[:id]) %>
             <li class="active">
