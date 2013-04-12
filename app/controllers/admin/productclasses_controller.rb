@@ -56,10 +56,12 @@ class Admin::ProductclassesController < ApplicationController
   def destroyPhoto
     @photo = Classphoto.find(params[:id])
     @photopath = "public/uploads/Classphoto/"+ @photo.productclass_id.to_s + "/" + @photo.id.to_s + "-" + @photo.name
-    if(!File.delete(@photopath)) #carrierwave will handle this.
+
+    if(!File.exist?(@photopath))
       @photopath = "public/uploads/Classphoto/"+ @photo.productclass_id.to_s + "/" + @photo.name
-      File.delete(@photopath)
     end
+    File.delete(@photopath)
+    
     @photo.destroy
 
     respond_to do |format|
