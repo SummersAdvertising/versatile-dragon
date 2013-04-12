@@ -14,6 +14,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [218, 163]
   end
 
+  def filename
+    model.id ? "#{model.id}-#{original_filename}" : original_filename
+  end
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end
