@@ -1,5 +1,5 @@
 # encoding: utf-8
-class ImageUploader < CarrierWave::Uploader::Base
+class IndexlinkUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file
 
@@ -7,26 +7,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   before :store, :remember_cache_id
   after :store, :delete_tmp_dir
 
-  version :thumb, :if => :isProduct? do
-    process :resize_to_fill => [218, 163]
-  end
-
-  def filename
-    model.id ? "#{model.id}-#{original_filename}" : original_filename
-  end
+  # resize all the upload pics
+  process :resize_to_limit => [990, nil]
 
   def extension_white_list
     %w(jpg jpeg gif png)
   end
 
   def store_dir
-    if(model.class.name=='Classphoto')
-    "uploads/#{model.class.name}/#{model.productclass_id}"
-    elsif(model.class.name=='Productphoto')
-    "uploads/#{model.class.name}/#{model.product_id}"
-    else
     "uploads/#{model.class.name}/#{model.id}"
-    end
   end
 
   def cache_dir
@@ -45,9 +34,4 @@ class ImageUploader < CarrierWave::Uploader::Base
       FileUtils.rm_rf(File.join(cache_dir, @cache_id_was))
     end
   end
-
-  def isProduct?(new_file)
-    model.class.name == 'Product'
-  end
-
 end

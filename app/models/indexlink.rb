@@ -7,7 +7,8 @@ class Indexlink < ActiveRecord::Base
   
   paginates_per 15
 
-  Translation.mount_uploader :image, ImageUploader
+  Translation.mount_uploader :image, IndexlinkUploader
+  
   
   def image
   	self.translation.image
@@ -16,5 +17,4 @@ class Indexlink < ActiveRecord::Base
   def image=(value)  	
   	self.translation.image = value
   end
-  
 end
