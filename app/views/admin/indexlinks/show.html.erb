@@ -61,7 +61,13 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <th valign="top"><%= t("indexlink.preview") %></th>
-        <td><%=image_tag(@indexlink.image) %></td>
+        <td>
+          <% if(@indexlink.translation.image.path) %>
+          <%=image_tag(@indexlink.image, :width=>"100px") %>
+          <%else%>
+          <%= t("indexlink.upload.valid") %>
+          <% end %>
+        </td>
       </tr>
     </table>
   </div>
