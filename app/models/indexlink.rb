@@ -4,8 +4,6 @@ class Indexlink < ActiveRecord::Base
   translates :title, :link, :image
   
   accepts_nested_attributes_for :translations
-  
-  paginates_per 15
 
   Translation.mount_uploader :image, IndexlinkUploader
   

@@ -3,7 +3,7 @@ class Admin::ProductclassesController < ApplicationController
   layout 'admin'
 
   def index
-    @productclasses = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC, productclasses.created_at DESC").all
+    @productclasses = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC, productclasses.created_at DESC").page(params[:page]).per(15)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @productclasses }

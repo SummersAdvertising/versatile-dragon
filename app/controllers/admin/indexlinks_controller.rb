@@ -3,7 +3,7 @@ class Admin::IndexlinksController < ApplicationController
   layout 'admin'
 
   def index
-    @indexlinks = Indexlink.with_translations(I18n.locale).order('ordernum').page(params[:page])
+    @indexlinks = Indexlink.with_translations(I18n.locale).order('ordernum').page(params[:page]).per(15)
 
     respond_to do |format|
       format.html # index.html.erb

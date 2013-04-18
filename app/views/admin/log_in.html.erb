@@ -39,9 +39,8 @@
 </section><!--vert-->
 
 <script>
+$("body").addClass("login");
   $(function() {
-    $("body").addClass("login");
-
     var loginMsg = "<%= flash[:loginCheck] %>";
     if(loginMsg){
       Alertify.log.error('<%= t("admin.loginError") %>');
