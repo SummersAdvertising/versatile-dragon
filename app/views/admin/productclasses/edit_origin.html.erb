@@ -1,0 +1,559 @@
+<article>
+<% if(@productclass) %>
+<section class="hgroup">
+  <h2><%= t("productclass.titleNew") %></h2>
+</section>
+<!--hgroup-->
+
+<%= form_for(@productclass, :url => admin_productclass_path(@productclass, :locale => I18n.locale), :method => "put") do |f| %>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th><%= t("productclass.addDate") %></th>
+      <td><%= f.text_field :addDate, :autocomplete => "off", :placeholder => t("productclass.addDateholder") %></td>
+    </tr>
+  </table>
+</section>
+<!--title-->
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th><%= t("productclass.productclassName") %></th>
+      <td><%= f.text_field :name, :autocomplete => "off", :placeholder => t("productclass.productclassNameholder") %>
+      <td style="display: none;">
+        <%= f.text_field :content %></td>
+    </tr>
+  </table>
+</section>
+<!--title-->
+<% end %>
+
+<!--title-->
+<section class="tab">
+  <ul id="tab">
+    <li data-name="paragraph"><a href="#post-p"><img src="/images/edit.png"><%= t("editor.paragraph.name") %></a></li>
+    <li data-name="image"><a href="#post-img"><img src="/images/img.png"/><%= t("editor.image.name") %></a></li>
+    <li data-name="video"><a href="#post-video"><img src="/images/video.png"/><%= t("editor.video.name") %></a></li>
+  </ul>
+</section>
+<!--tab-->
+<section class="post">
+  <div id="post-p">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="2">
+          <!-- 
+          <select id="newParagraphFontSize" >
+            <option value="" selected="selected">-- 大小 --</option>
+            <option value="14">14</option>
+            <option value="28">28</option>
+          </select>
+          <select id="newParagraphColor" >
+            <option value="" selected="selected">-- 顏色 --</option>
+            <option value="#000">black</option>
+            <option value="#00F">blue</option>
+          </select>
+          -->
+          <select id="newParagraphClass" >
+            <option value="font-red"><%= t("editor.paragraph.class.titleRed") %></option>
+            <option value="font-black"><%= t("editor.paragraph.class.titleBlack") %></option>
+            <option value="content" selected="selected"><%= t("editor.paragraph.class.content") %></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="<%= t("editor.paragraph.holder") %>"></textarea></td>
+      </tr>
+
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+
+      <tr class="addlink">
+        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"><%= t("editor.link.name") %></td>
+        <td><input id="newParagraphLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="post-img">
+    <%= form_for (@photo), :url => 'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="2"><%= p.file_field :image, :class => "autogrow" %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr class="addlink">
+        <td width="100" align="center"><img src="/images/atch.png" width="16" height="16"><%= t("editor.link.name") %></td>
+        <td><input  id="newImageLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+
+  <div id="post-video">
+    <input id="newVideoContent" name="" type="text" placeholder="<%= t("editor.video.holder") %>" />
+    <div id="videoPreview"></div>
+  </div>
+
+</section>
+<!--post-->
+
+<section class="button" id="btnAddElement"> <a href="#"><img src="/images/add.png"><%= t("editor.add") %></a> </section>
+<!--button-->
+
+<section class="hgroup">
+  <h2><%= t("editor.preview.title") %></h2>
+  <p><%= t("editor.preview.tip") %></p>
+</section>
+<!--hgroup-->
+
+<section id="articleContent" class="preview sortable">
+  <!--show the content of article -->
+</section>
+<!--preview-->
+
+<section class="button" id="btnSubmit"><a href="#"><img src="/images/check.png"><%= t("editor.save") %></a> </section>
+
+<% else %>
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>該語言不包含此分類, 請到正確的語言後台編輯</td>
+    </tr>
+  </table>
+</section>
+<!--title-->
+<% end %>
+
+</article>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#nav-2").parent().addClass("active");
+
+  $("#lang a").unbind().click(function(event){
+    
+    event.preventDefault();
+    Alertify.log.error("文章編輯中, 無法切換語系");
+
+  });
+});
+</script>
+
+<script type="text/javascript">
+  $( "#productclass_addDate" ).datepicker();
+  $( "#productclass_addDate" ).change(function(){
+    $(this).datepicker("option", "dateFormat", "yy-mm-dd");
+  });
+
+  var form = "#edit_productclass_<%= params[:id]%>";
+
+  //show content
+  showContent();
+
+  $("#btnAddElement").click(function(event){
+    var liList = $("#tab li");
+
+    for(var arrayLength = liList.length, i = 0; i<arrayLength; i++){
+      if($(liList[i]).hasClass("active")){
+        switch($(liList[i]).data("name")){
+          case "paragraph":
+            addParagraph();
+            break;
+          case "image":
+            addImage();
+            break;
+          case "video":
+            addVideo();
+            break;
+
+        }
+        break;
+      }
+      
+    }
+    bindEdit();
+    event.preventDefault();
+    
+  });
+
+  function addParagraph(){
+    if($("#newParagraphContent").val()){
+      var style = 'style="';
+      
+      if ($('#newParagraphFontSize').val() && $('#newParagraphFontSize').val().length > 0) {
+        style += "font-size: " + $('#newParagraphFontSize').val() + "px; ";
+      }
+      
+      if ($('#newParagraphColor').val() && $('#newParagraphColor').val().length > 0 ) {
+        style += "color: " + $('#newParagraphColor').val() + "; ";        
+      }
+    
+      style += '"';
+    
+      var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="paragraph">' +
+                '<ul class="tool-b">' +
+                '<li><a name="edit"><%= t("actionshare.edit") %></a></li><li><a name="delete"><%= t("actionshare.delete") %></li>' +
+                '</ul>' +
+                '</div>');
+      
+      var content = $("#newParagraphContent").val().replace(/\n/g, "<br />");
+                      
+      var paragraph = $('<p class="paragraph '+$("#newParagraphClass").val()+'" ' + style + ' >' + content + "</p>");
+      
+      if ( $('#newParagraphLink').val().length > 0 ) {
+          var contentLink =  $('<a target="_blank" href="' + $('#newParagraphLink').val() + '"></a>').html(paragraph.html());
+          paragraph.html('');
+          paragraph.append(contentLink);
+          $('#newParagraphLink').val('');
+      }
+      
+      container.append(paragraph);
+
+      $("#articleContent").append(container);
+      $("#newParagraphContent").val('');
+
+      saveArticle();
+    }
+    else{
+      Alertify.log.error("<%= t('editor.paragraph.valid') %>");
+    }
+  }
+
+  function addImage(){
+    if($("#classphoto_image").val()){
+      $("#new_classphoto").submit();
+    }
+    else{
+      Alertify.log.error("<%= t('editor.image.valid') %>");
+    }
+    
+  }
+
+  function addVideo(){
+    if( $("#newVideoContent").val() ){
+      var container = $('<div class="paragraphContainer ui-state-default dragItem" data-type="video"></div>');
+      var code = getYoutubeCode( $("#newVideoContent").val());
+      var paragraph = $('<ul class="tool-b"><li><a name="delete"><%= t("actionshare.delete") %></a></li></ul><iframe width="480" height="290" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
+      container.append(paragraph);
+
+      $("#articleContent").append(container);
+      $(container).bind("click",function(){paragraphClick(this);});
+      $("#newVideoContent").val('');
+      $("#videoPreview").html('');
+
+      saveArticle();
+    }
+    else{
+      Alertify.log.error("<%= t('editor.video.valid') %>");
+    }
+    event.preventDefault();
+  }
+
+  // Video preview
+  $('#newVideoContent').change(function() {
+    var code = getYoutubeCode( $(this).val() );
+    $('#videoPreview').append('<iframe width="320" height="220" data-code="' + code + '" src="http://www.youtube.com/embed/' + code + '" frameborder="0" allowfullscreen></iframe>');
+  });
+
+  function getYoutubeCode( link ) {
+    if ( link != undefined ) {
+      return /[a-zA-Z0-9\?\.\:\/]+v=([a-zA-Z0-9_\-]+)&?.*/.exec(link)[1];
+    }
+    return '';
+  }
+
+  //validate image upload
+  $("#new_classphoto").submit(function(){
+      return formvalidate();
+  });
+
+  function formvalidate(){
+    //validate image upload
+    var isPass = false;
+    var alert;
+
+    var fileinput = document.getElementById('classphoto_image');
+    if(fileinput.files[0]){
+      var typeAllowed = ["gif", "png", "jpg", "jpeg"];
+
+      (function() {
+        outerloop:
+        for(var item in typeAllowed){
+          if(fileinput.files[0].type.indexOf(typeAllowed[item]) != -1){
+            isPass = true;
+
+            break outerloop;
+          }
+        }
+      })();
+
+      if(!isPass){
+        Alertify.log.error("<%= t('editor.image.errortype') %>");
+      }
+
+      if(fileinput.files[0].size > 5 * 1024 *1024){
+        isPass = false;
+        Alertify.log.error("<%= t('editor.image.errorsize') %>");
+      }
+      if(!isPass){
+        $(fileinput).val(""); 
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function newImage(photoID,photoPath){
+    var articleContent = '<div class="paragraphContainer ui-state-default dragItem" data-type="image" data-photo_id="'+ photoID +'"><ul class="tool-b"><li><a href="/en/admin/productclasses/<%= params[:id]%>/deletePhoto/' + photoID + '" data-method="delete" rel="nofollow" data-remote="true"><%= t("actionshare.delete") %></a></li></ul>';
+
+    if($("#newImageLink").val()){
+      articleContent += '<a href="'+$("#newImageLink").val()+'" target="_blank"><img src="'+photoPath+'" alt="'+photoID+'" /></a></div>';
+    }
+    else{
+      articleContent += '<img src="'+photoPath+'" alt="'+photoID+'" /></div>';
+    }
+
+    $("#articleContent").append(articleContent);
+    
+    $('#new_classphoto').each (function(){
+      this.reset();
+    });
+
+    saveArticle();    
+  }
+
+  /* paragraphs sortable */
+  $( ".sortable" ).sortable({
+    placeholder: "ui-state-highlight",
+    disable: true,
+    stop: function( event, ui ) {saveArticle();}
+  });
+
+  var editingFlag = false;
+  bindEdit();
+  function bindEdit(){
+    /* edit or delete the paragraphs */
+  $("ul.tool-b a[name=edit]").click(function(event){
+    if(!editingFlag){
+      editingFlag = true;
+      $(".button").hide();
+      $(this).parent().parent().hide();
+      
+      var paragraph = $(this).parent().parent().parent().children("p");
+
+      $(this).parent().parent().parent().append('<textarea id="editedContent" name="textarea" cols="" rows="" class="autogrow">'+
+        '</textarea><label id="editedLink" />'+
+        '<ul class="tool-a">'+
+          '<li><a id="editFinish" htref="#"><%= t("actionshare.save") %></a></li>'+
+          '<li><a id="editCancel" htref="#"><%= t("actionshare.cancel") %></a></li>'+
+        '</ul>');
+
+      //avoid content in textbox can't not be editted due to the using of jquery sortable
+      event.stopImmediatePropagation();
+
+      var contentLink = $(paragraph).html().match(/^\<a([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/a\>/);
+      
+      if(contentLink){
+        contentLink.aLink = contentLink[2];
+        contentLink.aContent = br2nl(contentLink[3]);
+      }
+
+      $("#editedContent").html(contentLink? contentLink.aContent : br2nl($(paragraph).html()) );
+      $("#editedLink").html("<%= t('editor.link.href') %>：" + (contentLink? contentLink.aLink : "")).css("display", contentLink? "inline-block" : "none");
+      $(paragraph).hide();
+
+      $("#editFinish").click(function(){
+        if($("#editedContent").val()){
+          var content = (contentLink? '<a target="_blank" href="'+contentLink.aLink+'">': "" )+ nl2br($("#editedContent").val())+ (contentLink? '</a>': "");
+          $(paragraph).html(content).show();
+
+          $("ul.tool-b").css("display", "");
+
+          $("#editedContent").remove();
+          $("#editedLink").remove();
+          $("ul.tool-a").remove();
+
+          saveArticle();
+          editingFlag = false;
+          $(".button").show();
+        }
+        else{
+          $("#editedContent").val(br2nl($(paragraph).html()));
+        }
+      });
+
+      $("#editCancel").click(function(){
+        $(this).parent().parent().parent().children("p").show();
+        $("ul.tool-b").css("display", "");
+
+        $("#editedContent").remove();
+        $("#editedLink").remove();
+        $("ul.tool-a").remove();
+
+        editingFlag = false;
+        $(".button").show();
+      });
+    }
+  });
+
+  $("ul.tool-b a[name=delete]").click(function(){
+    $(this).parent().parent().parent().remove();
+    saveArticle();
+  });
+  }
+
+  /* save and update the article */
+  function contentPack(){
+    var article = "";
+    var obj = new Object();
+    obj.article = new Array();
+
+    $("#articleContent .paragraphContainer").children().each(function(){
+      if($(this).is("p")){
+        var p = new Object();
+        p.type = "paragraph";
+        p.color = $(this).css('color');
+        p.fontSize = $(this).css('font-size');
+        p.cssclass = $(this).attr('class');
+        
+        if ( $(this).children('a').length > 0 ) {         
+          p.link = $(this).children('a').attr('href');          
+          p.content=$(this).children('a').html();
+        } else {
+          p.content=$(this).html();         
+        }
+        obj.article.push(p);
+      }
+      else if ($(this).is("img")){
+        var img = new Object();
+        img.type = "image";
+        img.path = $(this).attr("src");
+        img.id = $(this).attr("alt");
+        obj.article.push(img);
+      }
+      //linkedimg
+      else if($(this).is("a") && $(this).children('img').length > 0){
+        var linkedimg = new Object();
+        linkedimg.type = "linkedimg"
+        linkedimg.link = $(this).attr("href");
+        linkedimg.imgpath = $(this).children('img').attr("src");
+        linkedimg.imgid = $(this).children('img').attr("alt");
+        obj.article.push(linkedimg);
+      }
+      else if ($(this).is("iframe")) {
+        var video = new Object();
+        video.type = "video";
+        video.code = $(this).data("code");
+        obj.article.push(video);
+      }
+    });
+
+    article = JSON.stringify(obj);
+    $("#productclass_content").val(article);
+  }
+
+  function saveArticle(){
+    contentPack();
+
+    $(form).ajaxSubmit({
+      beforeSubmit: function(a,f,o) {
+        o.dataType = 'json';
+      },
+      complete: function(XMLHttpRequest, textStatus) {
+        Alertify.log.success("<%= t('editor.saveSuccess') %>");
+      }
+    });
+  }
+
+  function showContent(){
+    if($("#productclass_content").val())
+    {
+      try
+      {
+        var obj = JSON.parse($("#productclass_content").val());
+        var article = "";
+        for(i=0;i<obj.article.length;i++)
+        {
+          var paragraph = obj.article[i];
+
+          if(JSON.stringify(paragraph.type)=='"paragraph"')
+          {
+            article = "<div class='paragraphContainer ui-state-default dragItem' data-type='paragraph'><ul class='tool-b'><li><a name='edit'><%= t('actionshare.edit') %></a></li><li><a name='delete'><%= t('actionshare.delete') %></a></li></ul><p class='"+paragraph.cssclass+"' style = ' font-size: "+paragraph.fontSize+"; color: "+paragraph.color+"'>";
+            if(paragraph.link){
+              article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p></div>";
+            }
+            else{
+              article += jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</p></div>";
+            }
+          }
+          else if(JSON.stringify(paragraph.type)=='"image"')
+          {
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='image' data-photo_id=\"" + paragraph.id + "\"><ul class='tool-b'><li><a href='/en/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.id + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " /></div>";
+          }
+          else if(JSON.stringify(paragraph.type)=='"linkedimg"')
+          {
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='linkedimage' data-photo_id=\"" + paragraph.imgid + "\"><ul class='tool-b'><li><a href='/en/admin/productclasses/<%= params[:id]%>/deletePhoto/" + paragraph.imgid + "' data-method='delete' rel='nofollow' data-remote='true'><%= t('actionshare.delete') %></a></li></ul><a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a></div>";
+          }
+          else if (JSON.stringify(paragraph.type)=='"video"') {
+            article = "<div  class='paragraphContainer ui-state-default dragItem' data-type='video' data-code=\"" + paragraph.code + "\"><ul class='tool-b'><li><a name='delete'><%= t('actionshare.delete') %></a></li></ul><iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe></div>";
+          }
+
+          $("#articleContent").append(article);
+        }//end of for.}
+      }
+      catch( err )
+      {
+        $("#product_content").val("");
+        saveArticle();
+      }
+      
+    }//end of if.
+  }
+
+  function jsonReplace(string){return string.replace(/"([^"]*)"/g, "$1");}
+
+  function nl2br(string) { return string.replace(/\n/g, "<br />");}
+  function br2nl(string) { return string.replace(/<br[ \/]*>/g, "\n");}
+
+  $("#btnSubmit").click(function(){
+    $(form).submit();
+  });
+
+  //validate when submit
+  $(form).submit(function(){
+    var submit = true;
+
+    $(".validate").each(function(){
+      if(!$(this).val()){
+        submit = false;
+      }
+    });
+
+    if(!submit){
+    }
+
+    return submit;
+  });
+</script>
+
+<script>
+$(function(){ 
+  var _showTab = 0;
+  var $defaultLi = $('.tab li').eq(_showTab).addClass('active');
+  $($defaultLi.find('a').attr('href')).siblings().hide();
+  $('.tab li').click(function() {   
+    var $this = $(this),
+      _clickTab = $this.find('a').attr('href');   
+    $this.addClass('active').siblings('.active').removeClass('active');   
+    $(_clickTab).stop(false, true).fadeIn().siblings().hide(); 
+    return false;
+    }).find('a').focus(function(){
+      this.blur();
+  });
+});
+</script>

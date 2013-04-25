@@ -68,46 +68,12 @@
 $(document).ready(function() {
   $("#nav-2").parent().addClass("active");
 
-  showContent();
+  editor.output($("#product_content").val());
 
-  function showContent(){
-    if($("#product_content").val())
-    {
-      var obj = JSON.parse($("#product_content").val());
-      var article = "";
-      for(i=0;i<obj.article.length;i++)
-      {
-        var paragraph = obj.article[i];
-
-        if(JSON.stringify(paragraph.type)=='"paragraph"')
-        {
-          article = "<p class='"+paragraph.cssclass+"'>";
-
-          if(paragraph.link){
-            article += "<a target='_blank' href='"+paragraph.link+"'>"+jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</a></p>";
-          }
-          else{
-            article += jsonReplace(JSON.stringify(paragraph.content)).replace(/\\n/g, "<br />")+"</p>";
-          }
-        }
-        else if(JSON.stringify(paragraph.type)=='"image"')
-        {
-          article = "<img alt=" + JSON.stringify(paragraph.id) + " src=" + JSON.stringify(paragraph.path) + " title=" + JSON.stringify(paragraph.id) + " />";
-        }
-        else if(JSON.stringify(paragraph.type)=='"linkedimg"')
-        {
-          article = "<a href="+JSON.stringify(paragraph.link)+" target='_blank'><img alt=" + JSON.stringify(paragraph.imgid) + " src=" + JSON.stringify(paragraph.imgpath) + " title=" + JSON.stringify(paragraph.imgid) + " /></a>";
-        }
-        else if (JSON.stringify(paragraph.type)=='"video"') {
-          article = "<iframe width=\"480\" height=\"290\" data-code=\"" + paragraph.code + "\" src=\"http://www.youtube.com/embed/" + paragraph.code+ "\" frameborder=\"0\" allowfullscreen></iframe>";
-        }
-        $("#articleContent .one").eq(0).append(article);
-      }
-    }
-  }
-
-  function jsonReplace(string){return string.replace(/"([^"]*)"/g, "$1");}
-  
+  $("#articleContent div").each(function(){
+    $("#articleContent").append($(this).html());
+    $(this).remove();
+  });
 });
 
 </script>

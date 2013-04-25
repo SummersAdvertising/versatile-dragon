@@ -42,11 +42,10 @@ class Admin::ProductclassesController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        #format.html { redirect_to photos.path } #index.html.erb
         format.json { render json: @photo, status: :created, location: @photo }
         format.js
       else
-        format.html { render action: "new" }
+        exit
         format.json { render json: @photo.errors, status: :unprocessable_entity }
         format.js
       end
@@ -59,13 +58,17 @@ class Admin::ProductclassesController < ApplicationController
 
     if(!File.exist?(@photopath))
       @photopath = "public/uploads/Classphoto/"+ @photo.productclass_id.to_s + "/" + @photo.name
+      if(File.exist?(@photopath))
+        File.delete(@photopath)
+      end
+    else
+      File.delete(@photopath)
     end
-    File.delete(@photopath)
+    
     
     @photo.destroy
 
     respond_to do |format|
-          #format.html { redirect_to :controller => 'photos', :action => 'index' }
           format.js
           format.json { head :no_content }
       end
@@ -91,10 +94,10 @@ class Admin::ProductclassesController < ApplicationController
 
     respond_to do |format|
       if @productclass.update_attributes(params[:productclass])
-        format.html { redirect_to admin_productclass_path(@productclass, :locale => I18n.locale), notice: 'Productclass was successfully updated.' }
-        format.json { head :no_content }
+        format.html { render action: "show" }
+        format.json { render json: @productclass }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "show" }
         format.json { render json: @productclass.errors, status: :unprocessable_entity }
       end
     end

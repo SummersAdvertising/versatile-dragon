@@ -40,11 +40,9 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        #format.html { redirect_to photos.path } #index.html.erb
         format.json { render json: @photo, status: :created, location: @photo }
         format.js
       else
-        format.html { render action: "new" }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
         format.js
       end
@@ -54,16 +52,19 @@ class Admin::ProductsController < ApplicationController
   def destroyPhoto
     @photo = Productphoto.find(params[:id])
     @photopath = "public/uploads/Productphoto/"+ @photo.product_id.to_s + "/" + @photo.id.to_s + "-" + @photo.name
-    
+
     if(!File.exist?(@photopath))
       @photopath = "public/uploads/Productphoto/"+ @photo.product_id.to_s + "/" + @photo.name
+      if(File.exist?(@photopath))
+        File.delete(@photopath)
+      end
+    else
+      File.delete(@photopath)
     end
-    File.delete(@photopath)
-    
+        
     @photo.destroy
 
     respond_to do |format|
-          #format.html { redirect_to :controller => 'photos', :action => 'index' }
           format.js
           format.json { head :no_content }
       end
