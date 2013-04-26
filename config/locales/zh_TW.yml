@@ -1,6 +1,15 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 zh_TW:
+  activerecord:
+    attributes:
+      classphoto:
+        image: ""
+
+  errors:
+    messages:
+      extension_white_list_error: "只能上傳 .gif, .png, .jpg 圖片檔"
+
   actionshare:
     edit: "編輯"
     delete: "刪除"

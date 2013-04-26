@@ -1,4 +1,4 @@
-if(<%= @photo.id.to_s.html_safe %>){
+if("<%= @photo.id.to_s.html_safe %>"){
 	var image = new Object();
 	image.type = "img";
 	image.id = "<%= @photo.id.to_s.html_safe %>";
@@ -13,5 +13,15 @@ if(<%= @photo.id.to_s.html_safe %>){
 	
 }
 else{
-	editor.alert("圖片上傳發生錯誤, 請重新上傳", "error");
+	<% @errors = "" %>
+	<%if @photo.errors %>
+	<% @photo.errors.full_messages.each do |msg| %>
+	<% @errors +=  msg %>
+	<% end %>
+	<% end %>
+
+	if("<%= @errors %>"){
+		editor.alert("<%= @errors %>", "error");
+	}
+	
 }

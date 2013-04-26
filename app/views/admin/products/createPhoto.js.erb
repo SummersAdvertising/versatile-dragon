@@ -13,5 +13,14 @@ if(<%= @photo.id.to_s.html_safe %>){
 	
 }
 else{
-	editor.alert("圖片上傳發生錯誤, 請重新上傳", "error");
+	<%if @photo.errors %>
+	<% @photo.errors.each do |error| %>
+	<% @errors += error %>
+	<% end %>
+	<% end %>
+
+	if(<%= @errors %>){
+		editor.alert("<%= @errors %>", "error");
+	}
+	
 }

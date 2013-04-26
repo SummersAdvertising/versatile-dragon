@@ -45,7 +45,6 @@ class Admin::ProductclassesController < ApplicationController
         format.json { render json: @photo, status: :created, location: @photo }
         format.js
       else
-        exit
         format.json { render json: @photo.errors, status: :unprocessable_entity }
         format.js
       end

@@ -1,6 +1,15 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
+  activerecord:
+    attributes:
+      classphoto:
+        image: ""
+
+  errors:
+    messages:
+      extension_white_list_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
+      
   actionshare:
     edit: "Edit"
     delete: "Delete"
