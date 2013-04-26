@@ -1,4 +1,4 @@
-if(<%= @photo.id.to_s.html_safe %>){
+if("<%= @photo.id.to_s.html_safe %>"){
 	var image = new Object();
 	image.type = "img";
 	image.id = "<%= @photo.id.to_s.html_safe %>";
@@ -13,13 +13,14 @@ if(<%= @photo.id.to_s.html_safe %>){
 	
 }
 else{
+	<% @errors = "" %>
 	<%if @photo.errors %>
-	<% @photo.errors.each do |error| %>
-	<% @errors += error %>
+	<% @photo.errors.full_messages.each do |msg| %>
+	<% @errors +=  msg %>
 	<% end %>
 	<% end %>
 
-	if(<%= @errors %>){
+	if("<%= @errors %>"){
 		editor.alert("<%= @errors %>", "error");
 	}
 	
