@@ -137,7 +137,7 @@ editor.p = {
 		editPanel.addClass("editbox");
 		var editContent = paragraphContainer.children("p:first").hide().html();
 
-		var reLink = /^\<[a|A]([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/[a|A]\>/;
+		//var reLink = /^\<[a|A]([\S\s]+)href\=\"([\S\s]+)\"\>(.+)\<\/[a|A]\>/;
 		//var contentLink = reLink.exec(editContent.toString());
 
 		var contentLink = paragraphContainer.children("p:first").children("a:first");
