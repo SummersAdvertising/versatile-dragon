@@ -177,7 +177,7 @@ editor.p = {
 				editPanel.remove();
 				controlPanel.css("display", "");
 
-				if(contentLink){
+				if(contentLink.length > 0){
 					paragraphContainer.children("p:first").show().children("a:first").html(editContent);
 				}
 				else{
