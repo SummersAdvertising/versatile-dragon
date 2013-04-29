@@ -127,8 +127,25 @@ var editor = {
 	},
 	pack: function(upload){
 		var article = new Array();
+
 		editor.settings.articleSection.children("div.paragraphContainer").each(function(){
-			article.push(editor[$(this).data("type")].pack(this));
+			var type;
+			switch(editor[$(this).data("type")){
+				case "p":
+				case "paragraph":
+					type = "p";
+				break;
+
+				case "image":
+				case "img":
+					type = "img";
+				break;
+
+				default:
+					type = editor[$(this).data("type");
+				break;
+			}
+			article.push(editor[type].pack(this));
 		});
 
 		if(upload){
@@ -166,7 +183,23 @@ var editor = {
 		for(var i = 0, length = article.length; i < length; i++)
 		{
 			var paragraph = article[i];
-			editor[paragraph.type].output(paragraph);
+			var type;
+			switch(paragraph.type){
+				case "p":
+				case "paragraph":
+					type = "p";
+				break;
+
+				case "image":
+				case "img":
+					type = "img";
+				break;
+
+				default:
+					type = paragraph.type;
+				break;
+			}
+			editor[type].output(paragraph);
 		}
 	},
 	resetChild: function(){
