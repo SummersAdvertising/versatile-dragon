@@ -93,13 +93,12 @@ editor.p = {
 	},
 	show: function(paragraph){
 		var paragraphBox = this.output(paragraph);
-		paragraphBox.addClass("paragraphContainer ui-state-default dragItem");
+		paragraphBox.addClass("paragraphContainer");
 		
 		this.bindControl(paragraphBox);
 	},
 	output: function(paragraph){
 		var paragraphBox = $("<div data-type ='p'>");
-		//paragraphBox.attr("data-type", "p");
 
 		var p = $("<p>");
 		if(paragraph.fontSize){
@@ -108,8 +107,8 @@ editor.p = {
 		if(paragraph.fontColor){
 			p.css("color", paragraph.fontColor).attr("data-fontcolor", paragraph.fontColor);
 		}
-		if(paragraph.fontClass){
-			p.addClass(paragraph.fontClass);
+		if(paragraph.fontClass || paragraph.cssclass){
+			p.addClass(paragraph.fontClass? paragraph.fontClass:paragraph.cssclass);
 		}
 
 		if(paragraph.link){

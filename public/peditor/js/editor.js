@@ -160,10 +160,29 @@ var editor = {
 		var content = $("#"+editor.settings.articleModel+"_content").val();
 		if(content){
 			var article = JSON.parse(content);
+			if(article.article){
+				article = article.article;
+			}
 			for(var i = 0, length = article.length; i < length; i++)
 			{
 				var paragraph = article[i];
-				editor[paragraph.type].show(paragraph);
+				var type;
+				switch(paragraph.type){
+					case "p":
+					case "paragraph":
+						type = "p";
+					break;
+
+					case "image":
+					case "img":
+						type = "img";
+					break;
+
+					default:
+						type = paragraph.type;
+					break;
+				}
+				editor[type].show(paragraph);
 			}
 		}
 		
@@ -180,6 +199,9 @@ var editor = {
 		var content = content? content : $("#"+editor.settings.articleModel+"_content").val();
 
 		var article = JSON.parse(content);
+		if(article.article){
+			article = article.article;
+		}
 		for(var i = 0, length = article.length; i < length; i++)
 		{
 			var paragraph = article[i];
