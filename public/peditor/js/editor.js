@@ -130,7 +130,7 @@ var editor = {
 
 		editor.settings.articleSection.children("div.paragraphContainer").each(function(){
 			var type;
-			switch(editor[$(this).data("type")){
+			switch($(this).data("type")){
 				case "p":
 				case "paragraph":
 					type = "p";
