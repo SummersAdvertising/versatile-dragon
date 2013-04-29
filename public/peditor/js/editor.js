@@ -142,7 +142,7 @@ var editor = {
 				break;
 
 				default:
-					type = editor[$(this).data("type");
+					type = $(this).data("type");
 				break;
 			}
 			article.push(editor[type].pack(this));
