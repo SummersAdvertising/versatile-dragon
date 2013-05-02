@@ -20,7 +20,18 @@
 <% when "about" %>
 <%= stylesheet_link_tag "about", :media => "all" %>
 <% when "contact" %>
-<%= stylesheet_link_tag "contact", :media => "all" %>
+ <%= stylesheet_link_tag "contact", :media => "all" %>
+<script src="http://api.ditu.aliyun.com/map.js" ></script>
+<style>
+  #mapDiv{
+    width: 511px; 
+    height: 273px
+  }
+  #mapDiv2{
+    width: 511px; 
+    height: 273px
+  }
+</style>
 <% when "partner" %>
 <%= stylesheet_link_tag "partner", :media => "all" %>
 <% end %>
@@ -32,7 +43,6 @@
 <% if( params[:locale] == "en" ) %>
 <%= stylesheet_link_tag "en_adjust", :media => "all" %>
 <%= stylesheet_link_tag "slide-en", :media => "all" %>
-
 <% end %>
 
 

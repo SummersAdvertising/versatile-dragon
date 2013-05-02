@@ -1,6 +1,8 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 zh_CN:
+  map:
+    view: "检视较大的地图"
   activerecord:
     attributes:
       classphoto:
