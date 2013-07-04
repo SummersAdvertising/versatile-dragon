@@ -63,7 +63,7 @@
         <th valign="top"><%= t("indexlink.preview") %></th>
         <td>
           <% if(@indexlink.translation.image.path) %>
-          <%=image_tag(@indexlink.image, :width=>"100px") %>
+          <%=image_tag(@indexlink.image, :style => "width:70%;max-width:100%;height:auto") %>
           <%else%>
           <%= t("indexlink.upload.valid") %>
           <% end %>
