@@ -122,10 +122,7 @@ var editor = {
 			},
 			dataType: "json",
 			url: $("form, .edit_"+ editor.settings.articleModel).attr("action"),
-			data: $("form, .edit_"+ editor.settings.articleModel).serialize(),
-			// success: function(){
-			// 	window.location.reload();
-			// }
+			data: $("form, .edit_"+ editor.settings.articleModel).serialize()
 		});
 	},
 	pack: function(upload){

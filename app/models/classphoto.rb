@@ -4,7 +4,7 @@ class Classphoto < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader  
   before_create :update_filename
-  
+
   private
   def update_filename
   	self.name = image.file.filename
