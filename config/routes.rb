@@ -9,6 +9,17 @@ VersatileDragon::Application.routes.draw do
 			resources :products, :only => :show
 		end
 
+		resources :productasks, :only => [:create] do
+			collection do
+				namespace :cart do
+					match "add" => "cart#add" , :via => :post
+					match ":product_id/delete" => "cart#delete" , :via => :delete, :as => "delete"
+
+					root :to => "cart#show"
+				end
+			end
+		end
+
 		match "/admin/createAdmin" => "admin#createAdmin", :via => :post
 		match "/admin/loginCheck" => "admin#loginCheck", :via => :post
 		match "/admin/update" => "admin#update", :via => :put

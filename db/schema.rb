@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409111122) do
+ActiveRecord::Schema.define(:version => 20130820062050) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(:version => 20130409111122) do
     t.string   "locale"
     t.string   "title"
     t.text     "content"
+    t.string   "image"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "image"
   end
 
   add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
@@ -98,6 +98,24 @@ ActiveRecord::Schema.define(:version => 20130409111122) do
 
   add_index "product_translations", ["locale"], :name => "index_product_translations_on_locale"
   add_index "product_translations", ["product_id"], :name => "index_product_translations_on_product_id"
+
+  create_table "productasklists", :force => true do |t|
+    t.integer  "productask_id"
+    t.integer  "product_id"
+    t.string   "productname"
+    t.integer  "amount"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "productasks", :force => true do |t|
+    t.string   "askername"
+    t.string   "askertel"
+    t.string   "askermail"
+    t.string   "purpose"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "productclass_translations", :force => true do |t|
     t.integer  "productclass_id"

@@ -6,6 +6,8 @@ class ProductsController < ApplicationController
     @products = @productclass.products.order("addDate DESC, created_at DESC").all
     @product = Product.find(params[:id])
 
+    @askitem = Productasklist.new
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }

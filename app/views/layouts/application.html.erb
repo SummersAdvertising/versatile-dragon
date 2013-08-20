@@ -38,6 +38,8 @@
 
 <% elsif(params[:controller] == "productclasses" || params[:controller] == "products") %>
 <%= stylesheet_link_tag "series", :media => "all" %>
+<% else %>
+<%= stylesheet_link_tag "about", :media => "all" %>
 <% end %>
 
 <% if( params[:locale] == "en" ) %>
@@ -112,6 +114,7 @@ $(function(){
         	<a href="#" data-lang="zh_CN"><%= t("environ.language.cn") %></a>
         	<a href="#" data-lang="en"><%= t("environ.language.us") %></a>
         </li>
+        <li><%= link_to "詢價車：#{@cartitems_count}件。", root_cart_productasks_path %></li>
       </ul>
     </nav>
   </section>
