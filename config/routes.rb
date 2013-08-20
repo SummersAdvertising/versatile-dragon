@@ -9,13 +9,11 @@ VersatileDragon::Application.routes.draw do
 			resources :products, :only => :show
 		end
 
-		resources :productasks, :only => [:create] do
+		resources :productasks, :only => [:new, :create] do
 			collection do
 				namespace :cart do
 					match "add" => "cart#add" , :via => :post
 					match ":product_id/delete" => "cart#delete" , :via => :delete, :as => "delete"
-
-					root :to => "cart#show"
 				end
 			end
 		end
@@ -37,6 +35,11 @@ VersatileDragon::Application.routes.draw do
 				resources :products, :except => [:new] do
 					match 'uploadPhoto' => 'products#createPhoto', :via => [:post]
 					match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
+				end
+			end
+			resources :productasks, :only => [:index, :show] do
+				member do
+					match "changeStatus"
 				end
 			end
 		end

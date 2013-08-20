@@ -1,0 +1,33 @@
+<article>
+<section class="list">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th align="left" class="x0 x2">日期</th>
+      <th align="left">詢問人</th>
+      <th align="left">狀態</th>
+    </tr>
+
+    <% @productasks.each do |productask| %>
+    <tr>
+      <td align="left" class="x0"><%= productask.created_at.to_date %></td>
+      <td align="left">
+        <%= link_to productask.askername, admin_productask_path(params[:locale], productask) %>
+      </td>
+      <td align="left" class="x0"><%= productask.status %></td>
+    </tr>
+    <% end %>
+
+    
+  </table>
+
+  
+</section>
+<!--list-->
+</article>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#nav-4").parent().addClass("active");
+  
+});
+</script>

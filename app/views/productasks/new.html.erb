@@ -1,0 +1,42 @@
+<article>
+  <section>
+  	<div id="banner_about" class="banner">
+  		<div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > 詢價車</div>
+  	</div>
+  	<div id="content">
+  		<%= form_for(@productask, :url => productasks_path) do |f| %>
+  		<p>聯絡人：<%= f.text_field :askername %></p>
+  		<p>聯絡電話：<%= f.text_field :askertel %></p>
+  		<p>email：<%= f.text_field :askermail %></p>
+  		<table>
+		  <tr>
+		    <th width="16%" align="center">詢價商品</th>
+		    <th width="8%" align="center">刪除</th>
+		  </tr>
+
+		  <% if @askItems && @askItems.length>0 %>
+		  <% @askItems.each do |item| %>
+		  <tr>
+		    <td><%= link_to item[:name], productclass_product_path(params[:locale], item[:class_id], item[:id]) %></td>
+		    <td><%= link_to "刪除", delete_cart_productasks_path(params[:locale], item[:id]), :method => :delete, :data => {:confirm => "確定刪除？"} %></td>
+		  </tr>
+		  <% end %>
+
+		  <% else %>
+		  <tr>
+		    <td align="center" colspan="9">詢價車是空的。</td>
+		  </tr>
+		  <% end %>
+		</table>
+		<p>
+			詢價目的<br>
+			<% ["詢問合作", "批發", "零售"].each do |purpose| %>
+			<input name="purpose[]" type="checkbox" value="<%= purpose %>"><%= purpose %><br>
+			<% end %>
+		</p>
+		<%= f.submit "送出詢價單" %>
+		<% end %>
+	</div>
+    
+  </section>
+</article>

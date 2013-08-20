@@ -1,7 +1,7 @@
 class Productask < ActiveRecord::Base
-  attr_accessible :askermail, :askername, :askertel, :purpose
+  attr_accessible :askermail, :askername, :askertel, :purpose, :status
 
-  validates :askermail, :askername, :askertel, :purpose, :presence => true
+  validates :askermail, :askername, :askertel, :status, :presence => true
 
-  has_many :productasklist
+  has_many :productasklists
 end
