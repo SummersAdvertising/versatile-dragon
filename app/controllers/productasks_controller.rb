@@ -10,11 +10,10 @@ class ProductasksController < ApplicationController
     
   end
   def create
-    if(params[:productask][:purpose])
+    if(params[:purpose])
       @purpose = String.new
-
-      params[:productask][:purpose].each do |purpose|
-        @purpose += purpose + ", "
+      params[:purpose].each do |purpose|
+        @purpose += "#{purpose}, "
       end
 
       params[:productask][:purpose] = @purpose
@@ -23,9 +22,13 @@ class ProductasksController < ApplicationController
     @productask = Productask.new(params[:productask])
     @productask.status = "未處理"
     
-    if(@productask.save)
+    if(cookies[:cart] && cookies[:cart].length > 0)
       @checkItems = JSON.parse(cookies[:cart])
       @askItems = checkItem(@checkItems)
+    end
+    
+    if(@askItems && @askItems.length > 0 && @productask.save)
+      
 
       @askItems.each do |askItem|
         @askItem = @productask.productasklists.new({ :product_id => askItem[:id], :productname => askItem[:name] })
@@ -43,6 +46,8 @@ class ProductasksController < ApplicationController
       if(cookies[:cart] && cookies[:cart].length > 0)
         @checkItems = JSON.parse(cookies[:cart])
         @askItems = checkItem(@checkItems)
+      else
+        flash[:alert] = "詢價車是空的。"
       end
 
       respond_to do |format|
