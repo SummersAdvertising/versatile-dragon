@@ -1,9 +1,10 @@
+#encoding: utf-8
 class Sendproductask < ActionMailer::Base
   default from: "from@example.com"
 
-  def send(receiver, productask)
+  def sendmail(productask)
   	@productask = productask
 
-  	mail(:to => [ receiver, "kobanae@summers.com.tw" ], :subject => "詢價單成立通知")
+  	mail(:to => [ @productask.askermail, "kobanae@summers.com.tw" ], :subject => "詢價單成立通知")
   end
 end

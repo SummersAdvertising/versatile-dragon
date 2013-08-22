@@ -36,7 +36,7 @@ class ProductasksController < ApplicationController
       respond_to do |format|
         cookies[:cart] = nil
 
-        Sendproductask.send(@productask.mail, @productask).deliver
+        Sendproductask.sendmail(@productask).deliver
 
         format.html { redirect_to new_productask_path, notice: "已送出您的詢價單。"}
         format.json { render json: @productask }
