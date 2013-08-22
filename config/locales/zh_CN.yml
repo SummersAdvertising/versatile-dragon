@@ -7,6 +7,15 @@ zh_CN:
     attributes:
       classphoto:
         image: ""
+      productask:
+        askername: "聯絡人姓名"
+        askertel: "聯絡電話"
+        askermail: "email"
+        purpose: "詢問目的"
+    errors:
+      models:
+        productask:
+          blank: "不能為空"
 
   errors:
     messages:

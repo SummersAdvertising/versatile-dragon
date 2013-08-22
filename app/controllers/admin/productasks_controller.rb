@@ -4,7 +4,7 @@ class Admin::ProductasksController < ApplicationController
   layout 'admin'
 
   def index
-    @productasks = Productask.all
+    @productasks = Productask.order("created_at desc").all
 
     respond_to do |format|
       format.html # index.html.erb

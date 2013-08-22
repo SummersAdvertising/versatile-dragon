@@ -4,6 +4,14 @@
   		<div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > 詢價車</div>
   	</div>
   	<div id="content">
+  		<% if @productask.errors.any? %>
+  		<div>
+  			<% @productask.errors.full_messages.each do |message| %>
+  				<p><%= message %></p>
+  			<% end %>
+  		</div>
+  		<% end %>
+
   		<%= form_for(@productask, :url => productasks_path) do |f| %>
   		<p>聯絡人：<%= f.text_field :askername %></p>
   		<p>聯絡電話：<%= f.text_field :askertel %></p>
@@ -31,7 +39,7 @@
 		<p>
 			詢價目的<br>
 			<% ["詢問合作", "批發", "零售"].each do |purpose| %>
-			<input name="purpose[]" type="checkbox" value="<%= purpose %>"><%= purpose %><br>
+			<input name="purpose[]" type="checkbox" value="<%= purpose %>" <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %> ><%= purpose %><br>
 			<% end %>
 		</p>
 		<%= f.submit "送出詢價單" %>

@@ -43,10 +43,7 @@ class ProductasksController < ApplicationController
       end
 
     else
-      if(cookies[:cart] && cookies[:cart].length > 0)
-        @checkItems = JSON.parse(cookies[:cart])
-        @askItems = checkItem(@checkItems)
-      else
+      if(!@askItems || @askItems.length == 0)
         flash[:alert] = "詢價車是空的。"
       end
 
