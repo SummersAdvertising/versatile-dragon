@@ -42,6 +42,10 @@
 			<input name="purpose[]" type="checkbox" value="<%= purpose %>" <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %> ><%= purpose %><br>
 			<% end %>
 		</p>
+		<p>
+			留言或備註（非必填）：<br>
+			<%= f.text_area :note, :rows => 5 %>
+		</p>
 		<%= f.submit "送出詢價單" %>
 		<% end %>
 	</div>

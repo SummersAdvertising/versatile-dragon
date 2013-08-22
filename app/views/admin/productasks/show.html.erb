@@ -17,6 +17,7 @@
   </table>
 
   <p>詢價目的：<%= @productask.purpose || "未填寫" %></p>
+  <p>備註：<%= simple_format(@productask.note || "無" ) %></p>
 </article>
 
 <script type="text/javascript">

@@ -1,6 +1,6 @@
 #encoding: utf-8
 class Productask < ActiveRecord::Base
-  attr_accessible :askermail, :askername, :askertel, :purpose, :status
+  attr_accessible :askermail, :askername, :askertel, :purpose, :status, :note
 
   validates :askername, :askertel, :askermail, :purpose, :status, :presence => true
   validates :askermail, format: { with: /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9])+$/, message: "請輸入正確的email" }, :if => :is_email?
