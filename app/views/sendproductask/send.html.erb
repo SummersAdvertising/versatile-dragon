@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <p>您好，您的詢價單已經記錄，請等候專人與您聯絡。</p>
+
+  <article>
+  	<p><%= @productask.created_at.to_date %></p>
+  	<p>聯絡人：<%= @productask.askername %></p>
+  	<p>電話：<%= @productask.askertel %></p>
+  	<p>EMAIL：<%= @productask.askermail %></p>
+
+  	<table>
+  		<tr>
+  			<th align="center">詢價商品</th>
+  		</tr>
+  		<% @productask.productasklists.each do |item| %>
+  		<tr>
+  			<td><%= item.productname %></td>
+  		</tr>
+  		<% end %>
+  	</table>
+
+  	<p>詢價目的：<%= @productask.purpose || "未填寫" %></p>
+  </article>
+
+</body>
+</html>

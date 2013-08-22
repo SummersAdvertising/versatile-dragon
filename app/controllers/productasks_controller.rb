@@ -28,8 +28,6 @@ class ProductasksController < ApplicationController
     end
     
     if(@askItems && @askItems.length > 0 && @productask.save)
-      
-
       @askItems.each do |askItem|
         @askItem = @productask.productasklists.new({ :product_id => askItem[:id], :productname => askItem[:name] })
         @askItem.save
@@ -37,6 +35,8 @@ class ProductasksController < ApplicationController
 
       respond_to do |format|
         cookies[:cart] = nil
+
+        Sendproductask.send(@productask.mail, @productask).deliver
 
         format.html { redirect_to new_productask_path, notice: "已送出您的詢價單。"}
         format.json { render json: @productask }
