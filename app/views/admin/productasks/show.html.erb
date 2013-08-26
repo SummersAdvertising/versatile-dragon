@@ -82,7 +82,7 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th valign="top">其他</th>
-            <td><%= simple_format(@productask.note.length >0 ? @productask.note : "無" ) %></td>
+            <td><%= simple_format( (@productask.note && @productask.note.length >0) ? @productask.note : "無" ) %></td>
           </tr>
         </table>
       </div>      
@@ -111,7 +111,6 @@
 <script type="text/javascript">
 $("#nav-4").parent().addClass("active");
 $(".radio").click(function(e){
-  e.preventDefault;
   $("#edit_productask_<%= @productask.id %>").submit();
 });
 </script>
