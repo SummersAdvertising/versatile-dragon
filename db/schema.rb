@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822071841) do
+ActiveRecord::Schema.define(:version => 20130826030540) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -112,10 +112,14 @@ ActiveRecord::Schema.define(:version => 20130822071841) do
     t.string   "askertel"
     t.string   "askermail"
     t.string   "purpose"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "status"
     t.text     "note"
+    t.string   "askercompany"
+    t.string   "country"
+    t.string   "subject"
+    t.string   "askamount"
   end
 
   create_table "productclass_translations", :force => true do |t|

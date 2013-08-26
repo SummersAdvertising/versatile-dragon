@@ -5,25 +5,28 @@
 </head>
 <body>
   <p>您好，您的詢價單已經記錄，請等候專人與您聯絡。</p>
-
   <article>
-  	<p><%= @productask.created_at.to_date %></p>
-  	<p>聯絡人：<%= @productask.askername %></p>
-  	<p>電話：<%= @productask.askertel %></p>
-  	<p>EMAIL：<%= @productask.askermail %></p>
+    <p><%= @productask.created_at.to_date %></p>
+    <p>公司名稱：<%= @productask.askercompany %></p>
+    <p>國家：<%= @productask.country %></p>
+    <p>聯絡人：<%= @productask.askername %></p>
+    <p>電話：<%= @productask.askertel %></p>
+    <p>EMAIL：<%= @productask.askermail %></p>
+    <p>主旨：<%= @productask.subject %></p>
+    <p>需求數量：<%= @productask.askamount %></p>
+    
+    <table>
+      <tr>
+        <th align="center">詢價商品</th>
+      </tr>
+      <% @productask.productasklists.each do |item| %>
+      <tr>
+        <td><%= item.productname %></td>
+      </tr>
+      <% end %>
+    </table>
 
-  	<table>
-  		<tr>
-  			<th align="center">詢價商品</th>
-  		</tr>
-  		<% @productask.productasklists.each do |item| %>
-  		<tr>
-  			<td><%= item.productname %></td>
-  		</tr>
-  		<% end %>
-  	</table>
-
-  	<p>詢價目的：<%= @productask.purpose || "未填寫" %></p>
+    <p>詢價內容：<%= @productask.purpose || "未填寫" %></p>
     <p>備註：<%= simple_format(@productask.note || "無" ) %></p>
   </article>
 

@@ -13,9 +13,13 @@
   		<% end %>
 
   		<%= form_for(@productask, :url => productasks_path) do |f| %>
+  		<p>公司名稱：<%= f.text_field :askercompany %></p>
+  		<p>國家：<%= f.text_field :country %></p>
   		<p>聯絡人：<%= f.text_field :askername %></p>
   		<p>聯絡電話：<%= f.text_field :askertel %></p>
   		<p>email：<%= f.text_field :askermail %></p>
+  		<p>主旨：<%= f.text_field :subject %></p>
+  		<p>需求數量：<%= f.text_field :askamount %></p>
   		<table>
 		  <tr>
 		    <th width="16%" align="center">詢價商品</th>
@@ -37,9 +41,11 @@
 		  <% end %>
 		</table>
 		<p>
-			詢價目的<br>
-			<% ["詢問合作", "批發", "零售"].each do |purpose| %>
-			<input name="purpose[]" type="checkbox" value="<%= purpose %>" <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %> ><%= purpose %><br>
+			詢價內容<br>
+			<% @childcount = 1 %>
+			<% ["運送時間", "出口港", "離岸價格", "客制化需求"].each do |purpose| %>
+				<input name="purpose[]" type="checkbox" value="<%= purpose %>" id="purpose_<%= @childcount %>" <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %> ><label for="purpose_<%= @childcount %>"><%= purpose %></label><br>
+				<% @childcount += 1 %>
 			<% end %>
 		</p>
 		<p>

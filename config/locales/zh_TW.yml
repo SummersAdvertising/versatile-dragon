@@ -12,6 +12,10 @@ zh_TW:
         askertel: "聯絡電話"
         askermail: "email"
         purpose: "詢問目的"
+        askercompany: "公司名稱"
+        country: "國家"
+        subject: "主旨"
+        askamount: "需求數量"
     errors:
       models:
         productask:
