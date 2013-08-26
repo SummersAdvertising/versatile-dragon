@@ -6,7 +6,7 @@ class Productask < ActiveRecord::Base
   validates :askermail, format: { with: /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9])+$/, message: "請輸入正確的email" }, :if => :is_email?
   validates :askertel, format: { with: /^[-()0-9 ]+$/, message: "請輸入正確的電話" }, :if => :is_tel?
 
-  has_many :productasklists
+  has_many :productasklists, :dependent => :destroy
 
   def is_email?
     self.askermail && self.askermail.length > 0

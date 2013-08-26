@@ -1,29 +1,117 @@
 <article>
-  <p><%= @productask.created_at.to_date %></p>
-  <p>公司名稱：<%= @productask.askercompany %></p>
-  <p>國家：<%= @productask.country %></p>
-  <p>聯絡人：<%= @productask.askername %></p>
-  <p>電話：<%= @productask.askertel %></p>
-  <p>EMAIL：<%= @productask.askermail %></p>
-  <p>主旨：<%= @productask.subject %></p>
-  <p>需求數量：<%= @productask.askamount %></p>
-  <p>詢價單狀態：<%= @productask.status %>｜<%= link_to "變更為#{@productask.status == "未處理" ? "已處理" : "未處理" }", changeStatus_admin_productask_path(params[:locale], @productask) %></p>
+  <section class="title">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th><%= @productask.created_at.to_date %></th>
+        <td><%= @productask.subject || "未填寫"  %></td>
+      </tr>
+    </table>
+  </section>
+  <!--title-->
 
-  <table>
-    <tr>
-      <th align="center">詢價商品</th>
-    </tr>
-    <% @productask.productasklists.each do |item| %>
-    <tr>
-      <td><%= item.productname %></td>
-    </tr>
-    <% end %>
-  </table>
-
-  <p>詢價內容：<%= @productask.purpose || "未填寫" %></p>
-  <p>備註：<%= simple_format(@productask.note || "無" ) %></p>
+  <section class="text text-show">
+    <div class="three">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">公司</th>
+            <td><%= @productask.askercompany || "未填寫"  %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="three">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">國家</th>
+            <td><%= @productask.country || "未填寫"  %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="three">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">姓名</th>
+            <td><%= @productask.askername || "未填寫"  %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="three">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">電話</th>
+            <td><%= @productask.askertel || "未填寫"  %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="three">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">信箱</th>
+            <td><%= @productask.askermail || "未填寫"  %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="three">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">數量</th>
+            <td><%= @productask.askamount || "未填寫"  %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="one">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">商品</th>
+            <td>
+              <% @productask.productasklists.each do |item| %>
+                <%= item.productname %>、
+                <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="one">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">詢價</th>
+            <td><%= @productask.purpose || "未填寫" %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="one">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">其他</th>
+            <td><%= simple_format(@productask.note.length >0 ? @productask.note : "無" ) %></td>
+          </tr>
+        </table>
+      </div>      
+    </section>    
+    <!--text-->
+  <section class="text text-edit">
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th valign="top">狀態</th>
+          <td>
+            <%= form_for(@productask, :url => changeStatus_admin_productask_path(params[:locale], params[:id]) ) do |f| %>
+            <input name="productask[status]" type="radio" value="未處理" id="btn_uncheck" class="radio" <%= "checked" if @productask.status == "未處理" %> ><label for="btn_uncheck">未處理</label>
+            <input name="productask[status]" type="radio" value="已處理" id="btn_check" class="radio" <%= "checked" if @productask.status == "已處理" %> ><label for="btn_check">已處理</label>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <!--text-->
+  <section class="button"> <%= link_to (image_tag("/images/back.png")+"返回"),admin_productasks_path(params[:locale]) %> </section>
+  <!--button--> 
 </article>
 
 <script type="text/javascript">
 $("#nav-4").parent().addClass("active");
+$(".radio").click(function(e){
+  e.preventDefault;
+  $("#edit_productask_<%= @productask.id %>").submit();
+});
 </script>

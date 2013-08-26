@@ -39,9 +39,9 @@ VersatileDragon::Application.routes.draw do
 					match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
 				end
 			end
-			resources :productasks, :only => [:index, :show] do
+			resources :productasks, :only => [:index, :show, :destroy] do
 				member do
-					match "changeStatus"
+					match "changeStatus" => "productasks#changeStatus", :via => :put
 				end
 			end
 		end

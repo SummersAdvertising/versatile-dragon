@@ -15,9 +15,19 @@ class Admin::ProductasksController < ApplicationController
     @productask = Productask.find(params[:id])
   end
 
+  def destroy
+    @productask = Productask.find(params[:id])
+    @productask.destroy
+
+    respond_to do |format|
+      format.html { redirect_to admin_productasks_path(params[:locale]) }
+    end
+    
+  end
+
   def changeStatus
     @productask = Productask.find(params[:id])
-    @productask.update_attributes({ :status => ( @productask.status == "未處理" ? "已處理" : "未處理" ) })
+    @productask.update_attributes(params[:productask])
     
     respond_to do |format|
       format.html { redirect_to admin_productask_path(params[:locale], params[:id]) }

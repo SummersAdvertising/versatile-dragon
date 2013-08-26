@@ -19,7 +19,7 @@ article section{margin:0 0 10px 0}
 
 /*-----------------------------------------------------------------------側欄---*/
 
-nav{float:left;width:14%;text-align:center;position:relative;z-index:3;left:3px}
+nav{float:left;width:14%;text-align:center;position:relative;z-index:3;left:1px}
 nav li{height:100px}
 nav li a{background-position:center 25px;border-radius:5px 0 0 5px;
 color:#777;text-shadow:0 1px 0 #fff;padding:62px 0 0 0}
@@ -29,6 +29,7 @@ nav .active:hover a{background-color:#fff}
 
 /*-----------------------------------------------------------------------列表---*/
 
+.list .x3{width:27%}
 .list .x2{width:18%}
 .list .x1{width:9%}
 

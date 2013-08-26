@@ -2,25 +2,27 @@
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
+      <th align="left" class="x1">狀態</th>
       <th align="left" class="x0 x2">日期</th>
-      <th align="left">詢問人</th>
-      <th align="left">狀態</th>
+      <th align="left" class="x0 x3">公司名稱</th>
+      <th align="left">聯絡人</th>
+      <th align="left" class="x1">刪除</th>
     </tr>
 
     <% @productasks.each do |productask| %>
+    
     <tr>
-      <td align="left" class="x0"><%= productask.created_at.to_date %></td>
-      <td align="left">
-        <%= link_to productask.askername, admin_productask_path(params[:locale], productask) %>
-      </td>
-      <td align="left" class="x0"><%= productask.status %></td>
+      <td><img <%= productask.status == "已處理" ? "src=/images/check.png title=已處理" : "src=/images/uncheck.png title=未處理" %>></td>
+      <td class="x0"><%= productask.created_at.to_date %></td>
+      <td class="x0"><%= productask.askercompany %></td>
+      <td><a href="#"><%= link_to productask.askername, admin_productask_path(params[:locale], productask) %></a></td>
+      <td><%= link_to image_tag("/images/delete.png"), admin_productask_path(params[:locale], productask), :method => :delete, :data => { :confirm => "確定刪除？" } %></td>
     </tr>
+
     <% end %>
 
-    
   </table>
 
-  
 </section>
 <!--list-->
 </article>
