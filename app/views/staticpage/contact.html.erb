@@ -36,7 +36,7 @@
         <%= t("company.mail") %>： <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a> 
           </td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
         <%= t("company.contact") %>：<%= t("company.info2.contact") %><br>
         E-mail： <a href="mailto:bruce@versatile-dragon.com " target="_blank">bruce@versatile-dragon.com </a>
           </td>
-        </tr>
+        </tr> -->
       </table>
     </div>
   </section>
@@ -71,12 +71,12 @@ $(document).ready(function(){
     map.addOverlay(marker); 
     map.addControl(control);
 
-    //東莞的
-    var map2 = new AliMap("mapDiv2"); //使用id为mapDiv的层创建一个地图对象
-    map2.centerAndZoom(new AliLatLng(23.017800,113.939033),14);//显示地图
-    var latlng2 = new AliLatLng(23.017800,113.939033); //在该坐标处创建一个标记 
-    var marker2 = new AliMarker(latlng2); //将该标记添加到地图 
-    var control2 = new AliMapLargeControl({hidePanBtn:false,hideZoomBtn:false,hideZoomBar:false});
-    map2.addOverlay(marker2); 
-    map2.addControl(control2);
+    // //東莞的
+    // var map2 = new AliMap("mapDiv2"); //使用id为mapDiv的层创建一个地图对象
+    // map2.centerAndZoom(new AliLatLng(23.017800,113.939033),14);//显示地图
+    // var latlng2 = new AliLatLng(23.017800,113.939033); //在该坐标处创建一个标记 
+    // var marker2 = new AliMarker(latlng2); //将该标记添加到地图 
+    // var control2 = new AliMapLargeControl({hidePanBtn:false,hideZoomBtn:false,hideZoomBar:false});
+    // map2.addOverlay(marker2); 
+    // map2.addControl(control2);
 </script>

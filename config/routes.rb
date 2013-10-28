@@ -11,14 +11,14 @@ VersatileDragon::Application.routes.draw do
 			resources :products, :only => :show
 		end
 
-		resources :productasks, :only => [:new, :create] do
-			collection do
-				namespace :cart do
-					match "add" => "cart#add" , :via => :post
-					match ":product_id/delete" => "cart#delete" , :via => :delete, :as => "delete"
-				end
-			end
-		end
+		# resources :productasks, :only => [:new, :create] do
+		# 	collection do
+		# 		namespace :cart do
+		# 			match "add" => "cart#add" , :via => :post
+		# 			match ":product_id/delete" => "cart#delete" , :via => :delete, :as => "delete"
+		# 		end
+		# 	end
+		# end
 
 		match "/admin/createAdmin" => "admin#createAdmin", :via => :post
 		match "/admin/loginCheck" => "admin#loginCheck", :via => :post
@@ -39,11 +39,11 @@ VersatileDragon::Application.routes.draw do
 					match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
 				end
 			end
-			resources :productasks, :only => [:index, :show, :destroy] do
-				member do
-					match "changeStatus" => "productasks#changeStatus", :via => :put
-				end
-			end
+			# resources :productasks, :only => [:index, :show, :destroy] do
+			# 	member do
+			# 		match "changeStatus" => "productasks#changeStatus", :via => :put
+			# 	end
+			# end
 		end
 
 		root :to => "staticpage#index"

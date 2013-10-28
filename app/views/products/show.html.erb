@@ -10,16 +10,16 @@
           <h5><%= link_to productclass.name, productclass_path(productclass, :locale => I18n.locale) %></h5>
           <ul>
             <% if(productclass.id.to_s == params[:productclass_id] && productclass.products.size > 0) %>
-            <% @products.each do |product| %>
-            <% if(product.status == "enable") %>
-            <% if(product.id.to_s == params[:id]) %>
-            <li class="active">
-            <% else %>
-            <li>
-            <% end %>
-            <%= link_to product.name, productclass_product_path(@productclass, product, :locale => I18n.locale) %></li>
-            <% end %>            
-            <% end %>            
+              <% @products.each do |product| %>
+                <% if(product.status == "enable") %>
+                  <% if(product.id.to_s == params[:id]) %>
+                    <li class="active">
+                  <% else %>
+                    <li>
+                  <% end %>
+                <%= link_to product.name, productclass_product_path(@productclass, product, :locale => I18n.locale) %></li>
+                <% end %>            
+              <% end %>            
             <% end %>
           </ul>
         </div>
@@ -31,12 +31,12 @@
           <%= link_to @productclass.name, productclass_path(@productclass, :locale => I18n.locale) %> >
           <a href="#"><%= @product.name %></a></div>
 
-        <div>
+        <!-- <div>
            <%= form_for(@askitem, :url => add_cart_productasks_path) do |f| %>
            <%= f.hidden_field :product_id, :value => @product.id.to_s %>
            <%= f.submit "加入詢價車" %>
            <% end %>
-        </div>
+        </div> -->
 
         <input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
         <div id="articleContent" class="main-text"></div>

@@ -114,7 +114,7 @@ $(function(){
         	<a href="#" data-lang="zh_CN"><%= t("environ.language.cn") %></a>
         	<a href="#" data-lang="en"><%= t("environ.language.us") %></a>
         </li>
-        <li><%= link_to "詢價車：#{@cartitems_count}件。", new_productask_path %></li>
+        <!-- <li><%= link_to "詢價車：#{@cartitems_count}件。", new_productask_path %></li> -->
       </ul>
     </nav>
   </section>
@@ -133,7 +133,8 @@ $(function(){
         E-mail： <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a><br>
         <%= t("company.mail") %>： <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a> </p>
     </div>
-    <div class="info">
+    <div class="info" style="width:50px">&nbsp;</div>
+    <!-- <div class="info">
        <p><strong><%= t("company.info2.name") %></strong><br>
       <%= t("company.address") %>：<%= t("company.info2.address").html_safe %><br>
         <%= t("company.tel") %>：0769-83717123/4/5<br>
@@ -141,7 +142,7 @@ $(function(){
         <%= t("company.contact") %>：<%= t("company.info2.contact") %><br>
         E-mail： <a href="mailto:bruce@versatile-dragon.com" target="_blank">bruce@versatile-dragon.com </a>
       </p>
-    </div>
+    </div> -->
     <div class="info">
       <p><strong><%= t("company.info3.name") %></strong><br>
        <%= t("company.address") %>：<%= t("company.info3.address") %><br>
