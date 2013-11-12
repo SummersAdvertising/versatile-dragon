@@ -20,7 +20,7 @@
       </div>
 
       <div id="content">
-        <div class="bread"><%= link_to @productclass.name, productclass_path(@productclass, :locale => I18n.locale) %></div>
+        <div class="bread"><%= link_to @products.name, productclass_path(@productclass, :locale => I18n.locale) %></div>
         <input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
         <div id="articleContent"></div>
       </div>
