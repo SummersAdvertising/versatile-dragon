@@ -1,0 +1,27 @@
+<article>
+  <section>
+    <div id="banner_series"></div>
+    <div id="main">
+    
+    <%= render :partial => 'side_menu' %>
+    
+      <div id="content">
+        <div class="bread"><%= @products.first.name %></div>
+        <input id="product_content" style="display:none;" type="text" value="<%=@products.first.content%>">        
+        <div id="articleContent"></div>
+      </div>
+    </div>
+  </section>
+</article>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  editor.output($("#product_content").val());
+
+  $("#articleContent div").each(function(){
+    $("#articleContent").append($(this).html());
+    $(this).remove();
+  });
+});
+
+</script>

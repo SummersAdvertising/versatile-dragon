@@ -5,18 +5,31 @@ class Admin::ProductsController < ApplicationController
   before_filter :findClass
   
   def findClass
-    @productclass = Productclass.find(params[:productclass_id])
+  
+    #@productclass = Productclass.find(params[:productclass_id])
+    
+    @productclass = Productclass.where( :class_type => 'general' ).first
+    
+    if @productclass.nil?
+    	@productclass = Productclass.new( )
+    	@productclass.class_type = 'general'
+    	@productclass.save
+    end
+    
   end
 
   def index
     @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:productclass_id])    
     if(@productclass)
-      @products = @productclass.products.order("addDate DESC, created_at DESC").page(params[:page]).per(15)
+      @products = Product.with_translations(I18n.locale).order("addDate DESC, products.created_at DESC").page(params[:page]).per(15)
+    else
+      @productclass = Productclass.where( :class_type => 'general' ).first
+      @products = Product.with_translations(I18n.locale).order("addDate DESC, products.created_at DESC").page(params[:page]).per(15)
     end
   end
 
   def show
-    @product = @productclass.products.with_translations(I18n.locale).find_by_id(params[:id])
+    @product = Product.with_translations(I18n.locale).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,11 +38,16 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:productclass_id])    
-    if(@productclass)
-      @product = @productclass.products.find_by_id(params[:id])
+  	begin
+  	@product = Product.find(params[:id])
+  	rescue
+  	@product = nil  	
+  	end
+  	
+    if(@productclass.class_type != 'general')
+      @product = Product.find_by_id(params[:id])
     end
-    #@product = @productclass.products.find_by_id(params[:id])
+    #@product = Product.find_by_id(params[:id])
     @photo = Productphoto.new
   end
 
@@ -71,11 +89,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    @product = @productclass.products.new(params[:product])
+    @product = Product.new(params[:product])
     
     respond_to do |format|
       if @product.save
-        format.html { redirect_to edit_admin_productclass_product_path(@productclass, @product, :locale => I18n.locale), notice: 'Product was successfully created.' }
+        format.html { redirect_to edit_admin_product_path(@product, :locale => I18n.locale), notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
@@ -85,11 +103,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = @productclass.products.find(params[:id])
+    @product = Product.find(params[:id])
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to admin_productclass_product_path(@productclass, @product, :locale => I18n.locale), notice: 'Product was successfully updated.' }
+        format.html { redirect_to admin_product_path(@product, :locale => I18n.locale), notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -99,11 +117,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    @product = @productclass.products.find(params[:id])
+    @product = Product.find(params[:id])
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_productclass_products_path(@productclass, :locale => I18n.locale)}
+      format.html { redirect_to admin_products_path(@productclass, :locale => I18n.locale)}
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,5 @@
 <article>
+
 <% if(@product) %>
 <section class="hgroup">
   <h2><%= t("product.titleNew") %></h2>
@@ -6,7 +7,7 @@
 </section>
 <!--hgroup-->
 
-<%= form_for(@product, :url => admin_productclass_product_path(params[:productclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
+<%= form_for(@product, :url => admin_product_path(@product, :locale => I18n.locale), :method => "put") do |f| %>
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>

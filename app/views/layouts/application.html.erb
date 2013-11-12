@@ -105,7 +105,7 @@ $(function(){
     <h1><a href="/<%= I18n.locale %>"><%= t("environ.titlefront") %></a></h1>
     <nav>
       <ul>
-        <li><a href="<%= productclasses_path(:locale => params[:locale]) %>"><%= t("navbar.product.name") %></a></li>
+        <li><a href="<%= products_path(:locale => params[:locale]) %>"><%= t("navbar.product.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/about"><%= t("navbar.about.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/partner"><%= t("navbar.partner.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/contact"><%= t("navbar.contact.name") %></a></li>
@@ -114,7 +114,7 @@ $(function(){
         	<a href="#" data-lang="zh_CN"><%= t("environ.language.cn") %></a>
         	<a href="#" data-lang="en"><%= t("environ.language.us") %></a>
         </li>
-        <!-- <li><%= link_to "詢價車：#{@cartitems_count}件。", new_productask_path %></li> -->
+        <!-- <li><%#= link_to "詢價車：#{@cartitems_count}件。", new_productask_path %></li> -->
       </ul>
     </nav>
   </section>

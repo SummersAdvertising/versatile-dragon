@@ -8,13 +8,13 @@
 
 <section class="button">
   <%= link_to (image_tag("/images/add.png")+t("product.new") ), admin_productclass_products_path(@productclass, :locale => I18n.locale), :method => :post %>
-  <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclasses_path(:locale => I18n.locale) %>
+  <%#= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclasses_path(:locale => I18n.locale) %>
 </section>
 <!--button-->
 
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <% if(@productclass.products.size > 0) %>
+    <% if(@products.size > 0) %>
     <tr>
       <th align="left" class="x0 x2"><%= t("product.date") %></th>
       <th align="left"><%= t("product.title") %></th>
@@ -30,7 +30,7 @@
     <tr>
       <td class="x0"><%= product.addDate.to_s.to_date %></td>
       <td>
-        <%= link_to product.name, admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %>
+        <%= link_to product.name, admin_product_path( product, :locale => I18n.locale) %>
       </td>
       <td class="x0">
         <% if(product.status == "enable") %>
@@ -40,10 +40,10 @@
         <% end %>
       </td>
       <td class="x0">
-        <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_product_path(@productclass, product, :locale => I18n.locale) %>
+        <%= link_to image_tag("/images/edit.png"), edit_admin_product_path( product, :locale => I18n.locale) %>
       </td>
       <td class="delete"><a href="#" data-deleteid="<%= product.id %>"><img src="/images/delete.png"></a></td>
-      <%= link_to 'Destroy', admin_productclass_product_path(@productclass, product, :locale => I18n.locale), method: :delete, :id => ("delete"+ product.id.to_s ), :style => "display:none;" %>
+      <%= link_to 'Destroy', admin_product_path( product, :locale => I18n.locale), method: :delete, :id => ("delete"+ product.id.to_s ), :style => "display:none;" %>
     </tr>
     <% end %>
 

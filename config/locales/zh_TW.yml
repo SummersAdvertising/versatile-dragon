@@ -102,7 +102,7 @@ zh_TW:
     titleShow: "預覽頁面"
     titleNew: "新增＆編輯頁面"
     noClass: "尚未建立分類"
-    noProduct: "此分類下沒有商品"
+    noProduct: "查無任何商品"
     addDate: "日期排序"
     addDateholder: "請選擇日期"
     productclassName: "分類名稱"

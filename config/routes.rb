@@ -7,6 +7,8 @@ VersatileDragon::Application.routes.draw do
 		get "/partner" => "staticpage#partner"
 		get "/contact" => "staticpage#contact"
 
+		resources :products, :only => [:index, :show]
+
 		resources :productclasses, :only => [:index, :show] do
 			resources :products, :only => :show
 		end
@@ -25,9 +27,20 @@ VersatileDragon::Application.routes.draw do
 		match "/admin/update" => "admin#update", :via => :put
 		match "/admin/deleteAdmin/:id" => "admin#destroy", :via => :delete
 
+		
+		
 		namespace :admin do
 			get "showAdmins", "log_in", "log_out", "edit"
 			get "/" => "indexlinks#index"
+
+			# degrade the class level
+			match 'uploadPhoto' => 'productclasses#createPhoto', :via => [:post]
+			match 'deletePhoto/:id' => 'productclasses#destroyPhoto', :via => [:delete]
+
+			resources :products, :except => [:new] do
+				match 'uploadPhoto' => 'products#createPhoto', :via => [:post]
+				match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
+			end
 
 			resources :indexlinks
 			resources :productclasses do

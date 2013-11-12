@@ -1,0 +1,10 @@
+
+<div id="side">
+<div class="category">
+  <ul>
+    <% @products.each do |product| %>
+    <li><%= link_to product.name, product_path( product, :locale => I18n.locale) %></li>
+    <% end %>            
+  </ul>
+</div>
+</div>
