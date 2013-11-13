@@ -1,6 +1,9 @@
 class Productclass < ActiveRecord::Base
   has_many :products, :dependent => :destroy
   has_many :classphotos, :dependent => :destroy
+  
+  scope :with_products, joins( :products )
+  
   attr_accessible :content, :name, :frontshow, :addDate
 
   before_save :stamp_addDate
