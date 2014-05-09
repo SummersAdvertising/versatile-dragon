@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111064155) do
+ActiveRecord::Schema.define(:version => 20140507083914) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(:version => 20131111064155) do
     t.string   "locale"
     t.string   "title"
     t.text     "content"
+    t.string   "image"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "image"
   end
 
   add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(:version => 20131111064155) do
     t.integer  "productask_id"
     t.integer  "product_id"
     t.string   "productname"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "productasks", :force => true do |t|
@@ -136,10 +136,11 @@ ActiveRecord::Schema.define(:version => 20131111064155) do
   add_index "productclass_translations", ["productclass_id"], :name => "index_productclass_translations_on_productclass_id"
 
   create_table "productclasses", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.date     "addDate"
-    t.string   "class_type"
+    t.integer  "depth",      :default => 1
+    t.integer  "parent_id",  :default => 0
   end
 
   create_table "productphotos", :force => true do |t|

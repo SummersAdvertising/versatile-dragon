@@ -108,6 +108,7 @@ zh_TW:
     productclassName: "分類名稱"
     productclassNameholder: "請輸入分類名稱"
 
+    subclass: "子分類"
     listProduct: "產品"
     new: "建立分類"
     deleteConfirm: "該分類底下的產品也會一併刪除，您確定嗎？"

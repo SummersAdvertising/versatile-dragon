@@ -108,6 +108,7 @@ en:
     productclassName: "Series"
     productclassNameholder: "enter series name"
 
+    subclass: "Subclass"
     listProduct: "Product"
     new: "Add"
     deleteConfirm: "All products under the series will be removed, are you sure？"

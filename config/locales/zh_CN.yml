@@ -108,6 +108,7 @@ zh_CN:
     productclassName: "分类名称"
     productclassNameholder: "请输入分类名称"
 
+    subclass: "子分类"
     listProduct: "产品"
     new: "建立分类"
     deleteConfirm: "该分类底下的产品也会一并删除，您确定吗？"

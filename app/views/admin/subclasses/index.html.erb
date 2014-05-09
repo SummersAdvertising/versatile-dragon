@@ -14,7 +14,7 @@
     <tr>
       <th align="left" class="x0 x2"><%= t("productclass.date") %></th>
       <th align="left"><%= t("productclass.title") %></th>
-      <th align="left" class="x1"><%= t("productclass.subclass") %></th>
+      <th align="left" class="x1"><%= t("productclass.listProduct") %></th>
       <th align="left" class="x0 x1"><%= t("actionshare.edit") %></th>
       <th align="left" class="x1"><%= t("actionshare.delete") %></th>
     </tr>
@@ -48,18 +48,6 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#nav-2").parent().addClass("active");
-
-  $(".delete a").click(function() {
-    var deleteid = $(this).data("deleteid");
-
-    Alertify.dialog.confirm("<%= t('productclass.deleteConfirm') %>", function () {
-      // user clicked "ok"
-      $("#delete"+deleteid).trigger("click");
-    }, function () {
-      // user clicked "cancel"
-    });
-  });
-  
+  $("#nav-2").parent().addClass("active");  
 });
 </script>

@@ -35,7 +35,12 @@ VersatileDragon::Application.routes.draw do
 				match 'uploadPhoto' => 'productclasses#createPhoto', :via => [:post]
 				match 'deletePhoto/:id' => 'productclasses#destroyPhoto', :via => [:delete]
 
-				resources :subclasses
+				resources :subclasses do
+					resources :products, :except => [:new] do
+						match 'uploadPhoto' => 'products#createPhoto', :via => [:post]
+						match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
+					end
+				end
 
 				resources :products, :except => [:new] do
 					match 'uploadPhoto' => 'products#createPhoto', :via => [:post]
