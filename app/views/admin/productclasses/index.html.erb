@@ -34,7 +34,7 @@
         <%= link_to image_tag("/images/folder.png") + " #{productclass.name}", admin_productclass_path(productclass, :locale => I18n.locale) %>
       </td>
       <td align="center">
-        <%= link_to image_tag("/images/folder_add.png"), "#", :class => "add_subclass" %>
+        <%= link_to image_tag("/images/folder_add.png"), "#", :class => "add_subclass", :data => { :action => admin_productclass_subclasses_path(productclass, :locale => I18n.locale) } %>
       </td>
       <td align="left" class="x0">
         <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_path(productclass, :locale => I18n.locale) %>
@@ -45,23 +45,30 @@
 
       <%= link_to 'Destroy', admin_productclass_path(productclass, :locale => I18n.locale), method: :delete, :id => ("delete"+ productclass.id.to_s ), :style => "display:none;" %>
     </tr>
+
+    <% productclass.subclasses.each do |subclass| %>
+    <%= render :partial => "subclass", :locals => { :productclass => productclass, :subclass => subclass } %>
     <% end %>
 
-    <tr id="new_subclass" style="display: none;">
+    <% end %>
+
+    <tr id="new_subclass_tr" style="display:none;">
       <td align="left" class="x0"></td>
       <td align="left">
         <div>
+          <%= form_for( @subclass, :url => "#" ) do |f| %>
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="10%"><span>├</span> <img src="/images/folder.png" class="x0"></td>
-              <td width="90%" ><input name="" type="text"></td>
+              <td width="90%" ><%= f.text_field :name %></td>
             </tr>
           </table>
+          <% end %>
         </div>
       </td>
       <td align="center">&nbsp;</td>
       <td align="left" class="x0">
-        <a href="javascript:avoid(0)"><img src="/images/save.png"></a>
+        <a href="javascript:$('#form_subclass').submit()"><img src="/images/save.png"></a>
       </td>
       <td align="left">
         <a href="javascript:$('.edit_subclass').remove()"><img src="/images/cancel.png"></a>
@@ -96,8 +103,9 @@ $(document).ready(function(){
       alert("請先完成編輯中的子分類。");
     }
     else{
-      var subclass_tr = $("#new_subclass").clone();
+      var subclass_tr = $("#new_subclass_tr").clone();
       subclass_tr.attr("id", "test").addClass("edit_subclass");
+      subclass_tr.find("form:first").attr("action", $(this).data("action")).attr("id", "form_subclass");
       $(this).parents("tr:first").after( subclass_tr.show() );
     }
   });

@@ -1,0 +1,24 @@
+<tr>
+  <td align="left" class="x0"></td>
+  <td align="left">
+    <div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="10%">
+            <span>├</span>
+            <img src="/images/folder.png" class="x0"></td>
+          <td width="90%" >
+            <%= subclass.name %></td>
+        </tr>
+      </table>
+    </div>
+  </td>
+  <td align="center">&nbsp;</td>
+  <td align="left" class="x0">
+    <a href="javascript:void(0);">
+      <img src="/images/edit.png"></a>
+  </td>
+  <td align="left">
+    <%= link_to image_tag("/images/delete.png"), admin_productclass_subclass_path(productclass, subclass, :locale => I18n.locale), :method => :delete, :data => {:confirm => "子分類底下的商品都將刪除，確認刪除子分類？"} %>
+  </td>
+</tr>

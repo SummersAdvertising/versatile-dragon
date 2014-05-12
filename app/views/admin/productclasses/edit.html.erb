@@ -15,17 +15,27 @@
   </table>
 </section>
 <!--title-->
+
 <section class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th><%= t("productclass.productclassName") %></th>
       <td><%= f.text_field :name, :autocomplete => "off", :placeholder => t("productclass.productclassNameholder") %>
-      <td style="display: none;">
-        <%= f.text_field :content %></td>
+        <%= f.hidden_field :content %></td>
     </tr>
   </table>
 </section>
 <!--title-->
+
+<section class="title">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th><%= "封面" %></th>
+      <td><%= f.file_field :frontshow %></td>
+    </tr>
+  </table>
+</section>
+
 <% end %>
 
 <!--title-->

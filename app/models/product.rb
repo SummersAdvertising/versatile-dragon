@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  belongs_to :productclass
+  belongs_to :subclass
   has_many :productphotos, :dependent => :destroy
   attr_accessible :content, :name, :productclass_id, :status, :addDate
 
