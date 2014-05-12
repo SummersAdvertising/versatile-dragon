@@ -35,10 +35,3 @@ nav .active a{border-color:#D7D0AC}
 #aside-box a:hover{background:#1A426B;color:#fff}
 nav li a{color:#675E32;text-shadow:0 1px 0 #fff}
 }
-
-/*-------------------------------------------------------------------頁碼---*/
-
-.main-page{text-align:center;width:100%;}
-.main-page ul{overflow:hidden;margin:10px 0 10px 40%;text-align:center;}
-.main-page ul li a{color:#777;display:block;width:22px;height:18px;padding:2px 0;margin:0 5px 0 0;float:left;font:300 13px verdana}
-.main-page ul li a:hover,.main-page ul .active a{background:image-url('list.jpg');color:#111;border:1px solid #ccc;border-radius:5px;text-shadow:0 1px 0 #fff}

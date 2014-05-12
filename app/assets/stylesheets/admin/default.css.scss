@@ -1,8 +1,8 @@
 /*-----------------------------------------------------------------------全域---*/
 
 html{background:#E7EBF4}
-body{ font:300 13px 新細明體, 微软雅黑, Times New Roman;width:100%;-webkit-text-size-adjust: none;color:#555}
-a{font:300 13px 新細明體, 微软雅黑, Times New Roman;text-decoration:none;color:#555}
+body{ font:300 13px 新細明體;width:100%;-webkit-text-size-adjust: none;color:#555}
+a{font:300 13px 新細明體;text-decoration:none;color:#555}
 
 /*-----------------------------------------------------------------------頁首---*/
 
@@ -11,7 +11,7 @@ header{background:#3B5998;border-bottom:1px solid #133783;height:50px}
 #top a{color:#fff}
 
 h1{float:left}
-h1 a{padding:5px 0 0 0;display:block;font:900 1.2em 新細明體, 微软雅黑, Times New Roman;text-shadow:0 1px 0 #133783}
+h1 a{padding:5px 0 0 0;display:block;font:900 1.2em 新細明體,Times New Roman;text-shadow:0 1px 0 #133783}
 
 /*-----------------------------------------------------------------------內容---*/
 
@@ -30,7 +30,7 @@ nav li a{background-repeat:no-repeat;display:block;width:100%;height:100%}
 /*-----------------------------------------------------------------------大標---*/
 
 .hgroup{overflow:hidden}
-.hgroup h2{margin:0 10px 0 0;font:italic 300 18px 新細明體, 微软雅黑, Times New Roman;float:left}
+.hgroup h2{margin:0 10px 0 0;font:italic 300 18px 新細明體;float:left}
 .hgroup p{float:left;color:#a9a9a9;margin:5px 0 0 0}
 
 /*-----------------------------------------------------------------------標題---*/
@@ -38,12 +38,13 @@ nav li a{background-repeat:no-repeat;display:block;width:100%;height:100%}
 .title{width:100%;border:1px solid #ccc;border-radius:5px}
 .title th{background:image-url('list.jpg') 0 0 repeat-x #DEDEDE;color:#999;text-shadow:0 1px 0 #fff;font:300 13px "verdana";width:100px;border-right:1px solid #ccc}
 .title td{padding:8px 10px 5px 10px;border-left:1px solid #fff;color:#555}
-.title td input{border:0;width:100%;font:300 13px 新細明體, 微软雅黑, Times New Roman;color:#555;}
+.title td input{border:0;width:100%;font:300 13px 新細明體;color:#555}
+.title th input{width:80%;border-radius:5px;border:1px solid #ccc!important;padding:5px;color:#555}
 
 /*-----------------------------------------------------------------------分類---*/
 
 .category ul{overflow:hidden;border:1px solid #ccc;
-border-radius:5px;width:302px;margin:0 auto}
+border-radius:5px;margin:0 auto;width:802px}
 .category li {background:image-url('list.jpg') 0 0 repeat-x;width:100px;text-align:center;float:left;;border-right:1px solid #ccc;border-left:1px solid #fff;}
 .category li:first-child{border-left:none}
 .category li:last-child{border-right:none}
@@ -58,6 +59,13 @@ border-radius:5px;width:302px;margin:0 auto}
 .list td{height:40px;border-top:1px solid #D1D1DB;color:#999;padding:5px 0;font:300 13px "verdana";padding:0 0 0 10px}
 .list tr:nth-child(2n) {background:#F9F9F9}
 .list a:hover{text-decoration:underline}
+
+.list img{margin:0 1%;position:relative;top:3px;}
+
+.list div img{position:relative;top:2px;}
+.list div span{padding:0 10px 0 0}
+.list div td{border:none}
+.list div input{width:100%;padding:5px 10px;border:1px solid #ccc;border-radius:5px}
 
 /*-----------------------------------------------------------------------按鈕---*/
 
@@ -81,8 +89,17 @@ border-radius:5px;width:302px}
 /*-----------------------------------------------------------------------發文---*/
 
 .post{border:1px solid #ccc;background:#F9F9F9;padding:10px;border-radius:5px}
-.post textarea,.post input{width:100%;border-radius:5px;border:1px solid #ccc;padding:5px;font:300 13px 新細明體, 微软雅黑, Times New Roman;color:#555;}
-.post textarea{min-height:100px;}
+.post textarea,.post input{width:100%;border-radius:5px;border:1px solid #ccc;padding:5px;font:300 13px 新細明體;color:#555}
+.post textarea{min-height:100px}
+
+#post-p select{padding:5px;width:150px;border:1px solid #CCCCCC;border-radius:5px}
+
+#post-li .tool-a{margin:10px 0 0 0}
+#post-li .tool-a a{display:block;border:1px solid #ccc;background:#fff;font:300 11px "verdana";padding:5px 0;width:50px;text-align:center;border-radius:5px;}
+#post-li .tool-a a:hover{background:#eee}
+
+.addlink{text-shadow:0 1px 0 #fff}
+.addlink img{position:relative;top:4px}
 
 /*-----------------------------------------------------------------------預覽---*/
 
@@ -92,8 +109,8 @@ border-radius:5px;width:302px}
 .preview div:hover .tool-b{display:inline}
 .preview div:first-child{border-radius:5px 5px 0 0}
 .preview div:last-child{border-radius:0 0 5px 5px}
-.preview .space{height:50px;background:#fff;border:1px dashed #ccc}
-.preview textarea{width:100%;border-radius:5px;border:1px solid #ccc;padding:5px;min-height:100px;font:300 13px 新細明體, 微软雅黑, Times New Roman;color:#555;} 
+.preview .highlight{height:50px;background:#fff;border:1px dashed #ccc}
+.preview textarea{width:100%;border-radius:5px;border:1px solid #ccc;padding:5px;min-height:100px;font:300 13px 新細明體;color:#555;} 
 .tool-b{overflow:hidden;position:absolute;top:5px;right:5px;display:none}
 .tool-b li{float:left;margin:0 0 0 5px}
 .tool-a{overflow:hidden}
@@ -101,14 +118,14 @@ border-radius:5px;width:302px}
 .preview li a{display:block;border:1px solid #ccc;background:#fff;font:300 11px "verdana";padding:5px 0;width:50px;text-align:center;border-radius:5px;}
 .preview li a:hover{background:#eee}
 
-.preview img{max-width:100%;height:auto}
-
 /*-----------------------------------------------------------------------頁碼---*/
 
-.page{text-align:center}
+.page{text-align:center;width:100%}
+.page ul{}
+.page li{display:inline;}
 .page a{display:inline-block;width:20px;height:20px;margin:0 2.5px;border-radius:5px;padding:1px 0 0 0;font:300 12px "verdana";text-shadow:0 1px 0 #fff}
 .page a:hover{border:1px solid #ccc}
-.page .active{background:image-url('list.jpg') 0 0 repeat-x;border:1px solid #ccc}
+.page .active a{background:image-url('list.jpg') 0 0 repeat-x;border:1px solid #ccc}
 
 /*-----------------------------------------------------------------------欄位---*/
 
@@ -117,13 +134,12 @@ border-radius:5px;width:302px}
 .text .one{width:100%}
 .text th{font-weight:900;width:80px;}
 .text td{text-align:left}
-.text input,.text textarea{width:100%;border-radius:5px;border:1px solid #ccc!important;padding:5px;font:300 13px 新細明體, 微软雅黑, Times New Roman;background:#fff;color:#555}
+.text input,.text textarea{width:100%;border-radius:5px;border:1px solid #ccc!important;padding:5px;font:300 13px 新細明體;background:#fff;color:#555}
 .text textarea{min-height:100px}
 .text-edit th{padding:7px 0 0 0}
-.text .radio{width:30px;border:none;padding:0;position:relative;top:3px}
-
-.text img{max-width:100%;height:auto}
-.text p{padding:10px}
+.text .radio{width:20px;border:none;padding:0;position:relative;top:2px}
+.text-show img{max-width:100%;height:auto}
+.font-black{font-weight:900;font-size:15px}
 
 /*-----------------------------------------------------------------------頁腳---*/
 
@@ -135,18 +151,12 @@ footer a{font:300 13px "Times New Roman", Times, serif;text-shadow:0 1px 0 #fff}
 #lang{overflow:hidden;width:55px;height:13px;-webkit-transition:all ease .3s;-moz-transition:all ease .3s;float:left;margin:8px 0 0 0}
 #lang img{position:relative;top:1px}
 #lang:hover{width:165px;position:relative}
-#lang a{padding:0;display:inline-box;width:50px;height:13px;font:300 11px 新細明體, 微软雅黑, Times New Roman;text-shadow:none;padding:0 5px 0 0;color:#aaa}
+#lang a{padding:0;display:inline-box;width:50px;height:13px;font:300 11px 新細明體,Times New Roman;text-shadow:none;padding:0 5px 0 0;color:#aaa}
 #lang a:hover{color:#fff}
-
-.addlink{text-shadow:0 1px 0 #fff}
-.addlink img{position:relative;top:4px}
-
-.font-black{font-weight:900;font-size:15px;color:#000!important}
-.font-red{color:#ce0021;font-size:32px}
 
 /*-----------------------------------------------------------------------登入---*/
 
-.login #main{background:image-url("bg.jpg");display:table;width:100%;height:100%}
+.login #main{background:image-url('bg.jpg');display:table;width:100%;height:100%}
 .login #vert{display:table-cell; vertical-align:middle;width:100%;height:100%}
 .login article{width:300px;float:none;margin:0 auto;}
 .login .text{border:none;background:none;padding:0}

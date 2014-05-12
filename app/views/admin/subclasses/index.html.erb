@@ -5,7 +5,7 @@
 <!--hgroup-->
 
 <section class="button">
-  <%= link_to (image_tag("/images/add.png") + t("productclass.new")), admin_productclasses_path(:locale => I18n.locale), :method => :post %>
+  <%= link_to (image_tag("/images/folder_add.png") + t("productclass.new")), admin_productclasses_path(:locale => I18n.locale), :method => :post %>
 </section>
 <!--button-->
 
@@ -31,7 +31,7 @@
       <td align="left">
         <%= link_to productclass.name, admin_productclass_path(productclass, :locale => I18n.locale) %></td>
       <td align="left">
-        <%= link_to image_tag("/images/enter.png"), admin_productclass_subclasses_path(productclass, :locale => I18n.locale) %></td>
+        <%= link_to image_tag("/images/folder.png"), "#" %></td>
       <td align="left" class="x0">
         <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_path(productclass, :locale => I18n.locale) %></td>
       <td align="left" class="delete"><a href="#" data-deleteid="<%= productclass.id %>" ><img src="/images/delete.png"></a></td>

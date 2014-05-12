@@ -35,7 +35,7 @@ zh_CN:
 
   bread:
     index: "首页"
-    product: "优质系列"
+    product: "产品介绍"
     about: "关於龙全"
     partner: "合作夥伴"
     contact: "联络我们"
@@ -50,7 +50,7 @@ zh_CN:
 
   navbar:
     product:
-      name: "优质系列"
+      name: "产品介绍"
       descript: "龙全除了提升与协力厂商多年来合作整合产生之综效外，亦积极发展更贴近终端消费者的生活电子产品，以提升自身与产品的附加价值。"
     about:
       name: "关於龙全"
@@ -95,7 +95,7 @@ zh_CN:
     new: "新增轮播"
 
   productclass:
-    name: "优质系列"
+    name: "产品介绍"
     date: "日期"
     title: "标题"
     titleIndex: "分类列表"

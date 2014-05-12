@@ -5,7 +5,7 @@
 <!--hgroup-->
 
 <section class="button">
-  <%= link_to (image_tag("/images/add.png") + t("productclass.new")), admin_productclasses_path(:locale => I18n.locale), :method => :post %>
+  <%= link_to (image_tag("/images/folder_add.png") + t("productclass.new")), admin_productclasses_path(:locale => I18n.locale), :method => :post %>
 </section>
 <!--button-->
 
@@ -13,7 +13,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th align="left" class="x0 x2"><%= t("productclass.date") %></th>
-      <th align="left"><%= t("productclass.title") %></th>
+      <th align="left">主分類名稱</th>
       <th align="left" class="x1"><%= t("productclass.subclass") %></th>
       <th align="left" class="x0 x1"><%= t("actionshare.edit") %></th>
       <th align="left" class="x1"><%= t("actionshare.delete") %></th>
@@ -27,18 +27,46 @@
 
     <% @productclasses.each do |productclass| %>
     <tr>
-      <td align="left" class="x0"><%= productclass.addDate.to_s.to_date %></td>
-      <td align="left">
-        <%= link_to productclass.name, admin_productclass_path(productclass, :locale => I18n.locale) %></td>
-      <td align="left">
-        <%= link_to image_tag("/images/enter.png"), admin_productclass_subclasses_path(productclass, :locale => I18n.locale) %></td>
       <td align="left" class="x0">
-        <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_path(productclass, :locale => I18n.locale) %></td>
-      <td align="left" class="delete"><a href="#" data-deleteid="<%= productclass.id %>" ><img src="/images/delete.png"></a></td>
+        <%= productclass.addDate.to_s.to_date %>
+      </td>
+      <td align="left">
+        <%= link_to image_tag("/images/folder.png") + " #{productclass.name}", admin_productclass_path(productclass, :locale => I18n.locale) %>
+      </td>
+      <td align="center">
+        <%= link_to image_tag("/images/folder_add.png"), "#", :class => "add_subclass" %>
+      </td>
+      <td align="left" class="x0">
+        <%= link_to image_tag("/images/edit.png"), edit_admin_productclass_path(productclass, :locale => I18n.locale) %>
+      </td>
+      <td align="left">
+        <a href="#" data-deleteid="<%= productclass.id %>" ><img src="/images/delete.png"></a>
+      </td>
 
       <%= link_to 'Destroy', admin_productclass_path(productclass, :locale => I18n.locale), method: :delete, :id => ("delete"+ productclass.id.to_s ), :style => "display:none;" %>
     </tr>
     <% end %>
+
+    <tr id="new_subclass" style="display: none;">
+      <td align="left" class="x0"></td>
+      <td align="left">
+        <div>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="10%"><span>├</span> <img src="/images/folder.png" class="x0"></td>
+              <td width="90%" ><input name="" type="text"></td>
+            </tr>
+          </table>
+        </div>
+      </td>
+      <td align="center">&nbsp;</td>
+      <td align="left" class="x0">
+        <a href="javascript:avoid(0)"><img src="/images/save.png"></a>
+      </td>
+      <td align="left">
+        <a href="javascript:$('.edit_subclass').remove()"><img src="/images/cancel.png"></a>
+      </td>
+    </tr>
   </table>
 
 </section>
@@ -59,6 +87,19 @@ $(document).ready(function(){
     }, function () {
       // user clicked "cancel"
     });
+  });
+
+  $("a.add_subclass").click(function(e){
+    e.preventDefault();
+
+    if($(".edit_subclass").length){
+      alert("請先完成編輯中的子分類。");
+    }
+    else{
+      var subclass_tr = $("#new_subclass").clone();
+      subclass_tr.attr("id", "test").addClass("edit_subclass");
+      $(this).parents("tr:first").after( subclass_tr.show() );
+    }
   });
   
 });

@@ -35,7 +35,7 @@ zh_TW:
 
   bread:
     index: "首頁"
-    product: "優質系列"
+    product: "產品介紹"
     about: "關於龍全"
     partner: "合作夥伴"
     contact: "聯絡我們"
@@ -50,7 +50,7 @@ zh_TW:
 
   navbar:
     product:
-      name: "優質系列"
+      name: "產品介紹"
       descript: "龍全除了提升與協力廠商多年來合作整合產生之綜效外，亦積極發展更貼近終端消費者的生活電子產品，以提升自身與產品的附加價值。"
     about:
       name: "關於龍全"
@@ -95,7 +95,7 @@ zh_TW:
     new: "新增輪播"
 
   productclass:
-    name: "優質系列"
+    name: "產品介紹"
     date: "日期"
     title: "標題"
     titleIndex: "分類列表"
