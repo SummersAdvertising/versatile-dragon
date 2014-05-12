@@ -1,5 +1,6 @@
 class Productclass < ActiveRecord::Base
   has_many :subclasses, :dependent => :destroy
+  has_many :products, :through => :subclasses
   has_many :classphotos, :dependent => :destroy
   
   scope :with_products, joins( :products )

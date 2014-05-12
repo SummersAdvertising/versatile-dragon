@@ -1,28 +1,22 @@
-<article>123
+<article>
   <section>
     <div id="banner_series"></div>
     <div id="main">
       <div id="side">
-        <% @productclasses.each do |productclass| %>
-        <div class="category">
-          <h5><%= link_to productclass.name, productclass_path(productclass, :locale => I18n.locale) %></h5>
-          <ul>
-            <% if(productclass.id.to_s == params[:id] && productclass.products.size > 0) %>
-            <% @products.each do |product| %>
-            <% if(product.status == "enable") %>
-            <li><%= link_to product.name, productclass_product_path(@productclass, product, :locale => I18n.locale) %></li>
-            <% end %>            
-            <% end %>            
-            <% end %>
-          </ul>
-        </div>
-        <% end %>
+        <ul>
+          <%= display_productclasses(@productclass, @productclasses).html_safe %>
+        </ul>
       </div>
 
       <div id="content">
-        <div class="bread"><%= link_to @products.name, productclass_path(@productclass, :locale => I18n.locale) %></div>
-        <input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
+        <div class="bread">首頁 ＞ 產品介紹 ＞ <%= @productclass.name %></div>
+        <input id="productclass_content" style="display:none;" type="text" value="<%= @productclass.content %>">
         <div id="articleContent"></div>
+
+        <div>
+          <%= display_subclasses_products(@productclass).html_safe %>
+        </div>
+
       </div>
     </div>
   </section>
