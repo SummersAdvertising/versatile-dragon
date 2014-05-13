@@ -5,34 +5,18 @@ class Admin::ProductclassesController < ApplicationController
   def index
     @productclasses = Productclass.with_translations(I18n.locale).includes(:subclasses).order("productclasses.addDate DESC, productclasses.created_at DESC").page(params[:page]).per(15)
     @subclass = Subclass.new
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @productclasses }
-    end
   end
 
   def show
-    
     @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:id])
-        
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @productclass }
-    end
   end
 
   def new
     @productclass = Productclass.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @productclass }
-    end
   end
 
   def edit
     @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:id])
-
     @photo = Classphoto.new
   end
 

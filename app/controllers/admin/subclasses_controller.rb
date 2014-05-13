@@ -1,8 +1,12 @@
 #encoding: utf-8
 class Admin::SubclassesController < ApplicationController
   before_filter :require_is_admin
-  before_filter :find_productclass, :except => [:destroy]
+  before_filter :find_productclass, :except => [:update, :destroy]
   layout 'admin'
+
+  def show
+    @subclass = Subclass.includes(:products).find_by_id(params[:id])
+  end
 
   def create
   	@subclass = @productclass.subclasses.new({:name => params[:subclass][:name]})
@@ -14,6 +18,16 @@ class Admin::SubclassesController < ApplicationController
 
   		format.html{ redirect_to :back }
   	end
+  end
+
+  def update
+    @subclass = Subclass.find_by_id(params[:id])
+    @subclass.update_attributes({:name => params[:subclass][:name]})
+    
+    respond_to do |format|
+      format.html{ redirect_to :back, notict: "子分類已更新" }
+    end
+    
   end
 
   def destroy

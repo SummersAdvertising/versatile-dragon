@@ -71,7 +71,7 @@
         <a href="javascript:$('#form_subclass').submit()"><img src="/images/save.png"></a>
       </td>
       <td align="left">
-        <a href="javascript:$('.edit_subclass').remove()"><img src="/images/cancel.png"></a>
+        <a href="javascript:$('.editting_subclass').remove()"><img src="/images/cancel.png"></a>
       </td>
     </tr>
   </table>
@@ -99,15 +99,39 @@ $(document).ready(function(){
   $("a.add_subclass").click(function(e){
     e.preventDefault();
 
-    if($(".edit_subclass").length){
+    if($(".editting_subclass").length){
       alert("請先完成編輯中的子分類。");
     }
     else{
       var subclass_tr = $("#new_subclass_tr").clone();
-      subclass_tr.attr("id", "test").addClass("edit_subclass");
+      subclass_tr.attr("id", "test").addClass("editting_subclass");
       subclass_tr.find("form:first").attr("action", $(this).data("action")).attr("id", "form_subclass");
       $(this).parents("tr:first").after( subclass_tr.show() );
     }
+  });
+
+  $("a.sub_trigger_edit").click(function(e){
+    e.preventDefault();
+    if($(".editting_subclass").length){
+      alert("請先完成編輯中的子分類。");
+      return;
+    }
+
+    var active_tr = $(this).parents('tr:first');
+    
+    active_tr.find('.sub_edit_hide').hide();
+    active_tr.find('.sub_edit_show').show();
+    active_tr.addClass("editting_subclass");
+  });
+
+  $("a.sub_trigger_cancel").click(function(e){
+    e.preventDefault();
+
+    var active_tr = $(this).parents('tr:first');
+    
+    active_tr.find('.sub_edit_hide').show();
+    active_tr.find('.sub_edit_show').hide();
+    active_tr.removeClass("editting_subclass");
   });
   
 });

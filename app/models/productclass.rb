@@ -13,9 +13,7 @@ class Productclass < ActiveRecord::Base
   after_destroy :remove_id_directory
   
   translates :content, :name, :frontshow
-
   accepts_nested_attributes_for :translations
-
   Translation.mount_uploader :frontshow, ProductClassCoverUploader
 
   def frontshow

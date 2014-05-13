@@ -1,66 +1,62 @@
 <article>
-<section class="hgroup">
-  <h2><%= t("product.titleShow") %></h2>
-  <p>／ <%= @productclass.name %></p>
-</section>
-<!--hgroup-->
+  <section class="hgroup">
+    <h2><%= t("product.titleShow") %></h2>
+  </section>
+  <!--hgroup-->
 
-<% if(@product) %>
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <th><%= @product.addDate.to_s.to_date %></th>
-      <td><%= @product.name %></td>
-    </tr>
-  </table>
-</section>
-
-<!--title-->
-
-<input id="product_content" style="display:none;" type="text" value="<%=@product.content%>">
-<section id="articleContent" class="text text-show">
-  <div class="one">
-  </div>
-  
-</section>
-<!--text-->
-
-<section class="text text-show">
-<div class="one">
+  <% if(@product) %>
+  <section class="title">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th><%= t("product.frontshow") %></th>
+        <th>
+          <%= @product.addDate.to_s.to_date %></th>
         <td>
-          <% if(@product.status == "enable") %>
-          <%= t("product.status.enable") %>
-          <% else %>
-          <%= t("product.status.disable") %>
-          <% end %>
-        </td>
+          <%= @product.name %></td>
       </tr>
     </table>
-  </div>
-</section>
-<!--text-->
+  </section>
+  <!--title-->
+  
+  <%= hidden_field_tag(:product_content, @product.content) %>
+  <section id="articleContent" class="text text-show">
+    <div class="one"></div>
+  </section>
+  <!--text-->
 
-<% else %>
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td>該語言不包含此商品</td>
-    </tr>
-  </table>
-</section>
-<!--title-->
-<% end %>
+  <section class="text text-show">
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th>
+            <%= t("product.frontshow") %></th>
+          <td>
+            <%= (@product.status == "enable") ? t("product.status.enable") : t("product.status.disable") %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <!--text-->
 
-<section class="button">
-  <% if(@product) %>
-  <%= link_to (image_tag("/images/edit.png")+t("actionshare.edit") ), edit_admin_productclass_product_path(@product.productclass_id, @product, :locale => I18n.locale) %>
+  <% else %>
+  <section class="title">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>該語言不包含此商品</td>
+      </tr>
+    </table>
+  </section>
+  <!--title-->
   <% end %>
-  <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclass_products_path(@productclass, :locale => I18n.locale) %>
-</section>
-<!--button-->
+
+  <section class="button">
+    <% if(@product) %>
+    <%#= link_to (image_tag("/images/edit.png")+t("actionshare.edit") ), edit_admin_productclass_product_path(@product.productclass_id, @product, :locale =>
+    I18n.locale) %>
+    <% end %>
+    <%#= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclass_products_path(@productclass, :locale =>I18n.locale) %>
+  </section>
+  <!--button-->
 </article>
 
 
@@ -75,5 +71,4 @@ $(document).ready(function() {
     $(this).remove();
   });
 });
-
 </script>

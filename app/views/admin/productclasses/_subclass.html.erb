@@ -2,23 +2,31 @@
   <td align="left" class="x0"></td>
   <td align="left">
     <div>
+      <%= form_for(subclass, :url => admin_productclass_subclass_path(productclass, subclass, :locale => I18n.locale) ) do |f| %>
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="10%">
             <span>├</span>
             <img src="/images/folder.png" class="x0"></td>
           <td width="90%" >
-            <%= subclass.name %></td>
+            <%= link_to subclass.name, admin_productclass_subclass_path(productclass, subclass, :locale => I18n.locale), :class => "sub_edit_hide" %>
+            <%= f.text_field(:name, :class => "sub_edit_show", :style => "display: none;") %>
+          </td>
         </tr>
       </table>
+      <% end %>
     </div>
   </td>
   <td align="center">&nbsp;</td>
   <td align="left" class="x0">
-    <a href="javascript:void(0);">
+    <a href="#" class="sub_edit_hide sub_trigger_edit">
       <img src="/images/edit.png"></a>
+    <a href="javascript:$('#edit_subclass_<%= subclass.id %>').submit();" class="sub_edit_show" style="display:none">
+      <img src="/images/save.png"></a>
   </td>
   <td align="left">
-    <%= link_to image_tag("/images/delete.png"), admin_productclass_subclass_path(productclass, subclass, :locale => I18n.locale), :method => :delete, :data => {:confirm => "子分類底下的商品都將刪除，確認刪除子分類？"} %>
+    <%= link_to image_tag("/images/delete.png"), admin_productclass_subclass_path(productclass, subclass, :locale => I18n.locale), :method => :delete, :data => {:confirm => "子分類底下的商品都將刪除，確認刪除子分類？"}, :class => "sub_edit_hide" %>
+    <a href="javascript:void(0);" class="sub_edit_show sub_trigger_cancel" style="display:none">
+      <img src="/images/cancel.png"></a>
   </td>
 </tr>

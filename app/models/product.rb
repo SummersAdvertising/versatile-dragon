@@ -1,20 +1,20 @@
 class Product < ActiveRecord::Base
   belongs_to :subclass
   has_many :productphotos, :dependent => :destroy
-  attr_accessible :content, :name, :productclass_id, :status, :addDate
+  attr_accessible :content, :name, :subclass_id, :status, :addDate
 
   #delete the img diretory
   before_destroy :remember_id
   after_destroy :remove_id_directory
   
   translates :content, :name
+  accepts_nested_attributes_for :translations
 
   before_save :stamp_addDate
 
   private
   def stamp_addDate
     if(self.addDate.blank?)
-
       self.addDate = DateTime.now
     end
   end

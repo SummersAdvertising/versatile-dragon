@@ -1,51 +1,54 @@
+#encoding: utf-8
 class Admin::ProductsController < ApplicationController
   before_filter :require_is_admin
+  before_filter :find_product, :except => [:show, :create, :destroyPhoto]
   layout 'admin'
-  
-  before_filter :findClass
-  
-  def findClass
-    @productclass = Productclass.find(params[:productclass_id])
+
+  def show
+    @product = Product.with_translations(I18n.locale).find_by_id(params[:id])
   end
 
-  def index
-    @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:productclass_id])    
-    if(@productclass)
-      @products = @productclass.products.order("addDate DESC, created_at DESC").page(params[:page]).per(15)
+  def create
+    @product = Product.new(:subclass_id => params[:subclass_id])
+    
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to edit_admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale) }
+      else
+        format.html { redirect_to :back, :alert => "新增產品失敗" }
+      end
     end
   end
 
-  def show
-    @product = @productclass.products.with_translations(I18n.locale).find_by_id(params[:id])
+  def update
+    respond_to do |format|
+      if @product.update_attributes(params[:product])
+        format.html { redirect_to admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale) }
+      else
+        format.html { render action: "edit" }
+      end
+    end
+  end
+
+  def destroy
+    @product.destroy
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @product }
+      format.html { redirect_to admin_productclass_subclass_path(params[:productclass_id], params[:subclass_id], :locale => I18n.locale)}
     end
   end
 
   def edit
-    @productclass = Productclass.with_translations(I18n.locale).find_by_id(params[:productclass_id])    
-    if(@productclass)
-      @product = @productclass.products.find_by_id(params[:id])
-    end
-    #@product = @productclass.products.find_by_id(params[:id])
     @photo = Productphoto.new
   end
 
   #create photo
   def createPhoto
-    @product = Product.find(params[:product_id])
     @photo = @product.productphotos.new(params[:productphoto])
-
+    @photo.save
+    
     respond_to do |format|
-      if @photo.save
-        format.json { render json: @photo, status: :created, location: @photo }
-        format.js
-      else
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-        format.js
-      end
+      format.js
     end
   end
 
@@ -53,58 +56,18 @@ class Admin::ProductsController < ApplicationController
     @photo = Productphoto.find(params[:id])
     @photopath = "public/uploads/Productphoto/"+ @photo.product_id.to_s + "/" + @photo.id.to_s + "-" + @photo.name
 
-    if(!File.exist?(@photopath))
-      @photopath = "public/uploads/Productphoto/"+ @photo.product_id.to_s + "/" + @photo.name
-      if(File.exist?(@photopath))
-        File.delete(@photopath)
-      end
-    else
+    if(File.exist?(@photopath))
       File.delete(@photopath)
     end
         
     @photo.destroy
 
     respond_to do |format|
-          format.js
-          format.json { head :no_content }
-      end
-  end
-
-  def create
-    @product = @productclass.products.new(params[:product])
-    
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to edit_admin_productclass_product_path(@productclass, @product, :locale => I18n.locale), notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
   end
 
-  def update
-    @product = @productclass.products.find(params[:id])
-
-    respond_to do |format|
-      if @product.update_attributes(params[:product])
-        format.html { redirect_to admin_productclass_product_path(@productclass, @product, :locale => I18n.locale), notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @product = @productclass.products.find(params[:id])
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_productclass_products_path(@productclass, :locale => I18n.locale)}
-      format.json { head :no_content }
-    end
+  def find_product
+    @product = Product.find_by_id(params[:id])
   end
 end

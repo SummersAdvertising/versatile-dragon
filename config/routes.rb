@@ -8,7 +8,9 @@ VersatileDragon::Application.routes.draw do
 		get "/contact" => "staticpage#contact"
 
 		resources :productclasses, :only => [:index, :show] do
-			resources :products, :only => :show
+			resources :subclasses do
+				resources :products, :only => :show
+			end
 		end
 
 		resources :productasks, :only => [:new, :create] do
@@ -36,15 +38,10 @@ VersatileDragon::Application.routes.draw do
 				match 'deletePhoto/:id' => 'productclasses#destroyPhoto', :via => [:delete]
 
 				resources :subclasses, :only => [:show, :create, :update, :destroy] do
-					resources :products, :except => [:new] do
+					resources :products, :except => [:index, :new] do
 						match 'uploadPhoto' => 'products#createPhoto', :via => [:post]
 						match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
 					end
-				end
-
-				resources :products, :except => [:new] do
-					match 'uploadPhoto' => 'products#createPhoto', :via => [:post]
-					match 'deletePhoto/:id' => 'products#destroyPhoto', :via => [:delete]
 				end
 			end
 
