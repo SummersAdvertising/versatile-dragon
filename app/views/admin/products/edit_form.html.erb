@@ -1,0 +1,58 @@
+<article>
+  <section class="category">
+    <ul>
+      <li><a href="../edit">產品圖</a></li>
+      <li><a href="../edit/intro">產品描述</a></li>
+      <li><a href="../edit/point">產品特色</a></li>
+      <li class="active"><a href="javascript:void(0)">產品規格</a></li>
+      <li><a href="../edit/wrap">出貨包裝</a></li>
+      <li><a href="../edit/size">尺寸表</a></li>
+      <li><a href="../edit/wash">洗滌方式</a></li>
+      <li><a href="../edit/outro">其他</a></li>
+    </ul>
+  </section>
+  <!--category-->
+
+  <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
+
+  <%= hidden_field_tag(:next_step, "edit_wrap") %>
+  
+  <% end #form %>
+
+  <section class="post">
+      <div id="post-li">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th width="7%">項目：</th>
+            <td width="20%"><input name="" type="text"></td>
+            <th width="7%">內容：</th>
+            <td width="59%"><input name="" type="text"></td>
+            <td width="7%" align="center"><a href="#"><img src="/images/delete.png"></a></td>
+          </tr>          
+        </table>
+        <ul class="tool-a">
+          <li><a href="#">新增</a></li>
+        </ul>
+      </div>      
+    </section>
+    <!--post-->
+
+  <section class="button" id="btnSubmit">
+    <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
+      <img src="/images/next.png">
+      下一步</a>
+    <a href="../edit/point"><img src="/images/back.png">上一步</a>
+  </section>
+  <!--button-->
+</article>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#nav-2").parent().addClass("active");
+  
+  $("#lang a").unbind().click(function(event){
+    event.preventDefault();
+    Alertify.log.error("文章編輯中, 無法切換語系");
+  });
+});
+</script>

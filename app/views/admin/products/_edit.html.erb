@@ -1,0 +1,169 @@
+<article>
+  <section class="hgroup">
+    <h2><%= t("product.titleNew") %></h2>
+  </section>
+  <!--hgroup-->
+
+  <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
+  <section class="title">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>
+          <%= t("productclass.addDate") %></th>
+        <td>
+          <%= f.text_field :addDate, :autocomplete =>"off", :placeholder => t("productclass.addDateholder") %></td>
+      </tr>
+    </table>
+  </section>
+  <!--title-->
+
+  <section class="title">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>
+          <%= t("product.productName") %></th>
+        <td>
+          <%= f.text_field :name, :autocomplete =>
+          "off", :placeholder => t("product.productNameholder") %>
+          <%= f.hidden_field :content_intro %>
+          <%= f.hidden_field :status %></td>
+      </tr>
+    </table>
+  </section>
+
+  <% end #form %>
+
+  <section class="tab">
+    <ul id="tab">
+      <li data-type="p" id="tab-p">
+        <a href="#post-p">
+          <img src="/images/edit.png">
+          <%= t("editor.paragraph.name") %></a>
+      </li>
+      <li data-type="img" id="tab-img">
+        <a href="#post-img">
+          <img src="/images/img.png"/>
+          <%= t("editor.image.name") %></a>
+      </li>
+      <li data-type="video" id="tab-video">
+        <a href="#post-video">
+          <img src="/images/video.png"/>
+          <%= t("editor.video.name") %></a>
+      </li>
+    </ul>
+  </section>
+  <!--tab-->
+
+  <section class="post">
+    <div id="post-p">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="2">
+            <select id="newParagraphFontClass" >
+              <option value="font-red">
+                <%= t("editor.paragraph.class.titleRed") %></option>
+              <option value="font-black">
+                <%= t("editor.paragraph.class.titleBlack") %></option>
+              <option value="content" selected="selected">
+                <%= t("editor.paragraph.class.content") %></option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="<%= t("editor.paragraph.holder") %>"></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+
+        <tr class="addlink">
+          <td width="100" align="center">
+            <img src="/images/atch.png" width="16" height="16">
+            <%= t("editor.link.name") %></td>
+          <td>
+            <input id="newParagraphLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="post-img">
+      <%= form_for (@photo), :url => 'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="2">
+            <%= p.file_field :image, :class =>
+            "autogrow" %>
+            <input name="authenticity_token" type="hidden" value="" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr class="addlink">
+          <td width="100" align="center">
+            <img src="/images/atch.png" width="16" height="16">
+            <%= t("editor.link.name") %></td>
+          <td>
+            <input  id="newImageLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
+        </tr>
+      </table>
+      <% end %></div>
+
+    <div id="post-video">
+      <input id="newVideoContent" name="" type="text" placeholder="<%= t("editor.video.holder") %>
+      " />
+      <div id="videoPreview"></div>
+    </div>
+
+  </section>
+  <!--post-->
+
+  <section class="editorAdd button" id="btnAddElement">
+    <a href="#">
+      <img src="/images/add.png">
+      <%= t("editor.add") %></a>
+  </section>
+  <!--button-->
+
+  <section class="hgroup">
+    <h2>
+      <%= t("editor.preview.title") %></h2>
+    <p>
+      <%= t("editor.preview.tip") %></p>
+  </section>
+  <!--hgroup-->
+
+  <section id="articleContent" class="preview sortable"></section>
+  <!--preview-->
+
+  <section class="button" id="btnSubmit">
+    <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
+      <img src="/images/check.png">
+      <%= t("editor.save") %></a>
+  </section>
+</article>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#nav-2").parent().addClass("active");
+  
+  $("#lang a").unbind().click(function(event){
+    event.preventDefault();
+    Alertify.log.error("文章編輯中, 無法切換語系");
+  });
+
+  $( "#product_addDate" ).datepicker();
+  $( "#product_addDate" ).change(function(){
+    $(this).datepicker("option", "dateFormat", "yy-mm-dd");
+  });
+
+  editor.init({
+    articleModel: "product",
+    photoModel: "productphoto"
+  });
+
+});
+</script>

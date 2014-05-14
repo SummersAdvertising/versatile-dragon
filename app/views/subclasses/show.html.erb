@@ -4,18 +4,16 @@
     <div id="main">
       <div id="side">
         <ul>
-          <%= display_productclasses(@productclass, @productclasses).html_safe %>
+          <%= display_productclasses(@subclass.productclass, @productclasses).html_safe %>
         </ul>
       </div>
 
       <div id="content">
-        <div class="bread"><%= "首頁 ＞ 產品介紹 ＞ #{@productclass.name}" %></div>
-        <input id="productclass_content" style="display:none;" type="text" value="<%= @productclass.content %>">
-        <div id="articleContent"></div>
+        <div class="bread"><%= "首頁 ＞ 產品介紹 ＞ #{@subclass.productclass.name} ＞ #{@subclass.name}" %></div>
 
-        <div>
-          <%= display_subclasses_products(@productclass).html_safe %>
-        </div>
+        <% @subclass.products.each do |product| %>
+        <%= link_to(product.name, productclass_subclass_product_path(params[:productclass_id], @subclass, product, :locale => I18n.locale)) %>
+        <% end %>
 
       </div>
     </div>

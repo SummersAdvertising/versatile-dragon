@@ -1,19 +1,26 @@
 <article>
-  <% if(@product) %>
-  <section class="hgroup">
-    <h2><%= t("product.titleNew") %></h2>
+  <section class="category">
+    <ul>
+      <li class="active"><a href="javascript:void(0);">產品圖</a></li>
+      <li><a href="edit/intro">產品描述</a></li>
+      <li><a href="edit/point">產品特色</a></li>
+      <li><a href="edit/form">產品規格</a></li>
+      <li><a href="edit/wrap">出貨包裝</a></li>
+      <li><a href="edit/size">尺寸表</a></li>
+      <li><a href="edit/wash">洗滌方式</a></li>
+      <li><a href="edit/outro">其他</a></li>
+    </ul>
   </section>
-  <!--hgroup-->
+  <!--category-->
 
-  <%= form_for(@product, :url =>
-  admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
+  <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
   <section class="title">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th>
-          <%= t("productclass.addDate") %></th>
+        <th><%= t("productclass.addDate") %></th>
         <td>
-          <%= f.text_field :addDate, :autocomplete =>"off", :placeholder => t("productclass.addDateholder") %></td>
+          <%= f.text_field :addDate, :autocomplete =>"off", :placeholder => t("productclass.addDateholder") %>
+        </td>
       </tr>
     </table>
   </section>
@@ -22,156 +29,93 @@
   <section class="title">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <th>
-          <%= t("product.productName") %></th>
+        <th><%= t("product.productName") %></th>
         <td>
-          <%= f.text_field :name, :autocomplete =>
-          "off", :placeholder => t("product.productNameholder") %>
-          <%= f.hidden_field :content %>
-          <%= f.hidden_field :status %></td>
+          <%= f.text_field :name, :autocomplete => "off", :placeholder => t("product.productNameholder") %>
+          <%= hidden_field_tag(:next_step, "edit_intro") %>
+        </td>
       </tr>
     </table>
   </section>
-
+  <!--title-->
   <% end #form %>
 
-  <section class="tab">
-    <ul id="tab">
-      <li data-type="p" id="tab-p">
-        <a href="#post-p">
-          <img src="/images/edit.png">
-          <%= t("editor.paragraph.name") %></a>
-      </li>
-      <li data-type="img" id="tab-img">
-        <a href="#post-img">
-          <img src="/images/img.png"/>
-          <%= t("editor.image.name") %></a>
-      </li>
-      <li data-type="video" id="tab-video">
-        <a href="#post-video">
-          <img src="/images/video.png"/>
-          <%= t("editor.video.name") %></a>
-      </li>
-    </ul>
+  <section class="hgroup">
+    <h2>細節展示</h2>
   </section>
-  <!--tab-->
-
-  <section class="post">
-    <div id="post-p">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td colspan="2">
-            <select id="newParagraphFontClass" >
-              <option value="font-red">
-                <%= t("editor.paragraph.class.titleRed") %></option>
-              <option value="font-black">
-                <%= t("editor.paragraph.class.titleBlack") %></option>
-              <option value="content" selected="selected">
-                <%= t("editor.paragraph.class.content") %></option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="<%= t("editor.paragraph.holder") %>"></textarea>
-          </td>
-        </tr>
-
-        <tr>
-          <td colspan="2">&nbsp;</td>
-        </tr>
-
-        <tr class="addlink">
-          <td width="100" align="center">
-            <img src="/images/atch.png" width="16" height="16">
-            <%= t("editor.link.name") %></td>
-          <td>
-            <input id="newParagraphLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
-        </tr>
-      </table>
-    </div>
-
-    <div id="post-img">
-      <%= form_for (@photo), :url =>
-      'uploadPhoto', :html => {:multipart => true, :remote => true} do |p| %>
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td colspan="2">
-            <%= p.file_field :image, :class =>
-            "autogrow" %>
-            <input name="authenticity_token" type="hidden" value="" />
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">&nbsp;</td>
-        </tr>
-        <tr class="addlink">
-          <td width="100" align="center">
-            <img src="/images/atch.png" width="16" height="16">
-            <%= t("editor.link.name") %></td>
-          <td>
-            <input  id="newImageLink" name="" type="text" placeholder="<%= t("editor.link.holder") %>" /></td>
-        </tr>
-      </table>
-      <% end %></div>
-
-    <div id="post-video">
-      <input id="newVideoContent" name="" type="text" placeholder="<%= t("editor.video.holder") %>
-      " />
-      <div id="videoPreview"></div>
-    </div>
-
+  <section class="text text-edit">
+    <div class="three">
+      <input name="" type="file"></div>
   </section>
-  <!--post-->
-
-  <section class="editorAdd button" id="btnAddElement">
-    <a href="#">
-      <img src="/images/add.png">
-      <%= t("editor.add") %></a>
-  </section>
-  <!--button-->
+  <!--細節展示-->
 
   <section class="hgroup">
-    <h2>
-      <%= t("editor.preview.title") %></h2>
-    <p>
-      <%= t("editor.preview.tip") %></p>
+    <h2></h2>
   </section>
-  <!--hgroup-->
+  <section class="text text-edit">
+    <div class="three">
+      <input name="" type="file"></div>
+  </section>
+  <!--顏色-->
 
-  <section id="articleContent" class="preview sortable"></section>
-  <!--preview-->
-
-  <section class="text text-show">
+  <section class="hgroup">
+    <h2>特點</h2>
+  </section>
+  <section class="text text-edit points">
     <div class="one">
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <th>前台顯示？</th>
+          <th valign="top" style="width:25px">※</th>
           <td>
-            <input type="checkbox" id="productFrontshow" style="width:30px" />
-            ( 若無勾選則不發佈 )
-          </td>
+            <input name="product[description][]" type="text"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th valign="top" style="width:25px">※</th>
+          <td>
+            <input name="product[description][]" type="text"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th valign="top" style="width:25px">※</th>
+          <td>
+            <input name="product[description][]" type="text"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th valign="top" style="width:25px">※</th>
+          <td>
+            <input name="product[description][]" type="text"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th valign="top" style="width:25px">※</th>
+          <td>
+            <input name="product[description][]" type="text"></td>
         </tr>
       </table>
     </div>
   </section>
+  <!--特點-->
 
   <section class="button" id="btnSubmit">
     <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
-      <img src="/images/check.png">
-      <%= t("editor.save") %></a>
+      <img src="/images/next.png">
+      下一步</a>
   </section>
-
-  <% else %>
-  <section class="title">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td>該語言不包含此分類</td>
-      </tr>
-    </table>
-  </section>
-  <!--title-->
-  <% end %>
+  <!--button-->
 </article>
 
 <script type="text/javascript">
@@ -188,10 +132,15 @@ $(document).ready(function(){
     $(this).datepicker("option", "dateFormat", "yy-mm-dd");
   });
 
-  editor.init({
-    articleModel: "product",
-    photoModel: "productphoto"
+  $('#edit_product_<%= @product.id %>').submit(function(){
+    $(this).append($(".points").clone().hide());
+    return true;
   });
+
+  // editor.init({
+  //   articleModel: "product",
+  //   photoModel: "productphoto"
+  // });
 
 });
 </script>

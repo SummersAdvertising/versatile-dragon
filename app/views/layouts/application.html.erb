@@ -36,7 +36,7 @@
 <%= stylesheet_link_tag "partner", :media => "all" %>
 <% end %>
 
-<% elsif(params[:controller] == "productclasses" || params[:controller] == "products") %>
+<% elsif(["productclasses", "subclasses", "products"].include?(params[:controller]) ) %>
 <%= stylesheet_link_tag "series", :media => "all" %>
 <% else %>
 <%= stylesheet_link_tag "about", :media => "all" %>

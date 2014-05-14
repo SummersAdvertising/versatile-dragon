@@ -9,6 +9,8 @@ end
 group :development, :test do
 	gem "sqlite3"
 	gem 'sextant'
+	gem 'capistrano'
+	gem 'capistrano-ext'
 end
 
 #for pagination
@@ -41,15 +43,7 @@ gem 'jquery-rails'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'capistrano-ext'
-
 gem 'globalize3'
-
 
 # To use debugger
 # gem 'debugger'

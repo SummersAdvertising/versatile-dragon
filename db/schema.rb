@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512091722) do
+ActiveRecord::Schema.define(:version => 20140514085419) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -21,25 +21,6 @@ ActiveRecord::Schema.define(:version => 20140512091722) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "master",     :default => false
   end
-
-  create_table "categories", :force => true do |t|
-    t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "category_translations", :force => true do |t|
-    t.integer  "category_id"
-    t.string   "locale"
-    t.string   "title"
-    t.text     "content"
-    t.string   "image"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
-  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
 
   create_table "classphotos", :force => true do |t|
     t.string   "name"
@@ -90,10 +71,16 @@ ActiveRecord::Schema.define(:version => 20140512091722) do
   create_table "product_translations", :force => true do |t|
     t.integer  "product_id"
     t.string   "locale"
-    t.text     "content"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "description"
+    t.text     "content_intro"
+    t.text     "content_point"
+    t.text     "content_form"
+    t.text     "content_wrap"
+    t.text     "content_wash"
+    t.text     "content_outro"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "product_translations", ["locale"], :name => "index_product_translations_on_locale"

@@ -1,10 +1,13 @@
 class ProductclassesController < ApplicationController
   def index
-    @productclasses = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC, productclasses.created_at DESC").all
+    @productclass = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC").limit(1).first
 
     respond_to do |format|
-      format.html
-      format.json { render json: @productclasses }
+      if(@productclass)
+        format.html { redirect_to productclass_path(@productclass, :locale => params[:locale]) }
+      else
+        format.html
+      end
     end
   end
 

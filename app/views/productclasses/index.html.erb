@@ -1,10 +1,3 @@
-<% if(@productclasses.size)>0 %>
-<script type="text/javascript">
-    window.location.href="<%= productclass_path(@productclasses.first.id, :locale => params[:locale]) %>";
-</script>
-
-<% else %>
-
 <article>
   <section>
     <div id="banner_series"></div>
@@ -13,4 +6,3 @@
     </div>
   </section>
 </article>
-<% end %>

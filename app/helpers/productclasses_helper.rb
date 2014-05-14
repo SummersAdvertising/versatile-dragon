@@ -8,7 +8,7 @@ module ProductclassesHelper
 
 			if(productclass == productclass_active)
 				productclass.subclasses.each do |subclass|
-					@display_content += "<li>├ #{subclass.name}</li>"
+					@display_content += "<li>├ #{ link_to(subclass.name, productclass_subclass_path(productclass, subclass, :locale => I18n.locale)) }</li>"
 				end
 			end
 		end
@@ -21,9 +21,11 @@ module ProductclassesHelper
 
 		productclass.subclasses.each do |subclass|
 			@display_content += "<div>"
-			@display_content += "<h3>#{subclass.name}</h3>"
+			@display_content += "<h3>#{link_to(subclass.name, productclass_subclass_path(productclass, subclass, :locale => I18n.locale))}</h3>"
 
-			@display_content += "products"
+			subclass.products.each do |product|
+				@display_content += "#{link_to(product.name, productclass_subclass_product_path(productclass, subclass, product, :locale => I18n.locale))}"
+			end
 
 			@display_content += "</div>"
 		end

@@ -1,0 +1,84 @@
+<article>
+  <section class="category">
+    <ul>
+      <li><a href="../edit">產品圖</a></li>
+      <li><a href="../edit/intro">產品描述</a></li>
+      <li class="active"><a href="javascript:void(0)">產品特色</a></li>
+      <li><a href="../edit/form">產品規格</a></li>
+      <li><a href="../edit/wrap">出貨包裝</a></li>
+      <li><a href="../edit/size">尺寸表</a></li>
+      <li><a href="../edit/wash">洗滌方式</a></li>
+      <li><a href="../edit/outro">其他</a></li>
+    </ul>
+  </section>
+  <!--category-->
+
+  <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
+
+  <%= hidden_field_tag(:next_step, "edit_form") %>
+  
+  <% end #form %>
+
+  <section class="post">
+      <div id="post-li">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th width="5%">1. </th>
+            <td><input name="" type="text"></td>
+            <td width="7%" align="center"><a href="#"><img src="/images/delete.png"></a></td>
+          </tr>
+          <tr>
+            <th>2. </th>
+            <td><input name="" type="text"></td>
+            <td align="center"><a href="#"><img src="/images/delete.png"></a></td>
+          </tr>
+          <tr>
+            <th>3. </th>
+            <td><input name="" type="text"></td>
+            <td align="center"><a href="#"><img src="/images/delete.png"></a></td>
+          </tr>
+        </table>
+        <ul class="tool-a">
+          <li><a href="#">新增</a></li>
+        </ul>
+      </div>      
+    </section>
+    <!--post-->
+    <section class="text text-edit">
+      <div class="half">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>圖片</th>
+            <td><input name="" type="file"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="half">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>描述</th>
+            <td><input name="" type="text"></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    
+  <section class="button" id="btnSubmit">
+    <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
+      <img src="/images/next.png">
+      下一步</a>
+    <a href="../edit/intro"><img src="/images/back.png">上一步</a>
+  </section>
+  <!--button-->
+</article>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#nav-2").parent().addClass("active");
+  
+  $("#lang a").unbind().click(function(event){
+    event.preventDefault();
+    Alertify.log.error("文章編輯中, 無法切換語系");
+  });
+});
+</script>

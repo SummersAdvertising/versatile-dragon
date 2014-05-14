@@ -1,13 +1,13 @@
 class Product < ActiveRecord::Base
   belongs_to :subclass
   has_many :productphotos, :dependent => :destroy
-  attr_accessible :content, :name, :subclass_id, :status, :addDate
+  attr_accessible :name, :description, :content_intro, :content_point, :content_form, :content_wrap, :content_wash, :content_outro, :subclass_id, :status, :addDate
 
   #delete the img diretory
   before_destroy :remember_id
   after_destroy :remove_id_directory
   
-  translates :content, :name
+  translates :name, :description, :content_intro, :content_point, :content_form, :content_wrap, :content_wash, :content_outro
   accepts_nested_attributes_for :translations
 
   before_save :stamp_addDate
