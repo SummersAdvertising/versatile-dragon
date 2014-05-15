@@ -1,27 +1,38 @@
-if("<%= @photo.id.to_s.html_safe %>"){
+<% if @photo.errors.any? %>
+editor.alert("<%= @photo.errors.full_messages.join(' ') %>", "error");
+
+<% else %>
+
+<% case @photo.img_type %>
+<% when "detail", "color", "point" %>
+	var div = $('<div class="three" id="photo_<%= "#{@photo.img_type}_#{@photo.id}" %>">');
+	var a_link = '<%= link_to("del", "deletePhoto/#{@photo.id}", :method => :delete, :remote => true) %>';
+	var image = '<%= image_tag(@photo.image, :style => "max-width: 300px;") %>';
+
+	div.append(image).append("<br>").append(a_link);
+
+	if("<%= @photo.img_type %>" == "point"){
+		var p = $('<p><%= @photo.description %></p>');
+		div.append(p);
+	}
+
+	$("#photos_<%= @photo.img_type %>").append(div);
+	$('<%= "#no_photo_#{@photo.img_type}" %>').hide();
+
+<% when "peditor" %>
 	var image = new Object();
 	image.type = "img";
-	image.id = "<%= @photo.id.to_s.html_safe %>";
-	image.path = "<%= @photo.image.to_s.html_safe %>";
-	
+	image.id = "<%= @photo.id %>";
+	image.path = "<%= @photo.image %>";
+
 	if($("#newImageLink").val()){
 		image.link = $("#newImageLink").val();
 	}
 
 	editor.resetChild();
 	editor.img.update(image);
-	
-}
-else{
-	<% @errors = "" %>
-	<%if @photo.errors %>
-	<% @photo.errors.full_messages.each do |msg| %>
-	<% @errors +=  msg %>
-	<% end %>
-	<% end %>
+<% else %>
+	alert("圖片上傳錯誤，請重新上傳");
+<% end %>
 
-	if("<%= @errors %>"){
-		editor.alert("<%= @errors %>", "error");
-	}
-	
-}
+<% end %>

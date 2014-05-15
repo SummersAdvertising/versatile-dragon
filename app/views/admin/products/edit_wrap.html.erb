@@ -16,19 +16,21 @@
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
 
   <%= hidden_field_tag(:next_step, "edit_size") %>
-  
-  <% end #form %>
-
   <section class="post">
       <div id="post-p">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td colspan="2"><textarea name="textarea" cols="" rows="" class="autogrow" placeholder="請輸入文字"></textarea></td>
+            <td colspan="2">
+              <%= f.text_area :content_wrap, :rows => "", :cols => "", :class => "autogrow", :placeholder => "請輸入文字" %></td>
           </tr>
         </table>
       </div>      
     </section>
     <!--post-->
+  
+  <% end #form %>
+
+  
 
   <section class="button" id="btnSubmit">
     <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">

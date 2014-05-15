@@ -17,71 +17,76 @@
   <!--category-->
 
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
-
+  
+  <%= f.hidden_field :content_intro %>
   <%= hidden_field_tag(:next_step, "edit_point") %>
   <% end #form %>
 
   <section class="tab">
-      <ul>
-        <li><a href="#post-p"><img src="/images/edit.png">插入段落</a></li>
-        <li><a href="#post-img"><img src="/images/img.png"/>插入圖片</a></li>
-      </ul>
-    </section>
-    <!--tab-->
-    <section class="post">
-      <div id="post-p">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td colspan="2"><select name=""><option>內文(粗體/黑)</option><option>強調(粗體/紅)</option></select></td>
-          </tr>
-          <tr>
-            <td colspan="2">&nbsp;</td>
-          </tr>
-          <tr>
-            <td colspan="2"><textarea name="textarea" cols="" rows="" class="autogrow" placeholder="請輸入文字"></textarea></td>
-          </tr>
-        </table>
-      </div>
-      <div id="post-img">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td colspan="2"><input type="file" name="fileField" id="fileField"></td>
-          </tr>
-        </table>
-      </div>
-    </section>
-    <!--post-->
-    
-    <section class="button"> <a href="#"><img src="/images/add.png">新增段落</a> </section>
-    <!--button-->
-    
-    <section class="hgroup">
-      <h2>文章預覽</h2>
-      <p>（可拖曳文章段落排序）</p>
-    </section>
-    <!--hgroup-->
-    <section class="preview">
-      <div>
-        <ul class="tool-b">
-          <li><a htref="#">編輯</a></li>
-          <li><a htref="#">刪除</a></li>
-        </ul>
-        寫了一些段落 </div>
-      <div>
-        <ul class="tool-b">
-          <li><a htref="#">編輯</a></li>
-          <li><a htref="#">刪除</a></li>
-        </ul>
-        不知所云的第二段</div>
-      <div>
-        <textarea name="textarea" cols="" rows="" class="autogrow"></textarea>
-        <ul class="tool-a">
-          <li><a htref="#">儲存</a></li>
-          <li><a htref="#">取消</a></li>
-        </ul>
-      </div>
-    </section>
-    <!--preview-->
+    <ul id="tab">
+      <li data-type="p" id="tab-p">
+        <a href="#post-p"><img src="/images/edit.png"><%= t("editor.paragraph.name") %></a>
+      </li>
+      <li data-type="img" id="tab-img">
+        <a href="#post-img"><img src="/images/img.png"/><%= t("editor.image.name") %></a>
+      </li>
+    </ul>
+  </section>
+  <!--tab-->
+
+  <section class="post">
+    <div id="post-p">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="2">
+            <select id="newParagraphFontClass">
+              <option value="">內文(粗體/黑)</option>
+              <option value="red">強調(粗體/紅)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="<%= t("editor.paragraph.holder") %>"></textarea>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="post-img">
+      <%= form_for (@photo), :url => '../uploadPhoto', :html => {:multipart => true, :remote => true} do |f| %>
+      <%= f.hidden_field :img_type, :value => "peditor" %>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="2">
+            <%= f.file_field :image, :class => "autogrow" %>
+            <input name="authenticity_token" type="hidden" value="" />
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </section>
+  <!--post-->  
+
+  <section class="editorAdd button" id="btnAddElement">
+    <a href="#">
+      <img src="/images/add.png">
+      <%= t("editor.add") %></a>
+  </section>
+  <!--button-->  
+
+  <section class="hgroup">
+    <h2><%= t("editor.preview.title") %></h2>
+    <p><%= t("editor.preview.tip") %></p>
+  </section>
+  <!--hgroup-->
+
+  <section id="articleContent" class="preview sortable"></section>
+  <!--preview-->  
 
   <section class="button" id="btnSubmit">
     <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
@@ -99,6 +104,12 @@ $(document).ready(function(){
   $("#lang a").unbind().click(function(event){
     event.preventDefault();
     Alertify.log.error("文章編輯中, 無法切換語系");
+  });
+
+  editor.init({
+    articleModel: "product",
+    contentColumn: "content_intro",
+    photoModel: "productphoto"
   });
 });
 </script>

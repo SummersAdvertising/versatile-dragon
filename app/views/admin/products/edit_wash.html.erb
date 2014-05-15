@@ -14,27 +14,50 @@
   <!--category-->
 
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
-
+  <%= f.hidden_field :content_wash %>
   <%= hidden_field_tag(:next_step, "edit_outro") %>
   
   <% end #form %>
 
   <section class="post">
-      <div id="post-p">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-            <td colspan="2"><select name=""><option>內文(黑)</option><option>強調(紅)</option></select></td>
-          </tr>
-          <tr>
-            <td colspan="2">&nbsp;</td>
-          </tr>
-          <tr>
-            <td colspan="2"><textarea name="textarea" cols="" rows="" class="autogrow" placeholder="請輸入文字"></textarea></td>
-          </tr>
-        </table>
-      </div>      
-    </section>
-    <!--post-->
+    <div id="post-p">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="2">
+            <select id="newParagraphFontClass">
+              <option value="">內文(黑)</option>
+              <option value="red">強調(紅)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <textarea id="newParagraphContent" name="textarea" cols="" rows="" class="autogrow" placeholder="<%= t("editor.paragraph.holder") %>"></textarea>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <!--post-->  
+
+  <section class="editorAdd button" id="btnAddElement">
+    <a href="#">
+      <img src="/images/add.png">
+      <%= t("editor.add") %></a>
+  </section>
+  <!--button-->  
+
+  <section class="hgroup">
+    <h2><%= t("editor.preview.title") %></h2>
+    <p><%= t("editor.preview.tip") %></p>
+  </section>
+  <!--hgroup-->
+
+  <section id="articleContent" class="preview sortable"></section>
+  <!--preview-->  
 
   <section class="button" id="btnSubmit">
     <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
@@ -52,6 +75,12 @@ $(document).ready(function(){
   $("#lang a").unbind().click(function(event){
     event.preventDefault();
     Alertify.log.error("文章編輯中, 無法切換語系");
+  });
+
+  editor.init({
+    articleModel: "product",
+    contentColumn: "content_wash",
+    photoModel: "productphoto"
   });
 });
 </script>

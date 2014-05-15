@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140514085419) do
+ActiveRecord::Schema.define(:version => 20140515072151) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -71,16 +71,16 @@ ActiveRecord::Schema.define(:version => 20140514085419) do
   create_table "product_translations", :force => true do |t|
     t.integer  "product_id"
     t.string   "locale"
-    t.string   "name"
-    t.text     "description"
     t.text     "content_intro"
+    t.string   "name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.text     "content_point"
     t.text     "content_form"
     t.text     "content_wrap"
     t.text     "content_wash"
     t.text     "content_outro"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.text     "description"
   end
 
   add_index "product_translations", ["locale"], :name => "index_product_translations_on_locale"
@@ -134,8 +134,10 @@ ActiveRecord::Schema.define(:version => 20140514085419) do
     t.string   "name"
     t.string   "image"
     t.integer  "product_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "description"
+    t.string   "img_type"
   end
 
   create_table "products", :force => true do |t|

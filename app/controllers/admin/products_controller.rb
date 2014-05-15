@@ -2,6 +2,7 @@
 class Admin::ProductsController < ApplicationController
   before_filter :require_is_admin
   before_filter :find_product, :except => [:create, :destroyPhoto]
+  before_filter :new_productphoto, :only => [:edit, :edit_intro, :edit_point, :edit_size, :edit_wash, :edit_outro]
   layout 'admin'
 
   def create
@@ -17,6 +18,9 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
+    params[:product][:description] = params[:product][:description].to_json if(params[:product][:description])
+    params[:product][:content_point] = params[:product][:content_point].to_json if(params[:product][:content_point])
+
     case params[:next_step]
     when "edit_intro"
       params[:next_step] = admin_productclass_subclass_product_edit_intro_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale)
@@ -39,6 +43,7 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to params[:next_step] }
+        format.js
       else
         format.html { render action: "edit" }
       end
@@ -54,25 +59,16 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @photo = Productphoto.new
+    @photos = Productphoto.where("img_type in ('detail', 'color') AND product_id = #{@product.id}").all
+
+    @photos_detail = @photos.select { |photo| photo.img_type == 'detail' }
+    @photos_color = @photos.select { |photo| photo.img_type == 'color' }
   end
 
   def edit_point
-  end
+    @photos_point = Productphoto.where("img_type = 'point' AND product_id = #{@product.id}").all
 
-  def edit_form
-  end
-
-  def edit_wrap
-  end
-
-  def edit_size
-  end
-
-  def edit_wash
-  end
-
-  def edit_outro
+    @points = JSON.is_json?(@product.content_point) ? JSON.parse(@product.content_point) : Array.new
   end
   
   #create photo
@@ -101,6 +97,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find_by_id(params[:id] || params[:product_id])
+    @product = Product.find_by_id(params[:product_id] || params[:id])
+  end
+
+  def new_productphoto
+    @photo = Productphoto.new
   end
 end

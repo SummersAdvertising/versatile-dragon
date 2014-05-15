@@ -12,62 +12,83 @@
     </ul>
   </section>
   <!--category-->
-
-  <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
-
-  <%= hidden_field_tag(:next_step, "edit_form") %>
-  
-  <% end #form %>
-
   <section class="post">
-      <div id="post-li">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <th width="5%">1. </th>
-            <td><input name="" type="text"></td>
-            <td width="7%" align="center"><a href="#"><img src="/images/delete.png"></a></td>
-          </tr>
-          <tr>
-            <th>2. </th>
-            <td><input name="" type="text"></td>
-            <td align="center"><a href="#"><img src="/images/delete.png"></a></td>
-          </tr>
-          <tr>
-            <th>3. </th>
-            <td><input name="" type="text"></td>
-            <td align="center"><a href="#"><img src="/images/delete.png"></a></td>
-          </tr>
-        </table>
-        <ul class="tool-a">
-          <li><a href="#">新增</a></li>
-        </ul>
-      </div>      
-    </section>
-    <!--post-->
-    <section class="text text-edit">
-      <div class="half">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <th>圖片</th>
-            <td><input name="" type="file"></td>
-          </tr>
-        </table>
-      </div>
-      <div class="half">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <th>描述</th>
-            <td><input name="" type="text"></td>
-          </tr>
-        </table>
-      </div>
-    </section>
-    
+    <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
+    <%= hidden_field_tag(:next_step, "edit_form") %>
+    <div id="post-li">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <% @points.each do |point| %>
+        <tr>
+          <td>
+            <input name="product[content_point][]" type="text" value="<%= point %>"></td>
+          <td width="7%" align="center">
+            <a class="remove_point" href="javascript:void(0);"><img src="/images/delete.png"></a>
+          </td>
+        </tr>
+        <% end %>
+
+        <% (@points.length < 3) && (3 - @points.length).times do %>
+        <tr>
+          <td>
+            <input name="product[content_point][]" type="text"></td>
+          <td width="7%" align="center">
+            <a class="remove_point" href="javascript:void(0);"><img src="/images/delete.png"></a>
+          </td>
+        </tr>
+        <% end %>
+        
+      </table>
+      <ul class="tool-a">
+        <li>
+          <a id = "new_point" href="javascript:void(0);">新增</a>
+        </li>
+      </ul>
+    </div>
+    <% end #form %>
+  </section>
+  <!--post-->
+
+  <section class="text text-edit">
+    <%= form_for(@photo, :url => "../uploadPhoto", :remote => true) do |f| %>
+    <%= f.hidden_field :img_type, :value => "detail" %>
+      
+    <div class="half">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th>圖片</th>
+          <td><%= f.file_field :image %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="half">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th>描述</th>
+          <td><%= f.text_field :description %></td>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+  </section>
+
+  <section class="text text-edit" id="photos_detail">
+    <p id="no_photo_detail" style="display: <%= @photos_point.empty? ? "block" : "none" %>;">尚未上傳圖片</p>
+
+    <% @photos_point.each do |photo| %>
+    <div class="three" id="photo_detail_<%= photo.id %>">
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}", :style => "max-width: 300px;") %><br>
+      <p><%= photo.description %></p>
+      <%= link_to("del", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
+    </div>
+    <% end %>
+  </section>
+
   <section class="button" id="btnSubmit">
-    <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
-      <img src="/images/next.png">
-      下一步</a>
-    <a href="../edit/intro"><img src="/images/back.png">上一步</a>
+    <a href="javascript:$('#edit_product_<%= @product.id %>
+      ').submit();">
+      <img src="/images/next.png">下一步</a>
+    <a href="../edit/intro">
+      <img src="/images/back.png">上一步</a>
   </section>
   <!--button-->
 </article>
@@ -80,5 +101,32 @@ $(document).ready(function(){
     event.preventDefault();
     Alertify.log.error("文章編輯中, 無法切換語系");
   });
+
+  $(".remove_point").click(function(){
+    remove_point(this);
+  });
+
+  $("#new_point").click(function(){
+    new_point();
+  });
+
+  function new_point(){
+    var tr = $("<tr>");
+    var td = $("<td>");
+    var input = $('<input name="product[content_point][]" type="text">');
+    var a = $('<a class="remove_point" href="javascript:void(0);"><img src="/images/delete.png">');
+
+    a.click(function(){
+      remove_point(this);
+    });
+
+    tr.append( td.clone().append(input) ).append( td.clone().attr( "align", "center").append(a) );
+    $("#post-li table").append(tr);
+
+  }
+
+  function remove_point(trigger){
+    $(trigger).parents("tr:first").remove();
+  }
 });
 </script>

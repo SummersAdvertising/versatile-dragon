@@ -1,6 +1,6 @@
 class Productphoto < ActiveRecord::Base
   belongs_to :product
-  attr_accessible :image, :name, :product_id
+  attr_accessible :image, :name, :product_id, :img_type, :description
 
   mount_uploader :image, ImageUploader
   

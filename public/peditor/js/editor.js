@@ -2,6 +2,7 @@ var editor = {
 	elements: ["p", "img", "video", "list"],
 	settings: {
 		articleModel: "article",
+		contentColumn: "content",
 		photoModel: "photo",
 		photoColumn: "image",
 		photoUpload: "uploadPhoto",
@@ -152,12 +153,12 @@ var editor = {
 			article.push(upload);
 		}
 
-		$("#"+editor.settings.articleModel+"_content").val(JSON.stringify(article));
+		$("#"+editor.settings.articleModel+"_"+editor.settings.contentColumn).val(JSON.stringify(article));
 
 		editor.save(editor.ajaxupdate);
 	},
 	show: function(){
-		var content = $("#"+editor.settings.articleModel+"_content").val();
+		var content = $("#"+editor.settings.articleModel+"_"+editor.settings.contentColumn).val();
 		if(content){
 			var article = JSON.parse(content);
 			if(article.article){
@@ -196,7 +197,7 @@ var editor = {
 			editor.settings.articleSection = $(editor.settings.articleSection);
 		}
 
-		var content = content? content : $("#"+editor.settings.articleModel+"_content").val();
+		var content = content? content : $("#"+editor.settings.articleModel+"_"+editor.settings.contentColumn).val();
 
 		var article = JSON.parse(content);
 		if(article.article){
@@ -301,11 +302,3 @@ var editor = {
 		return text.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/<br[ \/]*>/g, "\n");
 	}
 };
-
-// // Make sure that every Ajax request sends the CSRF token
-// function CSRFProtection(xhr) {
-//  var token = $('meta[name="csrf-token"]').attr('content');
-//  if (token) xhr.setRequestHeader('X-CSRF-Token', token);
-// }
-// if ('ajaxPrefilter' in $) $.ajaxPrefilter(function(options, originalOptions, xhr) { CSRFProtection(xhr); });
-// else $(document).ajaxSend(function(e, xhr) { CSRFProtection(xhr); });
