@@ -1,0 +1,23 @@
+#banner{background:image-url("cart-banner.png") 0 0 no-repeat}
+
+#content{padding:0 33px;position:relative;overflow:hidden;font-size:15px;color:#444}
+
+#form{width:465px;float:left}
+#form th{font-weight:300;padding:0 10px 0 0}
+#form td{padding:8px 0}
+#form .text{width:100%;border:1px solid #E8E8E7;padding:8px}
+#form textarea{width:100%;border:1px solid #E8E8E7;padding:8px;height:125px;margin:10px 0 0 0}
+#list{width:375px;float:left;margin:0 0 0 100px;padding:8px 0 0 0}
+#list li{border:1px solid #FFD283;position:relative;height:35px;background:#FEF4DC;
+margin:16px 0 0 0;padding:5px 35px 0 15px}
+#list a{color:#444}
+#list a:hover{color:#C00D0C}
+#list .delete{position:absolute;top:10px;right:10px;display:block;text-indent:-9999px;
+background:image-url("cart-01.png") 0 0 no-repeat;width:12px;height:12px}
+#list .delete:hover{background:image-url("cart-02.png") 0 0 no-repeat;}
+#list h4{font-weight:300}
+
+#button{clear:both;text-align:center;padding:50px 0 0 0}
+#button input{width:286px;height:57px;background:image-url("cart-03.png") 0 0 no-repeat;
+border:none;cursor:pointer}
+#button input:hover{opacity:.8;filter:alpha(opacity=80)}

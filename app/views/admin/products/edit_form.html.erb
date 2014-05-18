@@ -16,26 +16,38 @@
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
 
   <%= hidden_field_tag(:next_step, "edit_wrap") %>
-  
-  <% end #form %>
-
   <section class="post">
       <div id="post-li">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <% @forms && @forms["items"].each_with_index do |item, index| %>
           <tr>
             <th width="7%">項目：</th>
-            <td width="20%"><input name="" type="text"></td>
+            <td width="20%"><input name="content_form[]items[]" type="text" value="<%= item %>"></td>
             <th width="7%">內容：</th>
-            <td width="59%"><input name="" type="text"></td>
-            <td width="7%" align="center"><a href="#"><img src="/images/delete.png"></a></td>
-          </tr>          
+            <td width="59%"><input name="content_form[]contents[]" type="text" value="<%= @forms['contents'][index] %>"></td>
+            <td width="7%" align="center"><a href="javascript:void(0)" class="remove_form"><img src="/images/delete.png"></a></td>
+          </tr>
+          <% end %>
+
+          <% unless(@forms) %>
+          <tr>
+            <th width="7%">項目：</th>
+            <td width="20%"><input name="content_form[]items[]" type="text"></td>
+            <th width="7%">內容：</th>
+            <td width="59%"><input name="content_form[]contents[]" type="text"></td>
+            <td width="7%" align="center"><a href="javascript:void(0)" class="remove_form"><img src="/images/delete.png"></a></td>
+          </tr>
+          <% end %>
         </table>
         <ul class="tool-a">
-          <li><a href="#">新增</a></li>
+          <li class="add_form"><a href="javascript:void(0)">新增</a></li>
         </ul>
       </div>      
     </section>
     <!--post-->
+  <% end #form %>
+
+  
 
   <section class="button" id="btnSubmit">
     <a href="javascript:$('#edit_product_<%= @product.id %>').submit();">
@@ -54,5 +66,39 @@ $(document).ready(function(){
     event.preventDefault();
     Alertify.log.error("文章編輯中, 無法切換語系");
   });
+
+  $(".remove_form").click(function(){
+    remove_form(this);
+  });
+
+  $(".add_form").click(function(){
+    var tr = $("<tr>");
+    var th = $("<th>");
+    var td = $("<td>");
+    var input = $('<input type="text">');
+    var a = $('<a href="javascript:void(0)" class="remove_form"><img src="/images/delete.png">');
+    
+    a.click(function(){
+      remove_form(this);
+    });
+
+    tr.append( th.clone().attr("width", "7%").append("項目：") )
+      .append( th.clone().attr("width", "20%").append( input.clone().attr("name", "content_form[]items[]") ) )
+      .append( th.clone().attr("width", "7%").append("內容：") )
+      .append( th.clone().attr("width", "59%").append( input.clone().attr("name", "content_form[]contents[]") ) )
+      .append( th.clone().attr("width", "7%").attr("align", "center").append(a) );
+
+
+    $("#post-li table").append(tr);
+  });
+
+  function remove_form(trigger){
+    if($(".remove_form").length > 1){
+      $(trigger).parents("tr:first").remove();
+    }
+    else{
+      alert("請至少保留一筆產品規格");
+    }
+  }
 });
 </script>

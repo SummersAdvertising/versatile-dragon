@@ -1,33 +1,34 @@
-<article>
+<article _height="auto">
   <section>
-    <div id="banner_series"></div>
-    <div id="main">
-      <div id="side">
-        <ul>
-          <%= display_productclasses(@subclass.productclass, @productclasses).html_safe %>
-        </ul>
+    <div id="banner">
+      <div class="cover"><%= image_tag(@subclass.productclass.frontshow, :width => "545", :height => "123") %></div>
+      <div class="bread"><%= "首頁 > 產品介紹 > #{@subclass.productclass.name} > #{@subclass.name}" %></div>
+    </div>
+    <div id="content">
+      <div class="left">
+        <%= display_productclasses(@subclass.productclass, @productclasses).html_safe %>
       </div>
+      <!--left-->
 
-      <div id="content">
-        <div class="bread"><%= "首頁 ＞ 產品介紹 ＞ #{@subclass.productclass.name} ＞ #{@subclass.name}" %></div>
-
-        <% @subclass.products.each do |product| %>
-        <%= link_to(product.name, productclass_subclass_product_path(params[:productclass_id], @subclass, product, :locale => I18n.locale)) %>
-        <% end %>
-
+      <div id="level-2" class="right">
+        <h3><%= @subclass.name %></h3>
+          <ul>
+            <% @subclass.products.each do |product| %>
+            <li>
+              <a href="<%= productclass_subclass_product_path(params[:productclass_id], @subclass, product, :locale => I18n.locale) %>"> <img src="example-2.jpg"><br>
+              <span><%= product.name %></span></a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
+      <!--right--> 
     </div>
   </section>
 </article>
 
 <script type="text/javascript">
 $(document).ready(function() {
-  editor.output($("#productclass_content").val());
-
-  $("#articleContent div").each(function(){
-    $("#articleContent").append($(this).html());
-    $(this).remove();
-  });
 });
 
 </script>

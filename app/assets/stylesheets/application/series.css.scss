@@ -1,22 +1,83 @@
-﻿.bread{color:#fe7300;font-size:16px}
-.bread a{color:#fe7300;font-size:16px}
-.bread a:hover{text-decoration:underline}
+﻿#banner{background:image-url("product-banner.jpg") 0 0 no-repeat;position:relative}
+#banner .cover{position:absolute;top:0;right:0}
 
-#main{padding:0 33px;overflow:hidden;min-height:500px}
+#content{padding:0 33px;position:relative;overflow:hidden;font-size:15px;color:#444}
 
-#side{float:left;width:223px}
-#side h5 a{font:300 18px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;color:#fff;display:block;width:223px;height:50px;background:image-url("series-h5-h.png") 0 0 no-repeat;padding:11px 0 0 40px}
-#side h5 a:hover,#side h5.active a{background:image-url("series-h5.png")}
-#side ul{padding:10px 0}
-#side li a{display:block;width:188px;height:39px;background:image-url("series-li.png");color:#2f6485;font-size:15px;padding:8px 0 0 23px}
-#side li a:hover{background:image-url("series-li-h.png")}
-#side li.active a{color:#ce0021}
+#content .left{float:left;width:223px}
+#content .right{float:right;width:695px}
 
-#content{float:right;width:700px}
-#content img{max-width:100%; height: auto}
-#content .bread{height:50px;padding:11px 0 0 0}
-#content .font-red{color:#ce0021;font:300 32px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;text-shadow:0 1px 0 #fff;padding:0 0 10px 0}
-#content .font-black{font:900 18px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;text-shadow:0 1px 0 #fff}
-#content p{padding:10px 0;font:300 15px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;line-height:1.7em}
-#content p a{font:300 18px "微軟正黑體","微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;color:#fe7300;text-decoration:underline}
-#content p a:hover{opacity:.7;filter:alpha(opacity=70)}
+#content .left a{display:block;width:100%;}
+#content .left h4 > a{color:#fff;height:48px;background:image-url("s-06.png") -3px 0 no-repeat;
+font:300 17px Arial,LiGothicMed,微軟正黑體;line-height:1.7em;padding:10px 0 0 40px;
+margin:0 0 20px 0}
+#content .left h4 > a:hover{opacity:.8;filter:alpha(opacity=80)}
+#content .left ul{padding:0 0 0 10px}
+#content .left ul a{height:35px;background:image-url("s-07.png") 5px 0 repeat-x;color:#333;
+padding:0 0 0 30px;margin:0 0 15px 0}
+#content .left ul a:hover{background:image-url("s-07.png") 10px 0 repeat-x;color:#FF7200}
+
+#left-1 a{background:image-url("s-01.png") 0 0 no-repeat!important}
+#left-2 a{background:image-url("s-02.png") 0 0 no-repeat!important}
+#left-3 a{background:image-url("s-03.png") 0 0 no-repeat!important}
+#left-4 a{background:image-url("s-04.png") 0 0 no-repeat!important}
+#left-5 a{background:image-url("s-05.png") 0 0 no-repeat!important}
+
+#content .right h3{color:#014c7a}
+
+#level-1 .peditor p{margin:0 0 5px 0}
+#level-1 .peditor .title{color:#eb6100;font-size:1.2em;line-height:2em;}
+
+#level-1 .thumb{margin:90px 0 0 0}
+#level-1 .thumb li{width:154px;height:240px;background:image-url("s-11.png") 0 0 no-repeat;
+padding:15px 10px}
+#level-1 .thumb li a{display:block;width:100%;height:100%;color:#333}
+#level-1 .thumb li a:hover{color:#FF7200}
+#level-1 .thumb img{width:135px;height:135px;}
+#level-1 .thumb span{display:block;padding:0 15px}
+#level-1 .thumb h4{font:300 19px Arial,LiGothicMed,微軟正黑體;line-height:1.7em;color:#eb6100;
+background:image-url("s-08.png") 0 center no-repeat;padding:0 0 0 25px;margin:0 0 5px 0}
+
+.bx-wrapper .bx-viewport{background:none}
+.bx-controls-direction a{width:22px!important;height:153px!important;top:55px!important}
+.bx-prev{background:image-url("s-10.png") 0 0 no-repeat!important;left:-30px}
+.bx-prev:hover{left:-35px}
+.bx-next{background:image-url("s-09.png") 0 0 no-repeat!important;right:-30px}
+.bx-next:hover{right:-35px}
+
+#level-2 ul{overflow:hidden}
+#level-2 li{width:154px;height:240px;background:image-url("s-11.png") 0 0 no-repeat;
+padding:15px 10px;float:left;margin:9px}
+#level-2 li a{display:block;width:100%;height:100%;color:#333}
+#level-2 li a:hover{color:#FF7200}
+#level-2 img{width:135px;height:135px;}
+#level-2 span{display:block;padding:15px 15px 0 15px}
+
+#level-3 > div{margin:50px 0}
+
+#level-3 {color:#000}
+#level-3 #photo{height:590px;background:image-url("s-15.png") 0 bottom no-repeat}
+#level-3 #photo li{background:image-url("s-13.png") 0 4px no-repeat;padding:0 0 0 20px;font-size:18px;
+margin:15px 0}
+#level-3 #photo .add{}
+#level-3 #thumb{width:410px;margin:20px 0 0 0}
+#level-3 #thumb a{opacity:.5;filter:alpha(opacity=50)}
+#level-3 #thumb a:hover,#level-3 #thumb .active{opacity:1;filter:alpha(opacity=100)}
+#level-3 #thumb img{width:60px;height:60px}
+#level-3 #thumb th{color:#737373;font:300 12px Arial,LiGothicMed,微軟正黑體;}
+
+#level-3 #detail{position:relative;width:410px;height:375px;overflow:hidden}
+#level-3 #detail a{display:block;width:38px;height:38px;position:absolute;bottom:10px;right:10px}
+#level-3 #detail .open{background:image-url("s-21.png") 0 0 no-repeat}
+#level-3 #detail .close{background:image-url("s-22.png") 0 0 no-repeat}
+#level-3 #detail img{width:100%;height:auto}
+
+#level-3 h5{margin:0 0 20px 0}
+#level-3 #peditor-up p{font:600 18px Arial,LiGothicMed,微軟正黑體;line-height:1.7em}
+#level-3 #peditor-up p.red{color:#c70000;font:600 24px Arial,LiGothicMed,微軟正黑體;line-height:1.7em}
+#level-3 #content-1 td img{width:150px;height:150px}
+#level-3 #content-1 li{margin:10px 0 0 0}
+#level-3 #content-1 table{margin:30px 0 0 0}
+#level-3 #content-2 span{color:#c30000}
+#level-3 #content-2 li{margin:10px 0 0 0}
+#level-3 #peditor-down{background:image-url("s-15.png") 0 0 no-repeat;padding:50px 0 0 0}
+#level-3 #peditor-down p.bold{color:#000;font:600 24px Arial,LiGothicMed,微軟正黑體;line-height:1.7em}

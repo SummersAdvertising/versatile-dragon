@@ -16,7 +16,7 @@ VersatileDragon::Application.routes.draw do
 		resources :productasks, :only => [:new, :create] do
 			collection do
 				namespace :cart do
-					match "add" => "cart#add" , :via => :post
+					match ":product_id/add" => "cart#add", :as => "add" , :via => :post
 					match ":product_id/delete" => "cart#delete" , :via => :delete, :as => "delete"
 				end
 			end

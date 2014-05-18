@@ -1,0 +1,6 @@
+<%= hidden_field_tag(content_column, @product[content_column]) %>
+<div id="<%= output_container %>"></div>
+
+<script type="text/javascript">
+editor.output($("#<%= content_column %>").val(), $("#<%= output_container %>"));
+</script>

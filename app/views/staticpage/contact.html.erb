@@ -1,6 +1,6 @@
 <article _height="auto">
   <section>
-    <div id="banner_contact" class="banner">
+    <div id="banner">
       <div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > <%= t("bread.contact") %></div>
     </div>
     <div id="content">
@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td width="56%">
-            <iframe width="511" height="273" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.tw/maps?oe=utf-8&amp;client=firefox-a&amp;q=%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F%E5%85%AD%E6%A8%93&amp;ie=UTF8&amp;hq=&amp;hnear=220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F&amp;gl=tw&amp;t=m&amp;brcurrent=3,0x346802a89b3ec1db:0xb869014628c4b89b,0,0x345d5538b0b6645f:0x5aa90dfa6620edc0&amp;ll=25.028451,121.46347&amp;spn=0.010616,0.021887&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.tw/maps?oe=utf-8&amp;client=firefox-a&amp;q=%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F%E5%85%AD%E6%A8%93&amp;ie=UTF8&amp;hq=&amp;hnear=220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F&amp;gl=tw&amp;t=m&amp;brcurrent=3,0x346802a89b3ec1db:0xb869014628c4b89b,0,0x345d5538b0b6645f:0x5aa90dfa6620edc0&amp;ll=25.028451,121.46347&amp;spn=0.010616,0.021887&amp;z=15&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left"><%= t("map.view") %></a></small>
+            <iframe width="517" height="279" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.tw/maps?oe=utf-8&amp;client=firefox-a&amp;q=%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F%E5%85%AD%E6%A8%93&amp;ie=UTF8&amp;hq=&amp;hnear=220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F&amp;gl=tw&amp;t=m&amp;brcurrent=3,0x346802a89b3ec1db:0xb869014628c4b89b,0,0x345d5538b0b6645f:0x5aa90dfa6620edc0&amp;ll=25.028451,121.46347&amp;spn=0.010616,0.021887&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.tw/maps?oe=utf-8&amp;client=firefox-a&amp;q=%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F%E5%85%AD%E6%A8%93&amp;ie=UTF8&amp;hq=&amp;hnear=220%E6%96%B0%E5%8C%97%E5%B8%82%E6%9D%BF%E6%A9%8B%E5%8D%80%E9%9B%A8%E8%BE%B2%E8%B7%AF58%E8%99%9F&amp;gl=tw&amp;t=m&amp;brcurrent=3,0x346802a89b3ec1db:0xb869014628c4b89b,0,0x345d5538b0b6645f:0x5aa90dfa6620edc0&amp;ll=25.028451,121.46347&amp;spn=0.010616,0.021887&amp;z=15&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left"><%= t("map.view") %></a></small>
           </td>
           <td width="44%"><strong><%= t("company.info3.name").html_safe %></strong><br>
        <%= t("company.address") %>：<%= t("company.info3.address") %><br>
@@ -36,30 +36,10 @@
         <%= t("company.mail") %>： <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a> 
           </td>
         </tr>
-        <!-- <tr>
-          <td colspan="2">&nbsp;</td>
-        </tr>
-        <tr>
-          <td><div id="mapDiv2"></div></td>
-          <td><strong><%= t("company.info2.name") %></strong><br>
-      <%= t("company.address") %>：<%= t("company.info2.address").gsub("<br>", "") %><br>
-        <%= t("company.tel") %>：0769-83717123/4/5<br>
-        <%= t("company.fax") %>：0769-83717118<br>
-        <%= t("company.contact") %>：<%= t("company.info2.contact") %><br>
-        E-mail： <a href="mailto:bruce@versatile-dragon.com " target="_blank">bruce@versatile-dragon.com </a>
-          </td>
-        </tr> -->
       </table>
     </div>
   </section>
 </article>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("header").attr("_height", "none");
-  $("aside").attr("_height", "none");
-  $("footer").attr("_height", "none");
-});
-</script>
 
 <script type="text/javascript">
   //江蘇的
@@ -70,13 +50,4 @@ $(document).ready(function(){
     var control = new AliMapLargeControl({hidePanBtn:false,hideZoomBtn:false,hideZoomBar:false});
     map.addOverlay(marker); 
     map.addControl(control);
-
-    // //東莞的
-    // var map2 = new AliMap("mapDiv2"); //使用id为mapDiv的层创建一个地图对象
-    // map2.centerAndZoom(new AliLatLng(23.017800,113.939033),14);//显示地图
-    // var latlng2 = new AliLatLng(23.017800,113.939033); //在该坐标处创建一个标记 
-    // var marker2 = new AliMarker(latlng2); //将该标记添加到地图 
-    // var control2 = new AliMapLargeControl({hidePanBtn:false,hideZoomBtn:false,hideZoomBar:false});
-    // map2.addOverlay(marker2); 
-    // map2.addControl(control2);
 </script>

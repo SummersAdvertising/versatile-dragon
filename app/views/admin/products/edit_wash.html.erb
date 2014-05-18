@@ -19,13 +19,22 @@
   
   <% end #form %>
 
+  <section class="tab" style="display:none;">
+    <ul id="tab">
+      <li data-type="p" id="tab-p">
+        <a href="#post-p"><img src="/images/edit.png"><%= t("editor.paragraph.name") %></a>
+      </li>
+    </ul>
+  </section>
+  <!--tab-->
+
   <section class="post">
     <div id="post-p">
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td colspan="2">
             <select id="newParagraphFontClass">
-              <option value="">內文(黑)</option>
+              <option value="black">內文(黑)</option>
               <option value="red">強調(紅)</option>
             </select>
           </td>
@@ -79,8 +88,7 @@ $(document).ready(function(){
 
   editor.init({
     articleModel: "product",
-    contentColumn: "content_wash",
-    photoModel: "productphoto"
+    contentColumn: "content_wash"
   });
 });
 </script>

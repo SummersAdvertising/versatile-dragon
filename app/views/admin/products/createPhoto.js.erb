@@ -12,8 +12,10 @@ editor.alert("<%= @photo.errors.full_messages.join(' ') %>", "error");
 	div.append(image).append("<br>").append(a_link);
 
 	if("<%= @photo.img_type %>" == "point"){
-		var p = $('<p><%= @photo.description %></p>');
+		var p = $('<p>描述：<%= @photo.description %></p>');
 		div.append(p);
+		$('#new_productphoto')[0].reset();
+		$('#productphoto_img_type').val("<%= @photo.img_type %>");
 	}
 
 	$("#photos_<%= @photo.img_type %>").append(div);

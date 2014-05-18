@@ -18,8 +18,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    params[:product][:description] = params[:product][:description].to_json if(params[:product][:description])
-    params[:product][:content_point] = params[:product][:content_point].to_json if(params[:product][:content_point])
+    params[:product] = params[:product] || Hash.new
+    params[:product][:description] = params[:product][:description].to_json unless(params[:product][:description].blank?)
+    params[:product][:content_point] = params[:product][:content_point].to_json unless(params[:product][:content_point].blank?)
+    params[:product][:content_form] = params[:content_form].to_json unless(params[:content_form].blank?)
 
     case params[:next_step]
     when "edit_intro"
@@ -69,6 +71,10 @@ class Admin::ProductsController < ApplicationController
     @photos_point = Productphoto.where("img_type = 'point' AND product_id = #{@product.id}").all
 
     @points = JSON.is_json?(@product.content_point) ? JSON.parse(@product.content_point) : Array.new
+  end
+
+  def edit_form
+    @forms = JSON.is_json?(@product.content_form) ? JSON.parse(@product.content_form)[0] : nil
   end
   
   #create photo

@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     @items = Product.where(:id => checkItems.keys ).all
     
     @items.each do |item|
-      @askItems.push({:id => item.id ,:name => item.name, :class_id => item.productclass_id })
+      @askItems.push({:id => item.id ,:name => item.name })
     end
 
     return @askItems

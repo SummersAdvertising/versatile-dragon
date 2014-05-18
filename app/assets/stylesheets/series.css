@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require ./jquery.bxslider.css.scss
  *= require ./application/style.css.scss
  *= require ./application/series.css.scss
  */

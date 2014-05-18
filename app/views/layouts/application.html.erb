@@ -38,6 +38,8 @@
 
 <% elsif(["productclasses", "subclasses", "products"].include?(params[:controller]) ) %>
 <%= stylesheet_link_tag "series", :media => "all" %>
+<% elsif(params[:controller] == "productasks" ) %>
+<%= stylesheet_link_tag "cart", :media => "all" %>
 <% else %>
 <%= stylesheet_link_tag "about", :media => "all" %>
 <% end %>
@@ -100,21 +102,23 @@ $(function(){
 </head>
 
 <body>
-<header>
+
+<header _height="none">
   <section>
     <h1><a href="/<%= I18n.locale %>"><%= t("environ.titlefront") %></a></h1>
     <nav>
       <ul>
+        <li><a href="<%= root_path(:locale => params[:locale]) %>">回首頁</a></li>
         <li><a href="<%= productclasses_path(:locale => params[:locale]) %>"><%= t("navbar.product.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/about"><%= t("navbar.about.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/partner"><%= t("navbar.partner.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/contact"><%= t("navbar.contact.name") %></a></li>
+        <li id="cart">詢價車：<%= link_to "#{@cartitems_count}", new_productask_path %>件</li>
         <li id="lang">
         	<a href="#" data-lang="zh_TW"><%= t("environ.language.tw") %></a>
         	<a href="#" data-lang="zh_CN"><%= t("environ.language.cn") %></a>
         	<a href="#" data-lang="en"><%= t("environ.language.us") %></a>
         </li>
-        <!-- <li><%#= link_to "詢價車：#{@cartitems_count}件。", new_productask_path %></li> -->
       </ul>
     </nav>
   </section>
@@ -122,41 +126,26 @@ $(function(){
 
 <%= yield %>
 
-<aside>
+<aside _height="none">
   <section>
     <div class="info" style="width:36%">
       <p><strong><%= t("company.info1.name") %></strong><br>
-       <%= t("company.address") %>：<%= t("company.info1.address") %><br>
         <%= t("company.tel") %>：0512-52577180/181<br>
-        <%= t("company.fax") %>：0512-52578380<br>
         <%= t("company.contact") %>：<%= t("company.info1.contact") %><br>
-        E-mail： <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a><br>
-        <%= t("company.mail") %>： <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a> </p>
+        E-mail： <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a> </p>
     </div>
-    <div class="info" style="width:50px">&nbsp;</div>
-    <!-- <div class="info">
-       <p><strong><%= t("company.info2.name") %></strong><br>
-      <%= t("company.address") %>：<%= t("company.info2.address").html_safe %><br>
-        <%= t("company.tel") %>：0769-8371712345<br>
-        <%= t("company.fax") %>：0769-83717118<br>
-        <%= t("company.contact") %>：<%= t("company.info2.contact") %><br>
-        E-mail： <a href="mailto:bruce@versatile-dragon.com" target="_blank">bruce@versatile-dragon.com </a>
-      </p>
-    </div> -->
     <div class="info">
       <p><strong><%= t("company.info3.name").html_safe %></strong><br>
-       <%= t("company.address") %>：<%= t("company.info3.address") %><br>
         <%= t("company.tel") %>：<%= t("company.info3.tel") %><br>
-        <%= t("company.fax") %>：<%= t("company.info3.fax") %><br>
         <%= t("company.contact") %>：<%= t("company.info3.contact") %><br>
-        E-mail： <a href="mailto:laurachen@versatile-dragon.com" target="_blank">laurachen@versatile-dragon.com</a><br>
-       
-     </p>
+        E-mail： <a href="mailto:laurachen@versatile-dragon.com" target="_blank">laurachen@versatile-dragon.com</a>
+      </p>
     </div>
   </section>
 </aside>
 <footer>
-  <section> © 2013 Versatile Dragon. All rights reserved.</section>
+  <section> <img src="/images/_h1.png"><br>
+    © 2014 Versatile Dragon. All rights reserved.</section>
 </footer>
 </body>
 </html>

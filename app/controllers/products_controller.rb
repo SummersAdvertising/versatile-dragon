@@ -1,17 +1,15 @@
 class ProductsController < ApplicationController
   
   def show
-  	@productclasses = Productclass.with_translations(I18n.locale).with_products.order("productclasses.addDate DESC, productclasses.created_at DESC").all
-    @productclass = Productclass.find(params[:productclass_id])
-    @products = @productclass.products.order("addDate DESC, created_at DESC").all
-    @product = Product.find(params[:id])
-
+    @productclasses = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC, productclasses.created_at DESC").all
+  	@product = Product.includes([:subclass => :productclass]).find(params[:id])
     @askitem = Productasklist.new
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @product }
-    end
+    @photos = Productphoto.where("img_type in ('detail', 'color', 'point') AND product_id = #{@product.id}").all
+
+    @photos_detail = @photos.select { |photo| photo.img_type == 'detail' }
+    @photos_color = @photos.select { |photo| photo.img_type == 'color' }
+    @photos_point = @photos.select { |photo| photo.img_type == 'point' }
   end
 
 end

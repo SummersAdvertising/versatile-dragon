@@ -50,13 +50,16 @@
 
   <section class="text text-edit">
     <%= form_for(@photo, :url => "../uploadPhoto", :remote => true) do |f| %>
-    <%= f.hidden_field :img_type, :value => "detail" %>
+    <%= f.hidden_field :img_type, :value => "point" %>
       
     <div class="half">
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <th>圖片</th>
           <td><%= f.file_field :image %></td>
+        </tr>
+        <tr>
+          <td><%= f.submit("新增圖片") %></td>
         </tr>
       </table>
     </div>
@@ -68,17 +71,18 @@
         </tr>
       </table>
     </div>
+    
     <% end %>
   </section>
 
-  <section class="text text-edit" id="photos_detail">
-    <p id="no_photo_detail" style="display: <%= @photos_point.empty? ? "block" : "none" %>;">尚未上傳圖片</p>
+  <section class="text text-edit" id="photos_point">
+    <p id="no_photo_point" style="display: <%= @photos_point.empty? ? "block" : "none" %>;">尚未上傳圖片</p>
 
     <% @photos_point.each do |photo| %>
-    <div class="three" id="photo_detail_<%= photo.id %>">
+    <div class="three" id="photo_point_<%= photo.id %>">
       <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}", :style => "max-width: 300px;") %><br>
-      <p><%= photo.description %></p>
-      <%= link_to("del", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
+      <p>描述：<%= photo.description %></p>
+      <%= link_to("del", "../deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>
     <% end %>
   </section>

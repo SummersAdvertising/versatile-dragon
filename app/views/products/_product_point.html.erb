@@ -1,0 +1,16 @@
+<div id="content-1">
+          <h5><img src="/images/s-16.png"></h5>
+          <ul>
+            <% @product.get_column_content("content_point").each_with_index do |point, index| %>
+            <li><%= "#{index+1}. #{point}" %></li>
+            <% end %>
+          </ul>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <% @photos_point.each_with_index do |photo, index| %>
+            <%= "<tr>".html_safe if(index%2 == 0) %>
+              <td width="25%"><%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></td>
+              <td width="25%"><%= photo.description %></td>
+            <%= "</tr>".html_safe unless(index%2 == 0) %>
+            <% end %>
+          </table>
+        </div>

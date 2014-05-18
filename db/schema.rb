@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140515072151) do
+ActiveRecord::Schema.define(:version => 20140516061206) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20140515072151) do
     t.text     "content_wash"
     t.text     "content_outro"
     t.text     "description"
+    t.text     "content_size"
   end
 
   add_index "product_translations", ["locale"], :name => "index_product_translations_on_locale"

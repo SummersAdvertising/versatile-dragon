@@ -4,13 +4,13 @@ class Cart::CartController < ApplicationController
 	before_filter :count_cartitems
 
 	def add
-		@product = Product.where(:id => params[:productasklist][:product_id]).first
+		@product = Product.find_by_id(params[:product_id])
 
-		if( @product )
+		if(@product)
 			#write cookie
 			@cartitems = cookies[:cart] ? JSON.parse(cookies[:cart]) : Hash.new
 
-			@cartitems[params[:productasklist][:product_id]] = nil
+			@cartitems[params[:product_id]] = nil
 			cookies[:cart] = @cartitems.to_json
 
 			respond_to do |format|

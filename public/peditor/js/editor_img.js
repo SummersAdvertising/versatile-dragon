@@ -58,6 +58,7 @@ editor.img = {
 				oReq.send(oMyForm);
 			}
 			else{
+				$("#productphoto_img_type").val("peditor");
 				$("input[name=authenticity_token]").val($('meta[name="csrf-token"]').attr('content'));
 				$("#new_" + editor.img.photoModel).submit();
 			}
