@@ -1,8 +1,8 @@
 <article _height="auto">
   <section>
-    <div id="banner">
+    <div id="banner_series" class="banner">
       <div class="cover"><%= image_tag(@product.subclass.productclass.frontshow, :width => "545", :height => "123") %></div>
-      <div class="bread"><%= "首頁 > 產品介紹 > #{@product.subclass.productclass.name} > #{@product.subclass.name} > #{@product.name}" %></div>
+      <div class="bread"><%= "#{t("bread.index")} > #{t("bread.product")} > #{@product.subclass.productclass.name} > #{@product.subclass.name} > #{@product.name}" %></div>
     </div>
     <div id="content">
       <div class="left">

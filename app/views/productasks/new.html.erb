@@ -1,63 +1,87 @@
 <article _height="auto">
   <section>
-    <div id="banner">
-  		<div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > 詢價車</div>
-  	</div>
+    <div id="banner_cart" class="banner">
+      <div class="bread">
+        <a href="/<%= I18n.locale %>
+          ">
+          <%= t("bread.index") %></a>
+        > <%= t("bread.cart") %>
+      </div>
+    </div>
     <div id="content">
-    	<%= form_for(@productask, :url => productasks_path) do |f| %>
+      <%= form_for(@productask, :url =>
+      productasks_path) do |f| %>
       <div id="form">
-      	
+
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th width="20%" align="right">公司名稱：</th>
-            <td width="80%"><%= f.text_field :askercompany, :class => "text" %></td>
+            <td width="80%">
+              <%= f.text_field :askercompany, :class =>"text" %></td>
           </tr>
           <tr>
             <th align="right">國家：</th>
-            <td><%= f.text_field :country, :class => "text" %></td>
+            <td>
+              <%= f.text_field :country, :class =>"text" %></td>
           </tr>
           <tr>
             <th align="right">聯絡人：</th>
-            <td><%= f.text_field :askername, :class => "text" %></td>
+            <td>
+              <%= f.text_field :askername, :class =>"text" %></td>
           </tr>
           <tr>
             <th align="right">聯絡電話：</th>
-            <td><%= f.text_field :askertel, :class => "text" %></td>
+            <td>
+              <%= f.text_field :askertel, :class =>"text" %></td>
           </tr>
           <tr>
             <th align="right">email：</th>
-            <td><%= f.text_field :askermail, :class => "text" %></td>
+            <td>
+              <%= f.text_field :askermail, :class =>"text" %></td>
           </tr>
           <tr>
             <th align="right">主旨：</th>
-            <td><%= f.text_field :subject, :class => "text" %></td>
+            <td>
+              <%= f.text_field :subject, :class =>"text" %></td>
           </tr>
           <tr>
             <th align="right">需求數量：</th>
             <td>
-            	<%= f.radio_button :askamount, "1000" %>
-            	1000
+              <%= f.radio_button :askamount, "1000" %>
+              <%= f.label :askamount, '1000', :value =>
+              '1000' %>
               <%= f.radio_button :askamount, "1500" %>
-              1500
+              <%= f.label :askamount, '1500', :value =>
+              '1500' %>
               <%= f.radio_button :askamount, "2000" %>
-              2000
-              <%= f.radio_button :askamount, "2000以上" %>
-              2000以上</td>
+              <%= f.label :askamount, '2000', :value =>
+              '2000' %>
+              <%= f.radio_button :askamount, "over2000" %>
+              <%= f.label :askamount, '2000以上', :value =>'over2000' %></td>
           </tr>
           <tr>
             <th align="right" valign="top" style="padding-top:7px">詢價內容：</th>
             <td>
-            	<% ["運送時間", "出口港", "離岸價格", "客制化需求"].each_with_index do |purpose, index| %>
-				<input name="purpose[]" type="checkbox" value="<%= purpose %>" id="purpose_<%= index+1 %>" <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %> ><label for="purpose_<%= index+1 %>"><%= purpose %></label>
-			<% end %>
-			<input name="" type="checkbox" value="" class="checkbox">
+              <% ["運送時間", "出口港", "離岸價格", "客制化需求"].each_with_index do |purpose, index| %>
+              <input name="purpose[]" type="checkbox" value="<%= purpose %>
+              " id="purpose_
+              <%= index+1 %>
+              "
+              <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %>
+              >
+              <label for="purpose_<%= index+1 %>
+                ">
+                <%= purpose %></label>
+              <% end %>
+              <input name="" type="checkbox" value="" class="checkbox">
               其他
-              <input name="" type="text" style="background:none;border:none;border-bottom:1px solid #959595;width:125px">
-          </td>
+              <input name="" type="text" style="background:none;border:none;border-bottom:1px solid #959595;width:125px"></td>
           </tr>
           <tr>
-            <td colspan="2">留言或備註（非必填）：<br>
-              <%= f.text_area :note, :cols => "", :rows => "" %></td>
+            <td colspan="2">
+              留言或備註（非必填）：
+              <br>
+              <%= f.text_area :note, :cols =>"", :rows => "" %></td>
           </tr>
         </table>
 
@@ -65,27 +89,30 @@
       <div id="list">
         <h4>詢價產品：</h4>
         <ul>
-        	<% if @askItems && @askItems.length>0 %>
-		  <% @askItems.each do |item| %>
-		  <li><a href="#"><%= item[:name] %></a><%= link_to "刪除", delete_cart_productasks_path(params[:locale], item[:id]), :method => :delete, :data => {:confirm => "確定刪除？"}, :class => "delete" %></li>
+          <% if @askItems && @askItems.length>
+          0 %>
+          <% @askItems.each do |item| %>
+          <li>
+            <a href="#">
+              <%= item[:name] %></a>
+            <%= link_to "刪除", delete_cart_productasks_path(params[:locale], item[:id]), :method =>
+            :delete, :data => {:confirm => "確定刪除？"}, :class => "delete" %>
+          </li>
 
-		  <% end %>
+          <% end %>
 
-		  <% else %>
-		  <li>詢價車是空的</li>
-		  <% end %>
-
-		</ul>
+          <% else %>
+          <li>詢價車是空的</li>
+          <% end %></ul>
       </div>
       <div id="button">
-		<%= f.submit "" %></div>
+        <%= f.submit "" %></div>
     </div>
-    <% end %>
-  </section>
+    <% end %></section>
 </article>
 
 <script type="text/javascript">
 if("<%= alert||notice %>"){
-	alert("<%= alert||notice %>");
+  alert("<%= alert||notice %>");
 }
 </script>

@@ -36,9 +36,13 @@ en:
   bread:
     index: "Index"
     product: "Product"
+    cart: "Inquiry Cart"
     about: "About"
-    partner: "Partner"
+    partner: "Cooperation"
     contact: "Contact"
+
+  index:
+    intro: "Versatile Dragon is capable of OEM/ODM/OBM. In addition to current product lines, we are capable of implementing our professional-grade technologies across industries, assisting you in heating up products and opening up new opportunities and customers."
 
   partner:
     title: "The gap between industries is never an obstacle to our partnership. Opportunities are everywhere！"
@@ -49,6 +53,7 @@ en:
     content: "Thank you for visiting Versatile Dragon. If you would like to learn more about Versatile Dragon’s products or services, or would like to provide us with questions or advice. We will reply as soon as possible and provide whatever services you may need."
 
   navbar:
+    index: "Index"
     product:
       name: "Product"
       descript: "Dragon full enhance cooperation over the years to integrate with third-party arising synergy actively develop life closer to the end consumer electronic products, in order to enhance their own value-added products."

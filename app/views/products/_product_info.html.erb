@@ -14,31 +14,34 @@
             <tr>
               <th>細節展示</th>
               <% @photos_detail.each do |photo| %>
-              <td><a href="#" class="active"><%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></a></td>
-              <% end %>
-            </tr>
+              <td>
+                <a href="#" class="active">
+                  <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></a>
+              </td>
+              <% end %></tr>
             <tr>
               <th>顏色</th>
               <% @photos_color.each do |photo| %>
-              <td><a href="#"><%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></a></td>
-              <% end %>
-            </tr>
+              <td>
+                <a href="#">
+                  <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></a>
+              </td>
+              <% end %></tr>
           </table>
         </div>
       </td>
       <td width="35%" valign="bottom" height="370">
         <ul>
           <% @product.get_column_content("description").each do |description| %>
-          <li><%= description %></li>
-          <% end %>
-        </ul>
+          <li>
+            <%= description %></li>
+          <% end %></ul>
       </td>
     </tr>
     <tr>
       <td height="160" valign="bottom">
 
-        <%= link_to( image_tag("/images/s-14.png"), add_cart_productasks_path(@product.id, :locale => I18n.locale), :method => :post, :class => "add" ) %>
-      </td>
+        <%= link_to( image_tag("/images/s-14.png"), add_cart_productasks_path(@product.id, :locale =>I18n.locale), :method => :post, :class => "add" ) %></td>
     </tr>
   </table>
 </div>

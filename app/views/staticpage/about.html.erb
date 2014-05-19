@@ -1,9 +1,8 @@
 <article _height="auto">
   <section>
-    <div id="banner">
+    <div id="banner_about" class="banner">
       <div class="bread"><a href="/<%= I18n.locale %>"><%= t("bread.index") %></a> > <%= t("bread.about") %></div>
     </div>
-    <%= render :partial => 'staticpage/content/'+I18n.locale.to_s %>
-    
+    <%= render :partial => 'staticpage/about/'+I18n.locale.to_s %>
   </section>
 </article>

@@ -1,6 +1,7 @@
-#intro{width:1001px;height:160px;background:image-url("index-intro-en.png");position:relative;top:-8px;left:10px;z-index:2}
+#intro{width:1001px;height:160px;background:image-url("/en/index-intro.png");position:relative;top:-8px;left:10px;z-index:2}
 
-#banner_series{background:image-url("series-banner-en.jpg") 0 0 no-repeat;height:205px;padding:135px 0 0 33px}
-#banner_about{background:image-url("about-banner-en.jpg") 0 0 no-repeat}
-#banner_contact{background:image-url("contact-banner-en.jpg") 0 0 no-repeat}
-#banner_partner{background:image-url("partner-banner-en.jpg") 0 0 no-repeat}
+#banner_series{background:image-url("/assets/en/product-banner.jpg") 0 0 no-repeat;position:relative}
+#banner_cart{background:image-url("/assets/en/cart-banner.png") 0 0 no-repeat}
+#banner_about{background:image-url("/assets/en/about-banner.jpg") 0 0 no-repeat}
+#banner_contact{background:image-url("/assets/en/contact-banner.jpg") 0 0 no-repeat}
+#banner_partner{background:image-url("/assets/en/partner-banner.jpg") 0 0 no-repeat}

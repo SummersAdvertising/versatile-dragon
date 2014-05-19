@@ -108,7 +108,7 @@ $(function(){
     <h1><a href="/<%= I18n.locale %>"><%= t("environ.titlefront") %></a></h1>
     <nav>
       <ul>
-        <li><a href="<%= root_path(:locale => params[:locale]) %>">回首頁</a></li>
+        <li><a href="<%= root_path(:locale => params[:locale]) %>"><%= t("navbar.index") %></a></li>
         <li><a href="<%= productclasses_path(:locale => params[:locale]) %>"><%= t("navbar.product.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/about"><%= t("navbar.about.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/partner"><%= t("navbar.partner.name") %></a></li>

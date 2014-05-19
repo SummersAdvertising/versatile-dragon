@@ -1,78 +1,96 @@
 <div style="display:none">
-<img src='<%= image_path("index-more-h.png") %>'> 
-<img src='<%= image_path("next-h.png") %>'>
-<img src='<%= image_path("prev-h.png") %>'>
-<img src='<%= image_path("series-h5-h.png") %>'> 
-<img src='<%= image_path("series-li-h.png") %>'>
-<img src='<%= image_path("index-banner-more-h.png") %>'>
-<img src='<%= image_path("index-banner-more-h-en.png") %>'>
+  <%= image_tag("index-more-h.png") %>
+  <%= image_tag("next-h.png") %>
+  <%= image_tag("prev-h.png") %>
+  <%= image_tag("series-h5-h.png") %>
+  <%= image_tag("series-li-h.png") %>
+  <%= image_tag("index-banner-more-h.png") %>
+  <%= image_tag("index-banner-more-h-en.png") %>
 </div>
 
 <div id="banner" class="banner">
   <section>
-  	<ul id="slider">
-  		<% @indexlinks.each do |indexlink| %>
-  		<li class="<%= indexlink.fontcolor.to_s %>"><%=image_tag(indexlink.image, :width=>"990px", :height => "405px") %><a href="<%= indexlink.link.to_s %>" class="more">了解更多</a>
-  			<div class="text">
-  				<hgroup>
-  					<h2><%= indexlink.title.to_s %></h2>
-  					<h3><%= indexlink.titlesub.to_s %></h3>
-  				</hgroup>
-  				<p><%= simple_format(indexlink.content) %></p>
-  			</div>
-  			<!--text--> 
-  		</li>
-  		<% end %>
-  	</ul>
+    <ul id="slider">
+      <% @indexlinks.each do |indexlink| %>
+      <li class="<%= indexlink.fontcolor.to_s %>
+        ">
+        <%=image_tag(indexlink.image, :width=>
+        "990px", :height => "405px") %>
+        <a href="<%= indexlink.link.to_s %>" class="more">了解更多</a>
+        <div class="text">
+          <hgroup>
+            <h2>
+              <%= indexlink.title.to_s %></h2>
+            <h3>
+              <%= indexlink.titlesub.to_s %></h3>
+          </hgroup>
+          <p>
+            <%= simple_format(indexlink.content) %></p>
+        </div>
+        <!--text--> </li>
+      <% end %></ul>
   </section>
 </div>
 <article>
   <section>
-    <div id="intro"> </div>
+    <div id="intro">
+      <%= t("index.intro").html_safe %>
+    </div>
     <div id="quick">
       <div class="link" id="link-1">
         <h4></h4>
-        <h5><%= t("navbar.product.name") %></h5>
-        <p><%= t("navbar.product.descript") %></p>
-        <a href="<%= productclasses_path(:locale => params[:locale]) %>"></a> </div>
+        <h5>
+          <%= t("navbar.product.name") %></h5>
+        <p>
+          <%= t("navbar.product.descript") %></p>
+        <a href="<%= productclasses_path(:locale =>params[:locale]) %>"></a>
+      </div>
       <div class="link" id="link-2">
         <h4></h4>
-        <h5><%= t("navbar.about.name") %></h5>
-        <p><%= t("navbar.about.descript") %></p>
-        <a href="/<%= I18n.locale %>/about"></a> </div>
+        <h5>
+          <%= t("navbar.about.name") %></h5>
+        <p>
+          <%= t("navbar.about.descript") %></p>
+        <a href="/<%= I18n.locale %>/about"></a>
+      </div>
       <div class="link" id="link-3">
         <h4></h4>
-        <h5><%= t("navbar.partner.name") %></h5>
-        <p><%= t("navbar.partner.descript") %></p>
-        <a href="/<%= I18n.locale %>/partner"></a> </div>
+        <h5>
+          <%= t("navbar.partner.name") %></h5>
+        <p>
+          <%= t("navbar.partner.descript") %></p>
+        <a href="/<%= I18n.locale %>/partner"></a>
+      </div>
       <div class="link" id="link-4">
         <h4></h4>
-        <h5><%= t("navbar.contact.name") %></h5>
-        <p><%= t("navbar.contact.descript") %></p>
-        <a href="/<%= I18n.locale %>/contact"></a> </div>
+        <h5>
+          <%= t("navbar.contact.name") %></h5>
+        <p>
+          <%= t("navbar.contact.descript") %></p>
+        <a href="/<%= I18n.locale %>/contact"></a>
+      </div>
     </div>
   </section>
 </article>
 
-
 <script type="text/javascript">
-	$(function(){
-		$('.link a').mouseover(function(){
-			$(this).siblings('h4').stop().css({
-				'background-position-x': '30px',
-  				'background-position-y': '-30px',
-				'opacity':'0'
-				}).animate({
-  				'background-position-x': '30px',
-  				'background-position-y': '0px',
-				'opacity':'1'
-			}, 1000)
-		});
+  $(function(){
+    $('.link a').mouseover(function(){
+      $(this).siblings('h4').stop().css({
+        'background-position-x': '30px',
+          'background-position-y': '-30px',
+        'opacity':'0'
+        }).animate({
+          'background-position-x': '30px',
+          'background-position-y': '0px',
+        'opacity':'1'
+      }, 1000)
+    });
 
     $('#slider').bxSlider({
       auto: true,
       pager: true
     });
-		
-	})
+    
+  })
 </script>
