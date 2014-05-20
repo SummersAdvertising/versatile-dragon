@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       begin
         @cart = JSON.parse(cookies[:cart])
 
-        @cartitems_count = @cart[I18n.locale.to_s] ? @cart[I18n.locale.to_s].length : 0
+        @cartitems_count = @cart[param[:locale]] ? @cart[param[:locale]].length : 0
       rescue
         cookies[:cart] = nil
         @cartitems_count = 0

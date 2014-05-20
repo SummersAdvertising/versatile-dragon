@@ -3,7 +3,7 @@ class ProductasksController < ApplicationController
   def new
     if(cookies[:cart] && cookies[:cart].length > 0)
       @checkItems = JSON.parse(cookies[:cart])
-      @askItems = @checkItems[I18n.locale.to_s].blank? ? nil : checkItem(@checkItems[I18n.locale.to_s])
+      @askItems = @checkItems[params[:locale]].blank? ? nil : checkItem(@checkItems[params[:locale]])
     end
 
     @productask = Productask.new
@@ -19,7 +19,7 @@ class ProductasksController < ApplicationController
     
     if(cookies[:cart] && cookies[:cart].length > 0)
       @checkItems = JSON.parse(cookies[:cart])
-      @askItems = @checkItems[I18n.locale.to_s].blank? ? nil : checkItem(@checkItems[I18n.locale.to_s])
+      @askItems = @checkItems[params[:locale]].blank? ? nil : checkItem(@checkItems[params[:locale]])
     end
     
     if(@askItems && @askItems.length > 0 && @productask.save)
