@@ -3,7 +3,7 @@ class ProductasksController < ApplicationController
   def new
     if(cookies[:cart] && cookies[:cart].length > 0)
       @checkItems = JSON.parse(cookies[:cart])
-      @askItems = checkItem(@checkItems)
+      @askItems = @checkItems[I18n.locale.to_s].blank? ? nil : checkItem(@checkItems[I18n.locale.to_s])
     end
 
     @productask = Productask.new
@@ -11,12 +11,7 @@ class ProductasksController < ApplicationController
   end
   def create
     if(params[:purpose])
-      @purpose = String.new
-      params[:purpose].each do |purpose|
-        @purpose += "#{purpose}, "
-      end
-
-      params[:productask][:purpose] = @purpose
+      params[:productask][:purpose] = params[:purpose].join(", ")
     end
 
     @productask = Productask.new(params[:productask])
@@ -24,7 +19,7 @@ class ProductasksController < ApplicationController
     
     if(cookies[:cart] && cookies[:cart].length > 0)
       @checkItems = JSON.parse(cookies[:cart])
-      @askItems = checkItem(@checkItems)
+      @askItems = @checkItems[I18n.locale.to_s].blank? ? nil : checkItem(@checkItems[I18n.locale.to_s])
     end
     
     if(@askItems && @askItems.length > 0 && @productask.save)
@@ -34,7 +29,8 @@ class ProductasksController < ApplicationController
       end
 
       respond_to do |format|
-        cookies[:cart] = nil
+        @checkItems[params[:locale]] = nil
+        cookies[:cart] = @checkItems
 
         Sendproductask.sendmail(@productask).deliver
 
@@ -43,7 +39,7 @@ class ProductasksController < ApplicationController
       end
 
     else
-      if(!@askItems || @askItems.length == 0)
+      if(@askItems.blank?)
         flash[:alert] = "詢價車是空的。"
       end
 

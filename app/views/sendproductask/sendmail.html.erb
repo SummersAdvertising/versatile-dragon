@@ -5,7 +5,7 @@
 </head>
 <body>
   <p>您好，您的詢價單已經記錄，請等候專人與您聯絡。</p>
-  <article>
+  <div>
     <p><%= @productask.created_at.to_date %></p>
     <p>公司名稱：<%= @productask.askercompany %></p>
     <p>國家：<%= @productask.country %></p>
@@ -28,7 +28,7 @@
 
     <p>詢價內容：<%= @productask.purpose || "未填寫" %></p>
     <p>備註：<%= simple_format(@productask.note || "無" ) %></p>
-  </article>
+  </div>
 
 </body>
 </html>

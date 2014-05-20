@@ -11,6 +11,7 @@ class Productask < ActiveRecord::Base
   def is_email?
     self.askermail && self.askermail.length > 0
   end
+  
   def is_tel?
     self.askertel && self.askertel.length > 0
   end

@@ -1,3 +1,7 @@
+<script src="/validation/jquery.validationEngine.js"></script>
+<script src="/validation/jquery.validationEngine-zh_TW.js"></script>
+<link rel="stylesheet" href="/validation/validationEngine.jquery.css" type="text/css"/>
+
 <article _height="auto">
   <section>
     <div id="banner_cart" class="banner">
@@ -9,73 +13,59 @@
       </div>
     </div>
     <div id="content">
-      <%= form_for(@productask, :url =>
-      productasks_path) do |f| %>
+      <%= form_for(@productask, :url => productasks_path) do |f| %>
       <div id="form">
-
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th width="20%" align="right">公司名稱：</th>
             <td width="80%">
-              <%= f.text_field :askercompany, :class =>"text" %></td>
+              <%= f.text_field :askercompany, :class =>"text validate[required]" %></td>
           </tr>
           <tr>
             <th align="right">國家：</th>
             <td>
-              <%= f.text_field :country, :class =>"text" %></td>
+              <%= f.text_field :country, :class =>"text validate[required]" %></td>
           </tr>
           <tr>
             <th align="right">聯絡人：</th>
             <td>
-              <%= f.text_field :askername, :class =>"text" %></td>
+              <%= f.text_field :askername, :class =>"text validate[required]" %></td>
           </tr>
           <tr>
             <th align="right">聯絡電話：</th>
             <td>
-              <%= f.text_field :askertel, :class =>"text" %></td>
+              <%= f.text_field :askertel, :class =>"text validate[required, custom[phone]]" %></td>
           </tr>
           <tr>
             <th align="right">email：</th>
             <td>
-              <%= f.text_field :askermail, :class =>"text" %></td>
+              <%= f.email_field :askermail, :class =>"text validate[required]" %></td>
           </tr>
           <tr>
             <th align="right">主旨：</th>
             <td>
-              <%= f.text_field :subject, :class =>"text" %></td>
+              <%= f.text_field :subject, :class =>"text validate[required]" %></td>
           </tr>
           <tr>
             <th align="right">需求數量：</th>
             <td>
-              <%= f.radio_button :askamount, "1000" %>
-              <%= f.label :askamount, '1000', :value =>
-              '1000' %>
-              <%= f.radio_button :askamount, "1500" %>
-              <%= f.label :askamount, '1500', :value =>
-              '1500' %>
-              <%= f.radio_button :askamount, "2000" %>
-              <%= f.label :askamount, '2000', :value =>
-              '2000' %>
-              <%= f.radio_button :askamount, "over2000" %>
+              <%= f.radio_button :askamount, "1000", :class => "validate[required]" %>
+              <%= f.label :askamount, '1000', :value => '1000' %>
+              <%= f.radio_button :askamount, "1500", :class => "validate[required]" %>
+              <%= f.label :askamount, '1500', :value => '1500' %>
+              <%= f.radio_button :askamount, "2000", :class => "validate[required]" %>
+              <%= f.label :askamount, '2000', :value => '2000' %>
+              <%= f.radio_button :askamount, "over2000", :class => "validate[required]" %>
               <%= f.label :askamount, '2000以上', :value =>'over2000' %></td>
           </tr>
           <tr>
             <th align="right" valign="top" style="padding-top:7px">詢價內容：</th>
             <td>
-              <% ["運送時間", "出口港", "離岸價格", "客制化需求"].each_with_index do |purpose, index| %>
-              <input name="purpose[]" type="checkbox" value="<%= purpose %>
-              " id="purpose_
-              <%= index+1 %>
-              "
-              <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %>
-              >
-              <label for="purpose_<%= index+1 %>
-                ">
-                <%= purpose %></label>
+              <% ["運送時間", "出口港", "離岸價格", "客制化需求", "其他"].each_with_index do |purpose, index| %>
+              <input name="purpose[]" type="checkbox" value="<%= purpose %>" id="purpose_<%= index+1 %>" <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %> class="checkbox validate[required]" >
+              <label for="purpose_<%= index+1 %>"><%= purpose %></label>
               <% end %>
-              <input name="" type="checkbox" value="" class="checkbox">
-              其他
-              <input name="" type="text" style="background:none;border:none;border-bottom:1px solid #959595;width:125px"></td>
+              <input id="purpose_other"  name="" type="text" style="background:none;border:none;border-bottom:1px solid #959595;width:125px"></td>
           </tr>
           <tr>
             <td colspan="2">
@@ -84,35 +74,46 @@
               <%= f.text_area :note, :cols =>"", :rows => "" %></td>
           </tr>
         </table>
-
       </div>
+
       <div id="list">
         <h4>詢價產品：</h4>
         <ul>
-          <% if @askItems && @askItems.length>
-          0 %>
-          <% @askItems.each do |item| %>
+          <% @askItems && @askItems.each do |item| %>
           <li>
-            <a href="#">
-              <%= item[:name] %></a>
+            <%= link_to item[:name], item[:path], :target => "_blank" %>
             <%= link_to "刪除", delete_cart_productasks_path(params[:locale], item[:id]), :method =>
             :delete, :data => {:confirm => "確定刪除？"}, :class => "delete" %>
           </li>
-
           <% end %>
 
-          <% else %>
+          <% if @askItems.blank? %>
           <li>詢價車是空的</li>
-          <% end %></ul>
+          <% end %>
+        </ul>
       </div>
+
       <div id="button">
-        <%= f.submit "" %></div>
+        <%= f.submit "" %>
+      </div>
     </div>
-    <% end %></section>
+    <% end %>
+  </section>
 </article>
 
 <script type="text/javascript">
+$("#new_productask").validationEngine();
+
+<% if @productask.errors.any? %>
+alert("<%= @productask.errors.full_messages %>");
+<% end %>
+
 if("<%= alert||notice %>"){
   alert("<%= alert||notice %>");
 }
+
+$("#purpose_5").change(function(){
+  var purpose_other_name = $(this).is(":checked") ? "purpose[]" : "";
+  $("#purpose_other").attr("name", purpose_other_name);
+});
 </script>

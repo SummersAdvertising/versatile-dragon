@@ -1,13 +1,66 @@
+<link rel="stylesheet" type="text/css" href="/easyzoom/easyzoom.css">
+<script src="/easyzoom/easyzoom.js"></script>
+
+<style type="text/css">
+/* Shrink wrap strategy 1 */
+.easyzoom {
+    float: left;
+}
+.easyzoom img {
+    display: block;
+}
+
+
+/* Shrink wrap strategy 2 */
+.easyzoom {
+    display: inline-block;
+}
+.easyzoom img {
+    vertical-align: bottom;
+}
+</style>
+
 <div id="photo">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="65%" height="530" rowspan="2" align="left" valign="top">
-        <div id="detail">
+        <!-- <div id="detail">
           <% @cover = @photos_detail.first %>
-          <%= image_tag("/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}") %>
-          <a href="#" class="open"></a>
-          <a href="#" class="close"></a>
+          <%= image_tag("/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}") if @cover %>
+          <a href="javascript:void(0);" class="open"></a>
+          <a href="javascript:void(0);" class="close" style="display: none;"></a>
+        </div> -->
+
+        <div id="detail" class="easyzoom easyzoom--overlay">
+          <a href="/uploads/Productphoto/27/69-IMG_0913_2.jpg">
+            <img src="/uploads/Productphoto/27/69-IMG_0913.jpg" alt="" width="410" />
+          </a>
+
+          <a href="javascript:void(0);" class="open"></a>
+          <a href="javascript:void(0);" class="close" style="display: none; z-index:99999;"></a>
         </div>
+
+        <script type="text/javascript">
+        var $easyzoom = $('.easyzoom').easyZoom();
+        api = $easyzoom.data('easyZoom');
+
+        $(".open").click(function(e){
+          $(".open").hide();
+          $(".close").show();
+
+          api.ready_to_show = true;
+          api.show();
+        });
+
+        $(".close").click(function(){
+          $(".open").show();
+          $(".close").hide();
+
+          api.ready_to_show = false;
+          api.hide();
+        });
+        
+        </script>
 
         <div id="thumb">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -15,15 +68,14 @@
               <th>細節展示</th>
               <% @photos_detail.each do |photo| %>
               <td>
-                <a href="#" class="active">
-                  <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></a>
+                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => ( photo == @photos_detail.first ? "active" : nil ) %>
               </td>
               <% end %></tr>
             <tr>
               <th>顏色</th>
               <% @photos_color.each do |photo| %>
               <td>
-                <a href="#">
+                <a href="javascript:void(0);">
                   <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></a>
               </td>
               <% end %></tr>

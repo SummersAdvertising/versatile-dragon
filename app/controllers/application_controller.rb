@@ -14,8 +14,9 @@ class ApplicationController < ActionController::Base
   def count_cartitems
     if(cookies[:cart])
       begin
-        @cartitems = JSON.parse(cookies[:cart])
-        @cartitems_count = @cartitems.length
+        @cart = JSON.parse(cookies[:cart])
+
+        @cartitems_count = @cart[I18n.locale.to_s] ? @cart[I18n.locale.to_s].length : 0
       rescue
         cookies[:cart] = nil
         @cartitems_count = 0
@@ -27,10 +28,10 @@ class ApplicationController < ActionController::Base
 
   def checkItem(checkItems)
     @askItems = Array.new
-    @items = Product.where(:id => checkItems.keys ).all
+    @items = Product.includes([:subclass => :productclass]).where(:id => checkItems.map{ |item| item } ).all
     
     @items.each do |item|
-      @askItems.push({:id => item.id ,:name => item.name })
+      @askItems.push({:id => item.id ,:name => item.name, :path => productclass_subclass_product_path(item.subclass.productclass.id, item.subclass.id, item.id, :locale => params[:locale]) })
     end
 
     return @askItems

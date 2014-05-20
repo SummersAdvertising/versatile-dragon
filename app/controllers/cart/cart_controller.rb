@@ -8,13 +8,22 @@ class Cart::CartController < ApplicationController
 
 		if(@product)
 			#write cookie
-			@cartitems = cookies[:cart] ? JSON.parse(cookies[:cart]) : Hash.new
+			@cart = cookies[:cart] ? JSON.parse(cookies[:cart]) : Hash.new
 
-			@cartitems[params[:product_id]] = nil
-			cookies[:cart] = @cartitems.to_json
+			if(@cart[I18n.locale.to_s].blank?)
+				@cart[I18n.locale.to_s] = Array.new
+			end
 
 			respond_to do |format|
-				format.html { redirect_to :back, notice: "已將#{ @product.name }新增至詢價車。" }
+				if(@cart[I18n.locale.to_s].include?(@product.id))
+					flash[:notice] = "#{ @product.name } 已經加入過了。"
+				else
+					@cart[I18n.locale.to_s].push(@product.id)
+					flash[:notice] =  "已將 #{ @product.name } 新增至詢價車。"
+				end
+
+				cookies[:cart] = @cart.to_json
+				format.html { redirect_to :back }
 			end
 		else
 			respond_to do |format|
@@ -25,7 +34,7 @@ class Cart::CartController < ApplicationController
 
 	def delete
 		@cartitems = JSON.parse(cookies[:cart])
-		@cartitems.delete(params[:product_id].to_s);
+		@cartitems[I18n.locale.to_s].delete(params[:product_id].to_i);
 
 		cookies[:cart] = @cartitems.to_json
 

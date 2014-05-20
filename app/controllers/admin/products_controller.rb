@@ -5,6 +5,15 @@ class Admin::ProductsController < ApplicationController
   before_filter :new_productphoto, :only => [:edit, :edit_intro, :edit_point, :edit_size, :edit_wash, :edit_outro]
   layout 'admin'
 
+  def show
+    @photos = Productphoto.where("img_type in ('detail', 'color', 'point') AND product_id = #{@product.id}").all
+
+    @photos_detail = @photos.select { |photo| photo.img_type == 'detail' }
+    @photos_color = @photos.select { |photo| photo.img_type == 'color' }
+    @photos_point = @photos.select { |photo| photo.img_type == 'point' }
+    
+  end
+
   def create
     @product = Product.new(:subclass_id => params[:subclass_id])
     
