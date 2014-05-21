@@ -12,18 +12,15 @@ class ApplicationController < ActionController::Base
   end
 
   def count_cartitems
-    if(cookies[:cart])
-      begin
-        @cart = JSON.parse(cookies[:cart])
 
-        @cartitems_count = @cart[param[:locale]] ? @cart[param[:locale]].length : 0
-      rescue
-        cookies[:cart] = nil
-        @cartitems_count = 0
-      end
+    if(cookies[:cart] && JSON.is_json?(cookies[:cart]) )
+      @cart = JSON.parse(cookies[:cart])
+      @cartitems_count = @cart[params[:locale]] ? @cart[params[:locale]].length : 0
     else
+      cookies[:cart] = Hash.new
       @cartitems_count = 0
     end
+
   end
 
   def checkItem(checkItems)

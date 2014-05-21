@@ -23,6 +23,7 @@ class Cart::CartController < ApplicationController
 				end
 
 				cookies[:cart] = @cart.to_json
+				
 				format.html { redirect_to :back }
 			end
 		else

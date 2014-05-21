@@ -14,7 +14,7 @@
 
         <%= render "product_info", locals: { product: @product, photos_detail: @photos_detail, photos_color: @photos_color } %>
 
-        <%= render "product_peditor", content_column: "content_intro", output_container: "peditor-up", locals: { product: @product } %>
+        <%= render "product_peditor", content_column: "content_intro", output_container: "peditor-up", locals: { product: @product } unless @product.content_intro.blank? %>
 
         <%= render "product_point", locals: { product: @product, photos_point: @photos_point } %>
 
@@ -27,15 +27,15 @@
 
         <div id="content-4">
           <h5><img src="/images/s-19.png"></h5>
-          <%= render "product_peditor", content_column: "content_size", output_container: "peditor-size", locals: { product: @product } %>
+          <%= render "product_peditor", content_column: "content_size", output_container: "peditor-size", locals: { product: @product } unless @product.content_size.blank? %>
         </div>
 
         <div id="content-5">
           <h5><img src="/images/s-20.png"></h5>
-          <%= render "product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } %>
+          <%= render "product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } unless @product.content_wash.blank? %>
         </div>
 
-        <%= render "product_peditor", content_column: "content_outro", output_container: "peditor-down", locals: { product: @product } %>
+        <%= render "product_peditor", content_column: "content_outro", output_container: "peditor-down", locals: { product: @product } unless @product.content_outro.blank? %>
       </div>
       <!--right--> 
     </div>
