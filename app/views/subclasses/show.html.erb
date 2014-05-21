@@ -15,8 +15,8 @@
           <ul>
             <% @subclass.products.each do |product| %>
             <li>
-              <a href="<%= productclass_subclass_product_path(params[:productclass_id], @subclass, product, :locale => I18n.locale) %>"> <img src="example-2.jpg"><br>
-              <span><%= product.name %></span></a>
+              <% @path = get_path(product) %>
+              <%= link_to (image_tag("#{@path}") + "<br><span>#{product.name}</span>".html_safe), productclass_subclass_product_path(params[:productclass_id], @subclass, product, :locale => I18n.locale) %>
             </li>
             <% end %>
           </ul>

@@ -7,9 +7,9 @@ editor.alert("<%= @photo.errors.full_messages.join(' ') %>", "error");
 <% when "detail", "color", "point" %>
 	var div = $('<div class="three" id="photo_<%= "#{@photo.img_type}_#{@photo.id}" %>">');
 	var a_link = '<%= link_to("del", "deletePhoto/#{@photo.id}", :method => :delete, :remote => true) %>';
-	var image = '<%= image_tag(@photo.image, :style => "max-width: 300px;") %>';
+	var image = '<%= image_tag("/uploads/Productphoto/#{@photo.product_id}/thumb_#{@photo.id}-#{@photo.name}", :style => "max-width: 200px;") %>';
 
-	div.append(image).append("<br>").append(a_link);
+	div.append(image);
 
 	if("<%= @photo.img_type %>" == "point"){
 		var p = $('<p>描述：<%= @photo.description %></p>');
@@ -17,6 +17,8 @@ editor.alert("<%= @photo.errors.full_messages.join(' ') %>", "error");
 		$('#new_productphoto')[0].reset();
 		$('#productphoto_img_type').val("<%= @photo.img_type %>");
 	}
+
+	div.append("<br>").append(a_link);
 
 	$("#photos_<%= @photo.img_type %>").append(div);
 	$('<%= "#no_photo_#{@photo.img_type}" %>').hide();

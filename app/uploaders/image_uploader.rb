@@ -8,8 +8,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   before :store, :remember_cache_id
   after :store, :delete_tmp_dir
 
-  version :thumb, :if => :isProduct? do
-    process :resize_to_fill => [218, 163]
+  version :thumb, :if => :need_thumb? do
+    process :resize_and_pad => [375, 375, background = "#fff", gravity = 'Center']
   end
 
   def filename
@@ -47,8 +47,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
-  def isProduct?(new_file)
-    model.class.name == 'Product'
+  def need_thumb?(new_file)
+    model.class.name == 'Productphoto' #&& ['detail', 'color', 'point'].include?(model.img_type)
   end
 
 end

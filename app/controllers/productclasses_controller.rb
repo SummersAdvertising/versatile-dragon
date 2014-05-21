@@ -13,6 +13,6 @@ class ProductclassesController < ApplicationController
 
   def show
     @productclasses = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC, productclasses.created_at DESC").all
-    @productclass = Productclass.includes([:subclasses, :products]).find(params[:id])
+    @productclass = Productclass.includes([:subclasses, :products => :cover ]).find(params[:id])
   end
 end

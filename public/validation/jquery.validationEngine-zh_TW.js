@@ -4,6 +4,10 @@
     $.validationEngineLanguage = {
         newLang: function(){
             $.validationEngineLanguage.allRules = {
+                "checkFileType": {
+                    "regex": "none",
+                    "alertText": "* 支援上傳的圖片類型：jpg|jpeg|gif|png"                    
+                },
                 "required": { // Add your regex rules here, you can take telephone as an example
                     "regex": "none",
                     "alertText": "* 此欄位不可空白",

@@ -579,6 +579,11 @@
 				var errorMsg = undefined;
 				switch (rules[i]) {
 
+					//add file extension
+					case "checkFileType":
+					errorMsg = methods._checkFileType(field, rules, i, options);
+					break;
+
 					case "required":
 						required = true;
 						errorMsg = methods._getErrorMessage(form, field, rules[i], rules, i, options, methods._required);
@@ -897,6 +902,24 @@
 			 "creditCard": "pattern-mismatch",
 			 "condRequired": "value-missing"
 		 },
+
+		 /*
+		add file extension
+		*/
+
+		_checkFileType: function (field, rules, i, options) {
+	        var uploadedFile = $(field);
+	        if (uploadedFile) {
+	            var extensions = rules[i + 1];               
+	            var mimeFilter = new RegExp(extensions);
+	            if (!mimeFilter.test($(uploadedFile).val().split('.').reverse()[0])) {
+	                return options.allrules.checkFileType.alertText;
+	            }
+	        }
+	        else {
+	            return true;
+	        }            
+	    },
 		/**
 		* Required validation
 		*

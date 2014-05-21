@@ -56,7 +56,7 @@
 
     <% @photos_detail.each do |photo| %>
     <div class="three" id="photo_detail_<%= photo.id %>">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}", :style => "max-width: 300px;") %><br>
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}", :style => "max-width: 200px;") %><br>
       <%= link_to("del", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>
     <% end %>
@@ -78,8 +78,8 @@
     <p id="no_photo_color" style="display: <%= @photos_color.empty? ? "block" : "none" %>;">尚未上傳圖片</p>
 
     <% @photos_color.each do |photo| %>
-    <div class="three" id="photo_detail_<%= photo.id %>">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}", :style => "max-width: 300px;") %><br>
+    <div class="three" id="photo_color_<%= photo.id %>">
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}", :style => "max-width: 200px;") %><br>
       <%= link_to("del", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>
     <% end %>

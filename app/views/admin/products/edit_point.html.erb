@@ -1,3 +1,7 @@
+<script src="/validation/jquery.validationEngine.js"></script>
+<script src="/validation/jquery.validationEngine-zh_TW.js"></script>
+<link rel="stylesheet" href="/validation/validationEngine.jquery.css" type="text/css"/>
+
 <article>
   <section class="category">
     <ul>
@@ -56,7 +60,7 @@
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <th>圖片</th>
-          <td><%= f.file_field :image %></td>
+          <td><%= f.file_field :image, :class => "validate[required, checkFileType[jpg|jpeg|gif|JPG|png|PNG]]" %></td>
         </tr>
         <tr>
           <td><%= f.submit("新增圖片") %></td>
@@ -67,11 +71,10 @@
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <th>描述</th>
-          <td><%= f.text_field :description %></td>
+          <td><%= f.text_field :description, :class => "validate[required]" %></td>
         </tr>
       </table>
     </div>
-    
     <% end %>
   </section>
 
@@ -80,7 +83,7 @@
 
     <% @photos_point.each do |photo| %>
     <div class="three" id="photo_point_<%= photo.id %>">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}", :style => "max-width: 300px;") %><br>
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}", :style => "max-width: 200px;") %><br>
       <p>描述：<%= photo.description %></p>
       <%= link_to("del", "../deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>
@@ -105,6 +108,8 @@ $(document).ready(function(){
     event.preventDefault();
     Alertify.log.error("文章編輯中, 無法切換語系");
   });
+
+  $("#new_productphoto").validationEngine();
 
   $(".remove_point").click(function(){
     remove_point(this);

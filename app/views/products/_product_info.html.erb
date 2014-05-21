@@ -1,43 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/easyzoom/easyzoom.css">
 <script src="/easyzoom/easyzoom.js"></script>
 
-<style type="text/css">
-/* Shrink wrap strategy 1 */
-.easyzoom {
-    float: left;
-}
-.easyzoom img {
-    display: block;
-}
-
-
-/* Shrink wrap strategy 2 */
-.easyzoom {
-    display: inline-block;
-}
-.easyzoom img {
-    vertical-align: bottom;
-}
-</style>
-
 <div id="photo">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="65%" height="530" rowspan="2" align="left" valign="top">
-        <!-- <div id="detail">
-          <% @cover = @photos_detail.first %>
-          <%= image_tag("/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}") if @cover %>
-          <a href="javascript:void(0);" class="open"></a>
-          <a href="javascript:void(0);" class="close" style="display: none;"></a>
-        </div> -->
-
         <div id="detail" class="easyzoom easyzoom--overlay">
-          <a href="/uploads/Productphoto/27/69-IMG_0913_2.jpg">
-            <img src="/uploads/Productphoto/27/69-IMG_0913.jpg" alt="" width="410" />
-          </a>
-
+          <% @cover = @photos_detail.first %>
+          <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{@cover.id}-#{@cover.name}"), "/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}" if @cover %>
           <a href="javascript:void(0);" class="open"></a>
-          <a href="javascript:void(0);" class="close" style="display: none; z-index:99999;"></a>
+          <a href="javascript:void(0);" class="close" style="display: none; z-index:990;"></a>
         </div>
 
         <script type="text/javascript">
@@ -68,19 +40,29 @@
               <th>細節展示</th>
               <% @photos_detail.each do |photo| %>
               <td>
-                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => ( photo == @photos_detail.first ? "active" : nil ) %>
+                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => ( photo == @photos_detail.first ? "active swap" : "swap" ), :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
               </td>
               <% end %></tr>
             <tr>
               <th>顏色</th>
               <% @photos_color.each do |photo| %>
               <td>
-                <a href="javascript:void(0);">
-                  <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></a>
+                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => "swap", :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
               </td>
-              <% end %></tr>
+              <% end %>
+            </tr>
           </table>
         </div>
+        <script type="text/javascript">
+        $(".swap").click(function(){
+          $(".active").removeClass("active");
+          
+          var active = $(this);
+          active.addClass("active");
+
+          api.swap(active.children("img").attr("src"), active.data("path"));
+        });
+        </script>
       </td>
       <td width="35%" valign="bottom" height="370">
         <ul>

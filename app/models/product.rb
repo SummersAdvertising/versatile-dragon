@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :subclass
+  has_one :cover, class_name: "Productphoto", foreign_key: "id", :primary_key => "cover_id"
   has_many :productphotos, :dependent => :destroy
   attr_accessible :name, :description, :content_size, :content_intro, :content_point, :content_form, :content_wrap, :content_wash, :content_outro, :subclass_id, :status, :addDate
 
