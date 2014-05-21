@@ -92,7 +92,7 @@ class Admin::ProductclassesController < ApplicationController
     @productclass.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_productclasses_path }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

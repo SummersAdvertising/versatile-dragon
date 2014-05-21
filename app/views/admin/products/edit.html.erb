@@ -46,8 +46,9 @@
   <section class="text text-edit">
     <div class="three">
       <%= form_for(@photo, :url => "uploadPhoto", :remote => true) do |f| %>
-      <%= f.file_field :image %>
+      <%= f.check_box :is_cover, :style => "width: 15px;" %><%= f.label :is_cover, "設成封面" %>
       <%= f.hidden_field :img_type, :value => "detail" %>
+      <%= f.file_field :image %>
       <% end %>
     </div>
   </section>
