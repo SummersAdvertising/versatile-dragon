@@ -169,7 +169,7 @@ en:
       valid: "Can't be empty"
       holder: " "
       class:
-        titleBlack: "Title(Black)"
+        titleBlack: "Title"
         titleRed: "Title(Red)"
         content: "Text(Default)"
 
@@ -225,7 +225,7 @@ en:
       contact: "Mingde Shao"
 
     info3:
-      name: "Taiwan (R.O.C.)<br>JIU FAN Electronics Co., Ltd"
+      name: "Taiwan (R.O.C.) - JIU FAN Electronics Co., Ltd"
       address: "8F., No.53, Yingshi Rd., Banqiao Dist., New Taipei City 220, Taiwan (R.O.C.)"
       contact: "Laura Chen"
       tel: "+886 2 8258 1056"

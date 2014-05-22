@@ -4,10 +4,10 @@
 <div id="photo">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td width="65%" height="530" rowspan="2" align="left" valign="top">
+      <td width="62%" height="530" rowspan="2" align="left" valign="top">
         <div id="detail" class="easyzoom easyzoom--overlay">
           <% @cover = @photos_detail.first %>
-          <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{@cover.id}-#{@cover.name}"), "/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}" if @cover %>
+          <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{@cover.id}-#{@cover.name}", :style => "width: 415px; height: 415px;" ), "/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}" if @cover %>
           <a href="javascript:void(0);" class="open"></a>
           <a href="javascript:void(0);" class="close" style="display: none; z-index:990;"></a>
         </div>
@@ -37,16 +37,16 @@
         <div id="thumb">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <th>細節展示</th>
+              <th align="left" width="50">細節展示</th>
               <% @photos_detail.each do |photo| %>
-              <td>
+              <td align="right">
                 <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => ( photo == @photos_detail.first ? "active swap" : "swap" ), :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
               </td>
               <% end %></tr>
             <tr>
-              <th>顏色</th>
+              <th align="left">顏色</th>
               <% @photos_color.each do |photo| %>
-              <td>
+              <td align="right">
                 <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => "swap", :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
               </td>
               <% end %>
@@ -64,7 +64,7 @@
         });
         </script>
       </td>
-      <td width="35%" valign="bottom" height="370">
+      <td width="38%" valign="bottom" height="370">
         <ul>
           <% @product.get_column_content("description").each do |description| %>
           <li>

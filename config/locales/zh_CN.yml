@@ -170,7 +170,7 @@ zh_CN:
       valid: "请输入段落内容"
       holder: "请输入文字"
       class:
-        titleBlack: "小标(粗黑)"
+        titleBlack: "小标"
         titleRed: "大标(红)"
         content: "内文"
 
@@ -226,7 +226,7 @@ zh_CN:
       contact: "邵先生"
 
     info3:
-      name: "台湾分公司<br>岠钒电子有限公司"
+      name: "台湾分公司 - 岠钒电子有限公司"
       address: "新北市板桥区英士路53号8F"
       contact: "陈小姐"
       tel: "02-82581056"

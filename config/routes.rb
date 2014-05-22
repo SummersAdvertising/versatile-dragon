@@ -8,7 +8,7 @@ VersatileDragon::Application.routes.draw do
 		get "/contact" => "staticpage#contact"
 
 		resources :productclasses, :only => [:index, :show] do
-			resources :subclasses, :only => [:show] do
+			resources :subclasses, :only => [:index, :show] do
 				resources :products, :only => [:show]
 			end
 		end
