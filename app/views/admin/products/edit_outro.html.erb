@@ -16,6 +16,11 @@
   </section>
   <!--category-->
 
+  <section>
+    <%= show_product_bread(@product).html_safe %>
+  </section>
+  <!--breads-->
+
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
   <%= f.hidden_field :content_outro %>
   <% end #form %>

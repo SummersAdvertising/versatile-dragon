@@ -29,6 +29,10 @@ class Productphoto < ActiveRecord::Base
   end
 
   def update_filename
+    if self.img_type.blank?
+      self.img_type = "peditor"
+    end
+
   	self.name = image.file.filename
   end
 

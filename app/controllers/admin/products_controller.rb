@@ -112,7 +112,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find_by_id(params[:product_id] || params[:id])
+    @product = Product.includes([:subclass => :productclass]).find_by_id(params[:product_id] || params[:id])
   end
 
   def new_productphoto

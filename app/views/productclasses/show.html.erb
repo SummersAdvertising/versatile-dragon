@@ -8,16 +8,19 @@
     </div>
     <div id="content">
       <div class="left">
-        <%= display_productclasses(@productclass, @productclasses).html_safe %></div>
+        <%= display_productclasses(@productclass, @productclasses).html_safe %>
+      </div>
       <!--left-->
 
       <div id="level-1" class="right">
         <h3>
           <%= @productclass.name %>
         </h3>
-        <input id="productclass_content" type="hidden" value="<%= @productclass.content %>
-        ">
+
+        <% unless @productclass.content.blank? %>
+        <input id="productclass_content" type="hidden" value="<%= @productclass.content %>">
         <div class="peditor" id="articleContent"></div>
+        <% end %>
 
         <%= display_subclasses_products(@productclass).html_safe %>
       </div>
@@ -28,7 +31,9 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  editor.output($("#productclass_content").val());
+  if($("#productclass_content").val()){
+    editor.output($("#productclass_content").val());
+  }
 
   $("#articleContent div").each(function(){
     $("#articleContent").append($(this).html());
@@ -44,5 +49,4 @@ $(document).ready(function() {
     slideMargin: 15     
   });
 });
-
 </script>
