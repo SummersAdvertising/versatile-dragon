@@ -1,7 +1,7 @@
 <style>
 .tab ul { width: 202px }
 </style>
-<article>
+<article _height="auto">
   <section class="hgroup">
     <h2><%= show_product_bread(@product).html_safe %></h2>
   </section>
@@ -107,6 +107,10 @@ $(document).ready(function(){
     articleModel: "product",
     contentColumn: "content_size",
     photoModel: "productphoto"
+  });
+
+  $("#articleContent").on("peditor_add_child", function(){
+    fullHeight();
   });
 });
 </script>
