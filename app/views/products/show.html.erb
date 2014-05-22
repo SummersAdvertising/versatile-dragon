@@ -23,7 +23,7 @@
         <div id="content-3">
           <% unless @product.content_wrap.blank? %>
           <h5><img src="/images/s-18.png"></h5>
-          <%= simple_format(@product.content_wrap) %>
+          <%= @product.content_wrap.gsub(/(\r\n|\r|\n)/, "<br />").html_safe %>
           <% end %>
         </div>
 
