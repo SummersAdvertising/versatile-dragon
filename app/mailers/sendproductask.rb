@@ -1,5 +1,6 @@
 #encoding: utf-8
 class Sendproductask < ActionMailer::Base
+	default from: "mailer@versatile_dragon.com.tw"
 
   def sendmail(productask)
   	@productask = productask
