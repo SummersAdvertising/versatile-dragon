@@ -68,10 +68,10 @@
       </td>
       <td align="center">&nbsp;</td>
       <td align="left" class="x0">
-        <a href="javascript:$('#form_subclass').submit()"><img src="/images/save.png"></a>
+        <a class="subit_sub" href="javascript:void(0);"><img src="/images/save.png"></a>
       </td>
       <td align="left">
-        <a href="javascript:$('.editting_subclass').remove()"><img src="/images/cancel.png"></a>
+        <a class="edit_sub" href="javascript:void(0);"><img src="/images/cancel.png"></a>
       </td>
     </tr>
   </table>
@@ -85,17 +85,6 @@
 $(document).ready(function(){
   $("#nav-2").parent().addClass("active");
 
-  $(".delete a").click(function() {
-    var deleteid = $(this).data("deleteid");
-
-    Alertify.dialog.confirm("<%= t('productclass.deleteConfirm') %>", function () {
-      // user clicked "ok"
-      $("#delete"+deleteid).trigger("click");
-    }, function () {
-      // user clicked "cancel"
-    });
-  });
-
   $("a.add_subclass").click(function(e){
     e.preventDefault();
 
@@ -107,6 +96,14 @@ $(document).ready(function(){
       subclass_tr.attr("id", "test").addClass("editting_subclass");
       subclass_tr.find("form:first").attr("action", $(this).data("action")).attr("id", "form_subclass");
       $(this).parents("tr:first").after( subclass_tr.show() );
+
+      $("a.subit_sub").unbind().click(function(){
+        $('#form_subclass').submit();
+      });
+
+      $("a.edit_sub").unbind().click(function(){
+        $('.editting_subclass').remove();
+      });
     }
   });
 
