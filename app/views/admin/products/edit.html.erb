@@ -1,4 +1,9 @@
 <article>
+  <section class="hgroup">
+    <h2><%= show_product_bread(@product).html_safe %></h2>
+  </section>
+  <!--hgroup-->
+
   <section class="category">
     <ul>
       <li class="active"><a href="javascript:void(0);">產品圖</a></li>
@@ -11,12 +16,7 @@
       <li><a href="edit/outro">其他</a></li>
     </ul>
   </section>
-  <!--category-->
-
-  <section>
-    <%= show_product_bread(@product).html_safe %>
-  </section>
-  <!--breads-->
+  <!--category-->  
 
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
   <section class="title">
@@ -62,8 +62,8 @@
 
     <% @photos_detail.each do |photo| %>
     <div class="three" id="photo_detail_<%= photo.id %>">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}", :style => "max-width: 200px;") %><br>
-      <%= link_to("del", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %>
+      <%= link_to("刪除", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>
     <% end %>
   </section>
@@ -85,8 +85,8 @@
 
     <% @photos_color.each do |photo| %>
     <div class="three" id="photo_color_<%= photo.id %>">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}", :style => "max-width: 200px;") %><br>
-      <%= link_to("del", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %><br>
+      <%= link_to("刪除", "deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>
     <% end %>
   </section>

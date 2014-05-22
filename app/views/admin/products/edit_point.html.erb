@@ -3,6 +3,10 @@
 <link rel="stylesheet" href="/validation/validationEngine.jquery.css" type="text/css"/>
 
 <article>
+  <section class="hgroup">
+    <h2><%= show_product_bread(@product).html_safe %></h2>
+  </section>
+  <!--hgroup-->
   <section class="category">
     <ul>
       <li><a href="../edit">產品圖</a></li>
@@ -17,10 +21,6 @@
   </section>
   <!--category-->
 
-  <section>
-    <%= show_product_bread(@product).html_safe %>
-  </section>
-  <!--breads-->
   
   <section class="post">
     <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
@@ -69,7 +69,7 @@
           <td><%= f.file_field :image, :class => "validate[required, checkFileType[jpg|jpeg|gif|JPG|png|PNG]]" %></td>
         </tr>
         <tr>
-          <td><%= f.submit("新增圖片") %></td>
+          <td><%= f.submit("新增",:style => "width:50px;font-size:12px;margin:15px 0 0 5px;padding:6px") %></td>
         </tr>
       </table>
     </div>
@@ -89,9 +89,9 @@
 
     <% @photos_point.each do |photo| %>
     <div class="three" id="photo_point_<%= photo.id %>">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}", :style => "max-width: 200px;") %><br>
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %><br>
       <p>描述：<%= photo.description %></p>
-      <%= link_to("del", "../deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
+      <%= link_to("刪除", "../deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>
     <% end %>
   </section>

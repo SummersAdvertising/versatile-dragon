@@ -161,3 +161,30 @@ footer a{font:300 13px "Times New Roman", Times, serif;text-shadow:0 1px 0 #fff}
 .login article{width:300px;float:none;margin:0 auto;}
 .login .text{border:none;background:none;padding:0}
 .login .text div{padding:5px 0}
+
+#photos_detail,
+#photos_color,
+#photos_point{background:none;border:none;padding:0;overflow:hidden}
+
+#photos_detail .three,
+#photos_color .three,
+#photos_point .three{position:relative;float:left;width:19%;border:1px solid #eee;margin:0 5px 0 0;}
+#photos_point .three{width:32%}
+#photos_point .three p{word-wrap:break-all!important}
+
+#photos_detail .three.active,
+#photos_color .three.active,
+#photos_point .three.active{border:1px solid #ccc;}
+
+#photos_detail .three img,
+#photos_color .three img,
+#photos_point .three img{max-width:100%;}
+
+#photos_detail .three a,
+#photos_color .three a,
+#photos_point .three a{padding:5px;background:#aaa;color:#fff;font-size:12px;
+position:absolute;top:5px;right:5px;border-radius:5px;}
+
+#photos_detail .three a:hover,
+#photos_color .three a:hover,
+#photos_point .three a:hover{background:#333;}

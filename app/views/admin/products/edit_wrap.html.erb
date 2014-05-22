@@ -1,4 +1,8 @@
 <article>
+  <section class="hgroup">
+    <h2><%= show_product_bread(@product).html_safe %></h2>
+  </section>
+  <!--hgroup-->
   <section class="category">
     <ul>
       <li><a href="../edit">產品圖</a></li>
@@ -13,10 +17,6 @@
   </section>
   <!--category-->
 
-  <section>
-    <%= show_product_bread(@product).html_safe %>
-  </section>
-  <!--breads-->
 
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
 
