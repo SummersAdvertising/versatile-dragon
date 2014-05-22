@@ -10,6 +10,10 @@ class Productphoto < ActiveRecord::Base
   before_create :update_filename
   after_create :set_cover
   after_destroy :subtract_cache
+
+  def get_path
+    "/uploads/Productphoto/#{self.product_id}/thumb_#{self.id}-#{self.name}"    
+  end
   
   private
   def count_within_limit

@@ -22,7 +22,24 @@
         <div class="peditor" id="articleContent"></div>
         <% end %>
 
-        <%= display_subclasses_products(@productclass).html_safe %>
+        <% @productclass.subclasses.each do |subclass| %>
+        <% next if(subclass.products.length == 0) %>
+        <div class="thumb">
+        <h4>極地暖kyuwa電熱暖手寶</h4>
+          <ul class="bxslider">
+            <% subclass.products.each do |product| %>
+            <% @cover = product.cover %>
+            <li>
+              <a href="<%= productclass_subclass_product_path(@productclass, subclass, product, :locale => I18n.locale) %>">
+                 <img src="<%= @cover.get_path if @cover %>"><br>
+                <span><%= "#{product.name.blank? ? "未命名" : product.name}" %></span>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
       </div>
       <!--right-->
     </div>
