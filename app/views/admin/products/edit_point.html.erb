@@ -89,7 +89,7 @@
 
     <% @photos_point.each do |photo| %>
     <div class="three" id="photo_point_<%= photo.id %>">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %><br>
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %><br>
       <p>描述：<%= photo.description %></p>
       <%= link_to("刪除", "../deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
     </div>

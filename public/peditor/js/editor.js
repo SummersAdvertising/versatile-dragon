@@ -125,7 +125,7 @@ var editor = {
 			url: $("form, .edit_"+ editor.settings.articleModel).attr("action"),
 			data: $("form, .edit_"+ editor.settings.articleModel).serialize()
 		});
-		editor.settings.articleSection.trigger("peditor_add_child");
+		setTimeout(1000, editor.settings.articleSection.trigger("peditor_add_child"));
 	},
 	pack: function(upload){
 		var article = new Array();

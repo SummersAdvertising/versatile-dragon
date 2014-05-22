@@ -89,7 +89,7 @@
   </section>
   <!--hgroup-->
 
-  <section id="articleContent" class="preview sortable" _height="auto"></section>
+  <section id="articleContent" class="preview sortable"></section>
   <!--preview-->  
 
   <section class="button" id="btnSubmit">
@@ -114,10 +114,6 @@ $(document).ready(function(){
     articleModel: "product",
     contentColumn: "content_intro",
     photoModel: "productphoto"
-  });
-
-  $("#articleContent").on("peditor_add_child", function(){
-    fullHeight();
   });
 });
 </script>

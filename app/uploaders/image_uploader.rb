@@ -9,7 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   after :store, :delete_tmp_dir
 
   version :thumb, :if => :need_thumb? do
-    process :resize_and_pad => [375, 375, background = "#fff", gravity = 'Center']
+    process :resize_and_pad => [150, 150, background = "#fff", gravity = 'Center']
   end
 
   def filename

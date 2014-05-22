@@ -7,7 +7,7 @@ editor.alert("<%= @photo.errors.full_messages.join(' ') %>", "error");
 <% when "detail", "color", "point" %>
 	var div = $('<div class="three" id="photo_<%= "#{@photo.img_type}_#{@photo.id}" %>">');
 	var a_link = '<%= link_to("刪除", "deletePhoto/#{@photo.id}", :method => :delete, :remote => true) %>';
-	var image = '<%= image_tag("/uploads/Productphoto/#{@photo.product_id}/thumb_#{@photo.id}-#{@photo.name}") %>';
+	var image = '<%= image_tag("/uploads/Productphoto/#{@photo.product_id}/#{@photo.img_type=="point" ? nil : "thumb_"}#{@photo.id}-#{@photo.name}") %>';
 
 	div.append(image);
 

@@ -12,7 +12,7 @@
     <% @photos_point.each_with_index do |photo, index| %>
     <%= "<tr>".html_safe if(index%2 == 0) %>
     <td width="25%">
-      <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %></td>
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %></td>
     <td width="25%">
       <%= photo.description %></td>
     <%= "</tr>".html_safe unless(index%2 == 0) %>
