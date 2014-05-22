@@ -42,7 +42,7 @@ zh_TW:
     contact: "聯絡我們"
 
   index:
-    intro: "龍全控股具 OEM/ODM/OBM 能力，除現有系列產品外<br>同時能以專業技術結合各種跨產業應用，幫助您的產品開創新商機及客群。"
+    intro: "<div id='intro'>龍全控股具 OEM/ODM/OBM 能力，除現有系列產品外<br>同時能以專業技術結合各種跨產業應用，幫助您的產品開創新商機及客群。</div>"
 
   about:
     about-02: ""
