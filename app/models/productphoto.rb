@@ -45,7 +45,6 @@ class Productphoto < ActiveRecord::Base
     when "color"
       @product.color_count += 1
     when "point"
-      exit
       @product.point_count += 1
     else
       return

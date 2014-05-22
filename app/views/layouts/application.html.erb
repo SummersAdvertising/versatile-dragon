@@ -13,10 +13,15 @@
 <%= stylesheet_link_tag "application", :media => "all" %>
 <%= stylesheet_link_tag (params[:locale]+"_titleimg"), :media => "all" %>
 
+<%= javascript_include_tag "application" %>
+<script type="text/javascript" src="/js/auto-full-height.min.js"></script>
+<%= csrf_meta_tags %>
+
 <% if(params[:controller] == "staticpage") %>
 <% case params[:action] %>
 <% when "index" %>
 <%= stylesheet_link_tag "index", :media => "all" %>
+<script src="/js/jquery.bxSlider.js"></script>
 <% when "about" %>
 <%= stylesheet_link_tag "about", :media => "all" %>
 <% when "contact" %>
@@ -38,6 +43,7 @@
 
 <% elsif(["productclasses", "subclasses", "products"].include?(params[:controller]) ) %>
 <%= stylesheet_link_tag "series", :media => "all" %>
+<script src="/js/jquery.bxslider.min.js"></script>
 <% elsif(params[:controller] == "productasks" ) %>
 <%= stylesheet_link_tag "cart", :media => "all" %>
 <% else %>
@@ -48,12 +54,6 @@
 <%= stylesheet_link_tag "en_adjust", :media => "all" %>
 <%= stylesheet_link_tag "slide-en", :media => "all" %>
 <% end %>
-
-
-
-<%= javascript_include_tag "application" %>
-<script type="text/javascript" src="/js/auto-full-height.min.js"></script>
-<%= csrf_meta_tags %>
 
 <script src="/peditor/js/editor.js"></script>
 <script src="/peditor/js/editor_p.js"></script>
