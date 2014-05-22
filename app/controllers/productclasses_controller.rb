@@ -1,6 +1,6 @@
 class ProductclassesController < ApplicationController
   def index
-    @productclass = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC").limit(1).first
+    @productclass = Productclass.with_translations(I18n.locale).order("productclasses.addDate DESC, productclasses.created_at DESC").limit(1).first
 
     respond_to do |format|
       if(@productclass)
