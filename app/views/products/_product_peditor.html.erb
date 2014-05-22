@@ -1,3 +1,10 @@
+<% case content_column %>
+<% when "content_size" %>
+<h5><img src="/images/s-19.png"></h5>
+<% when "content_wash" %>
+<h5><img src="/images/s-20.png"></h5>
+<% end %>
+
 <%= hidden_field_tag(content_column, @product[content_column]) %>
 <div id="<%= output_container %>"></div>
 

@@ -1,6 +1,8 @@
 <div id="content-1">
+  <% unless(@product.content_point.blank? && @photos_point.length == 0) %>
   <h5>
     <img src="/images/s-16.png"></h5>
+  <% end %>
   <ul>
     <% @product.get_column_content("content_point").each_with_index do |point, index| %>
     <li>
@@ -8,13 +10,11 @@
     <% end %></ul>
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <% @photos_point.each_with_index do |photo, index| %>
-    <%= "<tr>
-    ".html_safe if(index%2 == 0) %>
+    <%= "<tr>".html_safe if(index%2 == 0) %>
     <td width="25%">
       <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %></td>
     <td width="25%">
       <%= photo.description %></td>
-    <%= "</tr>
-    ".html_safe unless(index%2 == 0) %>
+    <%= "</tr>".html_safe unless(index%2 == 0) %>
     <% end %></table>
 </div>

@@ -1,12 +1,15 @@
 <div id="content-2">
+	<% @forms = @product.get_column_content("content_form")[0] %>
+	<% unless @forms.blank? %>
 	<h5>
 		<img src="/images/s-17.png"></h5>
 	<ul>
-		<% @forms = @product.get_column_content("content_form")[0] %>
 		<% @forms && @forms["items"].each_with_index do |item, index| %>
 		<li>
 			<span>
 				<%= item %>：</span>
 			<%= @forms['contents'][index] %></li>
-		<% end %></ul>
+		<% end %>
+	</ul>
+	<% end %>
 </div>
