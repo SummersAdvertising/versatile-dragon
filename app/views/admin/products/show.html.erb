@@ -1,8 +1,3 @@
-<style type="text/css">
-img { max-width: 200px; }
-div.partial { margin: 25px 0 25px 0; }
-</style>
-
 <article>
   <section class="hgroup">
     <h2>
@@ -23,43 +18,36 @@ div.partial { margin: 25px 0 25px 0; }
   <!--title-->
 
   <section>
-    <div class="partial">
-      <%= render "product_info", locals: { product: @product, photos_detail: @photos_detail, photos_color: @photos_color } %>
-    </div>
+    <%= render "product_info", locals: { product: @product, photos_detail: @photos_detail, photos_color: @photos_color } %>
 
-    <div class="partial">
-      <%= render "products/product_peditor", content_column: "content_intro", output_container: "peditor-up", locals: { product: @product } unless @product.content_intro.blank? %>
-    </div>
+    <%= render "product_peditor", content_column: "content_intro", output_container: "peditor-up", locals: { product: @product } unless @product.content_intro.blank? %>
 
-    <div class="partial">
-      <%= render "products/product_point", locals: { product: @product, photos_point: @photos_point } %>
-    </div>
+    <%= render "product_point", locals: { product: @product, photos_point: @photos_point } %>
 
-    <div class="partial">
-      <%= render "products/product_form", locals: { product: @product } %>
-    </div>
+    <%= render "product_form", locals: { product: @product } %>
 
-    <div class="partial">
-      <% unless @product.content_wrap.blank? %>
-      <h5><img src="/images/s-18.png"></h5>
-      <%= simple_format(@product.content_wrap) %>
-      <% end %>
-    </div>
+    <% unless @product.content_wrap.blank? %>
+    <section class="text text-show">
+      <div class="one">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">出貨包裝</th>
+            <td><%= @product.content_wrap.gsub(/(\r\n|\r|\n)/, "<br />").html_safe %></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <% end %>
 
-    <div class="partial">
-      <%= render "products/product_peditor", content_column: "content_size", output_container: "peditor-size", locals: { product: @product } unless @product.content_size.blank? %>
-    </div>
+    <%= render "product_peditor", content_column: "content_size", output_container: "peditor-size", locals: { product: @product } unless @product.content_size.blank? %>
 
-    <div class="partial">
-      <%= render "products/product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } unless @product.content_wash.blank? %>
-    </div>
+    <%= render "product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } unless @product.content_wash.blank? %>
 
-    <div class="partial">
-      <%= render "products/product_peditor", content_column: "content_outro", output_container: "peditor-down", locals: { product: @product } unless @product.content_outro.blank? %>
-    </div>
+    <%= render "product_peditor", content_column: "content_outro", output_container: "peditor-down", locals: { product: @product } unless @product.content_outro.blank? %>
   </section>
 
   <section class="button">
+    <%= link_to (image_tag("/images/edit.png")+t("actionshare.edit")), "#{params[:id]}/edit" %>
     <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), "../" %>
   </section>
 </article>
@@ -67,5 +55,10 @@ div.partial { margin: 25px 0 25px 0; }
 <script type="text/javascript">
 $(document).ready(function() {
   $("#nav-2").parent().addClass("active");
+});
+
+$("[id^=peditor-] div").each(function(){
+  $(this).parent().append($(this).html());
+  $(this).remove();
 });
 </script>

@@ -1,0 +1,27 @@
+<section class="text text-show">
+	<div class="one">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<th valign="top">
+					<% case content_column %>				
+					<% when "content_intro" %>
+					前言				
+					<% when "content_size" %>
+					尺寸表
+					<% when "content_wash" %>
+					洗滌方式
+					<% when "content_outro" %>
+					備註
+					<% end %>
+				</th>
+				<td id="<%= output_container %>">
+					<%= hidden_field_tag(content_column, @product[content_column]) %>
+				</td>
+			</tr>
+		</table>
+	</div>
+</section>
+
+<script type="text/javascript">
+editor.output($("#<%= content_column %>").val(), $("#<%= output_container %>"));
+</script>

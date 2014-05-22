@@ -138,7 +138,7 @@ border-radius:5px;width:302px}
 .text textarea{min-height:100px}
 .text-edit th{padding:7px 0 0 0}
 .text .radio{width:20px;border:none;padding:0;position:relative;top:2px}
-.text-show img{max-width:100%;height:auto}
+.text-show img{max-width:200px;height:auto}
 .font-black{font-weight:900;font-size:15px}
 
 /*-----------------------------------------------------------------------頁腳---*/
@@ -188,3 +188,6 @@ position:absolute;top:5px;right:5px;border-radius:5px;}
 #photos_detail .three a:hover,
 #photos_color .three a:hover,
 #photos_point .three a:hover{background:#333;}
+
+.thumb img{width:80px;height:80px;border:1px solid #ccc;margin:0 5px 0 0}
+.thumb a{float:left;}
