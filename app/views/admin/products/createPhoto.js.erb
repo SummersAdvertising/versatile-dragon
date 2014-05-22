@@ -6,8 +6,8 @@ editor.alert("<%= @photo.errors.full_messages.join(' ') %>", "error");
 <% case @photo.img_type %>
 <% when "detail", "color", "point" %>
 	var div = $('<div class="three" id="photo_<%= "#{@photo.img_type}_#{@photo.id}" %>">');
-	var a_link = '<%= link_to("del", "deletePhoto/#{@photo.id}", :method => :delete, :remote => true) %>';
-	var image = '<%= image_tag("/uploads/Productphoto/#{@photo.product_id}/thumb_#{@photo.id}-#{@photo.name}", :style => "max-width: 200px;") %>';
+	var a_link = '<%= link_to("刪除", "deletePhoto/#{@photo.id}", :method => :delete, :remote => true) %>';
+	var image = '<%= image_tag("/uploads/Productphoto/#{@photo.product_id}/thumb_#{@photo.id}-#{@photo.name}") %>';
 
 	div.append(image);
 
@@ -18,7 +18,7 @@ editor.alert("<%= @photo.errors.full_messages.join(' ') %>", "error");
 		$('#productphoto_img_type').val("<%= @photo.img_type %>");
 	}
 
-	div.append("<br>").append(a_link);
+	div.append(a_link);
 
 	$("#photos_<%= @photo.img_type %>").append(div);
 	$('<%= "#no_photo_#{@photo.img_type}" %>').hide();

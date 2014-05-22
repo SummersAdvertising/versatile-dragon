@@ -1,52 +1,67 @@
 <article>
-<section class="hgroup">
-  <h2><%= t("productclass.titleShow") %></h2>
-</section>
-<!--hgroup-->
-<% if(@productclass) %>
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <th><%= @productclass.addDate.to_s.to_date %></th>
-      <td><%= @productclass.name %></td>
-    </tr>
-  </table>
-</section>
-<!--title-->
+  <section class="hgroup">
+    <h2>
+      <%= t("productclass.titleShow") %></h2>
+  </section>
+  <!--hgroup-->
 
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><%= @productclass.frontshow.url.blank? ? "尚未上傳封面圖" : image_tag(@productclass.frontshow, :style => "max-width: 200px;") %></td>
-    </tr>
-  </table>
-</section>
-
-<input id="productclass_content" style="display:none;" type="text" value="<%=@productclass.content%>">
-<section class="text text-show">
-  <div id="articleContent"></div>
-</section>
-<!--text-->
-<% else %>
-<section class="title">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td>該語言不包含此分類</td>
-    </tr>
-  </table>
-</section>
-<!--title-->
-<% end %>
-
-<section class="button">
   <% if(@productclass) %>
-  <%= link_to (image_tag("/images/edit.png")+t("actionshare.edit")), edit_admin_productclass_path(@productclass, :locale => I18n.locale) %>
+  <section class="title">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>
+          <%= @productclass.addDate.to_s.to_date %></th>
+        <td>
+          <%= @productclass.name %></td>
+      </tr>
+    </table>
+  </section>
+  <!--title-->
+  <section class="text text-show">
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th valign="top">標題背景</th>
+          <td >
+            <%= @productclass.frontshow.url.blank? ? "尚未上傳封面圖" : image_tag(@productclass.frontshow, :style =>"max-width: 200px;") %></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section class="text text-show">
+    <div class="one">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th valign="top">內文介紹</th>
+          <td>
+            <%= hidden_field_tag(@productclass.content) %>
+            <div id="articleContent"></div>
+            <!--text-->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <% else %>
+  <section class="title">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>該語言不包含此分類</td>
+      </tr>
+    </table>
+  </section>
+  <!--title-->
   <% end %>
-  <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclasses_path(:locale => I18n.locale) %>
-</section>
-<!--button-->
-</article>
 
+  <section class="button">
+    <% if(@productclass) %>
+    <%= link_to (image_tag("/images/edit.png")+t("actionshare.edit")), edit_admin_productclass_path(@productclass, :locale =>
+    I18n.locale) %>
+    <% end %>
+    <%= link_to (image_tag("/images/back.png")+t("actionshare.back")), admin_productclasses_path(:locale =>I18n.locale) %>
+  </section>
+  <!--button-->
+</article>
 
 <script type="text/javascript">
 $(document).ready(function() {

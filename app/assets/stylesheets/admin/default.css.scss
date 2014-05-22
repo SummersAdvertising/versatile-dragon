@@ -170,7 +170,7 @@ footer a{font:300 13px "Times New Roman", Times, serif;text-shadow:0 1px 0 #fff}
 #photos_color .three,
 #photos_point .three{position:relative;float:left;width:19%;border:1px solid #eee;margin:0 5px 0 0;}
 #photos_point .three{width:32%}
-#photos_point .three p{word-wrap:break-all!important}
+#photos_point .three p{word-break:break-all;}
 
 #photos_detail .three.active,
 #photos_color .three.active,
