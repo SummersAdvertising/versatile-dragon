@@ -31,7 +31,10 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <th>標題背景</th>
-      <td><%= f.file_field :frontshow %></td>
+      <td>
+        <%= f.file_field :frontshow %><br>
+        <span class="note">上傳尺寸<b>必須</b>為 545px * 123px</span>
+      </td>
     </tr>
   </table>
 </section>

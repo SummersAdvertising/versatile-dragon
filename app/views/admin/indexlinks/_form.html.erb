@@ -63,12 +63,14 @@
     <tr>
       <th valign="top"><%= t("indexlink.upload.name") %></th>
       <td>
-        <%= f.file_field :image %><br />
+        <%= f.file_field :image %><br>
+        <span class="note">上傳尺寸<b>必須</b>為 990px * 405px</span>
+
         <% if(@indexlink.translation.image.path) %>
-        <%=image_tag(@indexlink.image, :width=>"100px") %><br />
+        <p><%= image_tag(@indexlink.image, :width=>"100px") %></p>
         
-        <%else%>
-        <p><%= t("indexlink.upload.valid") %></p><br />
+        <% else %>
+        <p><%= t("indexlink.upload.valid") %></p>
         <% end %>
       </td>
     </tr>

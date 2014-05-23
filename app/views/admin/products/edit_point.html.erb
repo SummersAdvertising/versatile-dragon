@@ -66,7 +66,10 @@
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <th>圖片</th>
-          <td><%= f.file_field :image, :class => "validate[required, checkFileType[jpg|jpeg|gif|JPG|png|PNG]]" %></td>
+          <td>
+            <%= f.file_field :image, :class => "validate[required, checkFileType[jpg|jpeg|gif|JPG|png|PNG]]" %><br>
+            <span class="note">上傳尺寸<b>必須</b>為 150px * 150px</span>
+          </td>
         </tr>
         <tr>
           <td><%= f.submit("新增",:style => "width:50px;font-size:12px;margin:15px 0 0 5px;padding:6px") %></td>
