@@ -66,8 +66,8 @@ text-shadow:0 0 10px #000}
 #quick a:hover{background:image-url("index-more-h.png")}
 
 aside{min-width:1024px;background:image-url("index-footer-bg.jpg") 0 top repeat-x;}
-aside section{height:145px;overflow:hidden;padding:25px 0 0 195px;background:image-url("index-footer-bg2.jpg") center 0 no-repeat;}
-aside .info{width:310px;float:left;color:#fff;margin:0 40px 0 0}
+aside section{height:145px;overflow:hidden;padding:25px 0 0 0;background:image-url("index-footer-bg2.jpg") center 0 no-repeat;}
+aside .info{width:310px;float:left;color:#fff;margin:0 0 0 0}
 aside strong{font-weight:900}
 aside a{color:#ffe300}
 aside a:hover{text-decoration:underline}
