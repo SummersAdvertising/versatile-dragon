@@ -2,15 +2,18 @@
 class Admin::ProductsController < ApplicationController
   before_filter :require_is_admin
   before_filter :find_product, :except => [:create, :destroyPhoto]
-  before_filter :new_productphoto, :only => [:edit, :edit_intro, :edit_point, :edit_size, :edit_wash, :edit_outro]
+  before_filter :new_productphoto, :only => [:edit, :edit_intro, :edit_point, :edit_form, :edit_size, :edit_wrap, :edit_wash, :edit_outro]
   layout 'admin'
 
   def show
-    @photos = Productphoto.where("img_type in ('detail', 'color', 'point') AND product_id = #{@product.id}").all
+    @photos = Productphoto.where("img_type in ('detail', 'color', 'point', 'form', 'wrap', 'wash') AND product_id = #{@product.id}").all
 
     @photos_detail = @photos.select { |photo| photo.img_type == 'detail' }
     @photos_color = @photos.select { |photo| photo.img_type == 'color' }
     @photos_point = @photos.select { |photo| photo.img_type == 'point' }
+    @photos_form = @photos.select { |photo| photo.img_type == 'form' }
+    @photos_wrap = @photos.select { |photo| photo.img_type == 'wrap' }
+    @photos_wash = @photos.select { |photo| photo.img_type == 'wash' }
     
   end
 
@@ -83,7 +86,17 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit_form
+    @photos_form = Productphoto.where("img_type = 'form' AND product_id = #{@product.id}").all
+
     @forms = JSON.is_json?(@product.content_form) ? JSON.parse(@product.content_form)[0] : nil
+  end
+
+  def edit_wrap
+    @photos_wrap = Productphoto.where("img_type = 'wrap' AND product_id = #{@product.id}").all
+  end
+
+  def edit_wash
+    @photos_wash = Productphoto.where("img_type = 'wash' AND product_id = #{@product.id}").all
   end
   
   #create photo

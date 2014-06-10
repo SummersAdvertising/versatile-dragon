@@ -27,6 +27,8 @@
     </table>
 
     <p>詢價內容：<%= @productask.purpose || "未填寫" %></p>
+    <p>客製化需求：<%= simple_format(@productask.purpose_customize || "無" ) %></p>
+    <p>其他：<%= simple_format(@productask.purpose_other || "無" ) %></p>
     <p>備註：<%= simple_format(@productask.note || "無" ) %></p>
   </div>
 

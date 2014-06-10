@@ -218,6 +218,8 @@ en:
       name: "Changshu Longquan Electronics Co., Ltd"
       address: "The youth road of chang qun industrial park, shajiabang town chang shu city of jiang su provine."
       contact: "Mr.Lin"
+      contact2: "Bruce Shao"
+      contact3: "Rita Wu"
 
     info2:
       name: "Dongguan Geyu Electronics Co., Ltd"
@@ -227,6 +229,23 @@ en:
     info3:
       name: "Taiwan (R.O.C.) - JIU FAN Electronics Co., Ltd"
       address: "8F., No.53, Yingshi Rd., Banqiao Dist., New Taipei City 220, Taiwan (R.O.C.)"
-      contact: "Laura Chen"
+      contact: "Selena Shao"
       tel: "+886 2 8258 1056"
       fax: "+886 2 8258 1213"
+
+  cart:
+    company: "Company"
+    country: "Country"
+    contact: "Attn"
+    tel: "Phone"
+    subject: "Subject"
+    askamount: "Expected order Quantity"
+    purpose: "Inquiry Info."
+    purpose_01: "Delivery time"
+    purpose_02: "Trade Term"
+    purpose_03: "Payment"
+    customize: "Customized products"
+    other: "Other"
+    note: "Message (optional)"
+    askproducts: "Product"
+    empty: "Inquiry Cart is empty"

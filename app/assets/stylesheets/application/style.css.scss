@@ -31,8 +31,8 @@ article{min-width:1024px;background:image-url("article-bg.jpg") center 0 no-repe
 #content h3{color:#ce0021;font:300 32px Arial,LiGothicMed,微軟正黑體;text-shadow:0 1px 0 #fff;padding:0 0 10px 0}
 
 aside{min-width:1024px;background:image-url("index-footer-bg.jpg") 0 top repeat-x;}
-aside section{height:145px;overflow:hidden;padding:25px 0 0 195px;background:image-url("index-footer-bg2.jpg") center 0 no-repeat;}
-aside .info{width:310px;float:left;color:#fff;margin:0 40px 0 0}
+aside section{height:145px;overflow:hidden;padding:25px 0 0 0;background:image-url("index-footer-bg2.jpg") center 0 no-repeat;}
+aside .info{width:310px;float:left;color:#fff;margin:0 0 0 0}
 aside strong{font-weight:900}
 aside a{color:#ffe300}
 aside a:hover{text-decoration:underline}

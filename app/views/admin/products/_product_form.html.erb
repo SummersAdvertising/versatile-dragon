@@ -1,6 +1,6 @@
 <% @forms = @product.get_column_content("content_form")[0] %>
 
-<% unless @forms.blank? %>
+<% unless (@forms.blank? && @photos_form.length == 0) %>
 <section class="text text-show">
 	<div class="one">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -13,7 +13,16 @@
 							<span>
 								<%= item %>：</span>
 							<%= @forms['contents'][index] %></li>
-						<% end %></ul>
+						<% end %>
+					</ul>
+					<br>
+					<ul>
+						<% @photos_form.each do |photo| %>
+						<li class="thumb">
+		                  <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %>
+		                </li>
+		                <% end %>
+		            </ul>
 				</td>
 			</tr>
 		</table>

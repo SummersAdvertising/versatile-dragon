@@ -1,4 +1,4 @@
-<% if ["detail", "color", "point"].include?(@photo.img_type) %>
+<% if ["detail", "color", "point", "form"].include?(@photo.img_type) %>
 $('<%= "#photo_#{@photo.img_type}_#{@photo.id}" %>').remove();
 
 if($('<%= "[id^=photo_#{@photo.img_type}]" %>').length == 0){

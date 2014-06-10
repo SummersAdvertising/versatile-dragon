@@ -17,6 +17,36 @@
   </section>
   <!--category-->
 
+  <section class="text text-edit">
+    <%= form_for(@photo, :url => "../uploadPhoto", :remote => true) do |f| %>
+    <%= f.hidden_field :img_type, :value => "wrap" %>
+      
+    <div class="half">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th>圖片</th>
+          <td>
+            <%= f.file_field :image, :class => "validate[required, checkFileType[jpg|jpeg|gif|JPG|png|PNG]]" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.submit("新增",:style => "width:50px;font-size:12px;margin:15px 0 0 5px;padding:6px") %></td>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+  </section>
+
+  <section class="text text-edit" id="photos_wrap">
+    <p id="no_photo_wrap" style="display: <%= @photos_wrap.empty? ? "block" : "none" %>;">尚未上傳圖片</p>
+
+    <% @photos_wrap.each do |photo| %>
+    <div class="three" id="photo_wrap_<%= photo.id %>">
+      <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %><br>
+      <%= link_to("刪除", "../deletePhoto/#{photo.id}", :method => :delete, :remote => true) %>
+    </div>
+    <% end %>
+  </section>
 
   <%= form_for(@product, :url => admin_productclass_subclass_product_path(params[:productclass_id], params[:subclass_id], @product, :locale => I18n.locale), :method => "put") do |f| %>
 

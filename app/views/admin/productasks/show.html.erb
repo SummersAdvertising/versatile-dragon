@@ -71,7 +71,7 @@
       <div class="one">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <th valign="top">詢價</th>
+            <th valign="top">詢價內容</th>
             <td><%= @productask.purpose || "未填寫" %></td>
           </tr>
         </table>
@@ -79,7 +79,23 @@
       <div class="one">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
+            <th valign="top">客製化需求</th>
+            <td><%= @productask.purpose_customize || "未填寫" %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="one">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
             <th valign="top">其他</th>
+            <td><%= @productask.purpose_other || "未填寫" %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="one">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th valign="top">留言或備註</th>
             <td><%= (@productask.note && @productask.note.length >0) ? simple_format(@productask.note) : "無" %></td>
           </tr>
         </table>

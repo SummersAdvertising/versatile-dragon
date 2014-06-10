@@ -24,15 +24,25 @@
 
     <%= render "product_point", locals: { product: @product, photos_point: @photos_point } %>
 
-    <%= render "product_form", locals: { product: @product } %>
+    <%= render "product_form", locals: { product: @product, photos_form: @photos_form } %>
 
-    <% unless @product.content_wrap.blank? %>
+    <% unless (@product.content_wrap.blank? && @photos_wrap.length == 0) %>
     <section class="text text-show">
       <div class="one">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th valign="top">出貨包裝</th>
-            <td><%= @product.content_wrap.gsub(/(\r\n|\r|\n)/, "<br />").html_safe %></td>
+            <td>
+              <%= @product.content_wrap.gsub(/(\r\n|\r|\n)/, "<br />").html_safe %>
+              <br><br>
+              <ul>
+                <% @photos_wrap.each do |photo| %>
+                <li class="thumb">
+                  <%= image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}") %>
+                </li>
+                <% end %>
+              </ul>
+            </td>
           </tr>
         </table>
       </div>
@@ -41,7 +51,7 @@
 
     <%= render "product_peditor", content_column: "content_size", output_container: "peditor-size", locals: { product: @product } unless @product.content_size.blank? %>
 
-    <%= render "product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } unless @product.content_wash.blank? %>
+    <%= render "product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } unless (@product.content_wash.blank? && @photos_wash.length == 0) %>
 
     <%= render "product_peditor", content_column: "content_outro", output_container: "peditor-down", locals: { product: @product } unless @product.content_outro.blank? %>
   </section>

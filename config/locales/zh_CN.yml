@@ -219,6 +219,8 @@ zh_CN:
       name: "常熟龙全电子有限公司"
       address: "江苏省常熟市沙家滨镇常昆工业园D区青年路"
       contact: "林先生"
+      contact2: "邵先生"
+      contact3: "吴小姐"
 
     info2:
       name: "东莞歌誉电子有限公司"
@@ -228,6 +230,23 @@ zh_CN:
     info3:
       name: "台湾分公司 - 岠钒电子有限公司"
       address: "新北市板桥区英士路53号8F"
-      contact: "陈小姐"
+      contact: "邵小姐"
       tel: "02-82581056"
       fax: "02-82581213"
+
+  cart:
+    company: "公司名称"
+    country: "国家"
+    contact: "联络人"
+    tel: "联络电话"
+    subject: "主旨"
+    askamount: "需求数量"
+    purpose: "询价内容"
+    purpose_01: "运送时间"
+    purpose_02: "贸易条件"
+    purpose_03: "付款条件"
+    customize: "客制化需求"
+    other: "其他"
+    note: "留言或备注(非必填)"
+    askproducts: "询价产品"
+    empty: "询价车是空的"

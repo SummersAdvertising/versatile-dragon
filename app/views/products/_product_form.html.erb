@@ -8,8 +8,17 @@
 		<li>
 			<span>
 				<%= item %>：</span>
-			<%= @forms['contents'][index] %></li>
+			<%= @forms['contents'][index] %>
+		</li>
 		<% end %>
+		<br>
+		<ul>
+			<% @photos_form.each do |photo| %>
+			<li class="thumb">
+              <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %>
+            </li>
+            <% end %>
+        </ul>
 	</ul>
 	<% end %>
 </div>

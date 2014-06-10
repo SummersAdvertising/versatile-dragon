@@ -8,6 +8,17 @@
 <%= hidden_field_tag(content_column, @product[content_column]) %>
 <div id="<%= output_container %>"></div>
 
+<br>
+<ul>
+	<% content_column == "content_wash" && @photos_wash.each do |photo| %>
+	<li class="thumb">
+		<%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %>
+	</li>
+	<% end %>
+</ul>
+
+<% unless (content_column == "content_wash" && @product.content_wash.blank?) %>
 <script type="text/javascript">
 editor.output($("#<%= content_column %>").val(), $("#<%= output_container %>"));
 </script>
+<% end %>

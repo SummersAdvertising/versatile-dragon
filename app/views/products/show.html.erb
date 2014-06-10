@@ -21,9 +21,17 @@
         <%= render "product_form", locals: { product: @product } %>
 
         <div id="content-3">
-          <% unless @product.content_wrap.blank? %>
+          <% unless (@product.content_wrap.blank? && @photos_wrap.length == 0) %>
           <h5><img src="/images/s-18.png"></h5>
           <%= @product.content_wrap.gsub(/(\r\n|\r|\n)/, "<br />").html_safe %>
+          <br><br>
+          <ul>
+            <% @photos_wrap.each do |photo| %>
+            <li class="thumb">
+              <%= image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}") %>
+            </li>
+            <% end %>
+          </ul>
           <% end %>
         </div>
 
@@ -32,7 +40,7 @@
         </div>
 
         <div id="content-5">
-          <%= render "product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } unless @product.content_wash.blank? %>
+          <%= render "product_peditor", content_column: "content_wash", output_container: "peditor-wash", locals: { product: @product } unless (@product.content_wash.blank? && @photos_wash.length == 0) %>
         </div>
 
         <%= render "product_peditor", content_column: "content_outro", output_container: "peditor-down", locals: { product: @product } unless @product.content_outro.blank? %>

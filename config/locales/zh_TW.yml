@@ -223,6 +223,8 @@ zh_TW:
       name: "常熟龍全電子有限公司"
       address: "江蘇省常熟市沙家濱鎮常昆工業園D區青年路"
       contact: "林先生"
+      contact2: "邵先生"
+      contact3: "吳小姐"
 
     info2:
       name: "東莞歌譽電子有限公司"
@@ -232,6 +234,23 @@ zh_TW:
     info3:
       name: "台灣分公司 - 岠釩電子有限公司"
       address: "新北市板橋區英士路53號8F"
-      contact: "陳小姐"
+      contact: "邵小姐"
       tel: "02-82581056"
       fax: "02-82581213"
+
+  cart:
+    company: "公司名稱"
+    country: "國家"
+    contact: "聯絡人"
+    tel: "聯絡電話"
+    subject: "主旨"
+    askamount: "需求數量"
+    purpose: "詢價內容"
+    purpose_01: "運送時間"
+    purpose_02: "貿易條件"
+    purpose_03: "付款條件"
+    customize: "客製化需求"
+    other: "其他"
+    note: "留言或備註(非必填)"
+    askproducts: "詢價產品"
+    empty: "詢價車是空的"
