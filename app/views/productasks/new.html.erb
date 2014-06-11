@@ -47,12 +47,12 @@
               <%= f.text_field :subject, :class =>"text validate[required]" %></td>
           </tr>
           <tr>
-            <th align="right"><%= t("cart.askamount") %>：</th>
+            <th align="right" style="<%= "font-size:12px;" if params[:locale] == "en" %>"><%= t("cart.askamount") %>：</th>
             <td>
               <%= f.text_field :askamount, :class =>"text validate[required,custom[integer],min[100]]" %></td>
           </tr>
           <tr>
-            <th align="right" valign="top" style="padding-top:7px"><%= t("cart.purpose") %>：</th>
+            <th align="right" valign="top" style="padding-top:7px;<%= "font-size:12px;" if params[:locale] == "en" %>"><%= t("cart.purpose") %>：</th>
             <td>
               <% [t("cart.purpose_01"), t("cart.purpose_02"), t("cart.purpose_03")].each_with_index do |purpose, index| %>
               <input name="purpose[]" type="checkbox" value="<%= purpose %>" id="purpose_<%= index+1 %>" <%= "checked" if( @productask.purpose && @productask.purpose.include?(purpose) ) %> class="checkbox validate[required]" >
@@ -93,7 +93,7 @@
       </div>
 
       <div id="button">
-        <%= f.submit "" %>
+        <%= f.submit "", :style =>"background: url(/assets/cart-03-#{params[:locale]}.png) 0 0 no-repeat;" %>
       </div>
     </div>
     <% end %>
