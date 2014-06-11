@@ -110,9 +110,4 @@ alert("<%= @productask.errors.full_messages %>");
 if("<%= alert||notice %>"){
   alert("<%= alert||notice %>");
 }
-
-$("#purpose_5").change(function(){
-  var purpose_other_name = $(this).is(":checked") ? "purpose[]" : "";
-  $("#purpose_other").attr("name", purpose_other_name);
-});
 </script>
