@@ -36,7 +36,7 @@ en:
   bread:
     index: "Index"
     product: "Product"
-    cart: "Inquiry Cart"
+    cart: "Cart"
     about: "About"
     partner: "Cooperation"
     contact: "Contact"

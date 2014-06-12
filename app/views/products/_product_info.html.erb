@@ -75,7 +75,7 @@
     <tr>
       <td height="160" valign="bottom">
 
-        <%= link_to( image_tag("/images/s-14.png"), add_cart_productasks_path(@product.id, :locale =>I18n.locale), :method => :post, :class => "add" ) %></td>
+        <%= link_to( image_tag("/assets/s-14-#{params[:locale]}.png"), add_cart_productasks_path(@product.id, :locale =>I18n.locale), :method => :post, :class => "add" ) %></td>
     </tr>
   </table>
 </div>
