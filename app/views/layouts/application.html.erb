@@ -113,7 +113,7 @@ $(function(){
         <li><a href="/<%= I18n.locale %>/about"><%= t("navbar.about.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/partner"><%= t("navbar.partner.name") %></a></li>
         <li><a href="/<%= I18n.locale %>/contact"><%= t("navbar.contact.name") %></a></li>
-        <li id="cart">詢價車：<%= link_to "#{@cartitems_count}", new_productask_path %>件</li>
+        <li id="cart"><%= t("bread.cart") %>：<%= link_to "#{@cartitems_count}", new_productask_path %>件</li>
         <li id="lang">
         	<a href="#" data-lang="zh_TW"><%= t("environ.language.tw") %></a>
         	<a href="#" data-lang="zh_CN"><%= t("environ.language.cn") %></a>
@@ -130,31 +130,32 @@ $(function(){
   <section>
     <div class="info" style="width:25%">
       <p><strong><%= t("company.info1.name") %></strong><br>
-        <%= t("company.tel") %>：0512-52577180/181<br>
         <%= t("company.contact") %>：<%= t("company.info1.contact") %><br>
         E-mail：<br>
-        <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a> </p>
+        <a href="mailto:solomon@versatile-dragon.com" target="_blank">solomon@versatile-dragon.com</a><br>
+        <%= t("company.tel") %>：0512-52577180/181<br> </p>
     </div>
     <div class="info" style="width:25%">
       <p><strong><%= t("company.info1.name") %></strong><br>
-        <%= t("company.info1.tel_china") %>：15150360668<br>
         <%= t("company.contact") %>：<%= t("company.info1.contact2") %><br>
         E-mail：<br>
-        <a href="mailto:bruce@versatile-dragon.com" target="_blank">bruce@versatile-dragon.com</a> </p>
+        <a href="mailto:bruce@versatile-dragon.com" target="_blank">bruce@versatile-dragon.com</a><br>
+        <%= t("company.info1.tel_china") %>：15150360668<br>
+      </p>
     </div>
     <div class="info" style="width:25%">
       <p><strong><%= t("company.info1.name") %></strong><br>
-        <%= t("company.info1.tel_china") %>：15150360668<br>
         <%= t("company.contact") %>：<%= t("company.info1.contact3") %><br>
         E-mail：<br>
-        <a href="mailto:rita@versatile-dragon.com" target="_blank">rita@versatile-dragon.com</a> </p>
+        <a href="mailto:rita@versatile-dragon.com" target="_blank">rita@versatile-dragon.com</a><br>
+      </p>
     </div>
     <div class="info" style="width:25%">
       <p><strong><%= t("company.info3.name") %></strong><br>
-        <%= t("company.tel") %>：<%= t("company.info3.tel") %><br>
         <%= t("company.contact") %>：<%= t("company.info3.contact") %><br>
         E-mail：<br>
-        <a href="mailto:selena@versatile-dragon.com" target="_blank">selena@versatile-dragon.com</a>
+        <a href="mailto:selena@versatile-dragon.com" target="_blank">selena@versatile-dragon.com</a><br>
+        <%= t("company.tel") %>：<%= t("company.info3.tel") %><br>
       </p>
     </div>
   </section>
