@@ -213,6 +213,7 @@ zh_CN:
     tel: "公司电话"
     fax: "公司传真"
     contact: "联络人"
+    contact_f: "国外"
     mail: "客服信箱"
 
     info1:
@@ -232,6 +233,7 @@ zh_CN:
       name: "台湾分公司 - 岠钒电子有限公司"
       address: "新北市板桥区英士路53号8F"
       contact: "邵小姐"
+      mobile: "手机"
       tel: "02-82581056"
       fax: "02-82581213"
 

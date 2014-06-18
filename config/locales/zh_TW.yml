@@ -217,6 +217,7 @@ zh_TW:
     tel: "公司電話"
     fax: "公司傳真"
     contact: "聯絡人"
+    contact_f: "國外"
     mail: "客服信箱"
 
     info1:
@@ -236,6 +237,7 @@ zh_TW:
       name: "台灣分公司 - 岠釩電子有限公司"
       address: "新北市板橋區英士路53號8F"
       contact: "邵小姐"
+      mobile: "手機"
       tel: "02-82581056"
       fax: "02-82581213"
 

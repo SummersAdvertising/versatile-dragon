@@ -212,6 +212,7 @@ en:
     tel: "Tel"
     fax: "Fax"
     contact: "Contact"
+    contact_f: ""
     mail: "Mail"
 
     info1:
@@ -220,7 +221,7 @@ en:
       contact: "Mr.Lin"
       contact2: "Bruce Shao"
       contact3: "Rita Wu"
-      tel_china: "mobile"
+      tel_china: "mobile(China)"
 
     info2:
       name: "Dongguan Geyu Electronics Co., Ltd"
@@ -231,6 +232,7 @@ en:
       name: "Taiwan (R.O.C.) - JIU FAN Electronics Co., Ltd"
       address: "8F., No.53, Yingshi Rd., Banqiao Dist., New Taipei City 220, Taiwan (R.O.C.)"
       contact: "Selena Shao"
+      mobile: "mobile"
       tel: "+886 2 8258 1056"
       fax: "+886 2 8258 1213"
 
