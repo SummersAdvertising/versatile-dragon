@@ -12,7 +12,7 @@
 <section class="list">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <!-- <th align="left" class="x0 x2"><%= t("productclass.date") %></th> -->
+      <th align="center" class="x0 x2"><%= t("productclass.date") %></th>
       <th align="left">主分類名稱</th>
       <th align="center" class="x2"><%= t("productclass.subclass") %></th>
       <th align="left" class="x0 x1"><%= t("actionshare.edit") %></th>
@@ -21,15 +21,15 @@
 
     <% if(@productclasses.blank?) %>
     <tr>
-      <td colspan="4"><%= t("productclass.noClass") %></td>
+      <td colspan="5"><%= t("productclass.noClass") %></td>
     </tr>
     <% end %>
 
     <% @productclasses.each do |productclass| %>
     <tr>
-      <!-- <td align="left" class="x0">
+      <td align="center" class="x0">
         <%= productclass.addDate.to_s.to_date %>
-      </td> -->
+      </td>
       <td align="left">
         <%= link_to image_tag("/images/folder.png") + " #{productclass.name}", admin_productclass_path(productclass, :locale => I18n.locale) %>
       </td>
@@ -53,7 +53,7 @@
     <% end %>
 
     <tr id="new_subclass_tr" style="display:none;">
-      <!-- <td align="left" class="x0"></td> -->
+      <td align="left" class="x0"></td>
       <td align="left">
         <div>
           <%= form_for( @subclass, :url => "#" ) do |f| %>
