@@ -22,6 +22,25 @@ ActiveRecord::Schema.define(:version => 20140610044847) do
     t.boolean  "master",     :default => false
   end
 
+  create_table "categories", :force => true do |t|
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "category_translations", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "image"
+  end
+
+  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
+  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
+
   create_table "classphotos", :force => true do |t|
     t.string   "name"
     t.string   "image"
@@ -71,17 +90,10 @@ ActiveRecord::Schema.define(:version => 20140610044847) do
   create_table "product_translations", :force => true do |t|
     t.integer  "product_id"
     t.string   "locale"
-    t.text     "content_intro"
+    t.text     "content"
     t.string   "name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.text     "content_point"
-    t.text     "content_form"
-    t.text     "content_wrap"
-    t.text     "content_wash"
-    t.text     "content_outro"
-    t.text     "description"
-    t.text     "content_size"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "product_translations", ["locale"], :name => "index_product_translations_on_locale"
@@ -91,8 +103,8 @@ ActiveRecord::Schema.define(:version => 20140610044847) do
     t.integer  "productask_id"
     t.integer  "product_id"
     t.string   "productname"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "productasks", :force => true do |t|
@@ -100,16 +112,14 @@ ActiveRecord::Schema.define(:version => 20140610044847) do
     t.string   "askertel"
     t.string   "askermail"
     t.string   "purpose"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "status"
     t.text     "note"
     t.string   "askercompany"
     t.string   "country"
     t.string   "subject"
     t.string   "askamount"
-    t.text     "purpose_customize"
-    t.text     "purpose_other"
   end
 
   create_table "productclass_translations", :force => true do |t|
@@ -126,34 +136,26 @@ ActiveRecord::Schema.define(:version => 20140610044847) do
   add_index "productclass_translations", ["productclass_id"], :name => "index_productclass_translations_on_productclass_id"
 
   create_table "productclasses", :force => true do |t|
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.date     "addDate"
-    t.integer  "depth",      :default => 1
-    t.integer  "parent_id",  :default => 0
+    t.string   "class_type"
   end
 
   create_table "productphotos", :force => true do |t|
     t.string   "name"
     t.string   "image"
     t.integer  "product_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.string   "description"
-    t.string   "img_type"
-    t.boolean  "is_cover",    :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
-    t.integer  "subclass_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "productclass_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "status"
     t.date     "addDate"
-    t.integer  "cover_id"
-    t.integer  "detail_count", :default => 0
-    t.integer  "color_count",  :default => 0
-    t.integer  "point_count",  :default => 0
   end
 
   create_table "subclasses", :force => true do |t|

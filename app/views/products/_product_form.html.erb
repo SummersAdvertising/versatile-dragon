@@ -1,6 +1,6 @@
 <div id="content-2">
 	<% @forms = @product.get_column_content("content_form")[0] %>
-	<% unless @forms.blank? %>
+	<% unless @forms["items"].select{ |content| !content.blank? }.length == 0 %>
 	<h5>
 		<img src="/images/s-17.png"></h5>
 	<ul>

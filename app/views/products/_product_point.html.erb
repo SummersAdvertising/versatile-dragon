@@ -1,10 +1,10 @@
 <div id="content-1">
-  <% unless(@product.content_point.blank? && @photos_point.length == 0) %>
+  <% unless(@product.get_column_content("content_point").select{ |point| !point.blank? }.length == 0 && @photos_point.length == 0) %>
   <h5>
     <img src="/images/s-16.png"></h5>
   <% end %>
   <ul>
-    <% @product.get_column_content("content_point").each_with_index do |point, index| %>
+    <% @product.get_column_content("content_point").select{ |point| !point.blank? }.each_with_index do |point, index| %>
     <li>
       <%= "#{index+1}. #{point}" %></li>
     <% end %></ul>

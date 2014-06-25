@@ -12,9 +12,9 @@
 # Attributes for the user
 @attrib = {
   :username => "admin", 
-  :password: "40bd001563085fc35165329ea1ff5c5ecbdbbeef",
-  :name: "後台管理者", 
-  :master: "true"
+  :password => "40bd001563085fc35165329ea1ff5c5ecbdbbeef",
+  :name => "後台管理者", 
+  :master => "true"
 }
 
 # Use 'send' to call the attributes= method on the object
