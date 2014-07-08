@@ -2,7 +2,10 @@
   <section>
     <div id="banner_series" class="banner">
       <div class="cover"><%= image_tag(@subclass.productclass.frontshow, :width => "545", :height => "123") %></div>
-      <div class="bread"><%= "#{t("bread.index")} > #{t("bread.product")} > #{@subclass.productclass.name} > #{@subclass.name}" %></div>
+      <div class="bread">
+        <%= link_to t("bread.index") , root_url %> > <%= link_to t("bread.product") , productclasses_path(:locale => params[:locale]) %> > <%= link_to @subclass.productclass.name, productclass_path(@subclass.productclass ,:locale => params[:locale]) %> > <%= @subclass.name%>
+        
+      </div>
     </div>
     <div id="content">
       <div class="left">

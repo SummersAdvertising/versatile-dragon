@@ -4,7 +4,8 @@
       <div class="cover">
         <%= image_tag(@productclass.frontshow, :width =>"545", :height => "123") %></div>
       <div class="bread">
-        <%= "#{t("bread.index")} > #{t("bread.product")} > #{@productclass.name}" %></div>
+        <%= link_to t("bread.index") , root_url %> > <%= link_to t("bread.product") , productclasses_path(:locale => params[:locale])  %> > <%= @productclass.name %>
+      </div>
     </div>
     <div id="content">
       <div class="left">
