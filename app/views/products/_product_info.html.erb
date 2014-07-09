@@ -40,14 +40,14 @@
               <th align="left" width="50">細節展示</th>
               <% @photos_detail.each do |photo| %>
               <td align="right">
-                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => ( photo == @photos_detail.first ? "active swap" : "swap" ), :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
+                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => ( photo == @photos_detail.first ? "active swap" : "swap" ), :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
               </td>
               <% end %></tr>
             <tr>
               <th align="left">顏色</th>
               <% @photos_color.each do |photo| %>
               <td align="right">
-                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => "swap", :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
+                <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}"), "javascript:void(0);", :class => "swap", :data => { path: "/uploads/Productphoto/#{@product.id}/#{photo.id}-#{photo.name}" } %>
               </td>
               <% end %>
             </tr>
