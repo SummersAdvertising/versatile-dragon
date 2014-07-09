@@ -7,7 +7,7 @@
       <td width="62%" height="530" rowspan="2" align="left" valign="top">
         <div id="detail" class="easyzoom easyzoom--overlay">
           <% @cover = @photos_detail.first %>
-          <%= link_to image_tag("/uploads/Productphoto/#{@product.id}/thumb_#{@cover.id}-#{@cover.name}", :style => "width: 415px; height: 415px;" ), "/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}" if @cover %>
+          <%= link_to image_tag("/uploads/Productphoto/#{@product.id}#{@cover.id}-#{@cover.name}", :style => "width: 415px; height: 415px;" ), "/uploads/Productphoto/#{@product.id}/#{@cover.id}-#{@cover.name}" if @cover %>
           <a href="javascript:void(0);" class="open"></a>
           <a href="javascript:void(0);" class="close" style="display: none; z-index:990;"></a>
         </div>
